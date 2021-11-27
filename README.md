@@ -7,26 +7,23 @@ Cefweb is an enterprise browser plug-in designed for virtual engine. It uses man
 
 
 # Features:
-H264 and h265 protocols
-Various video websites, such as youtube and bilibili
-Webrtc access cloud rendering
-Webrtc online voice and video
-H5, HTTPS, CSS and JavaScript
-UE4 and JavaScript call each other
-Mouse event transparent background page, mouse penetration transparency can be adjusted
-Page navigation
-debugging JavaScript using chrome tools
-mouse drag
-input method conversion
-ctrl + scroll wheel zoom page
-load custom protocols on the web page, such as SVN
-8K video 60fps without frame dropping
-GPU binding separates virtual engine and browser rendering
+1. H264 and h265 protocols
+2. Various video websites, such as youtube and bilibili
+3. Webrtc access cloud rendering
+4. Webrtc online voice and video
+5. H5, HTTPS, CSS and JavaScript
+6. UE4 and JavaScript call each other
+7. Mouse event transparent background page, mouse penetration transparency can be adjusted
+8. Page navigation
+9. debugging JavaScript using chrome tools
+10. mouse drag
+11. input method conversion
+12. ctrl + scroll wheel zoom page
+13. load custom protocols on the web page, such as SVN
+14. 8K video 60fps without frame dropping
+15. GPU binding separates virtual engine and browser rendering
 
 # Important/Additional Notes:
 QQ: 249838638  
 Wechat: aSurgingRiver  
-Email: aSurgingRiver@163.com  
-
-
-
+Email: aSurgingRiver@163.com    aSurgingRiver@gmail.com
