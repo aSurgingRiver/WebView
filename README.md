@@ -26,6 +26,6 @@ Cefweb is an enterprise browser plug-in designed for virtual engine. It uses man
 15. GPU binding separates virtual engine and browser rendering
 
 # Important/Additional Notes:
-QQ: 249838638  
+QQ: 249838628  
 Wechat: aSurgingRiver  
 Email: aSurgingRiver@163.com    aSurgingRiver@gmail.com
