@@ -7,7 +7,7 @@ WebView is an enterprise browser plug-in designed for virtual engine. It uses ma
 
 
 # Features:
-1. H264 and h265 protocols
+1. Support h264, h265, AV1 video codec
 2. Various video websites, such as youtube and bilibili
 3. Webrtc access cloud rendering
 4. Webrtc online voice and video
