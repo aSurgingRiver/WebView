@@ -22,13 +22,26 @@ WebView is an enterprise browser plug-in designed for virtual engine. It uses ma
 13. load custom protocols on the web page, such as SVN
 14. 8K video 60fps without frame dropping
 15. GPU binding separates virtual engine and browser rendering
+16. Local domain name resolution
+17. Scale page
+18. 120 frame rate does not drop frames
+
+# Domestic synchronized version
+https://pan.baidu.com/s/17uXGG8HVuPLEiODxmdowjw?pwd=1234
+
+# CefBase Dependent:
+1. https://github.com/aSurgingRiver/CefBase
+2. https://pan.baidu.com/s/15y46AgLDocFHx04AM7HUDw?pwd=1234
 
 # Using tutorials
-https://blog.csdn.net/he_goodluck/article/details/122892847
+https://www.youtube.com/channel/UCUUFUwaMi5-naF0PZMU9mxg
+https://www.zhihu.com/column/c_1490114276946223104
 
 # Important/Additional Notes:
 We are committed to providing the most efficient browser plug-in. If you have any questions in the process of using, you can contact us through the following ways.
 
-QQ: 249838628  
+FaceBook: https://www.facebook.com/ue.webview/   
+Email: aSurgingRiver@163.com    aSurgingRiver@gmail.com                                  
+QQ Group: 866972317   
+QQ: 249838628 
 Wechat: aSurgingRiver  
-Email: aSurgingRiver@163.com    aSurgingRiver@gmail.com
