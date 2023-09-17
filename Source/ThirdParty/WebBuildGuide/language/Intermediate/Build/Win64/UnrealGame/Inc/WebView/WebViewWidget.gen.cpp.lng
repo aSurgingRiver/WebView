@@ -1,0 +1,203 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+/*===========================================================================
+	Generated code exported from UnrealHeaderTool.
+	DO NOT modify this manually! Edit the corresponding .h files instead!
+===========================================================================*/
+
+#include "UObject/GeneratedCppIncludes.h"
+#include "WebView/Public/WebViewWidget.h"
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+void EmptyLinkFunctionForGeneratedCodeWebViewWidget() {}
+// Cross Module References
+	WEBVIEW_API UClass* Z_Construct_UClass_UWebViewWidget_NoRegister();
+	WEBVIEW_API UClass* Z_Construct_UClass_UWebViewWidget();
+	WEBVIEW_API UClass* Z_Construct_UClass_UWebBase();
+	UPackage* Z_Construct_UPackage__Script_WebView();
+	WEBVIEW_API UClass* Z_Construct_UClass_UJLParse_NoRegister();
+	WEBVIEW_API UClass* Z_Construct_UClass_UJLParse();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UObject();
+// End Cross Module References
+	void UWebViewWidget::StaticRegisterNativesUWebViewWidget()
+	{
+	}
+	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(UWebViewWidget);
+	UClass* Z_Construct_UClass_UWebViewWidget_NoRegister()
+	{
+		return UWebViewWidget::StaticClass();
+	}
+	struct Z_Construct_UClass_UWebViewWidget_Statics
+	{
+		static UObject* (*const DependentSingletons[])();
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
+#endif
+		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
+		static const UECodeGen_Private::FClassParams ClassParams;
+	};
+	UObject* (*const Z_Construct_UClass_UWebViewWidget_Statics::DependentSingletons[])() = {
+		(UObject* (*)())Z_Construct_UClass_UWebBase,
+		(UObject* (*)())Z_Construct_UPackage__Script_WebView,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UWebViewWidget_Statics::Class_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "Comment", "/**\n * \n */" },
+		{ "IncludePath", "WebViewWidget.h" },
+		{ "IsBlueprintBase", "true" },
+		{ "ModuleRelativePath", "Public/WebViewWidget.h" },
+	};
+#endif
+	const FCppClassTypeInfoStatic Z_Construct_UClass_UWebViewWidget_Statics::StaticCppClassTypeInfo = {
+		TCppClassTypeTraits<UWebViewWidget>::IsAbstract,
+	};
+	const UECodeGen_Private::FClassParams Z_Construct_UClass_UWebViewWidget_Statics::ClassParams = {
+		&UWebViewWidget::StaticClass,
+		nullptr,
+		&StaticCppClassTypeInfo,
+		DependentSingletons,
+		nullptr,
+		nullptr,
+		nullptr,
+		UE_ARRAY_COUNT(DependentSingletons),
+		0,
+		0,
+		0,
+		0x00B000A0u,
+		METADATA_PARAMS(Z_Construct_UClass_UWebViewWidget_Statics::Class_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UClass_UWebViewWidget_Statics::Class_MetaDataParams))
+	};
+	UClass* Z_Construct_UClass_UWebViewWidget()
+	{
+		if (!Z_Registration_Info_UClass_UWebViewWidget.OuterSingleton)
+		{
+			UECodeGen_Private::ConstructUClass(Z_Registration_Info_UClass_UWebViewWidget.OuterSingleton, Z_Construct_UClass_UWebViewWidget_Statics::ClassParams);
+		}
+		return Z_Registration_Info_UClass_UWebViewWidget.OuterSingleton;
+	}
+	template<> WEBVIEW_API UClass* StaticClass<UWebViewWidget>()
+	{
+		return UWebViewWidget::StaticClass();
+	}
+	DEFINE_VTABLE_PTR_HELPER_CTOR(UWebViewWidget);
+	DEFINE_FUNCTION(UJLParse::execSyncParse)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_json);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SyncParse(Z_Param_json);
+		P_NATIVE_END;
+	}
+	void UJLParse::StaticRegisterNativesUJLParse()
+	{
+		UClass* Class = UJLParse::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "SyncParse", &UJLParse::execSyncParse },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_UJLParse_SyncParse_Statics
+	{
+		struct JLParse_eventSyncParse_Parms
+		{
+			FString json;
+		};
+		static const UECodeGen_Private::FStrPropertyParams NewProp_json;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UJLParse_SyncParse_Statics::NewProp_json = { "json", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(JLParse_eventSyncParse_Parms, json), METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UJLParse_SyncParse_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UJLParse_SyncParse_Statics::NewProp_json,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UJLParse_SyncParse_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "ModuleRelativePath", "Public/WebViewWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UJLParse_SyncParse_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UJLParse, nullptr, "SyncParse", nullptr, nullptr, sizeof(Z_Construct_UFunction_UJLParse_SyncParse_Statics::JLParse_eventSyncParse_Parms), Z_Construct_UFunction_UJLParse_SyncParse_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UJLParse_SyncParse_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UJLParse_SyncParse_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UJLParse_SyncParse_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UJLParse_SyncParse()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UJLParse_SyncParse_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(UJLParse);
+	UClass* Z_Construct_UClass_UJLParse_NoRegister()
+	{
+		return UJLParse::StaticClass();
+	}
+	struct Z_Construct_UClass_UJLParse_Statics
+	{
+		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
+#endif
+		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
+		static const UECodeGen_Private::FClassParams ClassParams;
+	};
+	UObject* (*const Z_Construct_UClass_UJLParse_Statics::DependentSingletons[])() = {
+		(UObject* (*)())Z_Construct_UClass_UObject,
+		(UObject* (*)())Z_Construct_UPackage__Script_WebView,
+	};
+	const FClassFunctionLinkInfo Z_Construct_UClass_UJLParse_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_UJLParse_SyncParse, "SyncParse" }, // 3675893772
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UJLParse_Statics::Class_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "IncludePath", "WebViewWidget.h" },
+		{ "IsBlueprintBase", "true" },
+		{ "ModuleRelativePath", "Public/WebViewWidget.h" },
+	};
+#endif
+	const FCppClassTypeInfoStatic Z_Construct_UClass_UJLParse_Statics::StaticCppClassTypeInfo = {
+		TCppClassTypeTraits<UJLParse>::IsAbstract,
+	};
+	const UECodeGen_Private::FClassParams Z_Construct_UClass_UJLParse_Statics::ClassParams = {
+		&UJLParse::StaticClass,
+		nullptr,
+		&StaticCppClassTypeInfo,
+		DependentSingletons,
+		FuncInfo,
+		nullptr,
+		nullptr,
+		UE_ARRAY_COUNT(DependentSingletons),
+		UE_ARRAY_COUNT(FuncInfo),
+		0,
+		0,
+		0x001000A0u,
+		METADATA_PARAMS(Z_Construct_UClass_UJLParse_Statics::Class_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UClass_UJLParse_Statics::Class_MetaDataParams))
+	};
+	UClass* Z_Construct_UClass_UJLParse()
+	{
+		if (!Z_Registration_Info_UClass_UJLParse.OuterSingleton)
+		{
+			UECodeGen_Private::ConstructUClass(Z_Registration_Info_UClass_UJLParse.OuterSingleton, Z_Construct_UClass_UJLParse_Statics::ClassParams);
+		}
+		return Z_Registration_Info_UClass_UJLParse.OuterSingleton;
+	}
+	template<> WEBVIEW_API UClass* StaticClass<UJLParse>()
+	{
+		return UJLParse::StaticClass();
+	}
+	DEFINE_VTABLE_PTR_HELPER_CTOR(UJLParse);
+	struct Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebViewWidget_h_Statics
+	{
+		static const FClassRegisterCompiledInInfo ClassInfo[];
+	};
+	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebViewWidget_h_Statics::ClassInfo[] = {
+		{ Z_Construct_UClass_UWebViewWidget, UWebViewWidget::StaticClass, TEXT("UWebViewWidget"), &Z_Registration_Info_UClass_UWebViewWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UWebViewWidget), 1045974364U) },
+		{ Z_Construct_UClass_UJLParse, UJLParse::StaticClass, TEXT("UJLParse"), &Z_Registration_Info_UClass_UJLParse, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UJLParse), 1433584872U) },
+	};
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebViewWidget_h_954507071(TEXT("/Script/WebView"),
+		Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebViewWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebViewWidget_h_Statics::ClassInfo),
+		nullptr, 0,
+		nullptr, 0);
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
