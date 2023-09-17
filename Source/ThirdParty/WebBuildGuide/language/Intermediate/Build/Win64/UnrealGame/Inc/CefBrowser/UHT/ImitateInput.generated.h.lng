@@ -1,0 +1,37 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+/*===========================================================================
+	Generated code exported from UnrealHeaderTool.
+	DO NOT modify this manually! Edit the corresponding .h files instead!
+===========================================================================*/
+
+// IWYU pragma: private, include "ImitateInput.h"
+#include "UObject/ObjectMacros.h"
+#include "UObject/ScriptMacros.h"
+
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+#ifdef CEFBROWSER_ImitateInput_generated_h
+#error "ImitateInput.generated.h already included, missing '#pragma once' in ImitateInput.h"
+#endif
+#define CEFBROWSER_ImitateInput_generated_h
+
+#define FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ImitateInput_h_15_GENERATED_BODY \
+	friend struct Z_Construct_UScriptStruct_FImitateInput_Statics; \
+	static class UScriptStruct* StaticStruct();
+
+
+template<> CEFBROWSER_API UScriptStruct* StaticStruct<struct FImitateInput>();
+
+#undef CURRENT_FILE_ID
+#define CURRENT_FILE_ID FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ImitateInput_h
+
+
+#define FOREACH_ENUM_WEBVIEW_KEYBOARD_MODE(op) \
+	op(WebView_Keyboard_Mode::WebView_Keyboard_Mode_Scenes) \
+	op(WebView_Keyboard_Mode::WebView_Keyboard_Mode_Blend) \
+	op(WebView_Keyboard_Mode::WebView_Keyboard_Mode_Both) 
+
+enum class WebView_Keyboard_Mode : uint8;
+template<> struct TIsUEnumClass<WebView_Keyboard_Mode> { enum { Value = true }; };
+template<> CEFBROWSER_API UEnum* StaticEnum<WebView_Keyboard_Mode>();
+
+PRAGMA_ENABLE_DEPRECATION_WARNINGS

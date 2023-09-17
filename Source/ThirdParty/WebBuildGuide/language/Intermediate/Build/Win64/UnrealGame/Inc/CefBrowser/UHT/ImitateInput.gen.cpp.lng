@@ -1,0 +1,212 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+/*===========================================================================
+	Generated code exported from UnrealHeaderTool.
+	DO NOT modify this manually! Edit the corresponding .h files instead!
+===========================================================================*/
+
+#include "UObject/GeneratedCppIncludes.h"
+#include "CefBrowser/Public/ImitateInput.h"
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+void EmptyLinkFunctionForGeneratedCodeImitateInput() {}
+// Cross Module References
+	CEFBROWSER_API UEnum* Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode();
+	CEFBROWSER_API UScriptStruct* Z_Construct_UScriptStruct_FImitateInput();
+	UPackage* Z_Construct_UPackage__Script_CefBrowser();
+// End Cross Module References
+	static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_ImitateInput;
+class UScriptStruct* FImitateInput::StaticStruct()
+{
+	if (!Z_Registration_Info_UScriptStruct_ImitateInput.OuterSingleton)
+	{
+		Z_Registration_Info_UScriptStruct_ImitateInput.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FImitateInput, Z_Construct_UPackage__Script_CefBrowser(), TEXT("ImitateInput"));
+	}
+	return Z_Registration_Info_UScriptStruct_ImitateInput.OuterSingleton;
+}
+template<> CEFBROWSER_API UScriptStruct* StaticStruct<FImitateInput>()
+{
+	return FImitateInput::StaticStruct();
+}
+	struct Z_Construct_UScriptStruct_FImitateInput_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[];
+#endif
+		static void* NewStructOps();
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_URL_MetaData[];
+#endif
+		static const UECodeGen_Private::FStrPropertyParams NewProp_URL;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Show_MetaData[];
+#endif
+		static void NewProp_Show_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_Show;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_interval_MetaData[];
+#endif
+		static const UECodeGen_Private::FUnsizedIntPropertyParams NewProp_interval;
+		static const UECodeGen_Private::FStrPropertyParams NewProp_Event_Inner;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Event_MetaData[];
+#endif
+		static const UECodeGen_Private::FArrayPropertyParams NewProp_Event;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+		static const UECodeGen_Private::FStructParams ReturnStructParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FImitateInput_Statics::Struct_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "IsBlueprintBase", "true" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+	};
+#endif
+	void* Z_Construct_UScriptStruct_FImitateInput_Statics::NewStructOps()
+	{
+		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FImitateInput>();
+	}
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_URL_MetaData[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "// spec url\n" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+		{ "ToolTip", "spec url" },
+	};
+#endif
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_URL = { "URL", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(FImitateInput, URL), METADATA_PARAMS(Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_URL_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_URL_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_Show_MetaData[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "// Show Imitate Input\n" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+		{ "ToolTip", "Show Imitate Input" },
+	};
+#endif
+	void Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_Show_SetBit(void* Obj)
+	{
+		((FImitateInput*)Obj)->Show = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_Show = { "Show", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, sizeof(bool), sizeof(FImitateInput), &Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_Show_SetBit, METADATA_PARAMS(Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_Show_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_Show_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_interval_MetaData[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "// command interval time\n" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+		{ "ToolTip", "command interval time" },
+		{ "UIMax", "10000" },
+		{ "UIMin", "10" },
+	};
+#endif
+	const UECodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_interval = { "interval", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(FImitateInput, interval), METADATA_PARAMS(Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_interval_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_interval_MetaData)) };
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_Event_Inner = { "Event", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, 0, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_Event_MetaData[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "/* \n\x09{\"type\":\"delay\",\"ms\":3000}\n\x09{\"type\":\"input\",\"text\":\"content\"}\n\x09{\"type\":\"down\",\"pos\":{\"x\":128,\"y\":256}}\n\x09{\"type\":\"move\",\"pos\":{\"x\":128,\"y\":256}}\n\x09{\"type\":\"up\",\"pos\":{\"x\":128,\"y\":256}}\n\x09*/" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+		{ "ToolTip", "{\"type\":\"delay\",\"ms\":3000}\n{\"type\":\"input\",\"text\":\"content\"}\n{\"type\":\"down\",\"pos\":{\"x\":128,\"y\":256}}\n{\"type\":\"move\",\"pos\":{\"x\":128,\"y\":256}}\n{\"type\":\"up\",\"pos\":{\"x\":128,\"y\":256}}" },
+	};
+#endif
+	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_Event = { "Event", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(FImitateInput, Event), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_Event_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_Event_MetaData)) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FImitateInput_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_URL,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_Show,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_interval,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_Event_Inner,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FImitateInput_Statics::NewProp_Event,
+	};
+	const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FImitateInput_Statics::ReturnStructParams = {
+		(UObject* (*)())Z_Construct_UPackage__Script_CefBrowser,
+		nullptr,
+		&NewStructOps,
+		"ImitateInput",
+		sizeof(FImitateInput),
+		alignof(FImitateInput),
+		Z_Construct_UScriptStruct_FImitateInput_Statics::PropPointers,
+		UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FImitateInput_Statics::PropPointers),
+		RF_Public|RF_Transient|RF_MarkAsNative,
+		EStructFlags(0x00000201),
+		METADATA_PARAMS(Z_Construct_UScriptStruct_FImitateInput_Statics::Struct_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FImitateInput_Statics::Struct_MetaDataParams))
+	};
+	UScriptStruct* Z_Construct_UScriptStruct_FImitateInput()
+	{
+		if (!Z_Registration_Info_UScriptStruct_ImitateInput.InnerSingleton)
+		{
+			UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_ImitateInput.InnerSingleton, Z_Construct_UScriptStruct_FImitateInput_Statics::ReturnStructParams);
+		}
+		return Z_Registration_Info_UScriptStruct_ImitateInput.InnerSingleton;
+	}
+	static FEnumRegistrationInfo Z_Registration_Info_UEnum_WebView_Keyboard_Mode;
+	static UEnum* WebView_Keyboard_Mode_StaticEnum()
+	{
+		if (!Z_Registration_Info_UEnum_WebView_Keyboard_Mode.OuterSingleton)
+		{
+			Z_Registration_Info_UEnum_WebView_Keyboard_Mode.OuterSingleton = GetStaticEnum(Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode, Z_Construct_UPackage__Script_CefBrowser(), TEXT("WebView_Keyboard_Mode"));
+		}
+		return Z_Registration_Info_UEnum_WebView_Keyboard_Mode.OuterSingleton;
+	}
+	template<> CEFBROWSER_API UEnum* StaticEnum<WebView_Keyboard_Mode>()
+	{
+		return WebView_Keyboard_Mode_StaticEnum();
+	}
+	struct Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode_Statics
+	{
+		static const UECodeGen_Private::FEnumeratorParam Enumerators[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FEnumParams EnumParams;
+	};
+	const UECodeGen_Private::FEnumeratorParam Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode_Statics::Enumerators[] = {
+		{ "WebView_Keyboard_Mode::WebView_Keyboard_Mode_Scenes", (int64)WebView_Keyboard_Mode::WebView_Keyboard_Mode_Scenes },
+		{ "WebView_Keyboard_Mode::WebView_Keyboard_Mode_Blend", (int64)WebView_Keyboard_Mode::WebView_Keyboard_Mode_Blend },
+		{ "WebView_Keyboard_Mode::WebView_Keyboard_Mode_Both", (int64)WebView_Keyboard_Mode::WebView_Keyboard_Mode_Both },
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode_Statics::Enum_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "Category", "Web View" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+		{ "WebView_Keyboard_Mode_Blend.DisplayName", "Blend" },
+		{ "WebView_Keyboard_Mode_Blend.Name", "WebView_Keyboard_Mode::WebView_Keyboard_Mode_Blend" },
+		{ "WebView_Keyboard_Mode_Both.DisplayName", "Both" },
+		{ "WebView_Keyboard_Mode_Both.Name", "WebView_Keyboard_Mode::WebView_Keyboard_Mode_Both" },
+		{ "WebView_Keyboard_Mode_Scenes.DisplayName", "Scenes" },
+		{ "WebView_Keyboard_Mode_Scenes.Name", "WebView_Keyboard_Mode::WebView_Keyboard_Mode_Scenes" },
+	};
+#endif
+	const UECodeGen_Private::FEnumParams Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode_Statics::EnumParams = {
+		(UObject*(*)())Z_Construct_UPackage__Script_CefBrowser,
+		nullptr,
+		"WebView_Keyboard_Mode",
+		"WebView_Keyboard_Mode",
+		Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode_Statics::Enumerators,
+		UE_ARRAY_COUNT(Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode_Statics::Enumerators),
+		RF_Public|RF_Transient|RF_MarkAsNative,
+		EEnumFlags::None,
+		(uint8)UEnum::ECppForm::EnumClass,
+		METADATA_PARAMS(Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode_Statics::Enum_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode_Statics::Enum_MetaDataParams))
+	};
+	UEnum* Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode()
+	{
+		if (!Z_Registration_Info_UEnum_WebView_Keyboard_Mode.InnerSingleton)
+		{
+			UECodeGen_Private::ConstructUEnum(Z_Registration_Info_UEnum_WebView_Keyboard_Mode.InnerSingleton, Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode_Statics::EnumParams);
+		}
+		return Z_Registration_Info_UEnum_WebView_Keyboard_Mode.InnerSingleton;
+	}
+	struct Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ImitateInput_h_Statics
+	{
+		static const FEnumRegisterCompiledInInfo EnumInfo[];
+		static const FStructRegisterCompiledInInfo ScriptStructInfo[];
+	};
+	const FEnumRegisterCompiledInInfo Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ImitateInput_h_Statics::EnumInfo[] = {
+		{ WebView_Keyboard_Mode_StaticEnum, TEXT("WebView_Keyboard_Mode"), &Z_Registration_Info_UEnum_WebView_Keyboard_Mode, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 4050333593U) },
+	};
+	const FStructRegisterCompiledInInfo Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ImitateInput_h_Statics::ScriptStructInfo[] = {
+		{ FImitateInput::StaticStruct, Z_Construct_UScriptStruct_FImitateInput_Statics::NewStructOps, TEXT("ImitateInput"), &Z_Registration_Info_UScriptStruct_ImitateInput, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FImitateInput), 3039254524U) },
+	};
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ImitateInput_h_2823346158(TEXT("/Script/CefBrowser"),
+		nullptr, 0,
+		Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ImitateInput_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ImitateInput_h_Statics::ScriptStructInfo),
+		Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ImitateInput_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ImitateInput_h_Statics::EnumInfo));
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
