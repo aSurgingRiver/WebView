@@ -31,7 +31,6 @@ https://pan.baidu.com/s/17uXGG8HVuPLEiODxmdowjw?pwd=1234
 
 # CefBase Dependent:
 1. https://github.com/aSurgingRiver/CefBase
-2. https://pan.baidu.com/s/15y46AgLDocFHx04AM7HUDw?pwd=1234
 
 # Using tutorials
 https://www.youtube.com/channel/UCUUFUwaMi5-naF0PZMU9mxg
