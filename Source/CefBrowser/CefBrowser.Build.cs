@@ -36,11 +36,11 @@ public class CefBrowser : ModuleRules
 		}
 		//PublicDefinitions.Add("WRAPPING_CEF_SHARED=1"); //
 		PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "Public"));
-		string privatep = Path.Combine(ModuleDirectory, "Private");
+        string privatep = Path.Combine(ModuleDirectory, "Private");
 		if (Directory.Exists(privatep))
 		{
-			PrivateIncludePaths.Add(privatep);
-			PrivateIncludePaths.Add(Path.Combine(privatep, "WidgetWrap"));
+            PrivateIncludePaths.Add(privatep);
+            PrivateIncludePaths.Add(Path.Combine(privatep, "WidgetWrap"));
 		}
 		if (Target.Platform == UnrealTargetPlatform.Linux)
 		{
@@ -180,8 +180,8 @@ public class CefBrowser : ModuleRules
 		{
 			Directory.CreateDirectory(licensePath);
 		}
-		if (!File.Exists(Path.Combine(licensePath, "webview.dat")))
-			return;
+		//if (!File.Exists(Path.Combine(licensePath, "webview.dat")))
+		//	return;
 		string GamePath = Path.Combine(ProjectDir, "Config");
 		string GameCfg = Path.Combine(GamePath, "DefaultGame.ini");
 		if (!Directory.Exists(GamePath)) {
