@@ -24,7 +24,7 @@
       "LoadingPhase": "PreDefault"
     }
   ],
-  "MarketplaceURL": "20230910",
+  "MarketplaceURL": "https://github.com/aSurgingRiver/WebView",
   "Plugins": [
     {
       "Enabled": false,
@@ -43,7 +43,7 @@
   "Installed": true,
   "CreatedBy": "aSurgingRiver",
   "Version": 1,
-  "VersionName": "1.0",
+  "VersionName": "20230910",
   "EngineVersion": "4.26.0",
   "FriendlyName": "WebView",
   "EnabledByDefault": false,
