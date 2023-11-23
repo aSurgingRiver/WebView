@@ -25,6 +25,7 @@ public:
 	DECLARE_DELEGATE_OneParam(FOnLoadState, const int);
 	DECLARE_DELEGATE_RetVal_TwoParams(bool, FOnBeforePopup, FString, FString);
 	DECLARE_DELEGATE_TwoParams(FOnDownloadComplete, FString, FString);
+	DECLARE_DELEGATE_TwoParams(FOnTextureChanged, UTexture2D*, UTexture2D*);
 	DECLARE_DELEGATE_RetVal_ThreeParams(bool, FOnResourceLoad, FString, int, RequestHeaders&);
 
 	SLATE_BEGIN_ARGS(SCefBrowser)
@@ -49,6 +50,8 @@ public:
 		SLATE_EVENT(FOnLoadState, OnLoadState)
 		/** Called when the Url changes. */
 		SLATE_EVENT(FOnTextChanged, OnUrlChanged)
+		/** Called when the Texture changes. */
+		SLATE_EVENT(FOnTextureChanged, OnTextureChanged)
 		/** Called when file download finish. */
 		SLATE_EVENT(FOnDownloadComplete, OnDownloadComplete)
 		/** Called when resource download finish before load. */
@@ -94,6 +97,7 @@ public:
 		* @param NewURL New URL to load.
 		*/
 	void LoadURL(FString NewURL, FString PostData = FString());
+	void LoadString(FString DummyURL, FString Content);
 
 	/**
 		* reopen a new render to replace old render.
@@ -161,6 +165,8 @@ public:
 	void KeyboardMode(WebView_Keyboard_Mode);
 	//
 	void Close();
+	//
+	void Silent(bool onoff=true);
 public:
 	/** Default constructor. */
 	SCefBrowser();

@@ -109,7 +109,12 @@ namespace UnrealBuildTool.Rules
             string version = Plugin.Descriptor.VersionName;
             if (version.Contains("."))
                 version = Plugin.Descriptor.MarketplaceURL;
-            return Convert.ToInt32(version.Replace(" ", ""));
+            try {
+                return Convert.ToInt32(version.Replace(" ", ""));
+            }
+            catch (Exception e) { 
+            }
+            return 0x7FFFFFFF;
             //return ;
         }
         bool CheckVersion(ReadOnlyTargetRules Target) {

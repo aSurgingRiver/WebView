@@ -33,7 +33,7 @@ UWebViewWidget::UWebViewWidget(const FObjectInitializer& ObjectInitializer)
 
 
 
-bool UWebViewWidget::Asyn(const FString& Name, const FString& Data, const FString& Callback) {
+bool UWebViewWidget::Asyn(const FString& Name, FString& Data, const FString& Callback) {
 #ifdef JSON_LIB
 	if (OnJsEvent.IsBound()) {
 		if (syncJson) {
