@@ -5,6 +5,7 @@ using System.Text;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.IO.Compression;
+using System.Runtime.InteropServices;
 
 public class WebBuildGuide : ModuleRules
 {
@@ -39,47 +40,25 @@ public class WebBuildGuide : ModuleRules
 		String binariesP = Path.Combine(PluginDirectory, "Binaries", "Linux");
 		//Console.WriteLine("binariesP=" + binariesP);
 		string binCef = Path.Combine(binariesP, "libcef.so");
-		if (File.Exists(binCef))
-		{
-			File.Delete(binCef);
-		}
 		String libcefP = "";
 		foreach (string lib in Directory.EnumerateFiles(Path.Combine(Path.GetDirectoryName(projectFile), "Plugins"), "libcef.so", SearchOption.AllDirectories))
 		{
 			if (binCef == lib) continue;
-			//Console.WriteLine("FileName=" + lib);
-			libcefP = lib;
+			if (!lib.Contains("CefBase")) continue;
+            if (!lib.Contains("linux/lib")) continue;
+            //Console.WriteLine("FileName=" + lib);
+            libcefP = lib;
 			break;
 		}
 		if (libcefP == "") return;
 		if (!Directory.Exists(binariesP))
 		{
 			Directory.CreateDirectory(binariesP);
-		}
-		String PathR = binariesP;
-		String BinP = "";
-		for (; ; )
-		{
-			if (PathR == "" || libcefP.StartsWith(PathR)) break;
-			if (BinP != "") BinP += Path.DirectorySeparatorChar;
-			BinP = BinP + "..";
-			PathR = Path.GetDirectoryName(PathR);
-		}
-		String CefP = libcefP.Replace(PathR, "");
-		Process process = new Process();//
-		process.StartInfo.CreateNoWindow = true;
-		//process.StartInfo.UseShellExecute = false;
-		process.StartInfo.RedirectStandardInput = false;
-		process.StartInfo.RedirectStandardOutput = false;
-		process.StartInfo.RedirectStandardError = false;
-
-		process.StartInfo.WorkingDirectory = binariesP;
-		process.StartInfo.FileName = "ln";
-		process.StartInfo.Arguments = "-s \"" + BinP + CefP + "\" libcef.so";
-		process.Start();
-		//Console.WriteLine("cmd =cd \"" + binariesP + "\"; ln \"" + BinP + CefP + "\" libcef.so");
-		//RuntimeDependencies.Add(binCef);
-	}
+        }
+        RuntimeDependencies.Add(binCef, libcefP);
+        //Console.WriteLine("cmd =cd \"" + binariesP + "\"; ln \"" + BinP + CefP + "\" libcef.so");
+        //RuntimeDependencies.Add(binCef);
+    }
 
 
 	void CopyCefBrowser(string pluginPath, string projectFile, string sw, string config, ReadOnlyTargetRules Target)

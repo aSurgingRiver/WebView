@@ -16,6 +16,7 @@ void EmptyLinkFunctionForGeneratedCodeWebView_init() {}
 	WEBVIEW_API UFunction* Z_Construct_UDelegateFunction_UWebBase_OnUrlChanged__DelegateSignature();
 	WEBVIEW_API UFunction* Z_Construct_UDelegateFunction_UWebBase_OnJsStr__DelegateSignature();
 	WEBVIEW_API UFunction* Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature();
+	WEBVIEW_API UFunction* Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature();
 	WEBVIEW_API UFunction* Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature();
 	WEBVIEW_API UFunction* Z_Construct_UDelegateFunction_UWebBase_OnBeforeRequest__DelegateSignature();
 	UPackage* Z_Construct_UPackage__Script_WebView()
@@ -29,6 +30,7 @@ void EmptyLinkFunctionForGeneratedCodeWebView_init() {}
 				(UObject* (*)())Z_Construct_UDelegateFunction_UWebBase_OnUrlChanged__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_UWebBase_OnJsStr__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature,
+				(UObject* (*)())Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_UWebBase_OnBeforeRequest__DelegateSignature,
 			};
@@ -37,8 +39,8 @@ void EmptyLinkFunctionForGeneratedCodeWebView_init() {}
 				SingletonFuncArray,
 				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0x45F2FC0F,
-				0x3BF9DAB3,
+				0xF7E46E65,
+				0xFAD014A3,
 				METADATA_PARAMS(nullptr, 0)
 			};
 			UE4CodeGen_Private::ConstructUPackage(ReturnPackage, PackageParams);

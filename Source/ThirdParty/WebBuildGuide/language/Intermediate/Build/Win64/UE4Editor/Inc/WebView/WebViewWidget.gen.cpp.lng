@@ -77,7 +77,7 @@ void EmptyLinkFunctionForGeneratedCodeWebViewWidget() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UWebViewWidget, 921424775);
+	IMPLEMENT_CLASS(UWebViewWidget, 310637790);
 	template<> WEBVIEW_API UClass* StaticClass<UWebViewWidget>()
 	{
 		return UWebViewWidget::StaticClass();

@@ -17,6 +17,8 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 	WEBVIEW_API UClass* Z_Construct_UClass_UWebBase();
 	WEBVIEW_API UClass* Z_Construct_UClass_UHtmlHeaders_NoRegister();
 	WEBVIEW_API UFunction* Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature();
+	WEBVIEW_API UFunction* Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature();
+	ENGINE_API UClass* Z_Construct_UClass_UTexture2D_NoRegister();
 	WEBVIEW_API UFunction* Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature();
 	WEBVIEW_API UFunction* Z_Construct_UDelegateFunction_UWebBase_OnJsStr__DelegateSignature();
 	WEBVIEW_API UFunction* Z_Construct_UDelegateFunction_UWebBase_OnUrlChanged__DelegateSignature();
@@ -42,6 +44,9 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 			int32 ResourceType;
 			UHtmlHeaders* Headers;
 		};
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_URL_MetaData[];
+#endif
 		static const UE4CodeGen_Private::FStrPropertyParams NewProp_URL;
 		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_ResourceType;
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Headers;
@@ -51,7 +56,12 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnBeforeRequest__DelegateSignature_Statics::NewProp_URL = { "URL", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnBeforeRequest_Parms, URL), METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_UWebBase_OnBeforeRequest__DelegateSignature_Statics::NewProp_URL_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnBeforeRequest__DelegateSignature_Statics::NewProp_URL = { "URL", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnBeforeRequest_Parms, URL), METADATA_PARAMS(Z_Construct_UDelegateFunction_UWebBase_OnBeforeRequest__DelegateSignature_Statics::NewProp_URL_MetaData, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_UWebBase_OnBeforeRequest__DelegateSignature_Statics::NewProp_URL_MetaData)) };
 	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnBeforeRequest__DelegateSignature_Statics::NewProp_ResourceType = { "ResourceType", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnBeforeRequest_Parms, ResourceType), METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnBeforeRequest__DelegateSignature_Statics::NewProp_Headers = { "Headers", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnBeforeRequest_Parms, Headers), Z_Construct_UClass_UHtmlHeaders_NoRegister, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_UWebBase_OnBeforeRequest__DelegateSignature_Statics::PropPointers[] = {
@@ -83,7 +93,13 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 			FString Url;
 			FString File;
 		};
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Url_MetaData[];
+#endif
 		static const UE4CodeGen_Private::FStrPropertyParams NewProp_Url;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_File_MetaData[];
+#endif
 		static const UE4CodeGen_Private::FStrPropertyParams NewProp_File;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
@@ -91,8 +107,18 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature_Statics::NewProp_Url = { "Url", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnDownloadComplete_Parms, Url), METADATA_PARAMS(nullptr, 0) };
-	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature_Statics::NewProp_File = { "File", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnDownloadComplete_Parms, File), METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature_Statics::NewProp_Url_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature_Statics::NewProp_Url = { "Url", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnDownloadComplete_Parms, Url), METADATA_PARAMS(Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature_Statics::NewProp_Url_MetaData, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature_Statics::NewProp_Url_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature_Statics::NewProp_File_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature_Statics::NewProp_File = { "File", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnDownloadComplete_Parms, File), METADATA_PARAMS(Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature_Statics::NewProp_File_MetaData, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature_Statics::NewProp_File_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature_Statics::NewProp_Url,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature_Statics::NewProp_File,
@@ -112,6 +138,42 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature_Statics
+	{
+		struct WebBase_eventOnTextureChanged_Parms
+		{
+			UTexture2D* OLD;
+			UTexture2D* NEW;
+		};
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_OLD;
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_NEW;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature_Statics::NewProp_OLD = { "OLD", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnTextureChanged_Parms, OLD), Z_Construct_UClass_UTexture2D_NoRegister, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature_Statics::NewProp_NEW = { "NEW", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnTextureChanged_Parms, NEW), Z_Construct_UClass_UTexture2D_NoRegister, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature_Statics::NewProp_OLD,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature_Statics::NewProp_NEW,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/WebBase.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UWebBase, nullptr, "OnTextureChanged__DelegateSignature", nullptr, nullptr, sizeof(WebBase_eventOnTextureChanged_Parms), Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature_Statics
 	{
 		struct WebBase_eventOnBeforePopup_Parms
@@ -119,7 +181,13 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 			FString Url;
 			FString Frame;
 		};
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Url_MetaData[];
+#endif
 		static const UE4CodeGen_Private::FStrPropertyParams NewProp_Url;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Frame_MetaData[];
+#endif
 		static const UE4CodeGen_Private::FStrPropertyParams NewProp_Frame;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
@@ -127,8 +195,18 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature_Statics::NewProp_Url = { "Url", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnBeforePopup_Parms, Url), METADATA_PARAMS(nullptr, 0) };
-	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature_Statics::NewProp_Frame = { "Frame", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnBeforePopup_Parms, Frame), METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature_Statics::NewProp_Url_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature_Statics::NewProp_Url = { "Url", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnBeforePopup_Parms, Url), METADATA_PARAMS(Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature_Statics::NewProp_Url_MetaData, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature_Statics::NewProp_Url_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature_Statics::NewProp_Frame_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature_Statics::NewProp_Frame = { "Frame", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnBeforePopup_Parms, Frame), METADATA_PARAMS(Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature_Statics::NewProp_Frame_MetaData, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature_Statics::NewProp_Frame_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature_Statics::NewProp_Url,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature_Statics::NewProp_Frame,
@@ -160,6 +238,9 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Type_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FStrPropertyParams NewProp_Type;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_JSON_MetaData[];
+#endif
 		static const UE4CodeGen_Private::FStrPropertyParams NewProp_JSON;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FuncName_MetaData[];
@@ -177,7 +258,12 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 	};
 #endif
 	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnJsStr__DelegateSignature_Statics::NewProp_Type = { "Type", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnJsStr_Parms, Type), METADATA_PARAMS(Z_Construct_UDelegateFunction_UWebBase_OnJsStr__DelegateSignature_Statics::NewProp_Type_MetaData, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_UWebBase_OnJsStr__DelegateSignature_Statics::NewProp_Type_MetaData)) };
-	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnJsStr__DelegateSignature_Statics::NewProp_JSON = { "JSON", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnJsStr_Parms, JSON), METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_UWebBase_OnJsStr__DelegateSignature_Statics::NewProp_JSON_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UDelegateFunction_UWebBase_OnJsStr__DelegateSignature_Statics::NewProp_JSON = { "JSON", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventOnJsStr_Parms, JSON), METADATA_PARAMS(Z_Construct_UDelegateFunction_UWebBase_OnJsStr__DelegateSignature_Statics::NewProp_JSON_MetaData, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_UWebBase_OnJsStr__DelegateSignature_Statics::NewProp_JSON_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_UWebBase_OnJsStr__DelegateSignature_Statics::NewProp_FuncName_MetaData[] = {
 		{ "NativeConst", "" },
@@ -583,6 +669,14 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		P_THIS->WebPixel(Z_Param_pixel);
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(UWebBase::execSilent)
+	{
+		P_GET_UBOOL(Z_Param_onoff);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->Silent(Z_Param_onoff);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(UWebBase::execZoomLevel)
 	{
 		P_GET_PROPERTY(FFloatProperty,Z_Param_zoom);
@@ -650,6 +744,15 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		P_THIS->Reload();
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(UWebBase::execLoadString)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_DummyURL);
+		P_GET_PROPERTY(FStrProperty,Z_Param_Content);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->LoadString(Z_Param_DummyURL,Z_Param_Content);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(UWebBase::execLoadURL)
 	{
 		P_GET_PROPERTY(FStrProperty,Z_Param_NewURL);
@@ -682,11 +785,13 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 			{ "GoForward", &UWebBase::execGoForward },
 			{ "Isloaded", &UWebBase::execIsloaded },
 			{ "KeyboardMode", &UWebBase::execKeyboardMode },
+			{ "LoadString", &UWebBase::execLoadString },
 			{ "LoadURL", &UWebBase::execLoadURL },
 			{ "Reload", &UWebBase::execReload },
 			{ "ReopenRender", &UWebBase::execReopenRender },
 			{ "ShowAddress", &UWebBase::execShowAddress },
 			{ "ShowDevTools", &UWebBase::execShowDevTools },
+			{ "Silent", &UWebBase::execSilent },
 			{ "UnbindUObject", &UWebBase::execUnbindUObject },
 			{ "WebPixel", &UWebBase::execWebPixel },
 			{ "ZoomLevel", &UWebBase::execZoomLevel },
@@ -1146,6 +1251,59 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_UWebBase_LoadString_Statics
+	{
+		struct WebBase_eventLoadString_Parms
+		{
+			FString DummyURL;
+			FString Content;
+		};
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DummyURL_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_DummyURL;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Content_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_Content;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UWebBase_LoadString_Statics::NewProp_DummyURL_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UWebBase_LoadString_Statics::NewProp_DummyURL = { "DummyURL", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventLoadString_Parms, DummyURL), METADATA_PARAMS(Z_Construct_UFunction_UWebBase_LoadString_Statics::NewProp_DummyURL_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UWebBase_LoadString_Statics::NewProp_DummyURL_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UWebBase_LoadString_Statics::NewProp_Content_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UWebBase_LoadString_Statics::NewProp_Content = { "Content", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventLoadString_Parms, Content), METADATA_PARAMS(Z_Construct_UFunction_UWebBase_LoadString_Statics::NewProp_Content_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UWebBase_LoadString_Statics::NewProp_Content_MetaData)) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UWebBase_LoadString_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UWebBase_LoadString_Statics::NewProp_DummyURL,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UWebBase_LoadString_Statics::NewProp_Content,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UWebBase_LoadString_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "ModuleRelativePath", "Public/WebBase.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UWebBase_LoadString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UWebBase, nullptr, "LoadString", nullptr, nullptr, sizeof(WebBase_eventLoadString_Parms), Z_Construct_UFunction_UWebBase_LoadString_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UWebBase_LoadString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UWebBase_LoadString_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UWebBase_LoadString_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UWebBase_LoadString()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UWebBase_LoadString_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_UWebBase_LoadURL_Statics
 	{
 		struct WebBase_eventLoadURL_Parms
@@ -1153,6 +1311,9 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 			FString NewURL;
 			FString PostData;
 		};
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_NewURL_MetaData[];
+#endif
 		static const UE4CodeGen_Private::FStrPropertyParams NewProp_NewURL;
 		static const UE4CodeGen_Private::FStrPropertyParams NewProp_PostData;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
@@ -1161,7 +1322,12 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UWebBase_LoadURL_Statics::NewProp_NewURL = { "NewURL", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventLoadURL_Parms, NewURL), METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UWebBase_LoadURL_Statics::NewProp_NewURL_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UWebBase_LoadURL_Statics::NewProp_NewURL = { "NewURL", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventLoadURL_Parms, NewURL), METADATA_PARAMS(Z_Construct_UFunction_UWebBase_LoadURL_Statics::NewProp_NewURL_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UWebBase_LoadURL_Statics::NewProp_NewURL_MetaData)) };
 	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UWebBase_LoadURL_Statics::NewProp_PostData = { "PostData", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventLoadURL_Parms, PostData), METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UWebBase_LoadURL_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UWebBase_LoadURL_Statics::NewProp_NewURL,
@@ -1312,6 +1478,47 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_UWebBase_Silent_Statics
+	{
+		struct WebBase_eventSilent_Parms
+		{
+			bool onoff;
+		};
+		static void NewProp_onoff_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_onoff;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_UWebBase_Silent_Statics::NewProp_onoff_SetBit(void* Obj)
+	{
+		((WebBase_eventSilent_Parms*)Obj)->onoff = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UWebBase_Silent_Statics::NewProp_onoff = { "onoff", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(WebBase_eventSilent_Parms), &Z_Construct_UFunction_UWebBase_Silent_Statics::NewProp_onoff_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UWebBase_Silent_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UWebBase_Silent_Statics::NewProp_onoff,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UWebBase_Silent_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "/**\n\x09* Set web page silent\n\x09* @param zoom : true silent\n\x09* \n\x09*/" },
+		{ "CPP_Default_onoff", "false" },
+		{ "ModuleRelativePath", "Public/WebBase.h" },
+		{ "ToolTip", "Set web page silent\n@param zoom : true silent" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UWebBase_Silent_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UWebBase, nullptr, "Silent", nullptr, nullptr, sizeof(WebBase_eventSilent_Parms), Z_Construct_UFunction_UWebBase_Silent_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UWebBase_Silent_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UWebBase_Silent_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UWebBase_Silent_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UWebBase_Silent()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UWebBase_Silent_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_UWebBase_UnbindUObject_Statics
 	{
 		struct WebBase_eventUnbindUObject_Parms
@@ -1457,6 +1664,10 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 #endif
 		static const UE4CodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnLoadState;
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_OnTextureChanged_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnTextureChanged;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_OnUrlChanged_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnUrlChanged;
@@ -1573,18 +1784,21 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		{ &Z_Construct_UFunction_UWebBase_GoForward, "GoForward" }, // 799217752
 		{ &Z_Construct_UFunction_UWebBase_Isloaded, "Isloaded" }, // 2789135846
 		{ &Z_Construct_UFunction_UWebBase_KeyboardMode, "KeyboardMode" }, // 628948929
-		{ &Z_Construct_UFunction_UWebBase_LoadURL, "LoadURL" }, // 4019798963
-		{ &Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature, "OnBeforePopup__DelegateSignature" }, // 2484736995
-		{ &Z_Construct_UDelegateFunction_UWebBase_OnBeforeRequest__DelegateSignature, "OnBeforeRequest__DelegateSignature" }, // 3878904062
-		{ &Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature, "OnDownloadComplete__DelegateSignature" }, // 2498107504
-		{ &Z_Construct_UDelegateFunction_UWebBase_OnJsStr__DelegateSignature, "OnJsStr__DelegateSignature" }, // 1945638650
+		{ &Z_Construct_UFunction_UWebBase_LoadString, "LoadString" }, // 239994734
+		{ &Z_Construct_UFunction_UWebBase_LoadURL, "LoadURL" }, // 1198800012
+		{ &Z_Construct_UDelegateFunction_UWebBase_OnBeforePopup__DelegateSignature, "OnBeforePopup__DelegateSignature" }, // 2064876487
+		{ &Z_Construct_UDelegateFunction_UWebBase_OnBeforeRequest__DelegateSignature, "OnBeforeRequest__DelegateSignature" }, // 3976705482
+		{ &Z_Construct_UDelegateFunction_UWebBase_OnDownloadComplete__DelegateSignature, "OnDownloadComplete__DelegateSignature" }, // 940249056
+		{ &Z_Construct_UDelegateFunction_UWebBase_OnJsStr__DelegateSignature, "OnJsStr__DelegateSignature" }, // 309632502
 		{ &Z_Construct_UDelegateFunction_UWebBase_OnPreReBuild__DelegateSignature, "OnPreReBuild__DelegateSignature" }, // 706635668
 		{ &Z_Construct_UDelegateFunction_UWebBase_OnStateLoad__DelegateSignature, "OnStateLoad__DelegateSignature" }, // 3156875857
+		{ &Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature, "OnTextureChanged__DelegateSignature" }, // 3017515643
 		{ &Z_Construct_UDelegateFunction_UWebBase_OnUrlChanged__DelegateSignature, "OnUrlChanged__DelegateSignature" }, // 4171764297
 		{ &Z_Construct_UFunction_UWebBase_Reload, "Reload" }, // 2570480085
 		{ &Z_Construct_UFunction_UWebBase_ReopenRender, "ReopenRender" }, // 1773697590
 		{ &Z_Construct_UFunction_UWebBase_ShowAddress, "ShowAddress" }, // 3848631213
 		{ &Z_Construct_UFunction_UWebBase_ShowDevTools, "ShowDevTools" }, // 162056019
+		{ &Z_Construct_UFunction_UWebBase_Silent, "Silent" }, // 3920347364
 		{ &Z_Construct_UFunction_UWebBase_UnbindUObject, "UnbindUObject" }, // 3186569527
 		{ &Z_Construct_UFunction_UWebBase_WebPixel, "WebPixel" }, // 2042428796
 		{ &Z_Construct_UFunction_UWebBase_ZoomLevel, "ZoomLevel" }, // 3079948544
@@ -1606,6 +1820,15 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 	};
 #endif
 	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UWebBase_Statics::NewProp_OnLoadState = { "OnLoadState", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UWebBase, OnLoadState), Z_Construct_UDelegateFunction_UWebBase_OnStateLoad__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_UWebBase_Statics::NewProp_OnLoadState_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UWebBase_Statics::NewProp_OnLoadState_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UWebBase_Statics::NewProp_OnTextureChanged_MetaData[] = {
+		{ "Category", "Web View|Event" },
+		{ "Comment", "/** Called when the texture changes. */" },
+		{ "ModuleRelativePath", "Public/WebBase.h" },
+		{ "ToolTip", "Called when the texture changes." },
+	};
+#endif
+	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UWebBase_Statics::NewProp_OnTextureChanged = { "OnTextureChanged", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UWebBase, OnTextureChanged), Z_Construct_UDelegateFunction_UWebBase_OnTextureChanged__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_UWebBase_Statics::NewProp_OnTextureChanged_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UWebBase_Statics::NewProp_OnTextureChanged_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UWebBase_Statics::NewProp_OnUrlChanged_MetaData[] = {
 		{ "Category", "Web View|Event" },
@@ -1870,6 +2093,7 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UWebBase_Statics::NewProp_ImitateInput = { "ImitateInput", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UWebBase, ImitateInput), Z_Construct_UScriptStruct_FImitateInput, METADATA_PARAMS(Z_Construct_UClass_UWebBase_Statics::NewProp_ImitateInput_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UWebBase_Statics::NewProp_ImitateInput_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UWebBase_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWebBase_Statics::NewProp_OnLoadState,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWebBase_Statics::NewProp_OnTextureChanged,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWebBase_Statics::NewProp_OnUrlChanged,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWebBase_Statics::NewProp_OnJsEventStr,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWebBase_Statics::NewProp_OnBeforePopup,
@@ -1921,7 +2145,7 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UWebBase, 97109927);
+	IMPLEMENT_CLASS(UWebBase, 1562969417);
 	template<> WEBVIEW_API UClass* StaticClass<UWebBase>()
 	{
 		return UWebBase::StaticClass();
