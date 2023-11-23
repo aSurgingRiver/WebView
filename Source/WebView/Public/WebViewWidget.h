@@ -18,7 +18,7 @@ class WEBVIEW_API UWebViewWidget : public UWebBase
 {
 	GENERATED_UCLASS_BODY()
 protected:
-	virtual bool Asyn(const FString& Name, const FString& Data, const FString& Callback) override;
+	virtual bool Asyn(const FString& Name, FString& Data, const FString& Callback) override;
 public:
 	/* this party use for jsonlibaray ,if use ,please delete comment.*/
 	//@TEMPLATE DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnJsEvent, const FString&, Key, FJsonLibraryValue, Json, const FString&, Callback);

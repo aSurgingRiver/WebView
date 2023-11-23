@@ -40,9 +40,10 @@ public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPreReBuild);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnStateLoad, int, state);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUrlChanged, const FText&, Url);
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnJsStr, const FString&, Type, FString, JSON, const FString&, FuncName);
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnBeforePopup, FString, Url, FString, Frame);
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDownloadComplete, FString, Url, FString, File);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnJsStr, const FString&, Type,const FString&, JSON, const FString&, FuncName);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnBeforePopup, const FString&, Url, const FString&, Frame);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTextureChanged, UTexture2D*, OLD, UTexture2D*, NEW);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDownloadComplete, const FString&, Url, const FString&, File);
 	/*  ResourceType
 	  0: Top level page.
 	  1: Frame or iframe.
@@ -65,11 +66,14 @@ public:
 	  19: A main-frame service worker navigation preload request.
 	  20: A sub-frame service worker navigation preload request.
 	*/
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnBeforeRequest, FString, URL, int, ResourceType, UHtmlHeaders*, Headers);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnBeforeRequest, const FString&, URL, int, ResourceType, UHtmlHeaders*, Headers);
 public:
 	/** Called when loading stat changed */
 	UPROPERTY(BlueprintAssignable, Category = "Web View|Event")
 	FOnStateLoad OnLoadState;
+	/** Called when the texture changes. */
+	UPROPERTY(BlueprintAssignable, Category = "Web View|Event")
+	FOnTextureChanged OnTextureChanged;
 	/** Called when the Url changes. */
 	UPROPERTY(BlueprintAssignable, Category = "Web View|Event")
 	FOnUrlChanged OnUrlChanged;
@@ -157,7 +161,10 @@ public:
 	 * @param PostData arg1=val1&arg2=val2
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Web View")
-	void LoadURL(FString NewURL, FString PostData=TEXT(""));
+	void LoadURL(const FString& NewURL, FString PostData=TEXT(""));
+
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+	void LoadString(const FString& DummyURL, const FString& Content);
 
 	//UFUNCTION(BlueprintCallable, Category = "Web View")
 	//void NavigationURL(FString NewURL,FString NaviHead);
@@ -229,6 +236,14 @@ public:
 	void ZoomLevel(float zoom=1.0) const;
 
 	/**
+	* Set web page silent
+	* @param zoom : true silent
+	* 
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+	void Silent(bool onoff=false);
+
+	/**
 	* Set web page zoom level
 	* @param pixel : X between 8 and 15360, Y between 4 and 8640
 	* when Pixel was set,then zoom invalid
@@ -274,7 +289,7 @@ public:
 public:
 	virtual void BeginDestroy() override;
 	// 
-	virtual bool Asyn(const FString& Name, const FString& Data, const FString& Callback);
+	virtual bool Asyn(const FString& Name, FString& Data, const FString& Callback);
 	//
 	virtual void SetVisibility(ESlateVisibility InVisibility) override;
 
@@ -283,6 +298,7 @@ public:
 protected:
 	virtual TSharedRef<SWidget> RebuildWidget() override;
 	void HandleOnLoadState(const int state);
+	void HandleOnTextureChanged(UTexture2D* OLD,UTexture2D* NEW);
 	void HandleOnUrlChanged(const FText& Text);
 	bool HandleOnBeforePopup(FString URL, FString Frame);
 	void HandleOnDownloadTip(FString URL, FString File);

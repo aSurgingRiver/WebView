@@ -4,7 +4,7 @@
 #include "WebBase.h"
 
 
-void UWebViewObject::Asyn(const FString& Name, const FString& Data, const FString& Callback)
+void UWebViewObject::Asyn(const FString& Name, FString& Data, const FString& Callback)
 {
 	if (!UMG.IsValid())
 		return;
