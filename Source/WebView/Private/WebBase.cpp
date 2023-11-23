@@ -68,10 +68,16 @@ UWebBase::UWebBase(const FObjectInitializer& ObjectInitializer)
 	eKeyboradModeTransparency = WebView_Keyboard_Mode::WebView_Keyboard_Mode_Blend;
 }
 
-void UWebBase::LoadURL(FString NewURL,FString PostData)
+void UWebBase::LoadURL(const FString& NewURL,FString PostData)
 {
 	if (!CefCoreWidget.IsValid())return;
 	CefCoreWidget->LoadURL(NewURL, PostData);
+}
+
+void UWebBase::LoadString(const FString& NewURL, const  FString& Content)
+{
+	if (!CefCoreWidget.IsValid())return;
+	CefCoreWidget->LoadURL(NewURL, Content);
 }
 
 void UWebBase::ExecuteJavascript(const FString& ScriptText)
@@ -129,6 +135,11 @@ bool UWebBase::Isloaded() {
 void UWebBase::ZoomLevel(float zoom) const {
 	if (!CefCoreWidget.IsValid())return;
 	CefCoreWidget->ZoomLevel(zoom);
+}
+
+void UWebBase::Silent(bool onoff) {
+	if (!CefCoreWidget.IsValid())return;
+	CefCoreWidget->Silent(onoff);
 }
 
 void UWebBase::WebPixel(FIntPoint pixel) const {
@@ -190,6 +201,7 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 		.OnBeforePopup_UObject(this, &UWebBase::HandleOnBeforePopup)
 		.OnLoadState_UObject(this, &UWebBase::HandleOnLoadState)
 		.OnDownloadComplete_UObject(this, &UWebBase::HandleOnDownloadTip)
+		.OnTextureChanged_UObject(this, &UWebBase::HandleOnTextureChanged)
 		.OnResourceLoad_UObject(this, &UWebBase::HandleOnResourceLoad);
 	_ViewObject = NewObject<UWebViewObject>();// 隔离JS和UE4之间的数据。
 	if (_ViewObject) {
@@ -201,7 +213,7 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 	return CefCoreWidget.ToSharedRef();
 }
 
-bool UWebBase::Asyn(const FString& Name, const FString& Data, const FString& Callback) {
+bool UWebBase::Asyn(const FString& Name, FString& Data, const FString& Callback) {
 	if (!OnJsEventStr.IsBound())return false;
 	OnJsEventStr.Broadcast(Name, Data, Callback);
 	return true;
@@ -223,6 +235,10 @@ void UWebBase::HandleOnUrlChanged(const FText& InText) {
 
 void UWebBase::HandleOnLoadState(const int state) {
 	if (OnLoadState.IsBound()) OnLoadState.Broadcast(state);
+}
+
+void UWebBase::HandleOnTextureChanged(UTexture2D* OLD, UTexture2D* NEW) {
+	if (OnTextureChanged.IsBound()) OnTextureChanged.Broadcast(OLD, NEW);
 }
 
 bool UWebBase::HandleOnBeforePopup(FString URL, FString Frame) {
