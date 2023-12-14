@@ -3,7 +3,7 @@
 Efficient UE browser uses CEF open source kernel; When the frame rate is 60 per second and the resolution is 4K, a single GPU is rendered, and the UE and browser will not lose frames. 8K frame rate does not decrease under multi GPU binding.It is the highest performance UE browser at present.
 
 # LONG DESCRIPTION:
-WebView is an enterprise browser plug-in designed for virtual engine. It uses many advanced technologies. It doesn't drop frames when browsing the web or watching video. The kernel adopts the latest CEF version and optimizes it. It has GPU binding function, supports the separation of game and browser rendering, adds rendering cache inside the plug-in, and the rendering effect is smooth. In terms of communication with web pages, V8 technology is adopted to make the Unreal Engine interact with web pages in real time. It is recommended to use phantom engine to render the scene and JavaScript for UI interaction, which can greatly improve the efficiency of system development.
+WebView is an enterprise browser plug-in designed for virtual engine. It uses many advanced technologies. It doesn't drop frames when browsing the web or watching video. The kernel adopts the latest CEF version and optimizes it. It has GPU binding function, supports the separation of game and browser rendering, adds rendering cache inside the plug-in, and the rendering effect is smooth. In terms of communication with web pages, V8 technology is adopted to make the Unreal Engine interact with web pages in real time. It is recommended to use unreal engine to render the scene and JavaScript for UI interaction, which can greatly improve the efficiency of system development.
 
 
 # Features:
@@ -30,12 +30,13 @@ WebView is an enterprise browser plug-in designed for virtual engine. It uses ma
 1. https://github.com/aSurgingRiver/CefBase
 
 # Using tutorials
-https://www.youtube.com/channel/UCUUFUwaMi5-naF0PZMU9mxg
-https://www.zhihu.com/column/c_1490114276946223104
+https://github.com/aSurgingRiver/WebView/wiki 
+https://www.youtube.com/channel/UCUUFUwaMi5-naF0PZMU9mxg 
 
 # Important/Additional Notes:
 We are committed to providing the most efficient browser plug-in. If you have any questions in the process of using, you can contact us through the following ways.
 
+WathsApp Group: https://chat.whatsapp.com/G6MQqzNB3wSJk4bdxFO5gs
 FaceBook: https://www.facebook.com/ue.webview/   
 Email: aSurgingRiver@163.com    aSurgingRiver@gmail.com                                  
 QQ Group: 866972317   
