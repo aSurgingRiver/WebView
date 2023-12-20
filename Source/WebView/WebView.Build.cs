@@ -112,7 +112,7 @@ namespace UnrealBuildTool.Rules
             try {
                 return Convert.ToInt32(version.Replace(" ", ""));
             }
-            catch (Exception e) { 
+            catch (Exception ) { 
             }
             return 0x7FFFFFFF;
             //return ;

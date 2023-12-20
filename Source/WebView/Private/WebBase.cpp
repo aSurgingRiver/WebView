@@ -192,9 +192,9 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 		.zoom(_Zoom)
 		.Touch(_Touch)
 		.downloadTip(downloadTip)
-#if !PLATFORM_ANDROID
-		.ImitateInput(ImitateInput)
-#endif
+//#if !PLATFORM_ANDROID
+//		.ImitateInput(ImitateInput)
+//#endif
 		//.webCursor(webCursor)
 		.Visibility(EVisibility::SelfHitTestInvisible)
 		.OnUrlChanged_UObject(this, &UWebBase::HandleOnUrlChanged)
@@ -309,6 +309,12 @@ bool UWebBase::CanGoForward() {
 	if (!CefCoreWidget.IsValid())return false;
 	return CefCoreWidget->CanGoForward();
 }
+
+void UWebBase::SetImitateInput(const FImitateInput* ImitateInput) {
+	if (!CefCoreWidget.IsValid())return;
+	CefCoreWidget->SetImitateInput(ImitateInput);
+}
+
 #undef LOCTEXT_NAMESPACE
 
 
