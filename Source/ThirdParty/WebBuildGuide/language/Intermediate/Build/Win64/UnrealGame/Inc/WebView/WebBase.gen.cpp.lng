@@ -27,10 +27,10 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 	UMG_API UClass* Z_Construct_UClass_UWidget();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
 	CEFBROWSER_API UEnum* Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode();
+	CEFBROWSER_API UClass* Z_Construct_UClass_UImitateInput_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FIntPoint();
 	SLATECORE_API UScriptStruct* Z_Construct_UScriptStruct_FTextBlockStyle();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FColor();
-	CEFBROWSER_API UScriptStruct* Z_Construct_UScriptStruct_FImitateInput();
 // End Cross Module References
 	DEFINE_FUNCTION(UHtmlHeaders::execReplace)
 	{
@@ -596,6 +596,14 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		}
 		return ReturnFunction;
 	}
+	DEFINE_FUNCTION(UWebBase::execSetImitateInput)
+	{
+		P_GET_OBJECT(UImitateInput,Z_Param_ImitateInput);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetImitateInput(Z_Param_ImitateInput);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(UWebBase::execCanGoForward)
 	{
 		P_FINISH;
@@ -783,6 +791,7 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 			{ "LoadURL", &UWebBase::execLoadURL },
 			{ "Reload", &UWebBase::execReload },
 			{ "ReopenRender", &UWebBase::execReopenRender },
+			{ "SetImitateInput", &UWebBase::execSetImitateInput },
 			{ "ShowAddress", &UWebBase::execShowAddress },
 			{ "ShowDevTools", &UWebBase::execShowDevTools },
 			{ "Silent", &UWebBase::execSilent },
@@ -1407,6 +1416,49 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_UWebBase_SetImitateInput_Statics
+	{
+		struct WebBase_eventSetImitateInput_Parms
+		{
+			const UImitateInput* ImitateInput;
+		};
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ImitateInput_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_ImitateInput;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UWebBase_SetImitateInput_Statics::NewProp_ImitateInput_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UWebBase_SetImitateInput_Statics::NewProp_ImitateInput = { "ImitateInput", nullptr, (EPropertyFlags)0x0010000000000082, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WebBase_eventSetImitateInput_Parms, ImitateInput), Z_Construct_UClass_UImitateInput_NoRegister, METADATA_PARAMS(Z_Construct_UFunction_UWebBase_SetImitateInput_Statics::NewProp_ImitateInput_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UWebBase_SetImitateInput_Statics::NewProp_ImitateInput_MetaData)) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UWebBase_SetImitateInput_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UWebBase_SetImitateInput_Statics::NewProp_ImitateInput,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UWebBase_SetImitateInput_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "//FImitateInput  ImitateInput\n" },
+		{ "ModuleRelativePath", "Public/WebBase.h" },
+		{ "ToolTip", "FImitateInput  ImitateInput" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UWebBase_SetImitateInput_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UWebBase, nullptr, "SetImitateInput", nullptr, nullptr, sizeof(Z_Construct_UFunction_UWebBase_SetImitateInput_Statics::WebBase_eventSetImitateInput_Parms), Z_Construct_UFunction_UWebBase_SetImitateInput_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UWebBase_SetImitateInput_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UWebBase_SetImitateInput_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UWebBase_SetImitateInput_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UWebBase_SetImitateInput()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UWebBase_SetImitateInput_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_UWebBase_ShowAddress_Statics
 	{
 		struct WebBase_eventShowAddress_Parms
@@ -1755,10 +1807,6 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 #endif
 		static void NewProp_syncJson_SetBit(void* Obj);
 		static const UECodeGen_Private::FBoolPropertyParams NewProp_syncJson;
-#if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_ImitateInput_MetaData[];
-#endif
-		static const UECodeGen_Private::FStructPropertyParams NewProp_ImitateInput;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -1791,6 +1839,7 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		{ &Z_Construct_UDelegateFunction_UWebBase_OnUrlChanged__DelegateSignature, "OnUrlChanged__DelegateSignature" }, // 877326609
 		{ &Z_Construct_UFunction_UWebBase_Reload, "Reload" }, // 3776648100
 		{ &Z_Construct_UFunction_UWebBase_ReopenRender, "ReopenRender" }, // 2004851304
+		{ &Z_Construct_UFunction_UWebBase_SetImitateInput, "SetImitateInput" }, // 1272039642
 		{ &Z_Construct_UFunction_UWebBase_ShowAddress, "ShowAddress" }, // 23700224
 		{ &Z_Construct_UFunction_UWebBase_ShowDevTools, "ShowDevTools" }, // 4012074784
 		{ &Z_Construct_UFunction_UWebBase_Silent, "Silent" }, // 1405650795
@@ -2079,13 +2128,6 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		((UWebBase*)Obj)->syncJson = 1;
 	}
 	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_UWebBase_Statics::NewProp_syncJson = { "syncJson", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(UWebBase), &Z_Construct_UClass_UWebBase_Statics::NewProp_syncJson_SetBit, METADATA_PARAMS(Z_Construct_UClass_UWebBase_Statics::NewProp_syncJson_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UWebBase_Statics::NewProp_syncJson_MetaData)) };
-#if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UWebBase_Statics::NewProp_ImitateInput_MetaData[] = {
-		{ "Category", "Web View|Imitate" },
-		{ "ModuleRelativePath", "Public/WebBase.h" },
-	};
-#endif
-	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UWebBase_Statics::NewProp_ImitateInput = { "ImitateInput", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UWebBase, ImitateInput), Z_Construct_UScriptStruct_FImitateInput, METADATA_PARAMS(Z_Construct_UClass_UWebBase_Statics::NewProp_ImitateInput_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UWebBase_Statics::NewProp_ImitateInput_MetaData)) }; // 2268473942
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UWebBase_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWebBase_Statics::NewProp_OnLoadState,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWebBase_Statics::NewProp_OnTextureChanged,
@@ -2111,7 +2153,6 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWebBase_Statics::NewProp__Zoom,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWebBase_Statics::NewProp__Touch,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWebBase_Statics::NewProp_syncJson,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWebBase_Statics::NewProp_ImitateInput,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UWebBase_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UWebBase>::IsAbstract,
@@ -2150,9 +2191,9 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_Statics::ClassInfo[] = {
 		{ Z_Construct_UClass_UHtmlHeaders, UHtmlHeaders::StaticClass, TEXT("UHtmlHeaders"), &Z_Registration_Info_UClass_UHtmlHeaders, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UHtmlHeaders), 2108261102U) },
-		{ Z_Construct_UClass_UWebBase, UWebBase::StaticClass, TEXT("UWebBase"), &Z_Registration_Info_UClass_UWebBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UWebBase), 2631397383U) },
+		{ Z_Construct_UClass_UWebBase, UWebBase::StaticClass, TEXT("UWebBase"), &Z_Registration_Info_UClass_UWebBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UWebBase), 3337293126U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_3155008677(TEXT("/Script/WebView"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_2003521852(TEXT("/Script/WebView"),
 		Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

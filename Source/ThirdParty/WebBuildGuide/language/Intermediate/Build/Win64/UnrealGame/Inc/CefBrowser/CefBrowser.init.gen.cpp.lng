@@ -17,13 +17,13 @@ void EmptyLinkFunctionForGeneratedCodeCefBrowser_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0xDD41A2D3,
-				0x16C26A4D,
+				0x01FC4771,
+				0xEBA6D80E,
 				METADATA_PARAMS(nullptr, 0)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_CefBrowser.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_CefBrowser.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_CefBrowser(Z_Construct_UPackage__Script_CefBrowser, TEXT("/Script/CefBrowser"), Z_Registration_Info_UPackage__Script_CefBrowser, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xDD41A2D3, 0x16C26A4D));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_CefBrowser(Z_Construct_UPackage__Script_CefBrowser, TEXT("/Script/CefBrowser"), Z_Registration_Info_UPackage__Script_CefBrowser, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x01FC4771, 0xEBA6D80E));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

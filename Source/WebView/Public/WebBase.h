@@ -139,8 +139,8 @@ public:
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Sync Parse Json", UIMin = 0, UIMax = 1), Category = "Web View")
 	bool  syncJson = true;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Web View|Imitate")
-	FImitateInput  ImitateInput;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Web View|Imitate")
+	//FImitateInput  ImitateInput;
 
 protected:
 	FString jsWindow;// for javescrit 
@@ -286,6 +286,10 @@ public:
 	bool CanGoBack();
 	UFUNCTION(BlueprintCallable, Category = "Web View")
 	bool CanGoForward();
+
+	//FImitateInput  ImitateInput
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+	void SetImitateInput(const UImitateInput*  ImitateInput);
 public:
 	virtual void BeginDestroy() override;
 	// 

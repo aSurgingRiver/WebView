@@ -10,6 +10,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class UTexture2D;
 class UHtmlHeaders;
+class UImitateInput;
 enum class WebView_Keyboard_Mode : uint8;
 struct FIntPoint;
 class UObject;
@@ -215,6 +216,7 @@ static inline void FOnBeforeRequest_DelegateWrapper(const FMulticastScriptDelega
 #define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_SPARSE_DATA
 #define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execSetImitateInput); \
 	DECLARE_FUNCTION(execCanGoForward); \
 	DECLARE_FUNCTION(execCanGoBack); \
 	DECLARE_FUNCTION(execGoForward); \
@@ -240,6 +242,7 @@ static inline void FOnBeforeRequest_DelegateWrapper(const FMulticastScriptDelega
 
 #define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execSetImitateInput); \
 	DECLARE_FUNCTION(execCanGoForward); \
 	DECLARE_FUNCTION(execCanGoBack); \
 	DECLARE_FUNCTION(execGoForward); \

@@ -63,7 +63,7 @@ public:
 		/** Desired size of the web browser viewport. */
 		SLATE_ARGUMENT(FVector2D, ViewportSize)
 		/** Desired size of the web browser viewport. */
-		SLATE_ARGUMENT(FImitateInput, ImitateInput)
+		//SLATE_ARGUMENT(FImitateInput, ImitateInput)
 		/** Desired size of the web browser viewport. */
 		SLATE_ARGUMENT(bool, SwitchInputMethod)
 		/** allow mouse transcparency webpage */
@@ -167,6 +167,8 @@ public:
 	void Close();
 	//
 	void Silent(bool onoff=true);
+	//
+	void SetImitateInput(const FImitateInput* ImitateInput);
 public:
 	/** Default constructor. */
 	SCefBrowser();
