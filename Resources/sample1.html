@@ -18,10 +18,11 @@
 <script>
     // response function from ue call
     ue.interface.jsfunc = function(jsonObject){
-    	console.log('jsonObject');
+        console.log('jsonObject');
+        //console.log(JSON.stringify(jsonObject));
     };
-    ue.interface.multiparams = function(paramStr1,paramStr1){
-    	console.log(paramStr1+'==='+paramStr1);
+    ue.interface.multiparams = function(paramStr0,paramStr1){
+    	console.log(paramStr0+'==='+paramStr1);
     };
     var total = 0;
     var response=0;

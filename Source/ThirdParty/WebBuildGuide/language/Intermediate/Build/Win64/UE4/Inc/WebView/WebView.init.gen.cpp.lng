@@ -39,7 +39,7 @@ void EmptyLinkFunctionForGeneratedCodeWebView_init() {}
 				SingletonFuncArray,
 				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0xF7E46E65,
+				0x3E7EBEB0,
 				0xFAD014A3,
 				METADATA_PARAMS(nullptr, 0)
 			};

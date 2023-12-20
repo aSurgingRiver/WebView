@@ -10,6 +10,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class UHtmlHeaders;
 class UTexture2D;
+class UImitateInput;
 enum class WebView_Keyboard_Mode : uint8;
 struct FIntPoint;
 class UObject;
@@ -218,6 +219,7 @@ template<> WEBVIEW_API UClass* StaticClass<class UHtmlHeaders>();
 #define HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_SPARSE_DATA
 #define HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execSetImitateInput); \
 	DECLARE_FUNCTION(execCanGoForward); \
 	DECLARE_FUNCTION(execCanGoBack); \
 	DECLARE_FUNCTION(execGoForward); \
@@ -243,6 +245,7 @@ template<> WEBVIEW_API UClass* StaticClass<class UHtmlHeaders>();
 
 #define HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execSetImitateInput); \
 	DECLARE_FUNCTION(execCanGoForward); \
 	DECLARE_FUNCTION(execCanGoBack); \
 	DECLARE_FUNCTION(execGoForward); \
