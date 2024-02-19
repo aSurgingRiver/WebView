@@ -1,0 +1,884 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+/*===========================================================================
+	Generated code exported from UnrealHeaderTool.
+	DO NOT modify this manually! Edit the corresponding .h files instead!
+===========================================================================*/
+
+#include "UObject/GeneratedCppIncludes.h"
+#include "CefBrowser/Public/ImitateInput.h"
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable : 4883)
+#endif
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+void EmptyLinkFunctionForGeneratedCodeImitateInput() {}
+// Cross Module References
+	CEFBROWSER_API UEnum* Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode();
+	UPackage* Z_Construct_UPackage__Script_CefBrowser();
+	CEFBROWSER_API UEnum* Z_Construct_UEnum_CefBrowser_WebView_ImitateInput_Key();
+	CEFBROWSER_API UEnum* Z_Construct_UEnum_CefBrowser_WebView_ImitateInput_Mouse();
+	CEFBROWSER_API UClass* Z_Construct_UClass_UImitateInput_NoRegister();
+	CEFBROWSER_API UClass* Z_Construct_UClass_UImitateInput();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UObject();
+	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FIntPoint();
+	INPUTCORE_API UScriptStruct* Z_Construct_UScriptStruct_FKey();
+// End Cross Module References
+	static UEnum* WebView_Keyboard_Mode_StaticEnum()
+	{
+		static UEnum* Singleton = nullptr;
+		if (!Singleton)
+		{
+			Singleton = GetStaticEnum(Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode, Z_Construct_UPackage__Script_CefBrowser(), TEXT("WebView_Keyboard_Mode"));
+		}
+		return Singleton;
+	}
+	template<> CEFBROWSER_API UEnum* StaticEnum<WebView_Keyboard_Mode>()
+	{
+		return WebView_Keyboard_Mode_StaticEnum();
+	}
+	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_WebView_Keyboard_Mode(WebView_Keyboard_Mode_StaticEnum, TEXT("/Script/CefBrowser"), TEXT("WebView_Keyboard_Mode"), false, nullptr, nullptr);
+	uint32 Get_Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode_Hash() { return 1173413250U; }
+	UEnum* Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode()
+	{
+#if WITH_HOT_RELOAD
+		UPackage* Outer = Z_Construct_UPackage__Script_CefBrowser();
+		static UEnum* ReturnEnum = FindExistingEnumIfHotReloadOrDynamic(Outer, TEXT("WebView_Keyboard_Mode"), 0, Get_Z_Construct_UEnum_CefBrowser_WebView_Keyboard_Mode_Hash(), false);
+#else
+		static UEnum* ReturnEnum = nullptr;
+#endif // WITH_HOT_RELOAD
+		if (!ReturnEnum)
+		{
+			static const UE4CodeGen_Private::FEnumeratorParam Enumerators[] = {
+				{ "WebView_Keyboard_Mode::WebView_Keyboard_Mode_Scenes", (int64)WebView_Keyboard_Mode::WebView_Keyboard_Mode_Scenes },
+				{ "WebView_Keyboard_Mode::WebView_Keyboard_Mode_Blend", (int64)WebView_Keyboard_Mode::WebView_Keyboard_Mode_Blend },
+				{ "WebView_Keyboard_Mode::WebView_Keyboard_Mode_Both", (int64)WebView_Keyboard_Mode::WebView_Keyboard_Mode_Both },
+			};
+#if WITH_METADATA
+			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+				{ "BlueprintType", "true" },
+				{ "Category", "Web View" },
+				{ "ModuleRelativePath", "Public/ImitateInput.h" },
+				{ "WebView_Keyboard_Mode_Blend.DisplayName", "Blend" },
+				{ "WebView_Keyboard_Mode_Blend.Name", "WebView_Keyboard_Mode::WebView_Keyboard_Mode_Blend" },
+				{ "WebView_Keyboard_Mode_Both.DisplayName", "Both" },
+				{ "WebView_Keyboard_Mode_Both.Name", "WebView_Keyboard_Mode::WebView_Keyboard_Mode_Both" },
+				{ "WebView_Keyboard_Mode_Scenes.DisplayName", "Scenes" },
+				{ "WebView_Keyboard_Mode_Scenes.Name", "WebView_Keyboard_Mode::WebView_Keyboard_Mode_Scenes" },
+			};
+#endif
+			static const UE4CodeGen_Private::FEnumParams EnumParams = {
+				(UObject*(*)())Z_Construct_UPackage__Script_CefBrowser,
+				nullptr,
+				"WebView_Keyboard_Mode",
+				"WebView_Keyboard_Mode",
+				Enumerators,
+				UE_ARRAY_COUNT(Enumerators),
+				RF_Public|RF_Transient|RF_MarkAsNative,
+				EEnumFlags::None,
+				UE4CodeGen_Private::EDynamicType::NotDynamic,
+				(uint8)UEnum::ECppForm::EnumClass,
+				METADATA_PARAMS(Enum_MetaDataParams, UE_ARRAY_COUNT(Enum_MetaDataParams))
+			};
+			UE4CodeGen_Private::ConstructUEnum(ReturnEnum, EnumParams);
+		}
+		return ReturnEnum;
+	}
+	static UEnum* WebView_ImitateInput_Key_StaticEnum()
+	{
+		static UEnum* Singleton = nullptr;
+		if (!Singleton)
+		{
+			Singleton = GetStaticEnum(Z_Construct_UEnum_CefBrowser_WebView_ImitateInput_Key, Z_Construct_UPackage__Script_CefBrowser(), TEXT("WebView_ImitateInput_Key"));
+		}
+		return Singleton;
+	}
+	template<> CEFBROWSER_API UEnum* StaticEnum<WebView_ImitateInput_Key>()
+	{
+		return WebView_ImitateInput_Key_StaticEnum();
+	}
+	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_WebView_ImitateInput_Key(WebView_ImitateInput_Key_StaticEnum, TEXT("/Script/CefBrowser"), TEXT("WebView_ImitateInput_Key"), false, nullptr, nullptr);
+	uint32 Get_Z_Construct_UEnum_CefBrowser_WebView_ImitateInput_Key_Hash() { return 679039135U; }
+	UEnum* Z_Construct_UEnum_CefBrowser_WebView_ImitateInput_Key()
+	{
+#if WITH_HOT_RELOAD
+		UPackage* Outer = Z_Construct_UPackage__Script_CefBrowser();
+		static UEnum* ReturnEnum = FindExistingEnumIfHotReloadOrDynamic(Outer, TEXT("WebView_ImitateInput_Key"), 0, Get_Z_Construct_UEnum_CefBrowser_WebView_ImitateInput_Key_Hash(), false);
+#else
+		static UEnum* ReturnEnum = nullptr;
+#endif // WITH_HOT_RELOAD
+		if (!ReturnEnum)
+		{
+			static const UE4CodeGen_Private::FEnumeratorParam Enumerators[] = {
+				{ "WebView_ImitateInput_Key::WebView_ImitateInput_Key_Down", (int64)WebView_ImitateInput_Key::WebView_ImitateInput_Key_Down },
+				{ "WebView_ImitateInput_Key::WebView_ImitateInput_Key_Up", (int64)WebView_ImitateInput_Key::WebView_ImitateInput_Key_Up },
+				{ "WebView_ImitateInput_Key::WebView_ImitateInput_Key_Char", (int64)WebView_ImitateInput_Key::WebView_ImitateInput_Key_Char },
+			};
+#if WITH_METADATA
+			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+				{ "BlueprintType", "true" },
+				{ "Category", "Web View" },
+				{ "DisplayName", "Imitate Input Key" },
+				{ "ModuleRelativePath", "Public/ImitateInput.h" },
+				{ "WebView_ImitateInput_Key_Char.DisplayName", "KeyChar" },
+				{ "WebView_ImitateInput_Key_Char.Name", "WebView_ImitateInput_Key::WebView_ImitateInput_Key_Char" },
+				{ "WebView_ImitateInput_Key_Down.DisplayName", "KeyDown" },
+				{ "WebView_ImitateInput_Key_Down.Name", "WebView_ImitateInput_Key::WebView_ImitateInput_Key_Down" },
+				{ "WebView_ImitateInput_Key_Up.DisplayName", "KeyUp" },
+				{ "WebView_ImitateInput_Key_Up.Name", "WebView_ImitateInput_Key::WebView_ImitateInput_Key_Up" },
+			};
+#endif
+			static const UE4CodeGen_Private::FEnumParams EnumParams = {
+				(UObject*(*)())Z_Construct_UPackage__Script_CefBrowser,
+				nullptr,
+				"WebView_ImitateInput_Key",
+				"WebView_ImitateInput_Key",
+				Enumerators,
+				UE_ARRAY_COUNT(Enumerators),
+				RF_Public|RF_Transient|RF_MarkAsNative,
+				EEnumFlags::None,
+				UE4CodeGen_Private::EDynamicType::NotDynamic,
+				(uint8)UEnum::ECppForm::EnumClass,
+				METADATA_PARAMS(Enum_MetaDataParams, UE_ARRAY_COUNT(Enum_MetaDataParams))
+			};
+			UE4CodeGen_Private::ConstructUEnum(ReturnEnum, EnumParams);
+		}
+		return ReturnEnum;
+	}
+	static UEnum* WebView_ImitateInput_Mouse_StaticEnum()
+	{
+		static UEnum* Singleton = nullptr;
+		if (!Singleton)
+		{
+			Singleton = GetStaticEnum(Z_Construct_UEnum_CefBrowser_WebView_ImitateInput_Mouse, Z_Construct_UPackage__Script_CefBrowser(), TEXT("WebView_ImitateInput_Mouse"));
+		}
+		return Singleton;
+	}
+	template<> CEFBROWSER_API UEnum* StaticEnum<WebView_ImitateInput_Mouse>()
+	{
+		return WebView_ImitateInput_Mouse_StaticEnum();
+	}
+	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_WebView_ImitateInput_Mouse(WebView_ImitateInput_Mouse_StaticEnum, TEXT("/Script/CefBrowser"), TEXT("WebView_ImitateInput_Mouse"), false, nullptr, nullptr);
+	uint32 Get_Z_Construct_UEnum_CefBrowser_WebView_ImitateInput_Mouse_Hash() { return 611111503U; }
+	UEnum* Z_Construct_UEnum_CefBrowser_WebView_ImitateInput_Mouse()
+	{
+#if WITH_HOT_RELOAD
+		UPackage* Outer = Z_Construct_UPackage__Script_CefBrowser();
+		static UEnum* ReturnEnum = FindExistingEnumIfHotReloadOrDynamic(Outer, TEXT("WebView_ImitateInput_Mouse"), 0, Get_Z_Construct_UEnum_CefBrowser_WebView_ImitateInput_Mouse_Hash(), false);
+#else
+		static UEnum* ReturnEnum = nullptr;
+#endif // WITH_HOT_RELOAD
+		if (!ReturnEnum)
+		{
+			static const UE4CodeGen_Private::FEnumeratorParam Enumerators[] = {
+				{ "WebView_ImitateInput_Mouse::WebView_ImitateInput_Mouse_Down", (int64)WebView_ImitateInput_Mouse::WebView_ImitateInput_Mouse_Down },
+				{ "WebView_ImitateInput_Mouse::WebView_ImitateInput_Mouse_Up", (int64)WebView_ImitateInput_Mouse::WebView_ImitateInput_Mouse_Up },
+				{ "WebView_ImitateInput_Mouse::WebView_ImitateInput_Mouse_Move", (int64)WebView_ImitateInput_Mouse::WebView_ImitateInput_Mouse_Move },
+			};
+#if WITH_METADATA
+			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+				{ "BlueprintType", "true" },
+				{ "Category", "Web View" },
+				{ "DisplayName", "Imitate Input Mouse" },
+				{ "ModuleRelativePath", "Public/ImitateInput.h" },
+				{ "WebView_ImitateInput_Mouse_Down.DisplayName", "MouseDown" },
+				{ "WebView_ImitateInput_Mouse_Down.Name", "WebView_ImitateInput_Mouse::WebView_ImitateInput_Mouse_Down" },
+				{ "WebView_ImitateInput_Mouse_Move.DisplayName", "MouseMove" },
+				{ "WebView_ImitateInput_Mouse_Move.Name", "WebView_ImitateInput_Mouse::WebView_ImitateInput_Mouse_Move" },
+				{ "WebView_ImitateInput_Mouse_Up.DisplayName", "MouseUp" },
+				{ "WebView_ImitateInput_Mouse_Up.Name", "WebView_ImitateInput_Mouse::WebView_ImitateInput_Mouse_Up" },
+			};
+#endif
+			static const UE4CodeGen_Private::FEnumParams EnumParams = {
+				(UObject*(*)())Z_Construct_UPackage__Script_CefBrowser,
+				nullptr,
+				"WebView_ImitateInput_Mouse",
+				"WebView_ImitateInput_Mouse",
+				Enumerators,
+				UE_ARRAY_COUNT(Enumerators),
+				RF_Public|RF_Transient|RF_MarkAsNative,
+				EEnumFlags::None,
+				UE4CodeGen_Private::EDynamicType::NotDynamic,
+				(uint8)UEnum::ECppForm::EnumClass,
+				METADATA_PARAMS(Enum_MetaDataParams, UE_ARRAY_COUNT(Enum_MetaDataParams))
+			};
+			UE4CodeGen_Private::ConstructUEnum(ReturnEnum, EnumParams);
+		}
+		return ReturnEnum;
+	}
+	DEFINE_FUNCTION(UImitateInput::execClear)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->Clear();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UImitateInput::execShowLog)
+	{
+		P_GET_UBOOL(Z_Param_on);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->ShowLog(Z_Param_on);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UImitateInput::execAddKey)
+	{
+		P_GET_STRUCT_REF(FKey,Z_Param_Out_key);
+		P_GET_TARRAY_REF(FKey,Z_Param_Out_CombinKey);
+		P_GET_PROPERTY(FIntProperty,Z_Param_idx);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->AddKey(Z_Param_Out_key,Z_Param_Out_CombinKey,Z_Param_idx);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UImitateInput::execAddKeystroke)
+	{
+		P_GET_ENUM(WebView_ImitateInput_Key,Z_Param_keyboard);
+		P_GET_STRUCT_REF(FKey,Z_Param_Out_key);
+		P_GET_TARRAY_REF(FKey,Z_Param_Out_CombinKey);
+		P_GET_PROPERTY(FIntProperty,Z_Param_idx);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->AddKeystroke(WebView_ImitateInput_Key(Z_Param_keyboard),Z_Param_Out_key,Z_Param_Out_CombinKey,Z_Param_idx);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UImitateInput::execAddDelay)
+	{
+		P_GET_PROPERTY(FIntProperty,Z_Param_ms);
+		P_GET_PROPERTY(FIntProperty,Z_Param_idx);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->AddDelay(Z_Param_ms,Z_Param_idx);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UImitateInput::execAddText)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_text);
+		P_GET_PROPERTY(FIntProperty,Z_Param_idx);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->AddText(Z_Param_text,Z_Param_idx);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UImitateInput::execAddClicked)
+	{
+		P_GET_STRUCT_REF(FIntPoint,Z_Param_Out_point);
+		P_GET_PROPERTY(FIntProperty,Z_Param_idx);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->AddClicked(Z_Param_Out_point,Z_Param_idx);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UImitateInput::execAddMouse)
+	{
+		P_GET_ENUM(WebView_ImitateInput_Mouse,Z_Param_mouse);
+		P_GET_STRUCT_REF(FIntPoint,Z_Param_Out_point);
+		P_GET_PROPERTY(FIntProperty,Z_Param_idx);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->AddMouse(WebView_ImitateInput_Mouse(Z_Param_mouse),Z_Param_Out_point,Z_Param_idx);
+		P_NATIVE_END;
+	}
+	void UImitateInput::StaticRegisterNativesUImitateInput()
+	{
+		UClass* Class = UImitateInput::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "AddClicked", &UImitateInput::execAddClicked },
+			{ "AddDelay", &UImitateInput::execAddDelay },
+			{ "AddKey", &UImitateInput::execAddKey },
+			{ "AddKeystroke", &UImitateInput::execAddKeystroke },
+			{ "AddMouse", &UImitateInput::execAddMouse },
+			{ "AddText", &UImitateInput::execAddText },
+			{ "Clear", &UImitateInput::execClear },
+			{ "ShowLog", &UImitateInput::execShowLog },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_UImitateInput_AddClicked_Statics
+	{
+		struct ImitateInput_eventAddClicked_Parms
+		{
+			FIntPoint point;
+			int32 idx;
+		};
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_point_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_point;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_idx_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_idx;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddClicked_Statics::NewProp_point_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UImitateInput_AddClicked_Statics::NewProp_point = { "point", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddClicked_Parms, point), Z_Construct_UScriptStruct_FIntPoint, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddClicked_Statics::NewProp_point_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddClicked_Statics::NewProp_point_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddClicked_Statics::NewProp_idx_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_UImitateInput_AddClicked_Statics::NewProp_idx = { "idx", nullptr, (EPropertyFlags)0x0010000000000082, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddClicked_Parms, idx), METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddClicked_Statics::NewProp_idx_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddClicked_Statics::NewProp_idx_MetaData)) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UImitateInput_AddClicked_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddClicked_Statics::NewProp_point,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddClicked_Statics::NewProp_idx,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddClicked_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "CPP_Default_idx", "-1" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UImitateInput_AddClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UImitateInput, nullptr, "AddClicked", nullptr, nullptr, sizeof(ImitateInput_eventAddClicked_Parms), Z_Construct_UFunction_UImitateInput_AddClicked_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddClicked_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04C20401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddClicked_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddClicked_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UImitateInput_AddClicked()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UImitateInput_AddClicked_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UImitateInput_AddDelay_Statics
+	{
+		struct ImitateInput_eventAddDelay_Parms
+		{
+			int32 ms;
+			int32 idx;
+		};
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ms_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_ms;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_idx_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_idx;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddDelay_Statics::NewProp_ms_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_UImitateInput_AddDelay_Statics::NewProp_ms = { "ms", nullptr, (EPropertyFlags)0x0010000000000082, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddDelay_Parms, ms), METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddDelay_Statics::NewProp_ms_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddDelay_Statics::NewProp_ms_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddDelay_Statics::NewProp_idx_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_UImitateInput_AddDelay_Statics::NewProp_idx = { "idx", nullptr, (EPropertyFlags)0x0010000000000082, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddDelay_Parms, idx), METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddDelay_Statics::NewProp_idx_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddDelay_Statics::NewProp_idx_MetaData)) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UImitateInput_AddDelay_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddDelay_Statics::NewProp_ms,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddDelay_Statics::NewProp_idx,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddDelay_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "CPP_Default_idx", "-1" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UImitateInput_AddDelay_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UImitateInput, nullptr, "AddDelay", nullptr, nullptr, sizeof(ImitateInput_eventAddDelay_Parms), Z_Construct_UFunction_UImitateInput_AddDelay_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddDelay_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddDelay_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddDelay_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UImitateInput_AddDelay()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UImitateInput_AddDelay_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UImitateInput_AddKey_Statics
+	{
+		struct ImitateInput_eventAddKey_Parms
+		{
+			FKey key;
+			TArray<FKey> CombinKey;
+			int32 idx;
+		};
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_key_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_key;
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_CombinKey_Inner;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CombinKey_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_CombinKey;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_idx_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_idx;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_key_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_key = { "key", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddKey_Parms, key), Z_Construct_UScriptStruct_FKey, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_key_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_key_MetaData)) };
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_CombinKey_Inner = { "CombinKey", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UScriptStruct_FKey, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_CombinKey_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_CombinKey = { "CombinKey", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddKey_Parms, CombinKey), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_CombinKey_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_CombinKey_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_idx_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_idx = { "idx", nullptr, (EPropertyFlags)0x0010000000000082, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddKey_Parms, idx), METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_idx_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_idx_MetaData)) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UImitateInput_AddKey_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_key,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_CombinKey_Inner,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_CombinKey,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddKey_Statics::NewProp_idx,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddKey_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "CPP_Default_idx", "-1" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UImitateInput_AddKey_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UImitateInput, nullptr, "AddKey", nullptr, nullptr, sizeof(ImitateInput_eventAddKey_Parms), Z_Construct_UFunction_UImitateInput_AddKey_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddKey_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddKey_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddKey_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UImitateInput_AddKey()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UImitateInput_AddKey_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics
+	{
+		struct ImitateInput_eventAddKeystroke_Parms
+		{
+			WebView_ImitateInput_Key keyboard;
+			FKey key;
+			TArray<FKey> CombinKey;
+			int32 idx;
+		};
+		static const UE4CodeGen_Private::FBytePropertyParams NewProp_keyboard_Underlying;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_keyboard_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FEnumPropertyParams NewProp_keyboard;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_key_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_key;
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_CombinKey_Inner;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CombinKey_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_CombinKey;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_idx_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_idx;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_keyboard_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_keyboard_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_keyboard = { "keyboard", nullptr, (EPropertyFlags)0x0010000000000082, UE4CodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddKeystroke_Parms, keyboard), Z_Construct_UEnum_CefBrowser_WebView_ImitateInput_Key, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_keyboard_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_keyboard_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_key_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_key = { "key", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddKeystroke_Parms, key), Z_Construct_UScriptStruct_FKey, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_key_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_key_MetaData)) };
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_CombinKey_Inner = { "CombinKey", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UScriptStruct_FKey, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_CombinKey_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_CombinKey = { "CombinKey", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddKeystroke_Parms, CombinKey), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_CombinKey_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_CombinKey_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_idx_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_idx = { "idx", nullptr, (EPropertyFlags)0x0010000000000082, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddKeystroke_Parms, idx), METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_idx_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_idx_MetaData)) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_keyboard_Underlying,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_keyboard,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_key,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_CombinKey_Inner,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_CombinKey,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::NewProp_idx,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "CPP_Default_idx", "-1" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UImitateInput, nullptr, "AddKeystroke", nullptr, nullptr, sizeof(ImitateInput_eventAddKeystroke_Parms), Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UImitateInput_AddKeystroke()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UImitateInput_AddKeystroke_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UImitateInput_AddMouse_Statics
+	{
+		struct ImitateInput_eventAddMouse_Parms
+		{
+			WebView_ImitateInput_Mouse mouse;
+			FIntPoint point;
+			int32 idx;
+		};
+		static const UE4CodeGen_Private::FBytePropertyParams NewProp_mouse_Underlying;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_mouse_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FEnumPropertyParams NewProp_mouse;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_point_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_point;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_idx_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_idx;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_mouse_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_mouse_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_mouse = { "mouse", nullptr, (EPropertyFlags)0x0010000000000082, UE4CodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddMouse_Parms, mouse), Z_Construct_UEnum_CefBrowser_WebView_ImitateInput_Mouse, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_mouse_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_mouse_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_point_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_point = { "point", nullptr, (EPropertyFlags)0x0010000008000182, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddMouse_Parms, point), Z_Construct_UScriptStruct_FIntPoint, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_point_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_point_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_idx_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_idx = { "idx", nullptr, (EPropertyFlags)0x0010000000000082, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddMouse_Parms, idx), METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_idx_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_idx_MetaData)) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UImitateInput_AddMouse_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_mouse_Underlying,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_mouse,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_point,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddMouse_Statics::NewProp_idx,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddMouse_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "CPP_Default_idx", "-1" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UImitateInput_AddMouse_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UImitateInput, nullptr, "AddMouse", nullptr, nullptr, sizeof(ImitateInput_eventAddMouse_Parms), Z_Construct_UFunction_UImitateInput_AddMouse_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddMouse_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04C20401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddMouse_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddMouse_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UImitateInput_AddMouse()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UImitateInput_AddMouse_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UImitateInput_AddText_Statics
+	{
+		struct ImitateInput_eventAddText_Parms
+		{
+			FString text;
+			int32 idx;
+		};
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_text_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_text;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_idx_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_idx;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddText_Statics::NewProp_text_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UImitateInput_AddText_Statics::NewProp_text = { "text", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddText_Parms, text), METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddText_Statics::NewProp_text_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddText_Statics::NewProp_text_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddText_Statics::NewProp_idx_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_UImitateInput_AddText_Statics::NewProp_idx = { "idx", nullptr, (EPropertyFlags)0x0010000000000082, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ImitateInput_eventAddText_Parms, idx), METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddText_Statics::NewProp_idx_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddText_Statics::NewProp_idx_MetaData)) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UImitateInput_AddText_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddText_Statics::NewProp_text,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_AddText_Statics::NewProp_idx,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_AddText_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "CPP_Default_idx", "-1" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UImitateInput_AddText_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UImitateInput, nullptr, "AddText", nullptr, nullptr, sizeof(ImitateInput_eventAddText_Parms), Z_Construct_UFunction_UImitateInput_AddText_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddText_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_AddText_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_AddText_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UImitateInput_AddText()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UImitateInput_AddText_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UImitateInput_Clear_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_Clear_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UImitateInput_Clear_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UImitateInput, nullptr, "Clear", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_Clear_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_Clear_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UImitateInput_Clear()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UImitateInput_Clear_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UImitateInput_ShowLog_Statics
+	{
+		struct ImitateInput_eventShowLog_Parms
+		{
+			bool on;
+		};
+		static void NewProp_on_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_on;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_UImitateInput_ShowLog_Statics::NewProp_on_SetBit(void* Obj)
+	{
+		((ImitateInput_eventShowLog_Parms*)Obj)->on = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UImitateInput_ShowLog_Statics::NewProp_on = { "on", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ImitateInput_eventShowLog_Parms), &Z_Construct_UFunction_UImitateInput_ShowLog_Statics::NewProp_on_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UImitateInput_ShowLog_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UImitateInput_ShowLog_Statics::NewProp_on,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UImitateInput_ShowLog_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "CPP_Default_on", "false" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UImitateInput_ShowLog_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UImitateInput, nullptr, "ShowLog", nullptr, nullptr, sizeof(ImitateInput_eventShowLog_Parms), Z_Construct_UFunction_UImitateInput_ShowLog_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_ShowLog_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UImitateInput_ShowLog_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UImitateInput_ShowLog_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UImitateInput_ShowLog()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UImitateInput_ShowLog_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UClass* Z_Construct_UClass_UImitateInput_NoRegister()
+	{
+		return UImitateInput::StaticClass();
+	}
+	struct Z_Construct_UClass_UImitateInput_Statics
+	{
+		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
+#endif
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Show_MetaData[];
+#endif
+		static void NewProp_Show_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_Show;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_interval_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_interval;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Size_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_Size;
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_Event_Inner;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Event_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_Event;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
+		static const UE4CodeGen_Private::FClassParams ClassParams;
+	};
+	UObject* (*const Z_Construct_UClass_UImitateInput_Statics::DependentSingletons[])() = {
+		(UObject* (*)())Z_Construct_UClass_UObject,
+		(UObject* (*)())Z_Construct_UPackage__Script_CefBrowser,
+	};
+	const FClassFunctionLinkInfo Z_Construct_UClass_UImitateInput_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_UImitateInput_AddClicked, "AddClicked" }, // 1867862027
+		{ &Z_Construct_UFunction_UImitateInput_AddDelay, "AddDelay" }, // 2207848431
+		{ &Z_Construct_UFunction_UImitateInput_AddKey, "AddKey" }, // 347028132
+		{ &Z_Construct_UFunction_UImitateInput_AddKeystroke, "AddKeystroke" }, // 3497873117
+		{ &Z_Construct_UFunction_UImitateInput_AddMouse, "AddMouse" }, // 3759308358
+		{ &Z_Construct_UFunction_UImitateInput_AddText, "AddText" }, // 11108686
+		{ &Z_Construct_UFunction_UImitateInput_Clear, "Clear" }, // 3494884515
+		{ &Z_Construct_UFunction_UImitateInput_ShowLog, "ShowLog" }, // 1845465447
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UImitateInput_Statics::Class_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "IncludePath", "ImitateInput.h" },
+		{ "IsBlueprintBase", "true" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+	};
+#endif
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UImitateInput_Statics::NewProp_Show_MetaData[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "// Show Imitate Input\n" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+		{ "ToolTip", "Show Imitate Input" },
+	};
+#endif
+	void Z_Construct_UClass_UImitateInput_Statics::NewProp_Show_SetBit(void* Obj)
+	{
+		((UImitateInput*)Obj)->Show = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_UImitateInput_Statics::NewProp_Show = { "Show", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(UImitateInput), &Z_Construct_UClass_UImitateInput_Statics::NewProp_Show_SetBit, METADATA_PARAMS(Z_Construct_UClass_UImitateInput_Statics::NewProp_Show_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UImitateInput_Statics::NewProp_Show_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UImitateInput_Statics::NewProp_interval_MetaData[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "// command interval time .ms\n" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+		{ "ToolTip", "command interval time .ms" },
+		{ "UIMax", "10000" },
+		{ "UIMin", "10" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_UImitateInput_Statics::NewProp_interval = { "interval", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UImitateInput, interval), METADATA_PARAMS(Z_Construct_UClass_UImitateInput_Statics::NewProp_interval_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UImitateInput_Statics::NewProp_interval_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UImitateInput_Statics::NewProp_Size_MetaData[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "// command interval time .ms\n" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+		{ "ToolTip", "command interval time .ms" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UImitateInput_Statics::NewProp_Size = { "Size", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UImitateInput, Size), Z_Construct_UScriptStruct_FIntPoint, METADATA_PARAMS(Z_Construct_UClass_UImitateInput_Statics::NewProp_Size_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UImitateInput_Statics::NewProp_Size_MetaData)) };
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UClass_UImitateInput_Statics::NewProp_Event_Inner = { "Event", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UImitateInput_Statics::NewProp_Event_MetaData[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "/* \n\x09{\"type\":\"delay\",\"ms\":3000}\n\x09{\"type\":\"input\",\"text\":\"content\"}\n\x09{\"type\":\"key_down\",\"code\":0,\"character\":0,\"modify\":0}\n\x09{\"type\":\"key_char\",\"code\":0,\"character\":0,\"modify\":0}\n\x09{\"type\":\"key_up\",\"code\":0,\"character\":0,\"modify\":0}\n\x09{\"type\":\"mouse_down\",\"pos\":{\"x\":128,\"y\":256}}\n\x09{\"type\":\"mouse_move\",\"pos\":{\"x\":128,\"y\":256}}\n\x09{\"type\":\"mouse_up\",\"pos\":{\"x\":128,\"y\":256}}\n\x09*/" },
+		{ "ModuleRelativePath", "Public/ImitateInput.h" },
+		{ "ToolTip", "{\"type\":\"delay\",\"ms\":3000}\n{\"type\":\"input\",\"text\":\"content\"}\n{\"type\":\"key_down\",\"code\":0,\"character\":0,\"modify\":0}\n{\"type\":\"key_char\",\"code\":0,\"character\":0,\"modify\":0}\n{\"type\":\"key_up\",\"code\":0,\"character\":0,\"modify\":0}\n{\"type\":\"mouse_down\",\"pos\":{\"x\":128,\"y\":256}}\n{\"type\":\"mouse_move\",\"pos\":{\"x\":128,\"y\":256}}\n{\"type\":\"mouse_up\",\"pos\":{\"x\":128,\"y\":256}}" },
+	};
+#endif
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UImitateInput_Statics::NewProp_Event = { "Event", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UImitateInput, Event), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_UImitateInput_Statics::NewProp_Event_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UImitateInput_Statics::NewProp_Event_MetaData)) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UImitateInput_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UImitateInput_Statics::NewProp_Show,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UImitateInput_Statics::NewProp_interval,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UImitateInput_Statics::NewProp_Size,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UImitateInput_Statics::NewProp_Event_Inner,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UImitateInput_Statics::NewProp_Event,
+	};
+	const FCppClassTypeInfoStatic Z_Construct_UClass_UImitateInput_Statics::StaticCppClassTypeInfo = {
+		TCppClassTypeTraits<UImitateInput>::IsAbstract,
+	};
+	const UE4CodeGen_Private::FClassParams Z_Construct_UClass_UImitateInput_Statics::ClassParams = {
+		&UImitateInput::StaticClass,
+		nullptr,
+		&StaticCppClassTypeInfo,
+		DependentSingletons,
+		FuncInfo,
+		Z_Construct_UClass_UImitateInput_Statics::PropPointers,
+		nullptr,
+		UE_ARRAY_COUNT(DependentSingletons),
+		UE_ARRAY_COUNT(FuncInfo),
+		UE_ARRAY_COUNT(Z_Construct_UClass_UImitateInput_Statics::PropPointers),
+		0,
+		0x001000A0u,
+		METADATA_PARAMS(Z_Construct_UClass_UImitateInput_Statics::Class_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UClass_UImitateInput_Statics::Class_MetaDataParams))
+	};
+	UClass* Z_Construct_UClass_UImitateInput()
+	{
+		static UClass* OuterClass = nullptr;
+		if (!OuterClass)
+		{
+			UE4CodeGen_Private::ConstructUClass(OuterClass, Z_Construct_UClass_UImitateInput_Statics::ClassParams);
+		}
+		return OuterClass;
+	}
+	IMPLEMENT_CLASS(UImitateInput, 3113797362);
+	template<> CEFBROWSER_API UClass* StaticClass<UImitateInput>()
+	{
+		return UImitateInput::StaticClass();
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_UImitateInput(Z_Construct_UClass_UImitateInput, &UImitateInput::StaticClass, TEXT("/Script/CefBrowser"), TEXT("UImitateInput"), false, nullptr, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(UImitateInput);
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif

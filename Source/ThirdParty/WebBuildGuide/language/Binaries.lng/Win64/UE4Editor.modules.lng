@@ -1,0 +1,7 @@
+{
+  "BuildId": "17155196",
+  "Modules": {
+    "CefBrowser": "UE4Editor-CefBrowser.dll",
+    "WebView": "UE4Editor-WebView.dll"
+  }
+}

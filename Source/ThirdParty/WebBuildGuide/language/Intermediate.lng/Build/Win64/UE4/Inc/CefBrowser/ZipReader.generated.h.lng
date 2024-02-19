@@ -1,0 +1,123 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+/*===========================================================================
+	Generated code exported from UnrealHeaderTool.
+	DO NOT modify this manually! Edit the corresponding .h files instead!
+===========================================================================*/
+
+#include "UObject/ObjectMacros.h"
+#include "UObject/ScriptMacros.h"
+
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+#ifdef CEFBROWSER_ZipReader_generated_h
+#error "ZipReader.generated.h already included, missing '#pragma once' in ZipReader.h"
+#endif
+#define CEFBROWSER_ZipReader_generated_h
+
+#define HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_SPARSE_DATA
+#define HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execIsValid); \
+	DECLARE_FUNCTION(execReadAllToDir); \
+	DECLARE_FUNCTION(execReadToDir); \
+	DECLARE_FUNCTION(execReadToString); \
+	DECLARE_FUNCTION(execGetFileSize); \
+	DECLARE_FUNCTION(execGetFileName); \
+	DECLARE_FUNCTION(execMoveToFile); \
+	DECLARE_FUNCTION(execMoveToNextFile); \
+	DECLARE_FUNCTION(execMoveToFirstFile); \
+	DECLARE_FUNCTION(execGetAllFileNames); \
+	DECLARE_FUNCTION(execOpen);
+
+
+#define HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execIsValid); \
+	DECLARE_FUNCTION(execReadAllToDir); \
+	DECLARE_FUNCTION(execReadToDir); \
+	DECLARE_FUNCTION(execReadToString); \
+	DECLARE_FUNCTION(execGetFileSize); \
+	DECLARE_FUNCTION(execGetFileName); \
+	DECLARE_FUNCTION(execMoveToFile); \
+	DECLARE_FUNCTION(execMoveToNextFile); \
+	DECLARE_FUNCTION(execMoveToFirstFile); \
+	DECLARE_FUNCTION(execGetAllFileNames); \
+	DECLARE_FUNCTION(execOpen);
+
+
+#define HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_INCLASS_NO_PURE_DECLS \
+private: \
+	static void StaticRegisterNativesUZipReader(); \
+	friend struct Z_Construct_UClass_UZipReader_Statics; \
+public: \
+	DECLARE_CLASS(UZipReader, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/CefBrowser"), NO_API) \
+	DECLARE_SERIALIZER(UZipReader)
+
+
+#define HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_INCLASS \
+private: \
+	static void StaticRegisterNativesUZipReader(); \
+	friend struct Z_Construct_UClass_UZipReader_Statics; \
+public: \
+	DECLARE_CLASS(UZipReader, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/CefBrowser"), NO_API) \
+	DECLARE_SERIALIZER(UZipReader)
+
+
+#define HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_STANDARD_CONSTRUCTORS \
+	/** Standard constructor, called after all reflected properties have been initialized */ \
+	NO_API UZipReader(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UZipReader) \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UZipReader); \
+	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UZipReader); \
+private: \
+	/** Private move- and copy-constructors, should never be used */ \
+	NO_API UZipReader(UZipReader&&); \
+	NO_API UZipReader(const UZipReader&); \
+public:
+
+
+#define HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_ENHANCED_CONSTRUCTORS \
+	/** Standard constructor, called after all reflected properties have been initialized */ \
+	NO_API UZipReader(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
+private: \
+	/** Private move- and copy-constructors, should never be used */ \
+	NO_API UZipReader(UZipReader&&); \
+	NO_API UZipReader(const UZipReader&); \
+public: \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UZipReader); \
+	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UZipReader); \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UZipReader)
+
+
+#define HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_PRIVATE_PROPERTY_OFFSET
+#define HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_10_PROLOG
+#define HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_GENERATED_BODY_LEGACY \
+PRAGMA_DISABLE_DEPRECATION_WARNINGS \
+public: \
+	HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_PRIVATE_PROPERTY_OFFSET \
+	HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_SPARSE_DATA \
+	HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_RPC_WRAPPERS \
+	HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_INCLASS \
+	HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_STANDARD_CONSTRUCTORS \
+public: \
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+
+
+#define HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_GENERATED_BODY \
+PRAGMA_DISABLE_DEPRECATION_WARNINGS \
+public: \
+	HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_PRIVATE_PROPERTY_OFFSET \
+	HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_SPARSE_DATA \
+	HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+	HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_INCLASS_NO_PURE_DECLS \
+	HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_ENHANCED_CONSTRUCTORS \
+private: \
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+
+
+template<> CEFBROWSER_API UClass* StaticClass<class UZipReader>();
+
+#undef CURRENT_FILE_ID
+#define CURRENT_FILE_ID HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h
+
+
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
