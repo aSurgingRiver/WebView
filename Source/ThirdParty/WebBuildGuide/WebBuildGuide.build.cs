@@ -17,8 +17,9 @@ public class WebBuildGuide : ModuleRules
 		//Console.WriteLine("Target.Architecture" + Target.Architecture);
 		//string sourcePath = Path.Combine(ModuleDirectory, "..");
 		string pluginPath = PluginDirectory;// Path.Combine(sourcePath, "..", "..");
-		CopyDir(".lng", Path.Combine(ModuleDirectory, "language"), pluginPath);
-		string projFile = Target.ProjectFile.ToString();
+		CopyDir(".lng", Path.Combine(ModuleDirectory, "language", "Binaries.lng"), Path.Combine(pluginPath, "Binaries"));
+        CopyDir(".lng", Path.Combine(ModuleDirectory, "language", "Intermediate.lng"), Path.Combine(pluginPath, "Intermediate"));
+        string projFile = Target.ProjectFile.ToString();
 		if (Target.Version.MajorVersion >= 5)
 		{
 			CopyCefBrowser(pluginPath, projFile, "UnrealGame", "" + Target.Configuration, Target);

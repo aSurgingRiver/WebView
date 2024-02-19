@@ -45,6 +45,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = 10, UIMax = 10000), Category = "Web View")
 	int interval;
 
+	// command interval time .ms
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Web View")
+	FIntPoint Size;
+
 	/* 
 	{"type":"delay","ms":3000}
 	{"type":"input","text":"content"}
@@ -79,6 +83,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Web View")
 	void ShowLog(bool on=false);
 
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+	void Clear();
 };
 
 typedef UImitateInput FImitateInput;
