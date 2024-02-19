@@ -17,7 +17,7 @@ public class CefBrowser : ModuleRules
 	{
         //OptimizeCode = CodeOptimization.Never;
         //Type = ModuleType.CPlusPlus;
-        if (Target.Version.MajorVersion<=4)CppStandard = CppStandardVersion.Cpp17;
+        if (Target.Version.MajorVersion<5)CppStandard = CppStandardVersion.Cpp17;
         //bPrecompile = false;
 		bEnableExceptions = true;
 		bUsePrecompiled = !bPrecompile;

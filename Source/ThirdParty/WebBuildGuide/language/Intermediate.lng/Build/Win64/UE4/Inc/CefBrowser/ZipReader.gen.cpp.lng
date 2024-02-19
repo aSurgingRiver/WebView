@@ -1,0 +1,701 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+/*===========================================================================
+	Generated code exported from UnrealHeaderTool.
+	DO NOT modify this manually! Edit the corresponding .h files instead!
+===========================================================================*/
+
+#include "UObject/GeneratedCppIncludes.h"
+#include "CefBrowser/Public/ZipReader.h"
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable : 4883)
+#endif
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+void EmptyLinkFunctionForGeneratedCodeZipReader() {}
+// Cross Module References
+	CEFBROWSER_API UClass* Z_Construct_UClass_UZipReader_NoRegister();
+	CEFBROWSER_API UClass* Z_Construct_UClass_UZipReader();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UObject();
+	UPackage* Z_Construct_UPackage__Script_CefBrowser();
+// End Cross Module References
+	DEFINE_FUNCTION(UZipReader::execIsValid)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->IsValid();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UZipReader::execReadAllToDir)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_Dir);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->ReadAllToDir(Z_Param_Dir);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UZipReader::execReadToDir)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_Dir);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->ReadToDir(Z_Param_Dir);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UZipReader::execReadToString)
+	{
+		P_GET_PROPERTY_REF(FStrProperty,Z_Param_Out_data);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->ReadToString(Z_Param_Out_data);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UZipReader::execGetFileSize)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(int32*)Z_Param__Result=P_THIS->GetFileSize();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UZipReader::execGetFileName)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(FString*)Z_Param__Result=P_THIS->GetFileName();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UZipReader::execMoveToFile)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_fileName);
+		P_GET_UBOOL(Z_Param_caseSensitive);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->MoveToFile(Z_Param_fileName,Z_Param_caseSensitive);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UZipReader::execMoveToNextFile)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->MoveToNextFile();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UZipReader::execMoveToFirstFile)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->MoveToFirstFile();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UZipReader::execGetAllFileNames)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TArray<FString>*)Z_Param__Result=P_THIS->GetAllFileNames();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UZipReader::execOpen)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_zipFile);
+		P_GET_PROPERTY(FStrProperty,Z_Param_passwd);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->Open(Z_Param_zipFile,Z_Param_passwd);
+		P_NATIVE_END;
+	}
+	void UZipReader::StaticRegisterNativesUZipReader()
+	{
+		UClass* Class = UZipReader::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "GetAllFileNames", &UZipReader::execGetAllFileNames },
+			{ "GetFileName", &UZipReader::execGetFileName },
+			{ "GetFileSize", &UZipReader::execGetFileSize },
+			{ "IsValid", &UZipReader::execIsValid },
+			{ "MoveToFile", &UZipReader::execMoveToFile },
+			{ "MoveToFirstFile", &UZipReader::execMoveToFirstFile },
+			{ "MoveToNextFile", &UZipReader::execMoveToNextFile },
+			{ "Open", &UZipReader::execOpen },
+			{ "ReadAllToDir", &UZipReader::execReadAllToDir },
+			{ "ReadToDir", &UZipReader::execReadToDir },
+			{ "ReadToString", &UZipReader::execReadToString },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_UZipReader_GetAllFileNames_Statics
+	{
+		struct ZipReader_eventGetAllFileNames_Parms
+		{
+			TArray<FString> ReturnValue;
+		};
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_ReturnValue_Inner;
+		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UZipReader_GetAllFileNames_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UZipReader_GetAllFileNames_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ZipReader_eventGetAllFileNames_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UZipReader_GetAllFileNames_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_GetAllFileNames_Statics::NewProp_ReturnValue_Inner,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_GetAllFileNames_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_GetAllFileNames_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "/**\n\x09 * Get zip all file list. contains dir\n\x09 * @return all file \n\x09 *         e.g: file1.txt dir/ dir/file.png\n\x09 */" },
+		{ "ModuleRelativePath", "Public/ZipReader.h" },
+		{ "ToolTip", "Get zip all file list. contains dir\n@return all file\n        e.g: file1.txt dir/ dir/file.png" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UZipReader_GetAllFileNames_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UZipReader, nullptr, "GetAllFileNames", nullptr, nullptr, sizeof(ZipReader_eventGetAllFileNames_Parms), Z_Construct_UFunction_UZipReader_GetAllFileNames_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_GetAllFileNames_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UZipReader_GetAllFileNames_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_GetAllFileNames_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UZipReader_GetAllFileNames()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UZipReader_GetAllFileNames_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UZipReader_GetFileName_Statics
+	{
+		struct ZipReader_eventGetFileName_Parms
+		{
+			FString ReturnValue;
+		};
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UZipReader_GetFileName_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ZipReader_eventGetFileName_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UZipReader_GetFileName_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_GetFileName_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_GetFileName_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "/**\n\x09 * Get the current file name\n\x09 * @return file name\n\x09 */" },
+		{ "ModuleRelativePath", "Public/ZipReader.h" },
+		{ "ToolTip", "Get the current file name\n@return file name" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UZipReader_GetFileName_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UZipReader, nullptr, "GetFileName", nullptr, nullptr, sizeof(ZipReader_eventGetFileName_Parms), Z_Construct_UFunction_UZipReader_GetFileName_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_GetFileName_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UZipReader_GetFileName_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_GetFileName_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UZipReader_GetFileName()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UZipReader_GetFileName_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UZipReader_GetFileSize_Statics
+	{
+		struct ZipReader_eventGetFileSize_Parms
+		{
+			int32 ReturnValue;
+		};
+		static const UE4CodeGen_Private::FIntPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FIntPropertyParams Z_Construct_UFunction_UZipReader_GetFileSize_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ZipReader_eventGetFileSize_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UZipReader_GetFileSize_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_GetFileSize_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_GetFileSize_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "/**\n\x09 * Get the current file size\n\x09 * @return file size\n\x09 */" },
+		{ "ModuleRelativePath", "Public/ZipReader.h" },
+		{ "ToolTip", "Get the current file size\n@return file size" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UZipReader_GetFileSize_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UZipReader, nullptr, "GetFileSize", nullptr, nullptr, sizeof(ZipReader_eventGetFileSize_Parms), Z_Construct_UFunction_UZipReader_GetFileSize_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_GetFileSize_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UZipReader_GetFileSize_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_GetFileSize_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UZipReader_GetFileSize()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UZipReader_GetFileSize_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UZipReader_IsValid_Statics
+	{
+		struct ZipReader_eventIsValid_Parms
+		{
+			bool ReturnValue;
+		};
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_UZipReader_IsValid_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((ZipReader_eventIsValid_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UZipReader_IsValid_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ZipReader_eventIsValid_Parms), &Z_Construct_UFunction_UZipReader_IsValid_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UZipReader_IsValid_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_IsValid_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_IsValid_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "/**\n\x09 * check object has open zip file\n\x09 * @return false is failed,true is successful\n\x09 */" },
+		{ "ModuleRelativePath", "Public/ZipReader.h" },
+		{ "ToolTip", "check object has open zip file\n@return false is failed,true is successful" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UZipReader_IsValid_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UZipReader, nullptr, "IsValid", nullptr, nullptr, sizeof(ZipReader_eventIsValid_Parms), Z_Construct_UFunction_UZipReader_IsValid_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_IsValid_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UZipReader_IsValid_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_IsValid_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UZipReader_IsValid()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UZipReader_IsValid_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UZipReader_MoveToFile_Statics
+	{
+		struct ZipReader_eventMoveToFile_Parms
+		{
+			FString fileName;
+			bool caseSensitive;
+			bool ReturnValue;
+		};
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_fileName_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_fileName;
+		static void NewProp_caseSensitive_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_caseSensitive;
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_MoveToFile_Statics::NewProp_fileName_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UZipReader_MoveToFile_Statics::NewProp_fileName = { "fileName", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ZipReader_eventMoveToFile_Parms, fileName), METADATA_PARAMS(Z_Construct_UFunction_UZipReader_MoveToFile_Statics::NewProp_fileName_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_MoveToFile_Statics::NewProp_fileName_MetaData)) };
+	void Z_Construct_UFunction_UZipReader_MoveToFile_Statics::NewProp_caseSensitive_SetBit(void* Obj)
+	{
+		((ZipReader_eventMoveToFile_Parms*)Obj)->caseSensitive = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UZipReader_MoveToFile_Statics::NewProp_caseSensitive = { "caseSensitive", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ZipReader_eventMoveToFile_Parms), &Z_Construct_UFunction_UZipReader_MoveToFile_Statics::NewProp_caseSensitive_SetBit, METADATA_PARAMS(nullptr, 0) };
+	void Z_Construct_UFunction_UZipReader_MoveToFile_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((ZipReader_eventMoveToFile_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UZipReader_MoveToFile_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ZipReader_eventMoveToFile_Parms), &Z_Construct_UFunction_UZipReader_MoveToFile_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UZipReader_MoveToFile_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_MoveToFile_Statics::NewProp_fileName,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_MoveToFile_Statics::NewProp_caseSensitive,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_MoveToFile_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_MoveToFile_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "/**\n\x09 * move pointer of file to special file\n\x09 * @param fileName Move to destination file location \n\x09 * @param caseSensitive Match case \n\x09 * @return false is failed,true is successful\n\x09 */" },
+		{ "CPP_Default_caseSensitive", "true" },
+		{ "ModuleRelativePath", "Public/ZipReader.h" },
+		{ "ToolTip", "move pointer of file to special file\n@param fileName Move to destination file location\n@param caseSensitive Match case\n@return false is failed,true is successful" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UZipReader_MoveToFile_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UZipReader, nullptr, "MoveToFile", nullptr, nullptr, sizeof(ZipReader_eventMoveToFile_Parms), Z_Construct_UFunction_UZipReader_MoveToFile_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_MoveToFile_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UZipReader_MoveToFile_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_MoveToFile_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UZipReader_MoveToFile()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UZipReader_MoveToFile_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UZipReader_MoveToFirstFile_Statics
+	{
+		struct ZipReader_eventMoveToFirstFile_Parms
+		{
+			bool ReturnValue;
+		};
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_UZipReader_MoveToFirstFile_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((ZipReader_eventMoveToFirstFile_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UZipReader_MoveToFirstFile_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ZipReader_eventMoveToFirstFile_Parms), &Z_Construct_UFunction_UZipReader_MoveToFirstFile_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UZipReader_MoveToFirstFile_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_MoveToFirstFile_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_MoveToFirstFile_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "/**\n\x09 * move pointer of file to first\n\x09 * @return false is failed,true is successful\n\x09 */" },
+		{ "ModuleRelativePath", "Public/ZipReader.h" },
+		{ "ToolTip", "move pointer of file to first\n@return false is failed,true is successful" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UZipReader_MoveToFirstFile_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UZipReader, nullptr, "MoveToFirstFile", nullptr, nullptr, sizeof(ZipReader_eventMoveToFirstFile_Parms), Z_Construct_UFunction_UZipReader_MoveToFirstFile_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_MoveToFirstFile_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UZipReader_MoveToFirstFile_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_MoveToFirstFile_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UZipReader_MoveToFirstFile()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UZipReader_MoveToFirstFile_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UZipReader_MoveToNextFile_Statics
+	{
+		struct ZipReader_eventMoveToNextFile_Parms
+		{
+			bool ReturnValue;
+		};
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_UZipReader_MoveToNextFile_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((ZipReader_eventMoveToNextFile_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UZipReader_MoveToNextFile_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ZipReader_eventMoveToNextFile_Parms), &Z_Construct_UFunction_UZipReader_MoveToNextFile_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UZipReader_MoveToNextFile_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_MoveToNextFile_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_MoveToNextFile_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "/**\n\x09 * move pointer of file to next from cur position\n\x09 * @return false is failed,true is successful\n\x09 */" },
+		{ "ModuleRelativePath", "Public/ZipReader.h" },
+		{ "ToolTip", "move pointer of file to next from cur position\n@return false is failed,true is successful" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UZipReader_MoveToNextFile_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UZipReader, nullptr, "MoveToNextFile", nullptr, nullptr, sizeof(ZipReader_eventMoveToNextFile_Parms), Z_Construct_UFunction_UZipReader_MoveToNextFile_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_MoveToNextFile_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UZipReader_MoveToNextFile_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_MoveToNextFile_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UZipReader_MoveToNextFile()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UZipReader_MoveToNextFile_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UZipReader_Open_Statics
+	{
+		struct ZipReader_eventOpen_Parms
+		{
+			FString zipFile;
+			FString passwd;
+			bool ReturnValue;
+		};
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_zipFile_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_zipFile;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_passwd_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_passwd;
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_Open_Statics::NewProp_zipFile_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UZipReader_Open_Statics::NewProp_zipFile = { "zipFile", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ZipReader_eventOpen_Parms, zipFile), METADATA_PARAMS(Z_Construct_UFunction_UZipReader_Open_Statics::NewProp_zipFile_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_Open_Statics::NewProp_zipFile_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_Open_Statics::NewProp_passwd_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UZipReader_Open_Statics::NewProp_passwd = { "passwd", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ZipReader_eventOpen_Parms, passwd), METADATA_PARAMS(Z_Construct_UFunction_UZipReader_Open_Statics::NewProp_passwd_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_Open_Statics::NewProp_passwd_MetaData)) };
+	void Z_Construct_UFunction_UZipReader_Open_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((ZipReader_eventOpen_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UZipReader_Open_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ZipReader_eventOpen_Parms), &Z_Construct_UFunction_UZipReader_Open_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UZipReader_Open_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_Open_Statics::NewProp_zipFile,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_Open_Statics::NewProp_passwd,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_Open_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_Open_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "/**\n\x09 * Open on zip file\n\x09 * @param zipFile only support zip\n\x09 * @param passwd pass word \n\x09 * @return false is failed,true is successful and move to first file\n\x09 */" },
+		{ "ModuleRelativePath", "Public/ZipReader.h" },
+		{ "ToolTip", "Open on zip file\n@param zipFile only support zip\n@param passwd pass word\n@return false is failed,true is successful and move to first file" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UZipReader_Open_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UZipReader, nullptr, "Open", nullptr, nullptr, sizeof(ZipReader_eventOpen_Parms), Z_Construct_UFunction_UZipReader_Open_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_Open_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UZipReader_Open_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_Open_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UZipReader_Open()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UZipReader_Open_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics
+	{
+		struct ZipReader_eventReadAllToDir_Parms
+		{
+			FString Dir;
+			bool ReturnValue;
+		};
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Dir_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_Dir;
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::NewProp_Dir_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::NewProp_Dir = { "Dir", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ZipReader_eventReadAllToDir_Parms, Dir), METADATA_PARAMS(Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::NewProp_Dir_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::NewProp_Dir_MetaData)) };
+	void Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((ZipReader_eventReadAllToDir_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ZipReader_eventReadAllToDir_Parms), &Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::NewProp_Dir,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "/**\n\x09 * Get all files content into directory\n\x09 * @param Dir directory used to save file\n\x09 * @return false is failed,true is successful\n\x09 */" },
+		{ "ModuleRelativePath", "Public/ZipReader.h" },
+		{ "ToolTip", "Get all files content into directory\n@param Dir directory used to save file\n@return false is failed,true is successful" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UZipReader, nullptr, "ReadAllToDir", nullptr, nullptr, sizeof(ZipReader_eventReadAllToDir_Parms), Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UZipReader_ReadAllToDir()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UZipReader_ReadAllToDir_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UZipReader_ReadToDir_Statics
+	{
+		struct ZipReader_eventReadToDir_Parms
+		{
+			FString Dir;
+			bool ReturnValue;
+		};
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Dir_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_Dir;
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_ReadToDir_Statics::NewProp_Dir_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UZipReader_ReadToDir_Statics::NewProp_Dir = { "Dir", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ZipReader_eventReadToDir_Parms, Dir), METADATA_PARAMS(Z_Construct_UFunction_UZipReader_ReadToDir_Statics::NewProp_Dir_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_ReadToDir_Statics::NewProp_Dir_MetaData)) };
+	void Z_Construct_UFunction_UZipReader_ReadToDir_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((ZipReader_eventReadToDir_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UZipReader_ReadToDir_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ZipReader_eventReadToDir_Parms), &Z_Construct_UFunction_UZipReader_ReadToDir_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UZipReader_ReadToDir_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_ReadToDir_Statics::NewProp_Dir,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_ReadToDir_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_ReadToDir_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "/**\n\x09 * Get the current file content into directory\n\x09 * @param Dir directory used to save file\n\x09 * @return false is failed,true is successful\n\x09 */" },
+		{ "ModuleRelativePath", "Public/ZipReader.h" },
+		{ "ToolTip", "Get the current file content into directory\n@param Dir directory used to save file\n@return false is failed,true is successful" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UZipReader_ReadToDir_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UZipReader, nullptr, "ReadToDir", nullptr, nullptr, sizeof(ZipReader_eventReadToDir_Parms), Z_Construct_UFunction_UZipReader_ReadToDir_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_ReadToDir_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UZipReader_ReadToDir_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_ReadToDir_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UZipReader_ReadToDir()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UZipReader_ReadToDir_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UZipReader_ReadToString_Statics
+	{
+		struct ZipReader_eventReadToString_Parms
+		{
+			FString data;
+			bool ReturnValue;
+		};
+		static const UE4CodeGen_Private::FStrPropertyParams NewProp_data;
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UZipReader_ReadToString_Statics::NewProp_data = { "data", nullptr, (EPropertyFlags)0x0010000000000180, UE4CodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ZipReader_eventReadToString_Parms, data), METADATA_PARAMS(nullptr, 0) };
+	void Z_Construct_UFunction_UZipReader_ReadToString_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((ZipReader_eventReadToString_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UZipReader_ReadToString_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ZipReader_eventReadToString_Parms), &Z_Construct_UFunction_UZipReader_ReadToString_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UZipReader_ReadToString_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_ReadToString_Statics::NewProp_data,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UZipReader_ReadToString_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UZipReader_ReadToString_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "Comment", "/**\n\x09 * Get the current file content into buffer\n\x09 * @param data file content \n\x09 * @return false is failed,true is successful\n\x09 */" },
+		{ "ModuleRelativePath", "Public/ZipReader.h" },
+		{ "ToolTip", "Get the current file content into buffer\n@param data file content\n@return false is failed,true is successful" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UZipReader_ReadToString_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UZipReader, nullptr, "ReadToString", nullptr, nullptr, sizeof(ZipReader_eventReadToString_Parms), Z_Construct_UFunction_UZipReader_ReadToString_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_ReadToString_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UZipReader_ReadToString_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UZipReader_ReadToString_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UZipReader_ReadToString()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UZipReader_ReadToString_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UClass* Z_Construct_UClass_UZipReader_NoRegister()
+	{
+		return UZipReader::StaticClass();
+	}
+	struct Z_Construct_UClass_UZipReader_Statics
+	{
+		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
+#endif
+		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
+		static const UE4CodeGen_Private::FClassParams ClassParams;
+	};
+	UObject* (*const Z_Construct_UClass_UZipReader_Statics::DependentSingletons[])() = {
+		(UObject* (*)())Z_Construct_UClass_UObject,
+		(UObject* (*)())Z_Construct_UPackage__Script_CefBrowser,
+	};
+	const FClassFunctionLinkInfo Z_Construct_UClass_UZipReader_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_UZipReader_GetAllFileNames, "GetAllFileNames" }, // 2500692981
+		{ &Z_Construct_UFunction_UZipReader_GetFileName, "GetFileName" }, // 3003694421
+		{ &Z_Construct_UFunction_UZipReader_GetFileSize, "GetFileSize" }, // 2730559202
+		{ &Z_Construct_UFunction_UZipReader_IsValid, "IsValid" }, // 3909179887
+		{ &Z_Construct_UFunction_UZipReader_MoveToFile, "MoveToFile" }, // 174480398
+		{ &Z_Construct_UFunction_UZipReader_MoveToFirstFile, "MoveToFirstFile" }, // 1900648908
+		{ &Z_Construct_UFunction_UZipReader_MoveToNextFile, "MoveToNextFile" }, // 3680821289
+		{ &Z_Construct_UFunction_UZipReader_Open, "Open" }, // 1695373523
+		{ &Z_Construct_UFunction_UZipReader_ReadAllToDir, "ReadAllToDir" }, // 914287138
+		{ &Z_Construct_UFunction_UZipReader_ReadToDir, "ReadToDir" }, // 691549938
+		{ &Z_Construct_UFunction_UZipReader_ReadToString, "ReadToString" }, // 898802287
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UZipReader_Statics::Class_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "IncludePath", "ZipReader.h" },
+		{ "IsBlueprintBase", "true" },
+		{ "ModuleRelativePath", "Public/ZipReader.h" },
+	};
+#endif
+	const FCppClassTypeInfoStatic Z_Construct_UClass_UZipReader_Statics::StaticCppClassTypeInfo = {
+		TCppClassTypeTraits<UZipReader>::IsAbstract,
+	};
+	const UE4CodeGen_Private::FClassParams Z_Construct_UClass_UZipReader_Statics::ClassParams = {
+		&UZipReader::StaticClass,
+		nullptr,
+		&StaticCppClassTypeInfo,
+		DependentSingletons,
+		FuncInfo,
+		nullptr,
+		nullptr,
+		UE_ARRAY_COUNT(DependentSingletons),
+		UE_ARRAY_COUNT(FuncInfo),
+		0,
+		0,
+		0x001000A0u,
+		METADATA_PARAMS(Z_Construct_UClass_UZipReader_Statics::Class_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UClass_UZipReader_Statics::Class_MetaDataParams))
+	};
+	UClass* Z_Construct_UClass_UZipReader()
+	{
+		static UClass* OuterClass = nullptr;
+		if (!OuterClass)
+		{
+			UE4CodeGen_Private::ConstructUClass(OuterClass, Z_Construct_UClass_UZipReader_Statics::ClassParams);
+		}
+		return OuterClass;
+	}
+	IMPLEMENT_CLASS(UZipReader, 3979124621);
+	template<> CEFBROWSER_API UClass* StaticClass<UZipReader>()
+	{
+		return UZipReader::StaticClass();
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_UZipReader(Z_Construct_UClass_UZipReader, &UZipReader::StaticClass, TEXT("/Script/CefBrowser"), TEXT("UZipReader"), false, nullptr, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(UZipReader);
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
