@@ -44,6 +44,7 @@ public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnBeforePopup, const FString&, Url, const FString&, Frame);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTextureChanged, UTexture2D*, OLD, UTexture2D*, NEW);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDownloadComplete, const FString&, Url, const FString&, File);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnWebError, const FString&, Desc, const FString&, Source ,const int,line);
 	/*  ResourceType
 	  0: Top level page.
 	  1: Frame or iframe.
@@ -92,6 +93,9 @@ public:
 	/** called when resouce load. */
 	UPROPERTY(BlueprintAssignable, Category = "Web View|Event")
 	FOnBeforeRequest OnBeforeRequest;
+	/** called when resouce load. */
+	UPROPERTY(BlueprintAssignable, Category = "Web View|Event")
+	FOnWebError OnWebError;
 
 	/** this party is blueprint editor params */
 	/** URL that the browser will initially navigate to. The URL should include the protocol, eg http:// */
@@ -306,6 +310,7 @@ protected:
 	void HandleOnUrlChanged(const FText& Text);
 	bool HandleOnBeforePopup(FString URL, FString Frame);
 	void HandleOnDownloadTip(FString URL, FString File);
+	void HandleOnWebError(const FString& Url, const FString& Desc, const FString& Source, const int line);
 	//typedef class SCefBrowser::TMap<FString, FString> RequestHeaders;
 	bool HandleOnResourceLoad(FString URL, int ResourceType, TMap<FString, FString>& HtmlHeaders);
 };

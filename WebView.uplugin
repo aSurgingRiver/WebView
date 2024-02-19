@@ -1,30 +1,38 @@
 {
+  "CanContainContent": true,
   "Category": "Other",
-  "FileVersion": 3,
+  "CreatedBy": "aSurgingRiver",
+  "CreatedByURL": "https://github.com/aSurgingRiver",
+  "Description": "Efficient UE browser uses CEF open source kernel; When the frame rate is 60 per second and the resolution is 4K, a single GPU is rendered, and the UE and browser will not lose frames. 8K frame rate does not decrease under multi GPU binding.",
   "DocsURL": "https://www.zhihu.com/column/c_1490114276946223104",
+  "EnabledByDefault": false,
+  "EngineVersion": "5.3.0",
+  "FileVersion": 3,
+  "FriendlyName": "WebView",
+  "Installed": true,
+  "MarketplaceURL": "https://github.com/aSurgingRiver/WebView",
   "Modules": [
     {
+      "LoadingPhase": "Default",
+      "Name": "CefBrowser",
       "PlatformAllowList": [
         "Win64",
         "Linux",
         "Mac"
       ],
-      "Type": "Runtime",
-      "Name": "CefBrowser",
-      "LoadingPhase": "Default"
+      "Type": "Runtime"
     },
     {
+      "LoadingPhase": "PreDefault",
+      "Name": "WebView",
       "PlatformAllowList": [
         "Win64",
         "Linux",
         "Mac"
       ],
-      "Type": "Runtime",
-      "Name": "WebView",
-      "LoadingPhase": "PreDefault"
+      "Type": "Runtime"
     }
   ],
-  "MarketplaceURL": "https://github.com/aSurgingRiver/WebView",
   "Plugins": [
     {
       "Enabled": false,
@@ -39,15 +47,7 @@
       "Name": "CefBase"
     }
   ],
-  "CanContainContent": true,
-  "Installed": true,
-  "CreatedBy": "aSurgingRiver",
-  "Version": 1,
-  "VersionName": "20230910",
-  "EngineVersion": "5.3.0",
-  "FriendlyName": "WebView",
-  "EnabledByDefault": false,
   "SupportURL": "https://github.com/aSurgingRiver",
-  "CreatedByURL": "https://github.com/aSurgingRiver",
-  "Description": "Efficient UE browser uses CEF open source kernel; When the frame rate is 60 per second and the resolution is 4K, a single GPU is rendered, and the UE and browser will not lose frames. 8K frame rate does not decrease under multi GPU binding."
+  "Version": 1,
+  "VersionName": "20240206"
 }
