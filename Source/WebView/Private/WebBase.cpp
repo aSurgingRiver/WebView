@@ -202,6 +202,7 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 		.OnLoadState_UObject(this, &UWebBase::HandleOnLoadState)
 		.OnDownloadComplete_UObject(this, &UWebBase::HandleOnDownloadTip)
 		.OnTextureChanged_UObject(this, &UWebBase::HandleOnTextureChanged)
+		.OnWebError_UObject(this, &UWebBase::HandleOnWebError)
 		.OnResourceLoad_UObject(this, &UWebBase::HandleOnResourceLoad);
 	_ViewObject = NewObject<UWebViewObject>();// 隔离JS和UE4之间的数据。
 	if (_ViewObject) {
@@ -270,6 +271,10 @@ void UWebBase::HandleOnDownloadTip(FString URL, FString File) {
 	OnDownloadComplete.Broadcast(URL, File);
 }
 
+void UWebBase::HandleOnWebError(const FString& Url, const FString& Desc, const FString& Source, const int line) {
+	if (!OnWebError.IsBound()) return;
+	OnWebError.Broadcast(Desc, Source, line);
+}
 
 bool UWebBase::HandleOnResourceLoad(FString URL, int ResourceType, TMap<FString, FString>& HtmlHeaders) {
 	if (!OnBeforeRequest.IsBound()) return false;

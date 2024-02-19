@@ -27,6 +27,7 @@ public:
 	DECLARE_DELEGATE_TwoParams(FOnDownloadComplete, FString, FString);
 	DECLARE_DELEGATE_TwoParams(FOnTextureChanged, UTexture2D*, UTexture2D*);
 	DECLARE_DELEGATE_RetVal_ThreeParams(bool, FOnResourceLoad, FString, int, RequestHeaders&);
+	DECLARE_DELEGATE_FourParams(FOnWebError,const FString&, const FString&, const FString&,int);
 
 	SLATE_BEGIN_ARGS(SCefBrowser)
 		: _ViewportSize(FVector2D::ZeroVector)
@@ -56,6 +57,8 @@ public:
 		SLATE_EVENT(FOnDownloadComplete, OnDownloadComplete)
 		/** Called when resource download finish before load. */
 		SLATE_EVENT(FOnResourceLoad, OnResourceLoad)
+		/** Called when web has error . */
+		SLATE_EVENT(FOnWebError, OnWebError)
 
 		/* this party for params */
 		/** Control and Editor show text style  */
