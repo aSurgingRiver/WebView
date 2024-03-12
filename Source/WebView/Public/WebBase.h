@@ -120,7 +120,7 @@ public:
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Frame Rate", ClampMin = 30, ClampMax = 60), Category = "Web View")
 		int  RateFrame = 30;
 	/** Configure webpage is transparency */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Background Color"), Category = "Web View")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Background Color", ToolTip="transparent: A+js.A<255,  "), Category = "Web View")
 		FColor  ColorBackground;
 	/** Whether to show an address bar. */
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Show Address", UIMin = 0, UIMax = 1), Category = "Web View|Show Head")
@@ -300,7 +300,6 @@ public:
 	virtual bool Asyn(const FString& Name, FString& Data, const FString& Callback);
 	//
 	virtual void SetVisibility(ESlateVisibility InVisibility) override;
-
 	//virtual void TickRenderResource() override;
 	virtual void ReleaseSlateResources(bool bReleaseChildren);
 protected:
@@ -311,6 +310,7 @@ protected:
 	bool HandleOnBeforePopup(FString URL, FString Frame);
 	void HandleOnDownloadTip(FString URL, FString File);
 	void HandleOnWebError(const FString& Url, const FString& Desc, const FString& Source, const int line);
+	void HandleAsyn(const FString& Name, const FString& Data, const FString& Callback);
 	//typedef class SCefBrowser::TMap<FString, FString> RequestHeaders;
 	bool HandleOnResourceLoad(FString URL, int ResourceType, TMap<FString, FString>& HtmlHeaders);
 };
