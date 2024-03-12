@@ -2105,10 +2105,9 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UWebBase_Statics::NewProp_ColorBackground_MetaData[] = {
 		{ "Category", "Web View" },
-		{ "Comment", "/** Configure webpage is transparency */" },
 		{ "DisplayName", "Background Color" },
 		{ "ModuleRelativePath", "Public/WebBase.h" },
-		{ "ToolTip", "Configure webpage is transparency" },
+		{ "ToolTip", "transparent: A+js.A<255," },
 	};
 #endif
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UWebBase_Statics::NewProp_ColorBackground = { "ColorBackground", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UWebBase, ColorBackground), Z_Construct_UScriptStruct_FColor, METADATA_PARAMS(Z_Construct_UClass_UWebBase_Statics::NewProp_ColorBackground_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UWebBase_Statics::NewProp_ColorBackground_MetaData)) };
@@ -2266,7 +2265,7 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UWebBase, 2268880602);
+	IMPLEMENT_CLASS(UWebBase, 4033348159);
 	template<> WEBVIEW_API UClass* StaticClass<UWebBase>()
 	{
 		return UWebBase::StaticClass();
