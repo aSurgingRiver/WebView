@@ -2266,10 +2266,9 @@ void UWebBase::FOnBeforeRequest_DelegateWrapper(const FMulticastScriptDelegate& 
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UWebBase_Statics::NewProp_ColorBackground_MetaData[] = {
 		{ "Category", "Web View" },
-		{ "Comment", "/** Configure webpage is transparency */" },
 		{ "DisplayName", "Background Color" },
 		{ "ModuleRelativePath", "Public/WebBase.h" },
-		{ "ToolTip", "Configure webpage is transparency" },
+		{ "ToolTip", "transparent: A+js.A<255," },
 	};
 #endif
 	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UWebBase_Statics::NewProp_ColorBackground = { "ColorBackground", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UWebBase, ColorBackground), Z_Construct_UScriptStruct_FColor, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UWebBase_Statics::NewProp_ColorBackground_MetaData), Z_Construct_UClass_UWebBase_Statics::NewProp_ColorBackground_MetaData) };
@@ -2439,9 +2438,9 @@ void UWebBase::FOnBeforeRequest_DelegateWrapper(const FMulticastScriptDelegate& 
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_Statics::ClassInfo[] = {
 		{ Z_Construct_UClass_UHtmlHeaders, UHtmlHeaders::StaticClass, TEXT("UHtmlHeaders"), &Z_Registration_Info_UClass_UHtmlHeaders, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UHtmlHeaders), 571160235U) },
-		{ Z_Construct_UClass_UWebBase, UWebBase::StaticClass, TEXT("UWebBase"), &Z_Registration_Info_UClass_UWebBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UWebBase), 883611008U) },
+		{ Z_Construct_UClass_UWebBase, UWebBase::StaticClass, TEXT("UWebBase"), &Z_Registration_Info_UClass_UWebBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UWebBase), 2477577885U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_1314019520(TEXT("/Script/WebView"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_2453239525(TEXT("/Script/WebView"),
 		Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

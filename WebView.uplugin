@@ -20,6 +20,12 @@
         "Linux",
         "Mac"
       ],
+      "TargetAllowList": [
+        "Game",
+        "Editor",
+        "Client",
+        "Program"
+      ],
       "Type": "Runtime"
     },
     {
@@ -29,6 +35,12 @@
         "Win64",
         "Linux",
         "Mac"
+      ],
+      "TargetAllowList": [
+        "Game",
+        "Editor",
+        "Client",
+        "Program"
       ],
       "Type": "Runtime"
     }
@@ -49,5 +61,5 @@
   ],
   "SupportURL": "https://github.com/aSurgingRiver",
   "Version": 1,
-  "VersionName": "20240206"
+  "VersionName": "20240312"
 }
