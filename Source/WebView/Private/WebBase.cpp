@@ -91,6 +91,7 @@ void UWebBase::CallJsonStr(const FString& Function, const FString& Data)
 	if (!CefCoreWidget.IsValid() || Function.IsEmpty())
 		return;
 	FString TextScript;
+	if (CefCoreWidget->CallJsonStr(Function, Data))return;
 	if (Data.Len() >= 2) {
 		TextScript = FString::Printf(TEXT("%s['%s'](%s)"),
 			*jsWindow, *Function, *Data);
@@ -203,7 +204,8 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 		.OnDownloadComplete_UObject(this, &UWebBase::HandleOnDownloadTip)
 		.OnTextureChanged_UObject(this, &UWebBase::HandleOnTextureChanged)
 		.OnWebError_UObject(this, &UWebBase::HandleOnWebError)
-		.OnResourceLoad_UObject(this, &UWebBase::HandleOnResourceLoad);
+		.OnResourceLoad_UObject(this, &UWebBase::HandleOnResourceLoad)
+		.OnJsStr_UObject(this, &UWebBase::HandleAsyn);
 	_ViewObject = NewObject<UWebViewObject>();// 隔离JS和UE4之间的数据。
 	if (_ViewObject) {
 		_ViewObject->SetUMG(this);
@@ -274,6 +276,11 @@ void UWebBase::HandleOnDownloadTip(FString URL, FString File) {
 void UWebBase::HandleOnWebError(const FString& Url, const FString& Desc, const FString& Source, const int line) {
 	if (!OnWebError.IsBound()) return;
 	OnWebError.Broadcast(Desc, Source, line);
+}
+
+void UWebBase::HandleAsyn(const FString& Name, const FString& Data, const FString& Callback) {
+	FString Json = Data;
+	Asyn(Name, Json, Callback);
 }
 
 bool UWebBase::HandleOnResourceLoad(FString URL, int ResourceType, TMap<FString, FString>& HtmlHeaders) {
