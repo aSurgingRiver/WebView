@@ -1,7 +1,6 @@
 <html>
 <head>
-<script src="jsToUe.js">
-</script>
+
 
 </head>
 <body style="background-color: transparent; -webkit-user-select: none;">
@@ -35,14 +34,21 @@
     btn_obj.setAttribute("onclick", "ObjCallP()");
   
   
-
+// ue.call(key,json,callback,timeout) <==> OnJsEventStr(type,json,callback)
+// usage:
+//      key : string
+//      json: {"a":1}  or [1,2,3,4]
+//      callback : when success in ue,and ue callback to js 
+//                 function(){} or ()=>{}
+//      timeout: The effective time of the callback function, in seconds
+// 
     function JsonCall() {
         //var url = 'rtsp://113.201.104.35:9090/dss/monitor/param?cameraid=1000054%247&substream=1' ;
         //alert('qweqwe');
 
         //for (var i=0; i<1000; i++){
         total++;
-        ue4("videoUrl", { "url": "www.baidu.com", "total": total },
+        ue.call("videoUrl", { "url": "www.baidu.com", "total": total },
             function (jsonObject) {
                 //alert(rv);
                 response = response + 1;
@@ -53,7 +59,7 @@
     }
 
     function ObjCall(){
-        ue.bpbind.help4("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17")
+        ue.GetBrowserWnd();
     }
     function ObjCallP() {
         ue.bpbind.help5("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21")
