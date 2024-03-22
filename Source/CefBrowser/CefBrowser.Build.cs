@@ -89,6 +89,7 @@ public class CefBrowser : ModuleRules
 			PublicDependencyModuleNames.AddRange(
 				new string[]
                 {
+                "DX11",
                 "DX12",
 				"D3D11RHI",
 				"D3D12RHI"

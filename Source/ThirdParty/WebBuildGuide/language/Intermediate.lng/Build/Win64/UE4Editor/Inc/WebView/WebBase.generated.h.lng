@@ -236,6 +236,7 @@ template<> WEBVIEW_API UClass* StaticClass<class UHtmlHeaders>();
 #define HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_SPARSE_DATA
 #define HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execStopRender); \
 	DECLARE_FUNCTION(execSetImitateInput); \
 	DECLARE_FUNCTION(execCanGoForward); \
 	DECLARE_FUNCTION(execCanGoBack); \
@@ -262,6 +263,7 @@ template<> WEBVIEW_API UClass* StaticClass<class UHtmlHeaders>();
 
 #define HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execStopRender); \
 	DECLARE_FUNCTION(execSetImitateInput); \
 	DECLARE_FUNCTION(execCanGoForward); \
 	DECLARE_FUNCTION(execCanGoBack); \
