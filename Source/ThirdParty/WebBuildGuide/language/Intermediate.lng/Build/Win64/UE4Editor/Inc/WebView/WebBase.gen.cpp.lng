@@ -667,6 +667,14 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 	}
 	static FCompiledInDefer Z_CompiledInDefer_UClass_UHtmlHeaders(Z_Construct_UClass_UHtmlHeaders, &UHtmlHeaders::StaticClass, TEXT("/Script/WebView"), TEXT("UHtmlHeaders"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UHtmlHeaders);
+	DEFINE_FUNCTION(UWebBase::execStopRender)
+	{
+		P_GET_UBOOL(Z_Param_hidden);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->StopRender(Z_Param_hidden);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(UWebBase::execSetImitateInput)
 	{
 		P_GET_OBJECT(UImitateInput,Z_Param_ImitateInput);
@@ -866,6 +874,7 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 			{ "ShowAddress", &UWebBase::execShowAddress },
 			{ "ShowDevTools", &UWebBase::execShowDevTools },
 			{ "Silent", &UWebBase::execSilent },
+			{ "StopRender", &UWebBase::execStopRender },
 			{ "UnbindUObject", &UWebBase::execUnbindUObject },
 			{ "WebPixel", &UWebBase::execWebPixel },
 			{ "ZoomLevel", &UWebBase::execZoomLevel },
@@ -1636,6 +1645,44 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_UWebBase_StopRender_Statics
+	{
+		struct WebBase_eventStopRender_Parms
+		{
+			bool hidden;
+		};
+		static void NewProp_hidden_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_hidden;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_UWebBase_StopRender_Statics::NewProp_hidden_SetBit(void* Obj)
+	{
+		((WebBase_eventStopRender_Parms*)Obj)->hidden = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UWebBase_StopRender_Statics::NewProp_hidden = { "hidden", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(WebBase_eventStopRender_Parms), &Z_Construct_UFunction_UWebBase_StopRender_Statics::NewProp_hidden_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UWebBase_StopRender_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UWebBase_StopRender_Statics::NewProp_hidden,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UWebBase_StopRender_Statics::Function_MetaDataParams[] = {
+		{ "Category", "Web View" },
+		{ "ModuleRelativePath", "Public/WebBase.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UWebBase_StopRender_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UWebBase, nullptr, "StopRender", nullptr, nullptr, sizeof(WebBase_eventStopRender_Parms), Z_Construct_UFunction_UWebBase_StopRender_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UWebBase_StopRender_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UWebBase_StopRender_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UWebBase_StopRender_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UWebBase_StopRender()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UWebBase_StopRender_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_UWebBase_UnbindUObject_Statics
 	{
 		struct WebBase_eventUnbindUObject_Parms
@@ -1918,6 +1965,7 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		{ &Z_Construct_UFunction_UWebBase_ShowAddress, "ShowAddress" }, // 3848631213
 		{ &Z_Construct_UFunction_UWebBase_ShowDevTools, "ShowDevTools" }, // 162056019
 		{ &Z_Construct_UFunction_UWebBase_Silent, "Silent" }, // 3920347364
+		{ &Z_Construct_UFunction_UWebBase_StopRender, "StopRender" }, // 446306493
 		{ &Z_Construct_UFunction_UWebBase_UnbindUObject, "UnbindUObject" }, // 3186569527
 		{ &Z_Construct_UFunction_UWebBase_WebPixel, "WebPixel" }, // 2042428796
 		{ &Z_Construct_UFunction_UWebBase_ZoomLevel, "ZoomLevel" }, // 3079948544
@@ -2265,7 +2313,7 @@ void EmptyLinkFunctionForGeneratedCodeWebBase() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UWebBase, 4033348159);
+	IMPLEMENT_CLASS(UWebBase, 859426746);
 	template<> WEBVIEW_API UClass* StaticClass<UWebBase>()
 	{
 		return UWebBase::StaticClass();

@@ -294,12 +294,13 @@ public:
 	//FImitateInput  ImitateInput
 	UFUNCTION(BlueprintCallable, Category = "Web View")
 	void SetImitateInput(const UImitateInput*  ImitateInput);
+
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+	void StopRender(bool hidden);
 public:
 	virtual void BeginDestroy() override;
 	// 
 	virtual bool Asyn(const FString& Name, FString& Data, const FString& Callback);
-	//
-	virtual void SetVisibility(ESlateVisibility InVisibility) override;
 	//virtual void TickRenderResource() override;
 	virtual void ReleaseSlateResources(bool bReleaseChildren);
 protected:
