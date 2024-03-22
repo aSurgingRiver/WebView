@@ -166,7 +166,7 @@ public:
 	 */
 	void UnbindUObject(const FString& Name, UObject* Object, bool bIsPermanent = true);
 	//
-	void StopRender(bool bVisibility);
+	void StopRender(bool hidden);
 	//
 	void ShowDevTools();
 	//
