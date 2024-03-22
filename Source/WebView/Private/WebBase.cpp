@@ -222,14 +222,9 @@ bool UWebBase::Asyn(const FString& Name, FString& Data, const FString& Callback)
 	return true;
 }
 
-void UWebBase::SetVisibility(ESlateVisibility InVisibility) {
-	Super::SetVisibility(InVisibility);
+void UWebBase::StopRender(bool hidden) {
 	if (!CefCoreWidget.IsValid())return;
-	bool isShow = true;
-	if (InVisibility == ESlateVisibility::Hidden || InVisibility == ESlateVisibility::Collapsed) {
-		isShow = false;
-	}
-	CefCoreWidget->StopRender(isShow);
+	CefCoreWidget->StopRender(hidden);
 }
 
 void UWebBase::HandleOnUrlChanged(const FText& InText) {
