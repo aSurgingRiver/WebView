@@ -5,86 +5,88 @@
 ===========================================================================*/
 
 #include "UObject/GeneratedCppIncludes.h"
-#include "WebView/Public/UnusualWidget.h"
+#include "../../../../plugin/build/product/WebView_6099_Win64_UE_5.4_20240325/HostProject/Plugins/WebView/Source/WebView/Public/UnusualWidget.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeUnusualWidget() {}
-// Cross Module References
-	UMG_API UClass* Z_Construct_UClass_UWidget();
-	UPackage* Z_Construct_UPackage__Script_WebView();
-	WEBVIEW_API UClass* Z_Construct_UClass_UUnusualWidget();
-	WEBVIEW_API UClass* Z_Construct_UClass_UUnusualWidget_NoRegister();
+
+// Begin Cross Module References
+UMG_API UClass* Z_Construct_UClass_UWidget();
+UPackage* Z_Construct_UPackage__Script_WebView();
+WEBVIEW_API UClass* Z_Construct_UClass_UUnusualWidget();
+WEBVIEW_API UClass* Z_Construct_UClass_UUnusualWidget_NoRegister();
 // End Cross Module References
-	void UUnusualWidget::StaticRegisterNativesUUnusualWidget()
-	{
-	}
-	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(UUnusualWidget);
-	UClass* Z_Construct_UClass_UUnusualWidget_NoRegister()
-	{
-		return UUnusualWidget::StaticClass();
-	}
-	struct Z_Construct_UClass_UUnusualWidget_Statics
-	{
-		static UObject* (*const DependentSingletons[])();
+
+// Begin Class UUnusualWidget
+void UUnusualWidget::StaticRegisterNativesUUnusualWidget()
+{
+}
+IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(UUnusualWidget);
+UClass* Z_Construct_UClass_UUnusualWidget_NoRegister()
+{
+	return UUnusualWidget::StaticClass();
+}
+struct Z_Construct_UClass_UUnusualWidget_Statics
+{
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
-#endif
-		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
-		static const UECodeGen_Private::FClassParams ClassParams;
-	};
-	UObject* (*const Z_Construct_UClass_UUnusualWidget_Statics::DependentSingletons[])() = {
-		(UObject* (*)())Z_Construct_UClass_UWidget,
-		(UObject* (*)())Z_Construct_UPackage__Script_WebView,
-	};
-	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UUnusualWidget_Statics::DependentSingletons) < 16);
-#if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UUnusualWidget_Statics::Class_MetaDataParams[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
 		{ "Comment", "/**\n * \n */" },
 		{ "IncludePath", "UnusualWidget.h" },
 		{ "ModuleRelativePath", "Public/UnusualWidget.h" },
 	};
-#endif
-	const FCppClassTypeInfoStatic Z_Construct_UClass_UUnusualWidget_Statics::StaticCppClassTypeInfo = {
+#endif // WITH_METADATA
+	static UObject* (*const DependentSingletons[])();
+	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UUnusualWidget>::IsAbstract,
 	};
-	const UECodeGen_Private::FClassParams Z_Construct_UClass_UUnusualWidget_Statics::ClassParams = {
-		&UUnusualWidget::StaticClass,
-		nullptr,
-		&StaticCppClassTypeInfo,
-		DependentSingletons,
-		nullptr,
-		nullptr,
-		nullptr,
-		UE_ARRAY_COUNT(DependentSingletons),
-		0,
-		0,
-		0,
-		0x00B000A0u,
-		METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUnusualWidget_Statics::Class_MetaDataParams), Z_Construct_UClass_UUnusualWidget_Statics::Class_MetaDataParams)
-	};
-	UClass* Z_Construct_UClass_UUnusualWidget()
+	static const UECodeGen_Private::FClassParams ClassParams;
+};
+UObject* (*const Z_Construct_UClass_UUnusualWidget_Statics::DependentSingletons[])() = {
+	(UObject* (*)())Z_Construct_UClass_UWidget,
+	(UObject* (*)())Z_Construct_UPackage__Script_WebView,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UUnusualWidget_Statics::DependentSingletons) < 16);
+const UECodeGen_Private::FClassParams Z_Construct_UClass_UUnusualWidget_Statics::ClassParams = {
+	&UUnusualWidget::StaticClass,
+	nullptr,
+	&StaticCppClassTypeInfo,
+	DependentSingletons,
+	nullptr,
+	nullptr,
+	nullptr,
+	UE_ARRAY_COUNT(DependentSingletons),
+	0,
+	0,
+	0,
+	0x00B000A0u,
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUnusualWidget_Statics::Class_MetaDataParams), Z_Construct_UClass_UUnusualWidget_Statics::Class_MetaDataParams)
+};
+UClass* Z_Construct_UClass_UUnusualWidget()
+{
+	if (!Z_Registration_Info_UClass_UUnusualWidget.OuterSingleton)
 	{
-		if (!Z_Registration_Info_UClass_UUnusualWidget.OuterSingleton)
-		{
-			UECodeGen_Private::ConstructUClass(Z_Registration_Info_UClass_UUnusualWidget.OuterSingleton, Z_Construct_UClass_UUnusualWidget_Statics::ClassParams);
-		}
-		return Z_Registration_Info_UClass_UUnusualWidget.OuterSingleton;
+		UECodeGen_Private::ConstructUClass(Z_Registration_Info_UClass_UUnusualWidget.OuterSingleton, Z_Construct_UClass_UUnusualWidget_Statics::ClassParams);
 	}
-	template<> WEBVIEW_API UClass* StaticClass<UUnusualWidget>()
-	{
-		return UUnusualWidget::StaticClass();
-	}
-	UUnusualWidget::UUnusualWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
-	DEFINE_VTABLE_PTR_HELPER_CTOR(UUnusualWidget);
-	UUnusualWidget::~UUnusualWidget() {}
-	struct Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_UnusualWidget_h_Statics
-	{
-		static const FClassRegisterCompiledInInfo ClassInfo[];
+	return Z_Registration_Info_UClass_UUnusualWidget.OuterSingleton;
+}
+template<> WEBVIEW_API UClass* StaticClass<UUnusualWidget>()
+{
+	return UUnusualWidget::StaticClass();
+}
+UUnusualWidget::UUnusualWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
+DEFINE_VTABLE_PTR_HELPER_CTOR(UUnusualWidget);
+UUnusualWidget::~UUnusualWidget() {}
+// End Class UUnusualWidget
+
+// Begin Registration
+struct Z_CompiledInDeferFile_FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_UnusualWidget_h_Statics
+{
+	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
+		{ Z_Construct_UClass_UUnusualWidget, UUnusualWidget::StaticClass, TEXT("UUnusualWidget"), &Z_Registration_Info_UClass_UUnusualWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnusualWidget), 1320490082U) },
 	};
-	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_UnusualWidget_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UUnusualWidget, UUnusualWidget::StaticClass, TEXT("UUnusualWidget"), &Z_Registration_Info_UClass_UUnusualWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnusualWidget), 4062713800U) },
-	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_UnusualWidget_h_3956758160(TEXT("/Script/WebView"),
-		Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_UnusualWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_HostProject_Plugins_WebView_Source_WebView_Public_UnusualWidget_h_Statics::ClassInfo),
-		nullptr, 0,
-		nullptr, 0);
+};
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_UnusualWidget_h_834882115(TEXT("/Script/WebView"),
+	Z_CompiledInDeferFile_FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_UnusualWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_UnusualWidget_h_Statics::ClassInfo),
+	nullptr, 0,
+	nullptr, 0);
+// End Registration
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

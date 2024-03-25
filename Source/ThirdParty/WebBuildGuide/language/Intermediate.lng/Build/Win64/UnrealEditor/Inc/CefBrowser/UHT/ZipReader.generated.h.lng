@@ -14,11 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define CEFBROWSER_ZipReader_generated_h
 
-#define FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_SPARSE_DATA
-#define FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_SPARSE_DATA_PROPERTY_ACCESSORS
-#define FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
-#define FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
- \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execIsValid); \
 	DECLARE_FUNCTION(execReadAllToDir); \
 	DECLARE_FUNCTION(execReadToDir); \
@@ -32,8 +28,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execOpen);
 
 
-#define FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_ACCESSORS
-#define FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_INCLASS_NO_PURE_DECLS \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUZipReader(); \
 	friend struct Z_Construct_UClass_UZipReader_Statics; \
@@ -42,13 +37,13 @@ public: \
 	DECLARE_SERIALIZER(UZipReader)
 
 
-#define FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_ENHANCED_CONSTRUCTORS \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UZipReader(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
-	NO_API UZipReader(UZipReader&&); \
-	NO_API UZipReader(const UZipReader&); \
+	UZipReader(UZipReader&&); \
+	UZipReader(const UZipReader&); \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UZipReader); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UZipReader); \
@@ -56,17 +51,13 @@ public: \
 	NO_API virtual ~UZipReader();
 
 
-#define FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_10_PROLOG
-#define FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_GENERATED_BODY \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_10_PROLOG
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_SPARSE_DATA \
-	FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_SPARSE_DATA_PROPERTY_ACCESSORS \
-	FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS \
-	FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_ACCESSORS \
-	FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_INCLASS_NO_PURE_DECLS \
-	FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_ENHANCED_CONSTRUCTORS \
+	FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_INCLASS_NO_PURE_DECLS \
+	FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h_13_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -74,7 +65,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> CEFBROWSER_API UClass* StaticClass<class UZipReader>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h
+#define CURRENT_FILE_ID FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_CefBrowser_Public_ZipReader_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -19,17 +19,12 @@ enum class WebView_Keyboard_Mode : uint8;
 #endif
 #define WEBVIEW_WebBase_generated_h
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_SPARSE_DATA
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_SPARSE_DATA_PROPERTY_ACCESSORS
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
- \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execReplace); \
 	DECLARE_FUNCTION(execExistAppend);
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_ACCESSORS
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_INCLASS_NO_PURE_DECLS \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUHtmlHeaders(); \
 	friend struct Z_Construct_UClass_UHtmlHeaders_Statics; \
@@ -38,13 +33,13 @@ public: \
 	DECLARE_SERIALIZER(UHtmlHeaders)
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_ENHANCED_CONSTRUCTORS \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UHtmlHeaders(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
-	NO_API UHtmlHeaders(UHtmlHeaders&&); \
-	NO_API UHtmlHeaders(const UHtmlHeaders&); \
+	UHtmlHeaders(UHtmlHeaders&&); \
+	UHtmlHeaders(const UHtmlHeaders&); \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UHtmlHeaders); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UHtmlHeaders); \
@@ -52,64 +47,56 @@ public: \
 	NO_API virtual ~UHtmlHeaders();
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_14_PROLOG
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_GENERATED_BODY \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_14_PROLOG
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_SPARSE_DATA \
-	FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_SPARSE_DATA_PROPERTY_ACCESSORS \
-	FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS \
-	FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_ACCESSORS \
-	FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_INCLASS_NO_PURE_DECLS \
-	FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_ENHANCED_CONSTRUCTORS \
+	FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_INCLASS_NO_PURE_DECLS \
+	FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
 template<> WEBVIEW_API UClass* StaticClass<class UHtmlHeaders>();
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_40_DELEGATE \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_40_DELEGATE \
 static void FOnPreReBuild_DelegateWrapper(const FMulticastScriptDelegate& OnPreReBuild);
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_41_DELEGATE \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_41_DELEGATE \
 static void FOnStateLoad_DelegateWrapper(const FMulticastScriptDelegate& OnStateLoad, int32 state);
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_42_DELEGATE \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_42_DELEGATE \
 static void FOnUrlChanged_DelegateWrapper(const FMulticastScriptDelegate& OnUrlChanged, FText const& Url);
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_43_DELEGATE \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_43_DELEGATE \
 static void FOnJsStr_DelegateWrapper(const FMulticastScriptDelegate& OnJsStr, const FString& Type, const FString& JSON, const FString& FuncName);
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_44_DELEGATE \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_44_DELEGATE \
 static void FOnBeforePopup_DelegateWrapper(const FMulticastScriptDelegate& OnBeforePopup, const FString& Url, const FString& Frame);
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_45_DELEGATE \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_45_DELEGATE \
 static void FOnTextureChanged_DelegateWrapper(const FMulticastScriptDelegate& OnTextureChanged, UTexture2D* OLD, UTexture2D* NEW);
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_46_DELEGATE \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_46_DELEGATE \
 static void FOnDownloadComplete_DelegateWrapper(const FMulticastScriptDelegate& OnDownloadComplete, const FString& Url, const FString& File);
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_47_DELEGATE \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_47_DELEGATE \
 static void FOnWebError_DelegateWrapper(const FMulticastScriptDelegate& OnWebError, const FString& Desc, const FString& Source, const int32 line);
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_70_DELEGATE \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_70_DELEGATE \
 static void FOnBeforeRequest_DelegateWrapper(const FMulticastScriptDelegate& OnBeforeRequest, const FString& URL, int32 ResourceType, UHtmlHeaders* Headers);
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_SPARSE_DATA
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_SPARSE_DATA_PROPERTY_ACCESSORS
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_RPC_WRAPPERS \
- \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_RPC_WRAPPERS \
 	DECLARE_FUNCTION(execStopRender); \
 	DECLARE_FUNCTION(execSetImitateInput); \
 	DECLARE_FUNCTION(execCanGoForward); \
@@ -135,8 +122,7 @@ static void FOnBeforeRequest_DelegateWrapper(const FMulticastScriptDelegate& OnB
 	DECLARE_FUNCTION(execExecuteJavascript);
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_ACCESSORS
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_INCLASS \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_INCLASS \
 private: \
 	static void StaticRegisterNativesUWebBase(); \
 	friend struct Z_Construct_UClass_UWebBase_Statics; \
@@ -145,7 +131,7 @@ public: \
 	DECLARE_SERIALIZER(UWebBase)
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_STANDARD_CONSTRUCTORS \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UWebBase(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_ABSTRACT_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UWebBase) \
@@ -153,23 +139,19 @@ public: \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UWebBase); \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
-	NO_API UWebBase(UWebBase&&); \
-	NO_API UWebBase(const UWebBase&); \
+	UWebBase(UWebBase&&); \
+	UWebBase(const UWebBase&); \
 public: \
 	NO_API virtual ~UWebBase();
 
 
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_34_PROLOG
-#define FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_GENERATED_BODY_LEGACY \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_34_PROLOG
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_SPARSE_DATA \
-	FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_SPARSE_DATA_PROPERTY_ACCESSORS \
-	FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS \
-	FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_RPC_WRAPPERS \
-	FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_ACCESSORS \
-	FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_INCLASS \
-	FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_STANDARD_CONSTRUCTORS \
+	FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_RPC_WRAPPERS \
+	FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_INCLASS \
+	FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h_37_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -177,7 +159,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> WEBVIEW_API UClass* StaticClass<class UWebBase>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h
+#define CURRENT_FILE_ID FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_WebView_Public_WebBase_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

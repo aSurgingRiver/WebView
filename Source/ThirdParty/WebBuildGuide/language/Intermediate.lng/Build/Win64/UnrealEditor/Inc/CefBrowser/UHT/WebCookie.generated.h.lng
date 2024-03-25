@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define CEFBROWSER_WebCookie_generated_h
 
-#define FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_WebCookie_h_16_GENERATED_BODY \
+#define FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_CefBrowser_Public_WebCookie_h_16_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FWebCookie_Statics; \
 	static class UScriptStruct* StaticStruct();
 
@@ -22,7 +22,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 template<> CEFBROWSER_API UScriptStruct* StaticStruct<struct FWebCookie>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_HostProject_Plugins_WebView_Source_CefBrowser_Public_WebCookie_h
+#define CURRENT_FILE_ID FID_plugin_build_product_WebView_6099_Win64_UE_5_4_20240325_HostProject_Plugins_WebView_Source_CefBrowser_Public_WebCookie_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
