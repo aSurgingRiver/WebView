@@ -1,0 +1,84 @@
+<html>
+<head>
+    <script src="jstoue.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: transparent; -webkit-user-select: none;">
+    <p id="fpsMeter">0 FPS</p>
+    <p id="ue4Text">testString</p>
+    <p id="ssStr0">0000</p>
+    <p id="ue4Str">strue4Str</p>
+    <div id="logo"></div>
+    <button id="btn_json">json call </button>
+    <button id="btn_obj">object call </button>
+    <button id="btn_objp">object call param </button>
+    <input id="volumeSlider" type="range" min="0.01" max="1" step="0.01" />
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Java <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Swing</a></li>
+            <li><a href="#">jMeter</a></li>
+            <li><a href="#">EJB</a></li>
+            <li class="divider"></li>
+            <li><a href="#">∑÷¿Îµƒ¡¥Ω”</a></li>
+        </ul>
+    </li>
+</body>
+<script>
+    // response function from ue call
+    ue.interface.jsfunc = function(jsonObject){
+        console.log('jsonObject');
+        alert('popup window');
+        //console.log(JSON.stringify(jsonObject));
+    };
+    ue.interface.multiparams = function(paramStr0,paramStr1){
+    	console.log(paramStr0+'==='+paramStr1);
+    };
+    var total = 0;
+    var response=0;
+
+    var btn_json = document.getElementById('btn_json');
+    btn_json.setAttribute("onclick", "JsonCall()");
+    var btn_obj = document.getElementById('btn_obj');
+    btn_obj.setAttribute("onclick", "ObjCall()");
+    var btn_obj = document.getElementById('btn_objp');
+    btn_obj.setAttribute("onclick", "ObjCallP()");
+  
+  
+// ue.call(key,json,callback,timeout) <==> OnJsEventStr(type,json,callback)
+// usage:
+//      key : string
+//      json: {"a":1}  or [1,2,3,4]
+//      callback : when success in ue,and ue callback to js 
+//                 function(){} or ()=>{}
+//      timeout: The effective time of the callback function, in seconds
+// 
+    function JsonCall() {
+        //var url = 'rtsp://113.201.104.35:9090/dss/monitor/param?cameraid=1000054%247&substream=1' ;
+        //alert('qweqwe');
+
+        //for (var i=0; i<1000; i++){
+        total++;
+        ue.call("videoUrl", { "url": "www.baidu.com", "total": total },
+            function (jsonObject) {
+                //alert(rv);
+                response = response + 1;
+                console.log("succed " + JSON.stringify(jsonObject) + " " + response);
+            }
+        );
+        //}
+    }
+
+    function ObjCall(){
+        ue.GetBrowserWnd();
+    }
+    function ObjCallP() {
+        ue.bpbind.help5("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21")
+    }
+</script>
+
+</html>
