@@ -1,0 +1,39 @@
+{
+  "CanContainContent": true,
+  "Category": "Other",
+  "CreatedBy": "aSurgingRiver",
+  "CreatedByURL": "https://github.com/aSurgingRiver",
+  "Description": "Efficient UE browser uses CEF open source kernel; When the frame rate is 60 per second and the resolution is 4K, a single GPU is rendered, and the UE and browser will not lose frames. 8K frame rate does not decrease under multi GPU binding.",
+  "DocsURL": "https://www.zhihu.com/column/c_1490114276946223104",
+  "EnabledByDefault": false,
+  "EngineVersion": "4.26.0",
+  "FileVersion": 3,
+  "FriendlyName": "WebView",
+  "Installed": true,
+  "MarketplaceURL": "",
+  "Modules": [
+    {
+      "LoadingPhase": "PreDefault",
+      "Name": "CefBase",
+      "Type": "Runtime",
+      "WhitelistPlatforms": [
+        "Win64",
+        "Linux"
+      ]
+    },
+    {
+      "LoadingPhase": "PreDefault",
+      "Name": "WebView",
+      "Type": "Runtime"
+    }
+  ],
+  "Plugins": [
+    {
+      "Enabled": false,
+      "Name": "JsonLibrary"
+    }
+  ],
+  "SupportURL": "https://github.com/aSurgingRiver",
+  "Version": 1,
+  "VersionName": "20240802"
+}
