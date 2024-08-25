@@ -30,12 +30,6 @@ namespace UnrealBuildTool.Rules
         public WebView(ReadOnlyTargetRules Target) : base(Target)
         {
             bool isUsingJson = false;
-            if (isDependPlugin("JsonLibrary"))
-            {// use for JsonLibaray
-                isUsingJson = true;
-                PublicDefinitions.Add("JSON_LIB"); //add custom MICRO
-                PublicDependencyModuleNames.Add("JsonLibrary");
-            }
             string RootPath = ModuleDirectory;
             string subfix = ".template";
             foreach (string filePath in Directory.EnumerateFiles(RootPath, "*"+subfix, SearchOption.AllDirectories))
