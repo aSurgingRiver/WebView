@@ -35,22 +35,6 @@ UWebViewWidget::UWebViewWidget(const FObjectInitializer& ObjectInitializer)
 
 
 bool UWebViewWidget::Asyn(const FString& Name, FString& Data, const FString& Callback) {
-#ifdef JSON_LIB
-	if (OnJsEvent.IsBound()) {
-		if (syncJson) {
-			AsyncTask(ENamedThreads::AnyThread, [OnJsEvent= OnJsEvent, Name, Data, cback=Callback]() {
-				auto jsonObj = FJsonLibraryValue::Parse(Data);
-				AsyncTask(ENamedThreads::GameThread, [OnJsEvent, Name, jsonObj, cback]() {
-					OnJsEvent.Broadcast(Name, jsonObj, cback);
-					});
-				});
-		}
-		else {
-			OnJsEvent.Broadcast(Name, FJsonLibraryValue::Parse(Data), Callback);
-		}
-		return true;
-	}
-#endif
 	if (UWebBase::Asyn(Name, Data, Callback))return true;
 	return false;
 }
@@ -76,14 +60,7 @@ UJLParse::UJLParse(const FObjectInitializer& ObjectInitializer)
 }
 
 void UJLParse::SyncParse(FString json) {
-#ifdef JSON_LIB
-	AsyncTask(ENamedThreads::AnyThread, [json, OnParse= OnParse]() {
-		auto jsonObj = FJsonLibraryValue::Parse(json);
-		AsyncTask(ENamedThreads::GameThread, [jsonObj, OnParse]() {
-			OnParse.Broadcast(jsonObj);
-			});
-		});
-#endif
+
 }
 
 #undef LOCTEXT_NAMESPACE
