@@ -10,7 +10,7 @@
   "FileVersion": 3,
   "FriendlyName": "WebView",
   "Installed": true,
-  "MarketplaceURL": "",
+  "MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/e5ece84a234b4ee0b8aa524cd80c175d",
   "Modules": [
     {
       "LoadingPhase": "PreDefault",
@@ -35,5 +35,5 @@
   ],
   "SupportURL": "https://github.com/aSurgingRiver",
   "Version": 1,
-  "VersionName": "20240802"
+  "VersionName": "20240825"
 }
