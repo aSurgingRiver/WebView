@@ -30,7 +30,6 @@ public class CefBrowser : ModuleRules
         MergeFile(ModuleDirectory);
         string platform_bin = Path.Combine(ModuleDirectory, "Binaries", Target.Platform.ToString(), LibType);
 
-
         if (!Directory.Exists(platform_bin)) Directory.CreateDirectory(platform_bin);
         foreach (string FileName in Directory.EnumerateFiles(platform_bin, "*.lib", SearchOption.TopDirectoryOnly))
         {
