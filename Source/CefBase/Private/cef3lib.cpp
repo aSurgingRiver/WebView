@@ -127,7 +127,13 @@ void CEF3LIB::LoadCEF3Modules()
 	}
 #elif defined CEF_LINUX
 	FString envPath = FPlatformMisc::GetEnvironmentVariable(TEXT("LD_LIBRARY_PATH")) + TEXT(":") + libPath;
+	FString cmd = FString::Printf(TEXT("chmod 775 \"%s/*\""), *libPath);
+	system(TCHAR_TO_UTF8(*cmd));
 	FPlatformMisc::SetEnvironmentVar(TEXT("LD_LIBRARY_PATH"), *envPath);
+
+	FPlatformProcess::PushDllDirectory(*libPath);
+	LoadDllCEF(FPaths::Combine(*libPath, TEXT("libcef.so")));
+	FPlatformProcess::PopDllDirectory(*libPath);
 #endif
 }
 
