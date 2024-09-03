@@ -1,8 +1,5 @@
 ﻿Free license:
 Change the file name to webview.dat and put it in the %AppData% directory
 
-Commercial license:
-Change the file name to webview_dev.dat and put it in the %AppData% directory
-
 %AppData%:
 Enter %AppData% in the folder address bar and automatically jump to C:\Users\[user]\AppData\Roaming
