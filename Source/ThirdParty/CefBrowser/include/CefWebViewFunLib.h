@@ -4,9 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "CefWebCookie.h"
+#include "WebCookie.h"
 //#include "CefZipReader.h"
-#include "CefImitateInput.h"
+#include "ImitateInput.h"
 #include "warp_macro.h"
 
 //namespace webview {
@@ -17,7 +17,7 @@ public:
 	/**
 	* Set web cookie
 	*/
-	static bool SetCookie(const FString& URL, const webview::FWebCookie& Cookie);
+	static bool SetCookie(const FString& URL, const FWebCookie& Cookie);
 	/**
 	* delete web cookie
 	*/

@@ -3,9 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#ifdef WEBVIEW_CUSTOMIZED_CORE
-#include "CefImitateInput.h"
-#endif
 #include "Layout/Visibility.h"
 #include "Input/Reply.h"
 #include "Widgets/DeclarativeSyntaxSupport.h"
@@ -31,7 +28,7 @@ enum class WebView_ImitateInput_Key : uint8
 
 
 USTRUCT(BlueprintType)
-struct WEBVIEW_API FImitateInput //public UObject
+struct BASEBROWSER_API FImitateInput //public UObject
 {
 public:
 	GENERATED_USTRUCT_BODY()
@@ -79,11 +76,3 @@ enum class WebView_Keyboard_Mode: uint8
 	WebView_Keyboard_Mode_Blend = 0 UMETA(DisplayName = "Blend"),
 	WebView_Keyboard_Mode_Both = 2 UMETA(DisplayName = "Both"),
 };
-#ifdef WEBVIEW_CUSTOMIZED_CORE
-namespace webview {
-	cef::WebView_Keyboard_Mode toInner(WebView_Keyboard_Mode);
-	cef::FImitateInput toInner(FImitateInput);
-	cef::WebView_ImitateInput_Key toInner(WebView_ImitateInput_Key);
-	cef::WebView_ImitateInput_Mouse toInner(WebView_ImitateInput_Mouse);
-}
-#endif

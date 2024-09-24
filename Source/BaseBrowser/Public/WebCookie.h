@@ -11,7 +11,7 @@
 #include "WebCookie.generated.h"
 
 USTRUCT(BlueprintType)
-struct WEBVIEW_API FWebCookie
+struct BASEBROWSER_API FWebCookie
 {
 	GENERATED_USTRUCT_BODY()
 	// The cookie name.

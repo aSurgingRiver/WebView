@@ -8,6 +8,8 @@
 #include "Components/WidgetSwitcherSlot.h"
 #include "Containers/Map.h"
 #include "ImitateInput.h"
+#include "MatureJsonValue.h"
+#include "BaseBrowser.h"
 #include "WebBase.generated.h"
 class UWebViewObject;
 
@@ -41,6 +43,7 @@ public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnStateLoad, int, state);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUrlChanged, const FText&, Url);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnJsStr, const FString&, Type,const FString&, JSON, const FString&, FuncName);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnJs, const FString&, Type,const FMatureJsonValue, JSON, const FString&, FuncName);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnBeforePopup, const FString&, Url, const FString&, Frame);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDownloadComplete, const FString&, Url, const FString&, File);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnWebError, const FString&, Desc, const FString&, Source ,const int,line);
@@ -78,6 +81,9 @@ public:
 	// Called with ue.interface.broadcast(name, data) in the browser context.
 	UPROPERTY(BlueprintAssignable, Category = "Web View|Event")
 	FOnJsStr OnJsEventStr;
+	// Called with ue.interface.broadcast(name, data) in the browser context.
+	UPROPERTY(BlueprintAssignable, Category = "Web View|Event")
+	FOnJs OnJsEvent;
 	/** Called when a popup is about to spawn. */
 	UPROPERTY(BlueprintAssignable, Category = "Web View|Event")
 	FOnBeforePopup OnBeforePopup;
@@ -139,15 +145,20 @@ public:
 	/**  Page Zoom Level. The value is consistent with that of chrome */
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Touch Screen"), Category = "Web View|Screen")
 	bool _Touch;
-	UPROPERTY(EditAnywhere, meta = (DisplayName = "Sync Parse Json", UIMin = 0, UIMax = 1), Category = "Web View")
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "Sync Parse Json", UIMin = 0, UIMax = 1), Category = "Web View|Json")
 	bool  syncJson = true;
+
+	UPROPERTY(EditAnywhere, meta = (DisplayName = "json object", UIMin = 0, UIMax = 1), Category = "Web View|Json")
+	bool  json_object = true;
+
 
 
 protected:
 	FString jsWindow;// for javescrit 
-	TSharedPtr<class SCefBrowser> CefWidget; // for slate core widget
-	TSharedPtr<class SProxyWeb> ProxyWidget; // for slate core widget
-	TSharedPtr<class SCompoundWidget> WebWidget; // for slate core widget
+	//TSharedPtr<class SCefBrowser> CefWidget; // for slate core widget
+	//TSharedPtr<class SProxyWeb> ProxyWidget; // for slate core widget
+	//SBaseBrowser* IBrowser;
+	TSharedPtr<class SBaseBrowser> WebWidget; // for slate core widget
 private:
 	UWebViewObject* _ViewObject;// 保存UE4与Js的通信数据
 public:
@@ -197,6 +208,10 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Web View", meta = (AdvancedDisplay = "Data", AutoCreateRefTerm = "Data"))
 	void CallJsonStr(const FString& Function, const FString& Data);
+
+
+	UFUNCTION(BlueprintCallable, Category = "Web View", meta = (AdvancedDisplay = "Data", AutoCreateRefTerm = "Data"))
+	void CallJson(const FString& Function, FMatureJsonValue Json);
 
 	/**
 	 * Call javascript function
@@ -305,11 +320,20 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Web View")
 	void StopRender(bool hidden);
 
+	/**
+	* Set the penetration threshold
+	* @param Threshold : 
+	*		Threshold+Js.A < 255 ,Will be penetrated
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+	void Penetrate(int Threshold);
 public:
 	virtual void BeginDestroy() override;
 	// 
 	virtual bool Asyn(const FString& Name, FString& Data, const FString& Callback);
 	//virtual void TickRenderResource() override;
+	virtual bool Asyn(const FString& Name, FMatureJsonValue& Data, const FString& Callback);
+
 	virtual void ReleaseSlateResources(bool bReleaseChildren);
 protected:
 	virtual TSharedRef<SWidget> RebuildWidget() override;
@@ -320,6 +344,7 @@ protected:
 	void HandleOnPostResponse(const FString& URL,const FString& File);
 	void HandleOnWebError(const FString& Url, const FString& Desc, const FString& Source, const int line);
 	void HandleAsyn(const FString& Name, const FString& Data, const FString& Callback);
+	void HandleAsynJson(const FString& Name, const FMatureJsonValue& Data, const FString& Callback);
 	//typedef class SCefBrowser::TMap<FString, FString> RequestHeaders;
 	bool HandleOnResourceLoad(FString URL, int ResourceType, TMap<FString, FString>& HtmlHeaders);
 };
