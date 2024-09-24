@@ -15,6 +15,7 @@
 #endif
 #include "HAL/FileManager.h"
 #include "Misc/Paths.h"
+#include "CoreWebLog.h"
 #include <string>
 #include <stdlib.h>
 // WEB_CORE_API
@@ -80,7 +81,7 @@ void* CEF3LIB::LoadDllCEF(const FString& Path)
 		int32 ErrorNum = FPlatformMisc::GetLastError();
 		TCHAR ErrorMsg[1024];
 		FPlatformMisc::GetSystemErrorMessage(ErrorMsg, 1024, ErrorNum);
-		UE_LOG(LogTemp, Fatal, TEXT("Failed to get CEF3 DLL handle for %s: %s (%d)"), *Path, ErrorMsg, ErrorNum);
+		UE_LOG(WebViewLog, Fatal, TEXT("Failed to get CEF3 DLL handle for %s: %s (%d)"), *Path, ErrorMsg, ErrorNum);
 	}
 	else {
 		dllHand.push_back(Handle);

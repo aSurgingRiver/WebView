@@ -4,25 +4,17 @@
 #include "HAL/FileManager.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
+#include "WebCookie.h"
 #ifndef USING_WEBBROWSER
 #include "CefWebViewFunLib.h"
-#include "CefImitateInput.h"
-#include "CefWebCookie.h"
+#include "ImitateInput.h"
 #include "CefZipReader.h"
 #endif
 #include "cefcorelib.h"
 
 bool UWebViewFunLib::SetCookie(const FString& URL, const FWebCookie& Cookie) {
 #ifndef USING_WEBBROWSER
-	webview::FWebCookie in;
-	in.Name = Cookie.Name;
-	in.Value = Cookie.Value;
-	in.Domain = Cookie.Domain;
-	in.bSecure = Cookie.bSecure;
-	in.bHttpOnly = Cookie.bHttpOnly;
-	in.bHasExpires = Cookie.bHasExpires;
-	in.Expires = Cookie.Expires;
-	return UWebViewFunLibImp::SetCookie(URL, in);
+	return UWebViewFunLibImp::SetCookie(URL, Cookie);
 #else
 	return false;
 #endif

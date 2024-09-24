@@ -8,152 +8,71 @@
 #include "Widgets/DeclarativeSyntaxSupport.h"
 #include "Widgets/SCompoundWidget.h"
 #include "Framework/SlateDelegates.h"
-#include "CefImitateInput.h"
+#include "ImitateInput.h"
 #include "Styling/SlateTypes.h"
 #include "warp_macro.h"
+#include "BaseBrowser.h"
 
 
 class UWebCoreData;
 
 class CEFBROWSER_DLL SCefBrowser
-	: public SCompoundWidget
+	: public SBaseBrowser
 {
 public:
-	typedef TMap<FString, FString> RequestHeaders;
-	DECLARE_DELEGATE_RetVal_OneParam(bool, FOnKeyUp, const FKeyEvent& );
-	DECLARE_DELEGATE_RetVal_OneParam(bool, FOnKeyDown, const FKeyEvent& );
-	DECLARE_DELEGATE_RetVal_OneParam(bool, FOnKeyChar, const FCharacterEvent& );
-	DECLARE_DELEGATE_OneParam(FOnLoadState, const int);
-	DECLARE_DELEGATE_RetVal_TwoParams(bool, FOnBeforePopup, FString, FString);
-	DECLARE_DELEGATE_TwoParams(FOnPostResponse,const FString&, const FString&);
-	DECLARE_DELEGATE_TwoParams(FOnDownloadComplete, FString, FString);
-	//DECLARE_DELEGATE_TwoParams(FOnTextureChanged, UTexture2D*, UTexture2D*);
-	DECLARE_DELEGATE_RetVal_ThreeParams(bool, FOnResourceLoad, FString, int, RequestHeaders&);
-	DECLARE_DELEGATE_ThreeParams(FOnJsStr, const FString&, const FString&, const FString&);
-	DECLARE_DELEGATE_FourParams(FOnWebError,const FString&, const FString&, const FString&,int);
 
-	SLATE_BEGIN_ARGS(SCefBrowser)
-		: _ViewportSize(FVector2D::ZeroVector)
-		, _SwitchInputMethod(false)
-		, _EnableMouseTransparency(false)
-		, _InitialURL(TEXT(""))
-		, _BackgroundColor(255, 255, 255, 255)
-		, _ShowControls(true)
-		, _ShowAddressBar(false)
-		, _Touch(false)
-		//, _webCursor(false)
-		, _BrowserFrameRate(30)
-	{
-		_Bridge = false;
-		_Visibility = EVisibility::SelfHitTestInvisible;
-	}
-
-		/* this party for event */
-		/** Called before a popup window happens */
-		SLATE_EVENT(FOnBeforePopup, OnBeforePopup)
-		/** Called when post response */
-		SLATE_EVENT(FOnPostResponse, OnPostResponse)
-		/** Called when document loading change. */
-		SLATE_EVENT(FOnLoadState, OnLoadState)
-		/** Called when the Url changes. */
-		SLATE_EVENT(FOnTextChanged, OnUrlChanged)
-		/** Called when the Texture changes. */
-		//SLATE_EVENT(FOnTextureChanged, OnTextureChanged)
-		/** Called when file download finish. */
-		SLATE_EVENT(FOnDownloadComplete, OnDownloadComplete)
-		/** Called when resource download finish before load. */
-		SLATE_EVENT(FOnResourceLoad, OnResourceLoad)
-		/** Called when web has error . */
-		SLATE_EVENT(FOnWebError, OnWebError)
-		/** Called when web has error . */
-		SLATE_EVENT(FOnJsStr, OnJsStr)
-
-		/* this party for params */
-		/** Control and Editor show text style  */
-		SLATE_ARGUMENT(FTextBlockStyle, TextStyle)
-		/** Desired size of the web browser viewport. */
-		SLATE_ARGUMENT(FVector2D, ViewportSize)
-		/** Desired size of the web browser viewport. */
-		//SLATE_ARGUMENT(FImitateInput, ImitateInput)
-		/** Desired size of the web browser viewport. */
-		SLATE_ARGUMENT(bool, SwitchInputMethod)
-		/** allow mouse transcparency webpage */
-		SLATE_ARGUMENT(bool, EnableMouseTransparency)
-		/** URL that the browser will initially navigate to. The URL should include the protocol, eg http:// */
-		SLATE_ARGUMENT(FString, InitialURL)
-		/** Opaque background color used before a document is loaded and when no document color is specified. */
-		SLATE_ARGUMENT(FColor, BackgroundColor)
-		/** Whether to show standard controls like Back, Forward, Reload etc. */
-		SLATE_ARGUMENT(bool, ShowControls)
-		/** Whether to show an address bar. */
-		SLATE_ARGUMENT(bool, RightKeyPopup)
-		/** Whether to show an address bar. */
-		SLATE_ARGUMENT(bool, ShowAddressBar)
-		SLATE_ARGUMENT(bool, Touch)
-		SLATE_ARGUMENT(bool, Bridge)
-		/** Whether to show an Web Cursor . */
-		//SLATE_ARGUMENT(bool, webCursor)
-		/** The frames per second rate that the browser will attempt to use. */
-		SLATE_ARGUMENT(int, BrowserFrameRate)
-		/** fixed pixel. */
-		SLATE_ARGUMENT(FIntPoint, Pixel)
-		/** zoom level*/
-		SLATE_ARGUMENT(float, zoom)
-		/** download show tip */
-		SLATE_ARGUMENT(bool, downloadTip)
-		//SLATE_ARGUMENT(float, zoomlevel)
-	SLATE_END_ARGS()
-
+	BASEBROWSER_PARAMS(SCefBrowser)
 	/**
 		* Load the specified URL.
 		* @param NewURL New URL to load.
 		*/
-	void LoadURL(FString NewURL, FString PostData = FString(), bool need_response=false);
-	void LoadString(FString DummyURL, FString Content);
+	virtual void LoadURL(FString NewURL, FString PostData = FString(), bool need_response=false) override;
+	virtual void LoadString(FString DummyURL, FString Content) override;
 
 	/**
 		* reopen a new render to replace old render.
 		* @param NewURL New URL to load.
 		*        if NewURL is empty,will Assign old URL.
 		*/
-	void ReopenRender(FString NewURL);
+	virtual void ReopenRender(FString NewURL) override;
 
 	/** Get the current title of the web page. */
-	FText GetTitleText() const;
+	virtual FText GetTitleText() const override;
 
 	/** Stop loading the page. */
-	void StopLoad();
+	virtual void StopLoad() override;
 	/** Reload the current page. */
-	void Reload();
+	virtual void Reload() override;
 	/** Reload the current page. */
-	bool Isloaded();
+	virtual bool Isloaded() override;
 	/** Whether the document is currently being loaded. */
-	bool IsLoading() const;
+	virtual bool IsLoading() const override;
 	/** Execute javascript on the current window */
-	void ExecuteJavascript(const FString& ScriptText);
+	virtual void ExecuteJavascript(const FString& ScriptText) override;
 	/** Returns true if the browser can navigate backwards. */
-	bool CanGoBack() const;
+	virtual bool CanGoBack() const override;
 	/** Returns true if the browser can navigate forwards. */
-	bool CanGoForward() const;
+	virtual bool CanGoForward() const override;
 	/** Navigate backwards. */
-	void GoBack();
+	virtual void GoBack()override;
 
-	bool CallJsonStr(const FString& Function, const FString& Data);
+	virtual bool CallJsonStr(const FString& Function, const FString& Data)override;
+	virtual bool CallJson(const FString& Function, const FMatureJsonValue& Data)override;
 
-	void PopupURL(const FString& URL);
+	virtual void PopupURL(const FString& URL)override;
 	/**
 	 * Gets the currently loaded URL.
 	 * @return The URL, or empty string if no document is loaded.
 	 */
-	FString GetUrl() const;
+	virtual FString GetUrl() const override;
 	/** Navigate forwards. */
-	void GoForward();
+	virtual void GoForward()override;
 	/** Set Page Zoom level */
-	void ZoomLevel(float zoomlevel);
+	virtual void ZoomLevel(float zoomlevel)override;
 	/** Set Page pixel */
-	void WebPixel(FIntPoint pixel);
+	virtual void WebPixel(FIntPoint pixel)override;
 	/** show or hide address bar */
-	void ShowAddress(bool isShow);
+	virtual void ShowAddress(bool isShow)override;
 	/**
 	 * Expose a UObject instance to the browser runtime.
 	 * Properties and Functions will be accessible from JavaScript side.
@@ -162,7 +81,7 @@ public:
 	 * @param Object The object instance.
 	 * @param bIsPermanent If true, the object will be visible to all pages loaded through this browser widget, otherwise, it will be deleted when navigating away from the current page. Non-permanent bindings should be registered from inside an OnLoadStarted event handler in order to be available before JS code starts loading.
 	 */
-	void BindUObject(const FString& Name, UObject* Object, bool bIsPermanent = true);
+	virtual void BindUObject(const FString& Name, UObject* Object, bool bIsPermanent = true)override;
 
 	/**
 	 * Remove an existing script binding registered by BindUObject.
@@ -170,19 +89,21 @@ public:
 	 * @param Object The object will only be removed if it is the same object as the one passed in.
 	 * @param bIsPermanent Must match the bIsPermanent argument passed to BindUObject.
 	 */
-	void UnbindUObject(const FString& Name, UObject* Object, bool bIsPermanent = true);
+	virtual void UnbindUObject(const FString& Name, UObject* Object, bool bIsPermanent = true)override;
 	//
-	void StopRender(bool hidden);
+	virtual void StopRender(bool hidden)override;
 	//
-	void ShowDevTools();
+	virtual void ShowDevTools()override;
 	//
-	void KeyboardMode(cef::WebView_Keyboard_Mode);
+	virtual void KeyboardMode(WebView_Keyboard_Mode)override;
 	//
-	void Close();
+	virtual void Close()override;
 	//
-	void Silent(bool onoff=true);
+	virtual void Silent(bool onoff=true)override;
 	//
-	void SetImitateInput(const cef::FImitateInput& ImitateInput);
+	virtual void SetImitateInput(const FImitateInput& ImitateInput)override;
+	// 
+	virtual void PenetrateThreshold(uint8_t value)override;
 public:
 	/** Default constructor. */
 	SCefBrowser();
@@ -194,7 +115,7 @@ public:
 	void Construct(const FArguments& InArgs,const bool isFirst=true);
 private:
 	//
-	virtual void Tick(const FGeometry& AllottedGeometry, const double InCurrentTime, const float InDeltaTime);
+	virtual void Tick(const FGeometry& AllottedGeometry, const double InCurrentTime, const float InDeltaTime) override;
 	virtual void OnDragEnter(const FGeometry& MyGeometry, const FDragDropEvent& DragDropEvent) override;
 	virtual void OnDragLeave(const FDragDropEvent& DragDropEvent) override;
 	virtual FReply OnDragOver(const FGeometry& MyGeometry, const FDragDropEvent& DragDropEvent) override;

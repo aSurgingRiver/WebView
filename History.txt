@@ -1,3 +1,8 @@
+2024/09/23
+1. 增加MatureJson模块快速解析Json格式
+2. 和网页通行增加FMatureJsonValue对象,方便蓝图读取json
+3. 增加Penetrate节点动态调节穿透阈值
+
 
 2024/09/02
 1. 优化打开时不能读取缓存问题。

@@ -2,15 +2,18 @@
 
 using UnrealBuildTool;
 using System.IO;
+//using System.IO.Compression;
 public class CefBase : ModuleRules
 {
 	public CefBase(ReadOnlyTargetRules Target) : base(Target)
 	{
-		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
+
+        PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
         if (Target.Version.MajorVersion < 5) CppStandard = CppStandardVersion.Cpp17;
         string CEFRoot = Path.Combine(ModuleDirectory, "Public");
         PublicSystemIncludePaths.Add(Path.Combine(CEFRoot));
-		PublicIncludePaths.AddRange(
+        //ZipFile.ExtractToDirectory("aa.zip", CEFRoot);
+        PublicIncludePaths.AddRange(
 			new string[] {
 				// ... add public include paths required here ...
 			}
@@ -41,6 +44,7 @@ public class CefBase : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+                "BaseBrowser",
 				"Projects",
 				// ... add private dependencies that you statically link with here ...	
 			}
