@@ -33,34 +33,4 @@ UWebViewWidget::UWebViewWidget(const FObjectInitializer& ObjectInitializer)
 }
 
 
-
-bool UWebViewWidget::Asyn(const FString& Name, FString& Data, const FString& Callback) {
-	if (UWebBase::Asyn(Name, Data, Callback))return true;
-	return false;
-}
-
-/////////////////////////////////////////////////////
-#ifdef JSON_LIB
-void UWebViewWidget::Call(const FString& Function, const FJsonLibraryValue& Data)
-{
-	//if (Json == nullptr)return;
-	CallJsonStr(Function, Data.Stringify());
-}
-
-void UWebViewWidget::ParseAsncHand(const FString& Name, FJsonLibraryValue& Json, const FString& Callback) {
-	OnJsEvent.Broadcast(Name,Json, Callback);
-}
-
-#endif
-
-
-UJLParse::UJLParse(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer)
-{
-}
-
-void UJLParse::SyncParse(FString json) {
-
-}
-
 #undef LOCTEXT_NAMESPACE

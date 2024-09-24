@@ -31,7 +31,7 @@ namespace UnrealBuildTool.Rules
         {
             bool isUsingJson = false;
             string RootPath = ModuleDirectory;
-            string subfix = ".template";
+            string subfix = ".template-del";
             foreach (string filePath in Directory.EnumerateFiles(RootPath, "*"+subfix, SearchOption.AllDirectories))
             {
                 string FileName = Path.GetFileName(filePath);
@@ -70,6 +70,7 @@ namespace UnrealBuildTool.Rules
                     "Serialization",
                     "MediaUtils",
                     "OpenSSL",
+                    "MatureJson",
                     "ImageWrapper"
                 }
             );
@@ -109,6 +110,7 @@ namespace UnrealBuildTool.Rules
                 PrivateIncludePathModuleNames.Add("UnrealEd");
                 PrivateDependencyModuleNames.Add("UnrealEd");
             }
+            PrivateDependencyModuleNames.Add("BaseBrowser");
         }
         bool project_bridge_status()
         {

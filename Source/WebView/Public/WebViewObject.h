@@ -19,8 +19,13 @@ public:
 	void SetUMG(UWebBase* InWidget);
 
 	virtual ~UWebViewObject();
+
+	void SetJsonObject(bool yes);
+	void SetJsonSync(bool yes);
 private:
 	TWeakObjectPtr<UWebBase> UMG;
+	bool using_json_object;
+	bool sync_json;
 };
 
 
