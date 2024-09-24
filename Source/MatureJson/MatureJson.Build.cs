@@ -17,8 +17,10 @@ public class MatureJson : ModuleRules
 
 			int EngineVersion = Target.Version.MajorVersion * 100 + Target.Version.MinorVersion;
 			PublicDefinitions.Add("MATUREJSON_VERSION=" + EngineVersion.ToString());
-		if(EngineVersion<=426) CppStandard = CppStandardVersion.Default;
-		else CppStandard = CppStandardVersion.Latest;
+		if(EngineVersion<=426) CppStandard = CppStandardVersion.Cpp17;
+		else if(EngineVersion <= 501) CppStandard = CppStandardVersion.Cpp17;
+		else CppStandard = CppStandardVersion.Default;
+
 
         PrivateIncludePaths.AddRange(
 			new string[] {
