@@ -82,12 +82,10 @@ public class cefForUe : ModuleRules
         string[] branchs = CEFVersion.Split('.'); 
         string branch ="";
         if (2 <= branchs.Length) branch = branchs[1];
-        Int32 ue_version = Target.Version.MajorVersion*10000+Target.Version.MinorVersion*100+Target.Version.PatchVersion;
         PublicSystemIncludePaths.Add(Path.Combine(CEFRoot));
         PublicDefinitions.Add("CEF3_RENDER=\"" + renderName + "\""); //
         PublicDefinitions.Add("CEF3_VERSION=\"" + CEFVersion + "\""); //
         PublicDefinitions.Add("CEF3_BRANCH=" + branch + ""); //
-        PublicDefinitions.Add("CEF3_UE_ENGINE_VERSION=" + ue_version ); //
         //List<string> Dlls = new List<string>();
         Dlls.Add("icudtl.dat");
         Dlls.Add("snapshot_blob.bin");
@@ -143,8 +141,6 @@ public class cefForUe : ModuleRules
         string branch = "";
         if (2 <= branchs.Length) branch = branchs[1];
 
-        Int32 ue_version = Target.Version.MajorVersion * 10000 + Target.Version.MinorVersion * 100 + Target.Version.PatchVersion;
-        PublicDefinitions.Add("CEF3_UE_ENGINE_VERSION=" + ue_version); //
         PublicDefinitions.Add("CEF3_RENDER=\"cefhelper\""); //
         PublicDefinitions.Add("CEF3_VERSION=\"" + CEFVersion + "\""); //
         PublicDefinitions.Add("CEF3_BRANCH=" + branch + ""); //
@@ -412,5 +408,4 @@ public class cefForUe : ModuleRules
     //    //Console.WriteLine("IsPlatformOptedIn=" + Target.IsPlatformOptedIn);
     //    Console.WriteLine("===================" + Module + " End ===========================");
     //}
-
 }
