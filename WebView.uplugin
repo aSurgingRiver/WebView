@@ -23,17 +23,45 @@
     },
     {
       "LoadingPhase": "PreDefault",
-      "Name": "WebView",
+      "Name": "MatureJson",
+      "PlatformAllowList": [
+        "Win64",
+        "Mac",
+        "IOS",
+        "Android",
+        "Linux",
+        "LinuxArm64"
+      ],
       "Type": "Runtime"
-    }
-  ],
-  "Plugins": [
+    },
     {
-      "Enabled": false,
-      "Name": "JsonLibrary"
+      "LoadingPhase": "PreDefault",
+      "Name": "WebView",
+      "PlatformAllowList": [
+        "Win64",
+        "Mac",
+        "IOS",
+        "Android",
+        "Linux",
+        "LinuxArm64"
+      ],
+      "Type": "Runtime"
+    },
+    {
+      "LoadingPhase": "Default",
+      "Name": "BaseBrowser",
+      "PlatformAllowList": [
+        "Win64",
+        "Mac",
+        "IOS",
+        "Android",
+        "Linux",
+        "LinuxArm64"
+      ],
+      "Type": "Runtime"
     }
   ],
   "SupportURL": "https://github.com/aSurgingRiver",
   "Version": 1,
-  "VersionName": "20240903"
+  "VersionName": "20240924"
 }
