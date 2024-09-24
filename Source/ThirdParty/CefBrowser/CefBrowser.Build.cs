@@ -14,6 +14,7 @@ public class CefBrowser : ModuleRules
         Type = ModuleType.External;
         PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "include"));
         string LibType;
+        string platform_bin;
         if (Target.bBuildEditor == true)
         {
             LibType = "Editor";
@@ -28,8 +29,7 @@ public class CefBrowser : ModuleRules
             return;
         }
         MergeFile(ModuleDirectory);
-        string platform_bin = Path.Combine(ModuleDirectory, "Binaries", Target.Platform.ToString(), LibType);
-
+        platform_bin = Path.Combine(ModuleDirectory, "Binaries", Target.Platform.ToString(), LibType);
         if (!Directory.Exists(platform_bin)) Directory.CreateDirectory(platform_bin);
         foreach (string FileName in Directory.EnumerateFiles(platform_bin, "*.lib", SearchOption.TopDirectoryOnly))
         {
