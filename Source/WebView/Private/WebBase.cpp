@@ -53,10 +53,8 @@ UWebBase::UWebBase(const FObjectInitializer& ObjectInitializer)
 	, ColorBackground(255, 255, 255, 254)
 	, _Pixel(8, 4)
 	, _Zoom(1.0f)
-	//, jsWindow(TEXT("ue"))
 {
-	CefWidget = nullptr;
-	ProxyWidget = nullptr;
+	WebWidget = nullptr;
 	WebWidget = nullptr;
 	_Touch = false;
 	bIsVariable = true;
@@ -69,34 +67,23 @@ UWebBase::UWebBase(const FObjectInitializer& ObjectInitializer)
 	styleText.ColorAndOpacity = FSlateColor(FLinearColor(0.0f, 0.0f, 0.0f));
 	styleText.Font.Size = 20;
 	bIsVariable = true;
+	json_object = false;
 	eKeyboradModeTransparency = WebView_Keyboard_Mode::WebView_Keyboard_Mode_Blend;
 }
 
 void UWebBase::LoadURL(const FString& NewURL,FString PostData, bool need_response)
 {
-#ifdef USING_WEBBROWSER
-	if (ProxyWidget)ProxyWidget->LoadURL(NewURL);
-#else
-	if (CefWidget)CefWidget->LoadURL(NewURL, PostData, need_response);
-#endif
+	if (WebWidget)WebWidget->LoadURL(NewURL, PostData, need_response);
 }
 
 void UWebBase::LoadString(const FString& NewURL, const  FString& Content)
 {
-#ifdef USING_WEBBROWSER
-	if (ProxyWidget)ProxyWidget->LoadString(NewURL, Content);
-#else
-	if (CefWidget)CefWidget->LoadString(NewURL, Content);
-#endif
+	if (WebWidget)WebWidget->LoadString(NewURL, Content);
 }
 
 void UWebBase::ExecuteJavascript(const FString& ScriptText)
 {
-#ifdef USING_WEBBROWSER
-	if (ProxyWidget)ProxyWidget->ExecuteJavascript(ScriptText);
-#else
-	if (CefWidget)CefWidget->ExecuteJavascript(ScriptText);
-#endif
+	if (WebWidget)WebWidget->ExecuteJavascript(ScriptText);
 }
 
 void UWebBase::CallJsonStr(const FString& Function, const FString& Data)
@@ -104,9 +91,7 @@ void UWebBase::CallJsonStr(const FString& Function, const FString& Data)
 	if (Function.IsEmpty())
 		return;
 	FString TextScript;
-#ifndef USING_WEBBROWSER
-	if (!CefWidget || CefWidget->CallJsonStr(Function, Data))return;
-#endif
+	if (!WebWidget || WebWidget->CallJsonStr(Function, Data))return;
 	if (Data.Len() >= 2) {
 		TextScript = FString::Printf(TEXT("%s['%s'](%s)"),
 			*jsWindow, *Function, *Data);
@@ -115,11 +100,25 @@ void UWebBase::CallJsonStr(const FString& Function, const FString& Data)
 		TextScript = FString::Printf(TEXT("%s['%s']()"),
 			*jsWindow, *Function);
 	}
-#ifdef USING_WEBBROWSER
-	if(ProxyWidget)ProxyWidget->ExecuteJavascript(TextScript);
-#else
-	if(CefWidget)CefWidget->ExecuteJavascript(TextScript);
-#endif
+	if(WebWidget)WebWidget->ExecuteJavascript(TextScript);
+}
+
+
+void UWebBase::CallJson(const FString& Function, FMatureJsonValue Data)
+{
+	if (Function.IsEmpty())
+		return;
+	FString TextScript;
+	if (!WebWidget || WebWidget->CallJson(Function, Data))return;
+	if (!Data.IsEmpty()) {
+		TextScript = FString::Printf(TEXT("%s['%s'](%s)"),
+			*jsWindow, *Function, *Data.SaveString());
+	}
+	else {
+		TextScript = FString::Printf(TEXT("%s['%s']()"),
+			*jsWindow, *Function);
+	}
+	if (WebWidget)WebWidget->ExecuteJavascript(TextScript);
 }
 
 void UWebBase::CallParams(const FString& Function, const TArray<FString>& Params) {
@@ -133,82 +132,50 @@ void UWebBase::CallParams(const FString& Function, const TArray<FString>& Params
 	FString TextScript;
 	TextScript = FString::Printf(TEXT("%s['%s'](%s)"),
 		*jsWindow, *Function, *strParam);
-#ifdef USING_WEBBROWSER
-	if (ProxyWidget)ProxyWidget->ExecuteJavascript(TextScript);
-#else
-	if (CefWidget)CefWidget->ExecuteJavascript(TextScript);
-#endif
+	if (WebWidget)WebWidget->ExecuteJavascript(TextScript);
 }
 
 FString UWebBase::GetUrl() const {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->GetUrl();
-#endif
+	if (WebWidget)WebWidget->GetUrl();
 	return FString();
 }
 
 /** Reload the current page. */
 void UWebBase::Reload() {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->Reload();
-#endif
+	if (WebWidget)WebWidget->Reload();
 }
 
 bool UWebBase::Isloaded() {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)return CefWidget->Isloaded();
-#endif
+	if (WebWidget)return WebWidget->Isloaded();
 	return true;
 }
 
 void UWebBase::ZoomLevel(float zoom) const {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->ZoomLevel(zoom);
-#endif
+	if (WebWidget)WebWidget->ZoomLevel(zoom);
 }
 
 void UWebBase::Silent(bool onoff) {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->Silent(onoff);
-#endif
+	if (WebWidget)WebWidget->Silent(onoff);
 }
 
 void UWebBase::WebPixel(FIntPoint pixel) const {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->WebPixel(pixel);
-#endif
+	if (WebWidget)WebWidget->WebPixel(pixel);
 }
 
 void UWebBase::BindUObject(const FString& VarName, UObject* Object, bool bIsPermanent) {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->BindUObject(VarName, Object, bIsPermanent);
-#else 
-	if (ProxyWidget)ProxyWidget->BindUObject(VarName, Object, bIsPermanent);
-#endif
+	if (WebWidget)WebWidget->BindUObject(VarName, Object, bIsPermanent);
 }
 
 void UWebBase::UnbindUObject(const FString& Name, UObject* Object, bool bIsPermanent) {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->UnbindUObject(Name, Object, bIsPermanent);
-#else 
-	if (ProxyWidget)ProxyWidget->UnbindUObject(Name, Object, bIsPermanent);
-#endif
+	if (WebWidget)WebWidget->UnbindUObject(Name, Object, bIsPermanent);
 }
 
 void UWebBase::BeginDestroy() {
-#ifndef USING_WEBBROWSER
-	if (CefWidget) {
-		CefWidget->Close();
-		CefWidget->SetCanTick(false);
-		CefWidget.Reset();
+	if (WebWidget) {
+		WebWidget->Close();
+		WebWidget->SetCanTick(false);
+		WebWidget.Reset();
 	}
-#else 
-	if (ProxyWidget) {
-		ProxyWidget->SetCanTick(false);
-		ProxyWidget.Reset();
-	}
-#endif
-	CefWidget.Reset();
 	Super::BeginDestroy();
 }
 
@@ -224,9 +191,8 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 	}
 	if (OnPreReBuild.IsBound())OnPreReBuild.Broadcast();
 #ifndef USING_WEBBROWSER
-	CefWidget = SNew(SCefBrowser)
+	auto WebWidgetImp = SNew(SCefBrowser)
 		.ShowAddressBar(addressShow)
-		//.InitialURL(urlInitial)
 		.BackgroundColor(ColorBackground)
 		.ShowControls(controlShow)
 		.RightKeyPopup(RightKeyPopup)
@@ -239,6 +205,7 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 		.zoom(_Zoom)
 		.Touch(_Touch)
 		.downloadTip(downloadTip)
+		.using_json_object(json_object)
 		.Visibility(EVisibility::SelfHitTestInvisible)
 		.OnUrlChanged_UObject(this, &UWebBase::HandleOnUrlChanged)
 		.OnBeforePopup_UObject(this, &UWebBase::HandleOnBeforePopup)
@@ -246,14 +213,12 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 		.OnWebError_UObject(this, &UWebBase::HandleOnWebError)
 		.OnResourceLoad_UObject(this, &UWebBase::HandleOnResourceLoad)
 		.OnJsStr_UObject(this, &UWebBase::HandleAsyn)
+		.OnJs_UObject(this, &UWebBase::HandleAsynJson)
 		.OnLoadState_UObject(this, &UWebBase::HandleOnLoadState)
 		.OnDownloadComplete_UObject(this, &UWebBase::HandleOnDownloadTip);
-	CefWidget->KeyboardMode(webview::toInner(eKeyboradModeTransparency));
-	WebWidget = CefWidget;
 #else 
-	ProxyWidget = SNew(SProxyWeb)
+	auto WebWidgetImp = SNew(SProxyWeb)
 		.ShowAddressBar(addressShow)
-		//.InitialURL(urlInitial)
 		.BackgroundColor(ColorBackground)
 		.ShowControls(controlShow)
 		.RightKeyPopup(RightKeyPopup)
@@ -270,18 +235,15 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 		.OnBeforePopup_UObject(this, &UWebBase::HandleOnBeforePopup)
 		.OnLoadState_UObject(this, &UWebBase::HandleOnLoadState)
 		.OnDownloadComplete_UObject(this, &UWebBase::HandleOnDownloadTip);
-	WebWidget = ProxyWidget;
 #endif
+	WebWidget = WebWidgetImp;
 	_ViewObject = NewObject<UWebViewObject>();// 隔离JS和UE4之间的数据。
 	if (_ViewObject) {
+		_ViewObject->SetJsonObject(json_object);
 		_ViewObject->SetUMG(this);
 		BindUObject("$receive", _ViewObject);
 	}
-#ifndef USING_WEBBROWSER
-	CefWidget->LoadURL(urlInitial);
-#else 
-	ProxyWidget->LoadURL(urlInitial);
-#endif
+	WebWidget->LoadURL(urlInitial);
 	return WebWidget.ToSharedRef();
 }
 
@@ -291,10 +253,18 @@ bool UWebBase::Asyn(const FString& Name, FString& Data, const FString& Callback)
 	return true;
 }
 
+bool UWebBase::Asyn(const FString& Name, FMatureJsonValue& json, const FString& Callback) {
+	if (!OnJsEventStr.IsBound())return false;
+	OnJsEvent.Broadcast(Name, json, Callback);
+	return true;
+}
+
 void UWebBase::StopRender(bool hidden) {
-#ifndef USING_WEBBROWSER
-	if(CefWidget)CefWidget->StopRender(hidden);
-#endif
+	if(WebWidget)WebWidget->StopRender(hidden);
+}
+
+void UWebBase::Penetrate(int Threshold) {
+	if (WebWidget)WebWidget->PenetrateThreshold(FMath::Clamp(Threshold,0,255));
 }
 
 void UWebBase::HandleOnUrlChanged(const FText& InText) {
@@ -315,21 +285,15 @@ bool UWebBase::HandleOnBeforePopup(FString URL, FString Frame) {
 }
 
 void UWebBase::ShowAddress(bool show) {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->ShowAddress(show);
-#endif
+	if (WebWidget)WebWidget->ShowAddress(show);
 }
 
 void UWebBase::ReopenRender(FString NewURL) {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->ReopenRender(NewURL);
-#endif
+	if (WebWidget)WebWidget->ReopenRender(NewURL);
 }
 
 void UWebBase::ShowDevTools() {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->ShowDevTools();
-#endif
+	if (WebWidget)WebWidget->ShowDevTools();
 }
 
 void UWebBase::HandleOnDownloadTip(FString URL, FString File) {
@@ -352,6 +316,12 @@ void UWebBase::HandleAsyn(const FString& Name, const FString& Data, const FStrin
 	Asyn(Name, Json, Callback);
 }
 
+void UWebBase::HandleAsynJson(const FString& Name, const FMatureJsonValue& json, const FString& Callback) {
+	//FString Json = Data;
+	FMatureJsonValue bpjson = json;
+	Asyn(Name, bpjson, Callback);
+}
+
 bool UWebBase::HandleOnResourceLoad(FString URL, int ResourceType, TMap<FString, FString>& HtmlHeaders) {
 	if (!OnBeforeRequest.IsBound()) return false;
 	UHtmlHeaders* Headers = NewObject<UHtmlHeaders>(this);
@@ -361,59 +331,34 @@ bool UWebBase::HandleOnResourceLoad(FString URL, int ResourceType, TMap<FString,
 	return true;
 }
 void UWebBase::ReleaseSlateResources(bool bReleaseChildren) {
-
-#ifndef USING_WEBBROWSER
-	if (CefWidget) {
-		CefWidget->StopRender(false);
-		CefWidget->Close();
+	if (WebWidget) {
+		WebWidget->StopRender(false);
+		WebWidget->Close();
 	}
-#endif
-	WebWidget.Reset();
 	if (_ViewObject)_ViewObject = nullptr;
 }
 
 void UWebBase::KeyboardMode(WebView_Keyboard_Mode KeyMode) {
-	eKeyboradModeTransparency = KeyMode;
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->KeyboardMode(webview::toInner(eKeyboradModeTransparency));
-#endif
+	if (WebWidget)WebWidget->KeyboardMode(KeyMode);
 }
 void UWebBase::GoBack() {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->GoBack();
-#else
-	if (ProxyWidget)ProxyWidget->GoBack();
-#endif
+	if (WebWidget)WebWidget->GoBack();
 }
 void UWebBase::GoForward() {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->GoForward();
-#else
-	if (ProxyWidget)ProxyWidget->GoForward();
-#endif
+	if (WebWidget)WebWidget->GoForward();
 }
 bool UWebBase::CanGoBack() {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->CanGoBack();
-#else
-	if (ProxyWidget)ProxyWidget->CanGoBack();
-#endif
+	if (WebWidget)return WebWidget->CanGoBack();
 	return false;
 }
 
 bool UWebBase::CanGoForward() {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->CanGoForward();
-#else
-	if (ProxyWidget)ProxyWidget->CanGoForward();
-#endif
+	if (WebWidget)return WebWidget->CanGoForward();
 	return false;
 }
 
 void UWebBase::SetImitateInput(const FImitateInput& ImitateInput) {
-#ifndef USING_WEBBROWSER
-	if (CefWidget)CefWidget->SetImitateInput(webview::toInner(ImitateInput));
-#endif
+	if (WebWidget)WebWidget->SetImitateInput(ImitateInput);
 }
 
 #undef LOCTEXT_NAMESPACE
