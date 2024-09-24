@@ -21,7 +21,6 @@ public class MatureJson : ModuleRules
 		else if(EngineVersion <= 501) CppStandard = CppStandardVersion.Cpp17;
 		else CppStandard = CppStandardVersion.Default;
 
-
         PrivateIncludePaths.AddRange(
 			new string[] {
 				// ... add other private include paths required here ...
