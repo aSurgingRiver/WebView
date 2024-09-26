@@ -159,6 +159,8 @@ protected:
 	//TSharedPtr<class SProxyWeb> ProxyWidget; // for slate core widget
 	//SBaseBrowser* IBrowser;
 	TSharedPtr<class SBaseBrowser> WebWidget; // for slate core widget
+
+	bool stop_render;
 private:
 	UWebViewObject* _ViewObject;// 保存UE4与Js的通信数据
 public:
