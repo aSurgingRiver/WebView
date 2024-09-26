@@ -74,6 +74,7 @@ namespace UnrealBuildTool.Rules
                     "ImageWrapper"
                 }
             );
+            int EngineVersion = Target.Version.MajorVersion * 100 + Target.Version.MinorVersion;
             if (project_bridge_status())
             {
                 PublicDefinitions.Add("USING_WEBBROWSER=1"); //
@@ -87,7 +88,14 @@ namespace UnrealBuildTool.Rules
                 PrivateDependencyModuleNames.Add("WebBrowser");
                 Console.WriteLine("UnrealTargetPlatform USING_WEBBROWSER ...... ");
             }
-
+            else if( (EngineVersion==501|| EngineVersion==502) && 
+                (!(Target.Configuration == UnrealTargetConfiguration.Development ||
+                    Target.Configuration == UnrealTargetConfiguration.Shipping)))
+            {
+                PublicDefinitions.Add("USING_WEBBROWSER=1"); //
+                PrivateDependencyModuleNames.Add("WebBrowser");
+                Console.WriteLine("UnrealTargetPlatform USING_WEBBROWSER ...... ");
+            }
             else
             {//
                 Console.WriteLine("WEBVIEW_CUSTOMIZED_CORE  ");
