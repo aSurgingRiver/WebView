@@ -131,7 +131,7 @@ EVisibility SProxyWeb::GetViewportVisibility() const {
 	return EVisibility::Visible;
 }
 
-void SProxyWeb::LoadURL(FString NewURL) {
+void SProxyWeb::LoadURL(FString NewURL, FString PostData , bool need_response ) {
 	if (BrowserView.IsValid())
 		BrowserView->LoadURL(dns_to_local(NewURL));
 }
