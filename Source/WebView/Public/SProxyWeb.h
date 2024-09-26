@@ -25,7 +25,7 @@ public:
 		* Load the specified URL.
 		* @param NewURL New URL to load.
 		*/
-	virtual void LoadURL(FString NewURL) override;
+	virtual void LoadURL(FString NewURL, FString PostData = FString(), bool need_response = false) override;
 
 	virtual void LoadString(FString NewURL,FString content) override;
 

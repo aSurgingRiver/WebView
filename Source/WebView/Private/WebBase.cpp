@@ -54,6 +54,7 @@ UWebBase::UWebBase(const FObjectInitializer& ObjectInitializer)
 	, _Pixel(8, 4)
 	, _Zoom(1.0f)
 {
+	stop_render = false;
 	WebWidget = nullptr;
 	WebWidget = nullptr;
 	_Touch = false;
@@ -260,6 +261,7 @@ bool UWebBase::Asyn(const FString& Name, FMatureJsonValue& json, const FString& 
 }
 
 void UWebBase::StopRender(bool hidden) {
+	stop_render = hidden;
 	if(WebWidget)WebWidget->StopRender(hidden);
 }
 
@@ -331,6 +333,7 @@ bool UWebBase::HandleOnResourceLoad(FString URL, int ResourceType, TMap<FString,
 	return true;
 }
 void UWebBase::ReleaseSlateResources(bool bReleaseChildren) {
+	if (stop_render)return;
 	if (WebWidget) {
 		WebWidget->StopRender(false);
 		WebWidget->Close();
