@@ -1,4 +1,4 @@
-// Copyright aSurgingRiver, Inc. All Rights Reserved.
+// Copyright aXiuShen. All Rights Reserved.
 
 #pragma once
 

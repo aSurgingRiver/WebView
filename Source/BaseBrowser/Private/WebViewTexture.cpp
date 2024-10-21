@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright aXiuShen. All Rights Reserved.
 
 #include "WebViewTexture.h"
 

@@ -1,11 +1,11 @@
-// Copyright 2024 Tracer Interactive, LLC. All Rights Reserved.
+// Copyright aXiuShen. All Rights Reserved.
 #pragma once
 #include "CoreMinimal.h"
-#include "json_cast.hpp"
+#include "json_cast.h"
 #include "MatureJsonEnums.h"
 #include "MatureJsonValue.generated.h"
 
-typedef struct FMatureJsonList FMatureJsonList;
+typedef struct FMatureJsonArray FMatureJsonArray;
 typedef struct FMatureJsonObject FMatureJsonObject;
 
 USTRUCT(BlueprintType, meta = (DisplayName = "Mature JSON|Value"))
@@ -42,7 +42,7 @@ public:
 	FMatureJsonValue& SetValue(const FLinearColor& Value);
 	FMatureJsonValue& SetValue(const FMatureJsonValue& Value);
 	FMatureJsonValue& SetValue(const FMatureJsonObject& Value);
-	FMatureJsonValue& SetValue(const FMatureJsonList& Value);
+	FMatureJsonValue& SetValue(const FMatureJsonArray& Value);
 	
 	EMatureJsonTypeNumber NumberType()const;
 	// Get the JSON type of this value.
@@ -74,7 +74,7 @@ public:
 	// Convert this value to a JSON object.
 	FMatureJsonObject ToObject(bool check = false) const;
 	// Convert this value to a JSON array.
-	FMatureJsonList ToList(bool check = false) const;
+	FMatureJsonArray ToArray(bool check = false) const;
 
 	// Convert this value to a 32-bit signed integer.
 	int32 ToInt32() const;
@@ -134,7 +134,7 @@ public:
 	// Check if this value is a COLOR.
 	bool IsColor(FString hex_string) const;
 
-	bool Parse(const FString& Text);
+	bool ParseString(const FString& Text);
 	bool ParseFile(const FString& FileName);
 
 	FString SaveString()const;
@@ -142,6 +142,6 @@ public:
 	FMatureJsonValue& operator=(const FMatureJsonValue& Value);
 
 private:	
-	friend struct FMatureJsonList;
+	friend struct FMatureJsonArray;
 	friend struct FMatureJsonObject;
 };

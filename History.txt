@@ -1,3 +1,13 @@
+
+2024/10/15
+1. 优化MatureJson模块，规范蓝图节点名称
+2. 提取共用代码到BaseBrowser中，为优化Android平台提供铺垫。
+3. 规范WebView模块调用
+4. 增加WebViewTexture2D材质，用于保存网页纹理
+5. 增加OnTexture事件，当网页尺寸变化时触发。
+6. 将OnStateLoad事件中state参数修改为枚举类型。
+7. 优化渲染资源释放。解决极少情况下释放过快，而引发的渲染线程异常。
+
 2024/09/23
 1. 增加MatureJson模块快速解析Json格式
 2. 和网页通行增加FMatureJsonValue对象,方便蓝图读取json

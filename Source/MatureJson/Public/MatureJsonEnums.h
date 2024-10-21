@@ -1,5 +1,8 @@
-// Copyright 2024 Tracer Interactive, LLC. All Rights Reserved.
+// Copyright aXiuShen. All Rights Reserved.
 #pragma once
+
+#include "CoreMinimal.h"
+
 #include "MatureJsonEnums.generated.h"
 
 UENUM(BlueprintType, meta = (DisplayName = "Mature Json|Type"))

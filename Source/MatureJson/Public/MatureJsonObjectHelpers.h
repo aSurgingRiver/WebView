@@ -1,10 +1,10 @@
-// Copyright 2024 Tracer Interactive, LLC. All Rights Reserved.
+// Copyright aXiuShen. All Rights Reserved.
 #pragma once
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "MatureJsonValue.h"
 #include "MatureJsonObject.h"
-#include "MatureJsonList.h"
+#include "MatureJsonArray.h"
 #include "MatureJsonObjectHelpers.generated.h"
 
 UCLASS()
@@ -17,9 +17,9 @@ public:
 		static FMatureJsonValue AddKey(FMatureJsonObject JObject,const FString& key);
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
 		static FMatureJsonValue GetKey(UPARAM(ref) FMatureJsonObject& JObject,const FString& key);
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
 		static int32 Size(UPARAM(ref) FMatureJsonObject& JObject);
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
 		static bool  IsEmpty(UPARAM(ref) FMatureJsonObject& JObject);
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
 		static void  Clear(FMatureJsonObject JObject);
@@ -32,141 +32,151 @@ public:
 
 
 	// convert a map of booleans to object.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-		static FMatureJsonObject FromMapBool(const TMap<FString, bool>& Map);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
+		static FMatureJsonObject FromBooleanMap(const TMap<FString, bool>& Map);
 	// convert a map of floats to object.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-		static FMatureJsonObject FromMapFloat(const TMap<FString, float>& Map);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
+		static FMatureJsonObject FromFloatMap(const TMap<FString, float>& Map);
 	// convert a map of integers to object.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-		static FMatureJsonObject FromMapInt(const TMap<FString, int32>& Map);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
+		static FMatureJsonObject FromIntegerMap(const TMap<FString, int32>& Map);
 	// convert a map of numbers to object.
-	//UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-		static FMatureJsonObject FromMapDouble(const TMap<FString, double>& Map);
+	//UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
+	static FMatureJsonObject FromDoubleMap(const TMap<FString, double>& Map);
 	// convert a map of strings to object.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject FromMapString(const TMap<FString, FString>& Map);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FMatureJsonObject FromStringMap(const TMap<FString, FString>& Map);
 	// convert a map of date/times to object.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject FromMapDateTime(const TMap<FString, FDateTime>& Map);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FMatureJsonObject FromDateTimeMap(const TMap<FString, FDateTime>& Map);
 	// convert a map of GUIDs to object.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject FromMapGuid(const TMap<FString, FGuid>& Map);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FMatureJsonObject FromGuidMap(const TMap<FString, FGuid>& Map);
 	// convert a map of colors to object.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject FromMapColor(const TMap<FString, FColor>& Map);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FMatureJsonObject FromColorMap(const TMap<FString, FColor>& Map);
 	// convert a map of linear colors to object.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject FromMapLinearColor(const TMap<FString, FLinearColor>& Map);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FMatureJsonObject FromLinearColorMap(const TMap<FString, FLinearColor>& Map);
 	// convert a map of rotators to object.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject FromMapRotator(const TMap<FString, FRotator>& Map);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FMatureJsonObject FromRotatorMap(const TMap<FString, FRotator>& Map);
 	// convert a map of transforms to object.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject FromMapTransform(const TMap<FString, FTransform>& Map);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FMatureJsonObject FromTransformMap(const TMap<FString, FTransform>& Map);
 	// convert a map of vectors to object.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject FromMapVector(const TMap<FString, FVector>& Map);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FMatureJsonObject FromVectorMap(const TMap<FString, FVector>& Map);
 	// convert a map of vectors to object.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-		static FMatureJsonObject FromMapValue(const TMap<FString, FMatureJsonValue>& Map);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
+		static FMatureJsonObject FromValueMap(const TMap<FString, FMatureJsonValue>& Map);
 
 	// Merge a JSON object to this object.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-		static FMatureJsonObject MergeObject(FMatureJsonObject JObject, const FMatureJsonObject& inValue);
+		static FMatureJsonObject& MergeObject(FMatureJsonObject& JObject, const FMatureJsonObject& inValue);
 	// 
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
 		static FMatureJsonObject AddMapValue(FMatureJsonObject JObject, const TMap<FString, FMatureJsonValue>& Map);
+
 	// Set a property as a boolean.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-		static FMatureJsonObject AddKeyBool(FMatureJsonObject JObject, const FString& Key, bool Value);
+		static FMatureJsonObject& SetBoolean(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, bool Value);
 	// Set a property as a float.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-		static FMatureJsonObject AddKeyFloat(FMatureJsonObject JObject, const FString& Key, float Value);
+		static FMatureJsonObject& SetFloat(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, float Value);
 	// Set a property as an integer.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-		static FMatureJsonObject AddKeyInt(FMatureJsonObject JObject, const FString& Key, int32 Value);
+		static FMatureJsonObject& SetInteger(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, int32 Value);
 	// Set a property as a number.
 	//UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-		static FMatureJsonObject AddKeyDouble(FMatureJsonObject JObject, const FString& Key, double Value);
+	static FMatureJsonObject& SetDouble(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, double Value);
 	// Set a property as a string.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject AddKeyString(FMatureJsonObject JObject, const FString& Key, const FString& Value);
+		static FMatureJsonObject& SetString(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, const FString& Value);
 	// Set a property as a date/time.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject AddKeyDateTime(FMatureJsonObject JObject, const FString& Key, const FDateTime& Value);
+		static FMatureJsonObject& SetDateTime(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, const FDateTime& Value);
 	// Set a property as a GUID.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject AddKeyGuid(FMatureJsonObject JObject, const FString& Key, const FGuid& Value);
+		static FMatureJsonObject& SetGuid(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, const FGuid& Value);
 	// Set a property as a color.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject AddKeyColor(FMatureJsonObject JObject, const FString& Key, const FColor& Value);
+		static FMatureJsonObject& SetColor(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, const FColor& Value);
 	// Set a property as a linear color.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject AddKeyLinearColor(FMatureJsonObject JObject, const FString& Key, const FLinearColor& Value);
+		static FMatureJsonObject& SetLinearColor(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, const FLinearColor& Value);
 	// Set a property as a rotator.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject AddKeyRotator(FMatureJsonObject JObject, const FString& Key, const FRotator& Value);
+		static FMatureJsonObject& SetRotator(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, const FRotator& Value);
 	// Set a property as a transform.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject AddKeyTransform(FMatureJsonObject JObject, const FString& Key, const FTransform& Value);
+		static FMatureJsonObject& SetTransform(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, const FTransform& Value);
 	// Set a property as a vector.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-		static FMatureJsonObject AddKeyVector(FMatureJsonObject JObject, const FString& Key, const FVector& Value);
+		static FMatureJsonObject& SetVector(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, const FVector& Value);
 	// Set a property as a JSON value.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-		static FMatureJsonObject AddKeyValue(FMatureJsonObject JObject, const FString& Key, const FMatureJsonValue& Value);
+		static FMatureJsonObject& SetValue(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, const FMatureJsonValue& Value);
 	// Set a property as a JSON object.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-		static FMatureJsonObject AddKeyObject(FMatureJsonObject JObject, const FString& Key, const FMatureJsonObject& Value);
+		static FMatureJsonObject& SetObject(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, const FMatureJsonObject& Value);
 	// Set a property as a JSON array.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-		static FMatureJsonObject AddKeyList(FMatureJsonObject JObject, const FString& Key, const FMatureJsonList& Value);
+		static FMatureJsonObject& SetArray(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key, const FMatureJsonArray& Value);
 
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-	static FLinearColor GetLinearColor(UPARAM(ref) FMatureJsonObject& JObject);
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-	static FRotator GetRotator(UPARAM(ref) FMatureJsonObject& JObject);
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-	static FTransform GetTransform(UPARAM(ref) FMatureJsonObject& JObject);
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-	static FVector GetVector(UPARAM(ref) FMatureJsonObject& JObject);
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-	static bool GetKeyBool(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-	static float GetKeyFloat(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-	static int32 GetKeyInt(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
-	static int64 GetKeyInt64(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
-	static uint32 GetKeyUint(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
-	static uint64 GetKeyUint64(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
+		static FMatureJsonObject& SetNull(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+	static FLinearColor ToLinearColor(UPARAM(ref) FMatureJsonObject& JObject);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+	static FRotator ToRotator(UPARAM(ref) FMatureJsonObject& JObject);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+	static FTransform ToTransform(UPARAM(ref) FMatureJsonObject& JObject);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+	static FVector ToVector(UPARAM(ref) FMatureJsonObject& JObject);
+
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
+		static bool GetBoolean(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
+		static float GetFloat(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
+		static int32 GetInt(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	static int64 GetInt64(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	static uint32 GetUint(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	static uint64 GetUint64(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
 	//UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
-	static double GetKeyDouble(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-	static FString GetKeyString(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-	static FGuid GetKeyGuid(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-	static FColor GetKeyColor(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-	static FDateTime GetKeyDateTime(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-	static FLinearColor GetKeyLinearColor(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-	static FRotator GetKeyRotator(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-	static FTransform GetKeyTransform(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object|Engine")
-	static FVector GetKeyVector(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
+	static double GetDouble(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FString GetString(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FGuid GetGuid(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FColor GetColor(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FDateTime GetDateTime(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FLinearColor GetLinearColor(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FRotator GetRotator(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FTransform GetTransform(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object|Engine")
+		static FVector GetVector(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
 	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
-	static FMatureJsonValue GetKeyValue(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
+		static FMatureJsonValue GetValue(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
 	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
-	static FMatureJsonObject GetKeyObject(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
+		static FMatureJsonObject GetObject(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
 	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
-	static FMatureJsonList GetKeyList(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key) ;
+		static FMatureJsonArray GetArray(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
+		static FMatureJsonValue NewValue(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
+		static FMatureJsonObject NewObject(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
+		static FMatureJsonArray NewArray(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
 };
-
-
 
 UCLASS()
 class MATUREJSON_API UMatureJsonObjectIteratorHelpers : public UBlueprintFunctionLibrary
@@ -181,9 +191,9 @@ public:
 		static FMatureJsonObjectIterator End(UPARAM(ref) FMatureJsonObject& JObject);
 
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object Iterator")
-		static void Next( FMatureJsonObjectIterator Iterator,int step=1);
+		static void Next(UPARAM(ref) FMatureJsonObjectIterator& Iterator,int step=1);
 
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object Iterator")
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object Iterator")
 		static bool IsValid(UPARAM(ref) FMatureJsonObjectIterator& Iterator);
 
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object Iterator")
@@ -191,6 +201,5 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object Iterator")
 		static FMatureJsonValue Value(UPARAM(ref) FMatureJsonObjectIterator& Iterator);
-
 
 };

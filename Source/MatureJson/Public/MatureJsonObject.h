@@ -1,4 +1,4 @@
-// Copyright 2024 Tracer Interactive, LLC. All Rights Reserved.
+// Copyright aXiuShen. All Rights Reserved.
 #pragma once
 #include "CoreMinimal.h"
 #include "Serialization/JsonTypes.h"
@@ -8,10 +8,10 @@
 #include "Dom/JsonValue.h"
 #include "UObject/StructOnScope.h"
 #include "MatureJsonValue.h"
-#include "json_cast.hpp"
+#include "json_cast.h"
 #include "MatureJsonObject.generated.h"
 
-typedef struct FMatureJsonList FMatureJsonList;
+typedef struct FMatureJsonArray FMatureJsonArray;
 
 
 USTRUCT(BlueprintType, meta = (DisplayName = "Mature JSON|Object"))
@@ -94,47 +94,47 @@ public:
 	FMatureJsonObject& AddValue(const TMap<FString, FMatureJsonValue>& Map);
 
 	// Set a property as a boolean.
-	FMatureJsonObject& AddValue(const FString& Key, bool Value);
+	FMatureJsonObject& SetValue(const FString& Key, bool Value);
 	// Set a property as a float.
-	FMatureJsonObject& AddValue(const FString& Key, float Value);
+	FMatureJsonObject& SetValue(const FString& Key, float Value);
 	// Set a property as an integer.
-	FMatureJsonObject& AddValue(const FString& Key, int32 Value);
+	FMatureJsonObject& SetValue(const FString& Key, int32 Value);
 	// Set a property as a number.
-	FMatureJsonObject& AddValue(const FString& Key, double Value);
+	FMatureJsonObject& SetValue(const FString& Key, double Value);
 	// Set a property as a string.
-	FMatureJsonObject& AddValue(const FString& Key, const TCHAR* Value);
+	FMatureJsonObject& SetValue(const FString& Key, const TCHAR* Value);
 	// Set a property as a string.
-	FMatureJsonObject& AddValue(const FString& Key, const FString& Value);
+	FMatureJsonObject& SetValue(const FString& Key, const FString& Value);
 	// Set a property as a date/time.
-	FMatureJsonObject& AddValue(const FString& Key, const FDateTime& Value);
+	FMatureJsonObject& SetValue(const FString& Key, const FDateTime& Value);
 	// Set a property as a GUID.
-	FMatureJsonObject& AddValue(const FString& Key, const FGuid& Value);
+	FMatureJsonObject& SetValue(const FString& Key, const FGuid& Value);
 	// Set a property as a color.
-	FMatureJsonObject& AddValue(const FString& Key, const FColor& Value);
+	FMatureJsonObject& SetValue(const FString& Key, const FColor& Value);
 	// Set a property as a linear color.
-	FMatureJsonObject& AddValue(const FString& Key, const FLinearColor& Value);
+	FMatureJsonObject& SetValue(const FString& Key, const FLinearColor& Value);
 	// Set a property as a rotator.
-	FMatureJsonObject& AddValue(const FString& Key, const FRotator& Value);
+	FMatureJsonObject& SetValue(const FString& Key, const FRotator& Value);
 	// Set a property as a transform.
-	FMatureJsonObject& AddValue(const FString& Key, const FTransform& Value);
+	FMatureJsonObject& SetValue(const FString& Key, const FTransform& Value);
 	// Set a property as a vector.
-	FMatureJsonObject& AddValue(const FString& Key, const FVector& Value);
+	FMatureJsonObject& SetValue(const FString& Key, const FVector& Value);
 	// Set a property as a JSON value.
-	FMatureJsonObject& AddValue(const FString& Key, const FMatureJsonValue& Value);
+	FMatureJsonObject& SetValue(const FString& Key, const FMatureJsonValue& Value);
 	// Set a property as a JSON object.
-	FMatureJsonObject& AddValue(const FString& Key, const FMatureJsonObject& Value);
+	FMatureJsonObject& SetValue(const FString& Key, const FMatureJsonObject& Value);
 	// Set a property as a JSON array.
-	FMatureJsonObject& AddValue(const FString& Key, const FMatureJsonList& Value);
+	FMatureJsonObject& SetValue(const FString& Key, const FMatureJsonArray& Value);
 	// Set a property as an array of JSON values.
-	FMatureJsonObject& AddValue(const FString& Key, const TArray<FMatureJsonValue>& Value);
+	FMatureJsonObject& SetValue(const FString& Key, const TArray<FMatureJsonValue>& Value);
 	// Set a property as a map of JSON values.
-	FMatureJsonObject& AddValue(const FString& Key, const TMap<FString, FMatureJsonValue>& Value);
-	// add a property as a list.
-	FMatureJsonList AddList(const FString& Key);
-	// add a property as a object.
-	FMatureJsonObject AddObject(const FString& Key);
+	FMatureJsonObject& SetValue(const FString& Key, const TMap<FString, FMatureJsonValue>& Value);
+	// Set a property as a list.
+	FMatureJsonArray SetArray(const FString& Key);
+	// Set a property as a object.
+	FMatureJsonObject SetObject(const FString& Key);
 	//
-	FMatureJsonValue AddValue(const FString& key);
+	FMatureJsonValue SetValue(const FString& key);
 
 	TArray<FString> GetKeys() const;
 
@@ -159,11 +159,11 @@ public:
 	bool GetValue(const FString& Key, FVector&) const;
 	bool GetValue(const FString& Key, FMatureJsonValue&) const;
 	bool GetValue(const FString& Key, FMatureJsonObject&) const;
-	bool GetValue(const FString& Key, FMatureJsonList&) const;
+	bool GetValue(const FString& Key, FMatureJsonArray&) const;
 
-	FMatureJsonValue  ToValue(const FString& Key) const;
-	FMatureJsonObject ToObject(const FString& Key) const;
-	FMatureJsonList   ToList(const FString& Key) const;
+	FMatureJsonValue  GetValue(const FString& Key) const;
+	FMatureJsonObject GetObject(const FString& Key) const;
+	FMatureJsonArray  GetArray(const FString& Key) const;
 
 	FMatureJsonObject& operator=(const FMatureJsonObject& Value);
 	TSharedPtr<mature::Document> Document();
@@ -192,7 +192,7 @@ protected:
 	inline mature::Allocator& GetAllocator()const;
 
 private:
-	friend struct FMatureJsonList;
+	friend struct FMatureJsonArray;
 	friend struct FMatureJsonValue;
 	friend struct FMatureJsonObjectIterator;
 };

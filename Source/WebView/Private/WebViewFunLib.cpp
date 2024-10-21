@@ -5,7 +5,7 @@
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
 #include "WebCookie.h"
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 #include "CefWebViewFunLib.h"
 #include "ImitateInput.h"
 #include "CefZipReader.h"
@@ -13,7 +13,7 @@
 #include "cefcorelib.h"
 
 bool UWebViewFunLib::SetCookie(const FString& URL, const FWebCookie& Cookie) {
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return UWebViewFunLibImp::SetCookie(URL, Cookie);
 #else
 	return false;
@@ -21,7 +21,7 @@ bool UWebViewFunLib::SetCookie(const FString& URL, const FWebCookie& Cookie) {
 }
 
 bool UWebViewFunLib::DeleteCookies(const FString& URL, const FString& CookieName) {
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return UWebViewFunLibImp::DeleteCookies(URL, CookieName);
 #else
 	return false;
@@ -29,7 +29,7 @@ bool UWebViewFunLib::DeleteCookies(const FString& URL, const FString& CookieName
 }
 
 void UWebViewFunLib::PopupURL(const FString& URL) {
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	UWebViewFunLibImp::PopupURL(URL);
 #else
 	return;
@@ -37,7 +37,7 @@ void UWebViewFunLib::PopupURL(const FString& URL) {
 }
 
 FString UWebViewFunLib::EncodeURL(const FString& URL, const bool use_plus) {
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return UWebViewFunLibImp::EncodeURL(URL, use_plus);
 #else
 	return FString();
@@ -45,7 +45,7 @@ FString UWebViewFunLib::EncodeURL(const FString& URL, const bool use_plus) {
 }
 
 FString UWebViewFunLib::Base64Encode(const FString& data) {
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return UWebViewFunLibImp::Base64Encode(data);
 #else
 	return FString();
@@ -53,7 +53,7 @@ FString UWebViewFunLib::Base64Encode(const FString& data) {
 }
 
 FString UWebViewFunLib::Base64Decode(const FString& base64) {
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return UWebViewFunLibImp::Base64Decode(base64);
 #else
 	return FString();
@@ -61,7 +61,7 @@ FString UWebViewFunLib::Base64Decode(const FString& base64) {
 }
 
 FString UWebViewFunLib::Base64EncodeFile(const FString& file) {
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return UWebViewFunLibImp::Base64EncodeFile(file);
 #else
 	return FString();
@@ -69,7 +69,7 @@ FString UWebViewFunLib::Base64EncodeFile(const FString& file) {
 }
 
 bool UWebViewFunLib::Base64DecodeFile(const FString& base64,const FString& file) {
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return UWebViewFunLibImp::Base64DecodeFile(base64, file);
 #else
 	return false;
@@ -78,7 +78,7 @@ bool UWebViewFunLib::Base64DecodeFile(const FString& base64,const FString& file)
 }
 
 bool UWebViewFunLib::Zip(const FString& Dir, const FString& ZipFile, const bool IncludeHiddenFiles) {
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return UWebViewFunLibImp::Zip(Dir, ZipFile, IncludeHiddenFiles);
 #else
 	return false;
@@ -87,7 +87,7 @@ bool UWebViewFunLib::Zip(const FString& Dir, const FString& ZipFile, const bool 
 
 
 bool UWebViewFunLib::UnZip(const FString& zipFile, const FString& passwd,UZipReader*& Reader) {
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	Reader = NewObject<UZipReader>();
 	return Reader->Open(zipFile, passwd);
 #else
@@ -142,7 +142,7 @@ FImitateInput& UWebViewFunLib::AddKeystroke(FImitateInput& screen, const WebView
 	const uint32* pcode = 0;// key.GetFName();
 	const uint32* pcharacter = 0;
 	int modify = 0 ;
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	modify = UWebViewFunLibImp::KeytoInner(CombinKey);
 #endif
 	FKey inK = key;

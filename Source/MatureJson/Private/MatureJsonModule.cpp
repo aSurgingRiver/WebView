@@ -2,10 +2,10 @@
 
 #include "MatureJsonModule.h"
 #include "MatureJsonLog.h"
-#include "json_cast.hpp"
+#include "json_cast.h"
 #include "MatureJsonValue.h"
 #include "MatureJsonObject.h"
-#include "MatureJsonList.h"
+#include "MatureJsonArray.h"
 
 
 #define LOCTEXT_NAMESPACE "FBaseBrowserModule"
@@ -14,7 +14,7 @@ DEFINE_LOG_CATEGORY(MatureJsonLog);
 
 FString value_to_string (FMatureJsonValue Value) {
 	// 任意 value节点 均可以序列化字符串
-	FString sub_string = Value.ToObject().ToValue(TEXT("小说情侣")).SaveString();
+	FString sub_string = Value.ToObject().GetValue(TEXT("小说情侣")).SaveString();
 	// 跟节点 做序列化
 	FString root_string = Value.SaveString();
 
@@ -32,17 +32,17 @@ FString value_object_loop (FMatureJsonValue Value) {
 	return FString();
 }
 
-void list_encode_example(FMatureJsonList List) {
+void list_encode_example(FMatureJsonArray List) {
 	FMatureJsonObject Object;
 	Object = List.AddObject();
-	Object.AddList(TEXT("省份"))
+	Object.SetArray(TEXT("省份"))
 		.AddValue(TEXT("北京"))
 		.AddValue(TEXT("香港"))
 		.AddValue(TEXT("澳门"))
 		.AddValue(TEXT("台湾省"))
 		.AddValue(TEXT("四川"));
 	FMatureJsonObject Object2 /*= List.AddObject()*/;
-	Object2.AddList(TEXT("艺术家"))
+	Object2.SetArray(TEXT("艺术家"))
 		.AddValue(TEXT("陈道明"))
 		.AddValue(TEXT("成龙"))
 		.AddValue(TEXT("刘德华"))
@@ -56,41 +56,41 @@ FMatureJsonValue object_encode_example() {
 	FMatureJsonObject Object;
 	FMatureJsonObject Object2;
 	FMatureJsonObject Object3;
-	FMatureJsonList List;
+	FMatureJsonArray List;
 	TMap<FString, double> map_doble = { {TEXT("w"),123.0},{TEXT("e"),123.0},{TEXT("r"),123.0} };
 	TMap<FString, FString> map_string = { {TEXT("郭靖"),TEXT("黄蓉")},{TEXT("杨过"),TEXT("小龙女")} };
 	Value.ToObject()
-		.AddValue(TEXT("alpha"), 0.25)
-		.AddValue(TEXT("悟空租车"), TEXT("自驾游"))
-		.AddValue(TEXT("color"), 0x00FFFFFF)
-		.AddValue(TEXT("爱好和平"), true)
-		.AddValue(TEXT("当前时间"), FDateTime::Now());
+		.SetValue(TEXT("alpha"), 0.25)
+		.SetValue(TEXT("悟空租车"), TEXT("自驾游"))
+		.SetValue(TEXT("color"), 0x00FFFFFF)
+		.SetValue(TEXT("爱好和平"), true)
+		.SetValue(TEXT("当前时间"), FDateTime::Now());
 	Object = Value.ToObject()
-		.AddObject(TEXT("对象属性"));
+		.SetObject(TEXT("对象属性"));
 	Object.AddValue(map_doble);
 
 	Object3.AddValue(map_string);
 	Object2 = Value.ToObject()
-		.AddObject(TEXT("小说情侣"))
+		.SetObject(TEXT("小说情侣"))
 		.AddValue(Object3);
 
 
 	list_encode_example(List);
 	Value.ToObject()
-		.AddValue(TEXT("中国"), List);
+		.SetValue(TEXT("中国"), List);
 
 	return Value;
 }
 
 void decode_example(FMatureJsonValue Root) {
 	FMatureJsonObject Object = Root.ToObject();
-	float alpha = Object.ToValue(TEXT("alpha")).ToFloat();
-	int32 color = Object.ToValue(TEXT("color")).ToInt32();
-	FMatureJsonList china = Object.ToList(TEXT("中国"));
-	FString china_str = Object.ToValue(TEXT("中国")).SaveString();
-	FMatureJsonList list_province = china.ToObject(0).ToList(TEXT("省份"));
-	FString province_str = china.ToObject(0).ToValue(TEXT("省份")).SaveString();
-	FString taiwan_province = list_province.ToValue(3).ToString();
+	float alpha = Object.GetValue(TEXT("alpha")).ToFloat();
+	int32 color = Object.GetValue(TEXT("color")).ToInt32();
+	FMatureJsonArray china = Object.GetArray(TEXT("中国"));
+	FString china_str = Object.GetValue(TEXT("中国")).SaveString();
+	FMatureJsonArray list_province = china.GetObject(0).GetArray(TEXT("省份"));
+	FString province_str = china.GetObject(0).GetValue(TEXT("省份")).SaveString();
+	FString taiwan_province = list_province.GetValue(3).ToString();
 	taiwan_province.Append(TEXT(""));
 }
 
