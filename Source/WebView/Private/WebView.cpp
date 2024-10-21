@@ -4,7 +4,7 @@
 #include "Modules/ModuleManager.h"
 #include "Interfaces/IPluginManager.h"
 #include "Materials/Material.h"
-#ifdef WEBVIEW_CUSTOMIZED_CORE
+#ifdef WEBVIEW_CEF
 #include "WebModule.h"
 #include "cef3lib.h"
 #include "cefcorelib.h"
@@ -28,14 +28,14 @@ void FWebViewModule::ShutdownModule()
 	// This function may be called during shutdown to clean up your module.  
 	// For modules that support dynamic reloading,
 	// we call this function before unloading the module.
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	webview::IBrowserInstance::Get().UnLoad();
 #endif
 }
 
 void FWebViewModule::StartupModule()
 {
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	ICEF3LIB::get()->LoadCEF3Modules();
 #if WITH_EDITOR 
 	ICefCoreLIB::get()->Load();

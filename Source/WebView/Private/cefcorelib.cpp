@@ -22,7 +22,7 @@
 // WEB_CORE_API
 
 // WEB_CORE_API
-#ifdef WEBVIEW_CUSTOMIZED_CORE
+#ifdef WEBVIEW_CEF
 class CefCoreLIB : public ICefCoreLIB {
 public:
 	bool can_load();

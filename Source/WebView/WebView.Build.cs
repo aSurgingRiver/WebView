@@ -29,31 +29,9 @@ namespace UnrealBuildTool.Rules
         }
         public WebView(ReadOnlyTargetRules Target) : base(Target)
         {
-            bool isUsingJson = false;
-            string RootPath = ModuleDirectory;
-            string subfix = ".template-del";
-            foreach (string filePath in Directory.EnumerateFiles(RootPath, "*"+subfix, SearchOption.AllDirectories))
-            {
-                string FileName = Path.GetFileName(filePath);
-                string pathDst = filePath.Replace(FileName, FileName.Replace(subfix, ""));
-                string srcContent;
-                srcContent = File.ReadAllText(filePath);
-                if (isUsingJson) {// create new file
-                    srcContent = srcContent.Replace("//@TEMPLATE","");
-                }
-                if (!File.Exists(pathDst)) {// don't exists will write
-                    //FileStream stream=File.Open(pathDst, FileMode.Truncate);
-                    File.WriteAllText(pathDst, srcContent);
-                    continue;
-                }
-                // check content is eq
-                string dstContent = File.ReadAllText(pathDst);
-                if (srcContent.GetHashCode() == dstContent.GetHashCode()) {
-                    continue;
-                }
-                File.WriteAllText(pathDst, srcContent);
-            }
 
+            CheckLicense(Path.GetDirectoryName(Target.ProjectFile.ToString()));
+            gen_template();
             PublicDependencyModuleNames.AddRange(
                 new string[]{
                     "Slate",
@@ -74,23 +52,21 @@ namespace UnrealBuildTool.Rules
                     "ImageWrapper"
                 }
             );
-            if (project_bridge_status())
+            if (false && Target.Platform == UnrealTargetPlatform.Android)
+            {//
+                Console.WriteLine("WEBVIEW_ANDROID ... ");
+                PrivateIncludePathModuleNames.Add("AndroidBrowser");
+            }
+            else if(project_bridge_status())
             {
                 PublicDefinitions.Add("USING_WEBBROWSER=1"); //
                 PrivateDependencyModuleNames.Add("WebBrowser");
                 Console.WriteLine("project_no_load_webview ...... ");
             }
-            else if (!((Target.Platform == UnrealTargetPlatform.Linux ||
-                Target.Platform == UnrealTargetPlatform.Win64)))
-            {
-                PublicDefinitions.Add("USING_WEBBROWSER=1"); //
-                PrivateDependencyModuleNames.Add("WebBrowser");
-                Console.WriteLine("UnrealTargetPlatform USING_WEBBROWSER ...... ");
-            }
-
-            else
+            else if(Target.Platform == UnrealTargetPlatform.Linux ||
+                Target.Platform == UnrealTargetPlatform.Win64)
             {//
-                Console.WriteLine("WEBVIEW_CUSTOMIZED_CORE  ");
+                Console.WriteLine("WEBVIEW_CEF  ");
                 if (Target.Type != TargetType.Server && Target.Platform == UnrealTargetPlatform.Win64)
                 {
                     AddEngineThirdPartyPrivateStaticDependencies(Target, "DX12");
@@ -105,11 +81,18 @@ namespace UnrealBuildTool.Rules
                 PublicDependencyModuleNames.Add("CefBase");
                 PublicDependencyModuleNames.Add("CefBrowser");
             }
+            else 
+            {
+                PublicDefinitions.Add("USING_WEBBROWSER=1"); //
+                PrivateDependencyModuleNames.Add("WebBrowser");
+                Console.WriteLine("UnrealTargetPlatform USING_WEBBROWSER ...... ");
+            }
             if (Target.bBuildEditor == true)
             {
                 PrivateIncludePathModuleNames.Add("UnrealEd");
                 PrivateDependencyModuleNames.Add("UnrealEd");
             }
+            PrivateDependencyModuleNames.Add("MatureJson");
             PrivateDependencyModuleNames.Add("BaseBrowser");
         }
         bool project_bridge_status()
@@ -151,5 +134,86 @@ namespace UnrealBuildTool.Rules
             }
             return hasDep;
         }
+
+        void CheckLicense(string ProjectDir)
+        {
+            string licensePath = Path.Combine(ProjectDir, "Content", "license");
+            if (!Directory.Exists(licensePath))
+            {
+                Directory.CreateDirectory(licensePath);
+            }
+            string GamePath = Path.Combine(ProjectDir, "Config");
+            string GameCfg = Path.Combine(GamePath, "DefaultGame.ini");
+            if (!Directory.Exists(GamePath))
+            {
+                Directory.CreateDirectory(GamePath);
+            }
+            if (!File.Exists(GameCfg))
+            {
+                File.Create(GameCfg);
+            }
+            string content;
+            try { content = File.ReadAllText(GameCfg/*, Encoding.UTF8*/); }
+            catch
+            {//
+                return;
+            }
+            string licenseDst = "+DirectoriesToAlwaysStageAsUFS=(Path=\"license\")";
+            string licenseSrc = "-DirectoriesToAlwaysStageAsUFS=(Path=\"license\")";
+            string licenseNode = "[/Script/UnrealEd.ProjectPackagingSettings]";
+
+            if (content.Contains(licenseNode))
+            {
+                if (content.Contains(licenseDst))
+                {
+                    Console.WriteLine(GameCfg + " has configure!");
+                    return;//
+                }
+                else if (content.Contains(licenseSrc))
+                {
+                    content = content.Replace(licenseSrc, licenseDst + "\n");
+                }
+                else
+                    content = content.Replace(licenseNode, licenseNode + "\n" + licenseDst);
+            }
+            else
+            {
+                content += "\n\n" + licenseNode + "\n" + licenseDst;
+            }
+            File.WriteAllText(GameCfg, content, Encoding.UTF8);
+            Console.WriteLine(GameCfg + " auto configure!");
+        }
+        void gen_template()
+        {
+            bool isUsingJson = false;
+            string RootPath = ModuleDirectory;
+            string subfix = ".template-del";
+            foreach (string filePath in Directory.EnumerateFiles(RootPath, "*" + subfix, SearchOption.AllDirectories))
+            {
+                string FileName = Path.GetFileName(filePath);
+                string pathDst = filePath.Replace(FileName, FileName.Replace(subfix, ""));
+                string srcContent;
+                srcContent = File.ReadAllText(filePath);
+                if (isUsingJson)
+                {// create new file
+                    srcContent = srcContent.Replace("//@TEMPLATE", "");
+                }
+                if (!File.Exists(pathDst))
+                {// don't exists will write
+                    //FileStream stream=File.Open(pathDst, FileMode.Truncate);
+                    File.WriteAllText(pathDst, srcContent);
+                    continue;
+                }
+                // check content is eq
+                string dstContent = File.ReadAllText(pathDst);
+                if (srcContent.GetHashCode() == dstContent.GetHashCode())
+                {
+                    continue;
+                }
+                File.WriteAllText(pathDst, srcContent);
+            }
+
+        }
+
     }
 }

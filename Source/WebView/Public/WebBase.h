@@ -1,4 +1,4 @@
-﻿// Copyright aXiuShen. All Rights Reserved.
+// Copyright aXiuShen. All Rights Reserved.
 
 #pragma once
 
@@ -10,6 +10,8 @@
 #include "ImitateInput.h"
 #include "MatureJsonValue.h"
 #include "BaseBrowser.h"
+#include "WebViewEnum.h"
+#include "Engine/Texture.h"
 #include "WebBase.generated.h"
 class UWebViewObject;
 
@@ -40,8 +42,9 @@ class WEBVIEW_API UWebBase : public UWidget
 
 public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPreReBuild);
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnStateLoad, int, state);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnStateLoad, EWebView_DocumentState, state);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUrlChanged, const FText&, Url);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTexture, UTexture*,texture);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnJsStr, const FString&, Type,const FString&, JSON, const FString&, FuncName);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnJs, const FString&, Type,const FMatureJsonValue, JSON, const FString&, FuncName);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnBeforePopup, const FString&, Url, const FString&, Frame);
@@ -101,6 +104,8 @@ public:
 	FOnWebError OnWebError;
 	UPROPERTY(BlueprintAssignable, Category = "Web View|Event")
 	FOnPostResponse OnPostResponse;
+	UPROPERTY(BlueprintAssignable, Category = "Web View|Event")
+	FOnTexture OnTexture;
 
 	/** this party is blueprint editor params */
 	/** URL that the browser will initially navigate to. The URL should include the protocol, eg http:// */
@@ -329,6 +334,11 @@ public:
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Web View")
 	void Penetrate(int Threshold);
+
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+	void FreshTexture(bool yes);
+
+
 public:
 	virtual void BeginDestroy() override;
 	// 
@@ -339,8 +349,9 @@ public:
 	virtual void ReleaseSlateResources(bool bReleaseChildren);
 protected:
 	virtual TSharedRef<SWidget> RebuildWidget() override;
-	void HandleOnLoadState(const int state);
-	void HandleOnUrlChanged(const FText& Text);
+	void HandleOnLoadState(const EWebView_DocumentState state);
+	void HandleOnUrlChanged(const FString& Text);
+	void HandleOnTexture(UTexture* texture);
 	bool HandleOnBeforePopup(FString URL, FString Frame);
 	void HandleOnDownloadTip(FString URL, FString File);
 	void HandleOnPostResponse(const FString& URL,const FString& File);
