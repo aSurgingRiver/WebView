@@ -1,9 +1,9 @@
-// Copyright 2024 Tracer Interactive, LLC. All Rights Reserved.
+// Copyright aXiuShen. All Rights Reserved.
 #include "MatureJsonValueHelpers.h"
 
-bool UMatureJsonValueHelpers::Parse(FMatureJsonValue& JValue,const FString& Text)
+bool UMatureJsonValueHelpers::ParseString(FMatureJsonValue& JValue,const FString& Text)
 {
-	return JValue.Parse(Text);
+	return JValue.ParseString(Text);
 }
 
 bool UMatureJsonValueHelpers::ParseFile(FMatureJsonValue& JValue, const FString& filepath) {
@@ -78,7 +78,7 @@ FMatureJsonValue UMatureJsonValueHelpers::FromObject(const FMatureJsonObject& Va
 	return FMatureJsonValue().SetValue(Value);
 }
 
-FMatureJsonValue UMatureJsonValueHelpers::FromList(const FMatureJsonList& Value)
+FMatureJsonValue UMatureJsonValueHelpers::FromArray(const FMatureJsonArray& Value)
 {
 	return FMatureJsonValue().SetValue(Value);
 }
@@ -89,7 +89,6 @@ FMatureJsonValue UMatureJsonValueHelpers::FromValue(const FMatureJsonValue& Valu
 
 bool UMatureJsonValueHelpers::ToBoolean(const FMatureJsonValue& JValue)
 {
-	
 	return JValue.ToBoolean();
 }
 
@@ -147,9 +146,9 @@ FMatureJsonObject UMatureJsonValueHelpers::ToObject(const FMatureJsonValue& JVal
 	return JValue.ToObject();
 }
 
-FMatureJsonList UMatureJsonValueHelpers::ToList(const FMatureJsonValue& JValue)
+FMatureJsonArray UMatureJsonValueHelpers::ToArray(const FMatureJsonValue& JValue)
 {
-	return JValue.ToList();
+	return JValue.ToArray();
 }
 
 int UMatureJsonValueHelpers::Size(const FMatureJsonValue& JValue) {
@@ -190,3 +189,51 @@ bool UMatureJsonValueHelpers::IsNull(const FMatureJsonValue& JValue) {
 bool UMatureJsonValueHelpers::IsBool(const FMatureJsonValue& JValue) {
 	return JValue.GetType() == EMatureJsonType::Bool;
 }
+
+FMatureJsonValue& UMatureJsonValueHelpers::SetNull(FMatureJsonValue& JValue) {
+	return JValue.SetValue();
+}
+FMatureJsonValue& UMatureJsonValueHelpers::SetBoolean(FMatureJsonValue& JValue, bool Value) {
+	return JValue.SetValue(Value);
+}
+FMatureJsonValue& UMatureJsonValueHelpers::SetFloat(FMatureJsonValue& JValue, float Value) {
+	return JValue.SetValue(Value);
+}
+FMatureJsonValue& UMatureJsonValueHelpers::SetInteger(FMatureJsonValue& JValue, int32 Value) {
+	return JValue.SetValue(Value);
+}
+FMatureJsonValue& UMatureJsonValueHelpers::SetString(FMatureJsonValue& JValue, const FString& Value) {
+	return JValue.SetValue(Value);
+}
+FMatureJsonValue& UMatureJsonValueHelpers::SetDateTime(FMatureJsonValue& JValue, const FDateTime& Value) {
+	return JValue.SetValue(Value);
+}
+FMatureJsonValue& UMatureJsonValueHelpers::SetGuid(FMatureJsonValue& JValue, const FGuid& Value) {
+	return JValue.SetValue(Value);
+}
+FMatureJsonValue& UMatureJsonValueHelpers::SetColor(FMatureJsonValue& JValue, const FColor& Value) {
+	return JValue.SetValue(Value);
+}
+FMatureJsonValue& UMatureJsonValueHelpers::SetLinearColor(FMatureJsonValue& JValue, const FLinearColor& Value) {
+	return JValue.SetValue(Value);
+}
+FMatureJsonValue& UMatureJsonValueHelpers::SetRotator(FMatureJsonValue& JValue, const FRotator& Value) {
+	return JValue.SetValue(Value);
+}
+FMatureJsonValue& UMatureJsonValueHelpers::SetTransform(FMatureJsonValue& JValue, const FTransform& Value) {
+	return JValue.SetValue(Value);
+}
+FMatureJsonValue& UMatureJsonValueHelpers::SetVector(FMatureJsonValue& JValue, const FVector& Value) {
+	return JValue.SetValue(Value);
+}
+FMatureJsonValue& UMatureJsonValueHelpers::SetObject(FMatureJsonValue& JValue, const FMatureJsonObject& Value) {
+	return JValue.SetValue(Value);
+}
+FMatureJsonValue& UMatureJsonValueHelpers::SetArray(FMatureJsonValue& JValue, const FMatureJsonArray& Value) {
+	return JValue.SetValue(Value);
+}
+FMatureJsonValue& UMatureJsonValueHelpers::SetValue(FMatureJsonValue& JValue, const FMatureJsonValue& Value) {
+	return JValue.SetValue(Value);
+}
+
+

@@ -4,12 +4,12 @@
 #include "HAL/FileManager.h"
 #include "Misc/Paths.h"
 #include "Misc/FileHelper.h"
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 #include "CefZipReader.h"
 #endif
 #include "cefcorelib.h"
 bool UZipReader::Open(const FString& zipFile, const FString& passwd) {
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	zipFilePtr = MakeShared<UZipReaderImp>();
 	return zipFilePtr->Open(zipFile, passwd);
 #else
@@ -18,7 +18,7 @@ bool UZipReader::Open(const FString& zipFile, const FString& passwd) {
 }
 
 bool UZipReader::IsValid() {
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	if (!zipFilePtr.IsValid())
 		return zipFilePtr->IsValid();
 #endif
@@ -27,7 +27,7 @@ bool UZipReader::IsValid() {
 
 bool UZipReader::MoveToFirstFile() {
 	if (!IsValid())return false;
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return zipFilePtr->MoveToFirstFile();
 #else
 	return false;
@@ -36,7 +36,7 @@ bool UZipReader::MoveToFirstFile() {
 
 bool UZipReader::MoveToNextFile() {
 	if (!IsValid())return false;
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return zipFilePtr->MoveToNextFile();
 #else
 	return false;
@@ -45,7 +45,7 @@ bool UZipReader::MoveToNextFile() {
 
 TArray<FString> UZipReader::GetAllFileNames() {
 	if (!IsValid())return TArray<FString>();
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return zipFilePtr->GetAllFileNames();
 #else
 	return TArray<FString>();
@@ -55,7 +55,7 @@ TArray<FString> UZipReader::GetAllFileNames() {
 
 bool UZipReader::MoveToFile(const FString& _fileName, bool caseSensitive) {
 	if (!IsValid())return false;
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return zipFilePtr->MoveToFile(_fileName, caseSensitive);
 #else
 	return false;
@@ -64,7 +64,7 @@ bool UZipReader::MoveToFile(const FString& _fileName, bool caseSensitive) {
 
 FString UZipReader::GetFileName() {
 	if (!IsValid())return FString();
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return zipFilePtr->GetFileName();
 #else
 	return FString();
@@ -73,7 +73,7 @@ FString UZipReader::GetFileName() {
 
 int32 UZipReader::GetFileSize() {
 	if (!IsValid())return 0;
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return zipFilePtr->GetFileSize();
 #else
 	return 0;
@@ -82,7 +82,7 @@ int32 UZipReader::GetFileSize() {
 
 bool UZipReader::ReadToString(FString& data) {
 	if (!IsValid())return false;
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return zipFilePtr->ReadToString(data);
 #else
 	return false;
@@ -91,7 +91,7 @@ bool UZipReader::ReadToString(FString& data) {
 
 bool UZipReader::ReadToDir(const FString& Dir) {
 	if (!IsValid())return false;
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return zipFilePtr->ReadToDir(Dir);
 #else
 	return false;
@@ -101,7 +101,7 @@ bool UZipReader::ReadToDir(const FString& Dir) {
 
 bool UZipReader::ReadAllToDir(const FString& Dir) {
 	if (!IsValid())return false;
-#ifndef USING_WEBBROWSER
+#ifdef WEBVIEW_CEF
 	return zipFilePtr->ReadAllToDir(Dir);
 #else
 	return false;

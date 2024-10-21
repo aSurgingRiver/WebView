@@ -1,5 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
-
+// Copyright aXiuShen. All Rights Reserved.
 #include "WebViewTextureResource.h"
 
 #include "DeviceProfiles/DeviceProfile.h"
@@ -248,7 +247,12 @@ void FWebViewTextureResource::ClearTexture(const FLinearColor& ClearColor)
 void FWebViewTextureResource::CopySample(const TSharedPtr<FWebViewTextureSample, ESPMode::ThreadSafe>& Sample, const FLinearColor& ClearColor)
 {
 	FRHITexture* SampleTexture = Sample->GetTexture();
+#if WEBVIEW_ENGINE_VERSION >= 50500
+	FRHITexture* SampleTexture2D = (SampleTexture != nullptr) ? SampleTexture->GetTexture2D() : nullptr;
+#else
 	FRHITexture2D* SampleTexture2D = (SampleTexture != nullptr) ? SampleTexture->GetTexture2D() : nullptr;
+#endif
+	
 	// If the sample already provides a texture resource, we simply use that
 	// as the output render target. If the sample only provides raw data, then
 	// we create our own output render target and copy the data into it.
@@ -350,8 +354,11 @@ void FWebViewTextureResource::UpdateResourceSize()
 	OwnerSize = ResourceSize;
 }
 
-
+#if WEBVIEW_ENGINE_VERSION>=50500
+void FWebViewTextureResource::UpdateTextureReference(FRHITexture* NewTexture)
+#else
 void FWebViewTextureResource::UpdateTextureReference(FRHITexture2D* NewTexture)
+#endif
 {
 	TextureRHI = NewTexture;
 	RenderTargetTextureRHI = NewTexture;
