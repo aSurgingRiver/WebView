@@ -14,8 +14,7 @@ public class MatureJson : ModuleRules
 				// ... add public include paths required here ...
 			}
 			);
-
-			int EngineVersion = Target.Version.MajorVersion * 100 + Target.Version.MinorVersion;
+		int EngineVersion = Target.Version.MajorVersion * 100 + Target.Version.MinorVersion;
 			PublicDefinitions.Add("MATUREJSON_VERSION=" + EngineVersion.ToString());
 		if(EngineVersion<=426) CppStandard = CppStandardVersion.Cpp17;
 		else if(EngineVersion <= 501) CppStandard = CppStandardVersion.Cpp17;

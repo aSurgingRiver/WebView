@@ -2,6 +2,7 @@
 #pragma once
 #include <vector>
 
+#ifdef WEBVIEW_CEF
 class  ICefCoreLIB {
 public:
 	static ICefCoreLIB* get();
@@ -9,5 +10,6 @@ public:
 	virtual void Load() = 0;
 	virtual void Unload() = 0;
 };
+#endif
 
 

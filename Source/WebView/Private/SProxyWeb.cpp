@@ -38,30 +38,14 @@
 #define LOCTEXT_NAMESPACE "ProxyWeb"
 
 SProxyWeb::SProxyWeb()
-	: local_dns(TEXT("local:/"))
 {
 	SetCanTick(true);
 	bMouseTransparency = false;
 	TransparencyThreadshold = 255;
-	GConfig->GetString(TEXT("WebView"), TEXT("local_domain"), local_domain, GGameIni);
-	if (!local_domain.IsEmpty()) {
-		FString con = FPaths::ConvertRelativePathToFull(FPaths::ProjectContentDir());
-		local_domain = FPaths::Combine(*con,*local_domain);
-	}
 }
 
 SProxyWeb::~SProxyWeb() {
 	
-}
-
-FString SProxyWeb::dns_to_local(FString url)const {
-	if (local_domain.IsEmpty()||!url.StartsWith(local_dns)) return url;
-	return url.Replace(*local_dns, *local_domain);
-}
-
-FString SProxyWeb::local_to_dns(FString url) const {
-	if (local_domain.IsEmpty() || !url.StartsWith(local_domain)) return url;
-	return url.Replace(*local_domain, *local_dns);
 }
 
 void SProxyWeb::Construct(const FArguments& InArgs){
@@ -72,14 +56,14 @@ void SProxyWeb::Construct(const FArguments& InArgs){
 		Settings.BrowserFrameRate = FMath::Clamp(InArgs._BrowserFrameRate, 30, 60);
 		Settings.bUseTransparency = InArgs._EnableMouseTransparency;
 		Settings.BackgroundColor = InArgs._BackgroundColor;
-		Settings.InitialURL = dns_to_local(InArgs._InitialURL);
+		Settings.InitialURL = (InArgs._InitialURL);
 		Settings.ContentsToLoad = FString(TEXT(""));
 		Settings.bShowErrorMessage = false;
 		Settings.bThumbMouseButtonNavigation = false;
 		Singleton->SetDevToolsShortcutEnabled(Settings.bShowErrorMessage);
 		BrowserWindow = Singleton->CreateBrowserWindow(Settings);
 	}
-#ifdef WEBVIEW_CUSTOMIZED_CORE
+#ifdef WEBVIEW_CEF
 	FString show_tips = TEXT("If you see this prompt, it is caused by the following reasons: \n\n"
 		"1. The plug - in is installed in the engine directory, such as : Engine\\Plugins\\Marketplace. \n"
 		"   Solution: Please move the plug - in to the project local plug - in directory \n\n"
@@ -102,16 +86,19 @@ void SProxyWeb::Construct(const FArguments& InArgs){
 		.HAlign(HAlign_Fill).VAlign(VAlign_Fill)
 		[
 			SAssignNew(BrowserView, SWebBrowserView, BrowserWindow)
-			.InitialURL(dns_to_local(InArgs._InitialURL))
+			.InitialURL((InArgs._InitialURL))
 			.ShowErrorMessage(false)
 			.SupportsTransparency(true)
 			.SupportsThumbMouseButtonNavigation(false)
 			.BackgroundColor(InArgs._BackgroundColor)
 			.ViewportSize(InArgs._ViewportSize)
-			.OnUrlChanged(InArgs._OnUrlChanged)
+			.OnUrlChanged_Lambda([OnUrlChanged=InArgs._OnUrlChanged](const FText& url) {
+		OnUrlChanged.ExecuteIfBound(url.ToString());
+				}
+			)
 			.OnBeforePopup(InArgs._OnBeforePopup)
 		]
-#ifdef WEBVIEW_CUSTOMIZED_CORE
+#ifdef WEBVIEW_CEF
 		+ SOverlay::Slot()
 			.HAlign(HAlign_Center).VAlign(VAlign_Center)
 			[
@@ -133,15 +120,15 @@ EVisibility SProxyWeb::GetViewportVisibility() const {
 
 void SProxyWeb::LoadURL(FString NewURL, FString PostData , bool need_response ) {
 	if (BrowserView.IsValid())
-		BrowserView->LoadURL(dns_to_local(NewURL));
+		BrowserView->LoadURL((NewURL));
 }
 void SProxyWeb::LoadString(FString NewURL, FString content) {
 	if (BrowserView.IsValid())
-		BrowserView->LoadString(content, dns_to_local(NewURL));
+		BrowserView->LoadString(content, (NewURL));
 }
 
 void SProxyWeb::ReopenRender(FString NewURL) {
-	LoadURL(dns_to_local(NewURL));//don`t support open new render. use loadurl impl
+	LoadURL((NewURL));//don`t support open new render. use loadurl impl
 }
 
 void SProxyWeb::Reload() {
@@ -163,7 +150,7 @@ FText SProxyWeb::GetTitleText() const {
 FString SProxyWeb::GetUrl() const
 {
 	if (BrowserView.IsValid())
-		return local_to_dns(BrowserView->GetUrl());
+		return (BrowserView->GetUrl());
 	return FString();
 }
 
@@ -280,11 +267,17 @@ bool SProxyWeb::ReadTexturePixel(FVector2D& LocalUV, FColor& MousePixel) {
 		MousePixel = FColor::Transparent;
 		return false;
 	}
-
-	FTexture2DRHIRef TextureRHI;
-	TextureRHI = ((TSlateTexture<FTexture2DRHIRef>*)Resource)->GetTypedResource();
+#if WEBVIEW_ENGINE_VERSION >= 50500
+	FTextureRHIRef TextureRHI = ((TSlateTexture<FTextureRHIRef>*)Resource)->GetTypedResource();
+#else
+	FTexture2DRHIRef TextureRHI = ((TSlateTexture<FTexture2DRHIRef>*)Resource)->GetTypedResource();
+#endif
 	struct FReadSurfaceContext {
+#if WEBVIEW_ENGINE_VERSION >= 50500
+		FTextureRHIRef Texture;
+#else
 		FTexture2DRHIRef Texture;
+#endif
 		TArray<FColor>* OutData;
 		FIntRect Rect;
 		FReadSurfaceDataFlags Flags;

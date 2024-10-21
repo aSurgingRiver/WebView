@@ -16,12 +16,10 @@
 
 class UWebViewTexture;
 
-//WEBBROWSERTEXTURE_API DECLARE_LOG_CATEGORY_EXTERN(LogWebViewTexture, Log, All);
-
 /**
  * Texture resource type for webbrowser textures.
  */
-class FWebViewTextureResource
+class BASEBROWSER_API FWebViewTextureResource
 	: public FRenderTarget
 	, public FTextureResource
 {
@@ -111,8 +109,11 @@ protected:
 	 *
 	 * @param NewTexture The texture to set.
 	 */
+#if WEBVIEW_ENGINE_VERSION>=50500
+	void UpdateTextureReference(FRHITexture* NewTexture);
+#else
 	void UpdateTextureReference(FRHITexture2D* NewTexture);
-
+#endif
 private:
 
 	/** Whether the texture has been cleared. */
