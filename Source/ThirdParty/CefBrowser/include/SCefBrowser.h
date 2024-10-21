@@ -10,8 +10,9 @@
 #include "Framework/SlateDelegates.h"
 #include "ImitateInput.h"
 #include "Styling/SlateTypes.h"
-#include "warp_macro.h"
+#include "cef_export_macro.h"
 #include "BaseBrowser.h"
+//#include "SWebViewImage.h"
 
 
 class UWebCoreData;
@@ -104,6 +105,8 @@ public:
 	virtual void SetImitateInput(const FImitateInput& ImitateInput)override;
 	// 
 	virtual void PenetrateThreshold(uint8_t value)override;
+	//
+	virtual void FreshTexture(bool yes) override;
 public:
 	/** Default constructor. */
 	SCefBrowser();
@@ -120,6 +123,7 @@ private:
 	virtual void OnDragLeave(const FDragDropEvent& DragDropEvent) override;
 	virtual FReply OnDragOver(const FGeometry& MyGeometry, const FDragDropEvent& DragDropEvent) override;
 	virtual FReply OnDrop(const FGeometry& MyGeometry, const FDragDropEvent& DragDropEvent)override;
+	void HandleOnTexture(UTexture* texture);
 private:
 	TSharedPtr<UWebCoreData> _WebCoreData;
 };

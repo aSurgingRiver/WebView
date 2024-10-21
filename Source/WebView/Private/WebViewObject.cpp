@@ -15,7 +15,7 @@ void UWebViewObject::Asyn(const FString& Name, FString& Data, const FString& Cal
 	}
 	/*if (sync_json)*/ {
 		FMatureJsonValue json;
-		json.Parse(Data);
+		json.ParseString(Data);
 		UMG->Asyn(Name, json, Callback);
 		return;
 	}

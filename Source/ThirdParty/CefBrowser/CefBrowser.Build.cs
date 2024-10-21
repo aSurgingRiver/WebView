@@ -31,20 +31,20 @@ public class CefBrowser : ModuleRules
         MergeFile(ModuleDirectory);
         platform_bin = Path.Combine(ModuleDirectory, "Binaries", Target.Platform.ToString(), LibType);
         if (!Directory.Exists(platform_bin)) Directory.CreateDirectory(platform_bin);
-        foreach (string FileName in Directory.EnumerateFiles(platform_bin, "*.lib", SearchOption.TopDirectoryOnly))
+        foreach (string FileName in Directory.EnumerateFiles(platform_bin, "*.lib", SearchOption.AllDirectories))
         {
             PublicAdditionalLibraries.Add(FileName);
         }
-        foreach (string FileName in Directory.EnumerateFiles(platform_bin, "*.dll", SearchOption.TopDirectoryOnly))
+        foreach (string FileName in Directory.EnumerateFiles(platform_bin, "*.dll", SearchOption.AllDirectories))
         {
             PublicDelayLoadDLLs.Add(System.IO.Path.GetFileName(FileName));
             RuntimeDependencies.Add(FileName);
         }
-        foreach (string FileName in Directory.EnumerateFiles(platform_bin, "*.so", SearchOption.TopDirectoryOnly))
+        foreach (string FileName in Directory.EnumerateFiles(platform_bin, "*.so", SearchOption.AllDirectories))
         {
             PublicAdditionalLibraries.Add(FileName);
         }
-        foreach (string FileName in Directory.EnumerateFiles(platform_bin, "*.a", SearchOption.TopDirectoryOnly))
+        foreach (string FileName in Directory.EnumerateFiles(platform_bin, "*.a", SearchOption.AllDirectories))
         {
             PublicAdditionalLibraries.Add(FileName);
         }

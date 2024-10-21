@@ -1,5 +1,5 @@
-
-#include "json_cast.hpp"
+// Copyright aXiuShen. All Rights Reserved.
+#include "json_cast.h"
 #include <iostream>
 #include <string>
 

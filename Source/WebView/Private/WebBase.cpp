@@ -20,10 +20,11 @@
 #endif
 #include "cefcorelib.h"
 
-#ifdef WEBVIEW_CUSTOMIZED_CORE
+#if defined WEBVIEW_CEF
 #include "SCefBrowser.h"
-#endif
-#ifdef USING_WEBBROWSER
+#elif defined WEBVIEW_ANDROID
+#include "SAndroidWeb.h"
+#else
 #include "SProxyWeb.h"
 #endif
 
@@ -191,8 +192,16 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 			];
 	}
 	if (OnPreReBuild.IsBound())OnPreReBuild.Broadcast();
-#ifndef USING_WEBBROWSER
-	auto WebWidgetImp = SNew(SCefBrowser)
+#if defined WEBVIEW_CEF
+	using SBrowserImp = SCefBrowser;
+#elif defined WEBVIEW_ANDROID
+	using SBrowserImp = SAndroidWeb;
+#else
+	using SBrowserImp = SProxyWeb;
+#endif
+
+//#ifdef WEBVIEW_CEF
+	auto WebWidgetImp = SNew(SBrowserImp)
 		.ShowAddressBar(addressShow)
 		.BackgroundColor(ColorBackground)
 		.ShowControls(controlShow)
@@ -216,27 +225,28 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 		.OnJsStr_UObject(this, &UWebBase::HandleAsyn)
 		.OnJs_UObject(this, &UWebBase::HandleAsynJson)
 		.OnLoadState_UObject(this, &UWebBase::HandleOnLoadState)
+		.OnTexture_UObject(this, &UWebBase::HandleOnTexture)
 		.OnDownloadComplete_UObject(this, &UWebBase::HandleOnDownloadTip);
-#else 
-	auto WebWidgetImp = SNew(SProxyWeb)
-		.ShowAddressBar(addressShow)
-		.BackgroundColor(ColorBackground)
-		.ShowControls(controlShow)
-		.RightKeyPopup(RightKeyPopup)
-		.BrowserFrameRate(RateFrame)
-		.TextStyle(styleText)
-		.EnableMouseTransparency(bEnableMouseTransparency)
-		.SwitchInputMethod(SwitchInputMethod)
-		.ViewportSize(GetDesiredSize())
-		.Pixel(_Pixel)
-		.zoom(_Zoom)
-		.downloadTip(downloadTip)
-		.Visibility(EVisibility::SelfHitTestInvisible)
-		.OnUrlChanged_UObject(this, &UWebBase::HandleOnUrlChanged)
-		.OnBeforePopup_UObject(this, &UWebBase::HandleOnBeforePopup)
-		.OnLoadState_UObject(this, &UWebBase::HandleOnLoadState)
-		.OnDownloadComplete_UObject(this, &UWebBase::HandleOnDownloadTip);
-#endif
+//#else 
+//	auto WebWidgetImp = SNew(SProxyWeb)
+//		.ShowAddressBar(addressShow)
+//		.BackgroundColor(ColorBackground)
+//		.ShowControls(controlShow)
+//		.RightKeyPopup(RightKeyPopup)
+//		.BrowserFrameRate(RateFrame)
+//		.TextStyle(styleText)
+//		.EnableMouseTransparency(bEnableMouseTransparency)
+//		.SwitchInputMethod(SwitchInputMethod)
+//		.ViewportSize(GetDesiredSize())
+//		.Pixel(_Pixel)
+//		.zoom(_Zoom)
+//		.downloadTip(downloadTip)
+//		.Visibility(EVisibility::SelfHitTestInvisible)
+//		.OnUrlChanged_UObject(this, &UWebBase::HandleOnUrlChanged)
+//		.OnBeforePopup_UObject(this, &UWebBase::HandleOnBeforePopup)
+//		.OnLoadState_UObject(this, &UWebBase::HandleOnLoadState)
+//		.OnDownloadComplete_UObject(this, &UWebBase::HandleOnDownloadTip);
+//#endif
 	WebWidget = WebWidgetImp;
 	_ViewObject = NewObject<UWebViewObject>();// 隔离JS和UE4之间的数据。
 	if (_ViewObject) {
@@ -244,6 +254,7 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 		_ViewObject->SetUMG(this);
 		BindUObject("$receive", _ViewObject);
 	}
+	WebWidget->FreshTexture(OnTexture.IsBound());
 	WebWidget->LoadURL(urlInitial);
 	return WebWidget.ToSharedRef();
 }
@@ -269,11 +280,14 @@ void UWebBase::Penetrate(int Threshold) {
 	if (WebWidget)WebWidget->PenetrateThreshold(FMath::Clamp(Threshold,0,255));
 }
 
-void UWebBase::HandleOnUrlChanged(const FText& InText) {
-	if(OnUrlChanged.IsBound()) OnUrlChanged.Broadcast(InText);
+void UWebBase::HandleOnUrlChanged(const FString& InText) {
+	if(OnUrlChanged.IsBound()) OnUrlChanged.Broadcast(FText::FromString(InText));
+}
+void UWebBase::HandleOnTexture(UTexture* texture) {
+	if (OnTexture.IsBound()) OnTexture.Broadcast(texture);
 }
 
-void UWebBase::HandleOnLoadState(const int state) {
+void UWebBase::HandleOnLoadState(const EWebView_DocumentState state) {
 	if (OnLoadState.IsBound()) OnLoadState.Broadcast(state);
 }
 
@@ -362,6 +376,10 @@ bool UWebBase::CanGoForward() {
 
 void UWebBase::SetImitateInput(const FImitateInput& ImitateInput) {
 	if (WebWidget)WebWidget->SetImitateInput(ImitateInput);
+}
+
+void UWebBase::FreshTexture(bool yes) {
+	if (WebWidget)WebWidget->FreshTexture(yes);
 }
 
 #undef LOCTEXT_NAMESPACE
