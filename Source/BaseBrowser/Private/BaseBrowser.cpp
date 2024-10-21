@@ -1,4 +1,4 @@
-
+// Copyright aXiuShen. All Rights Reserved.
 #include "BaseBrowser.h"
 
 SBaseBrowser::SBaseBrowser() {
@@ -124,4 +124,6 @@ void SBaseBrowser::Silent(bool  ) {
 void SBaseBrowser::SetImitateInput(const FImitateInput& ) {
 }
 void SBaseBrowser::PenetrateThreshold(uint8_t value) {
+}
+void SBaseBrowser::FreshTexture(bool) {
 }

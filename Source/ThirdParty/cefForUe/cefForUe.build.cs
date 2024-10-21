@@ -33,6 +33,7 @@ public class cefForUe : ModuleRules
         else {
             return;
         }
+        PublicDefinitions.Add("WEBVIEW_CEF"); //
     }
     void MergeFile(string PathRoot)
     {
@@ -114,7 +115,6 @@ public class cefForUe : ModuleRules
 
         PublicDefinitions.Add("USING_CEF_SHARED=1"); //
         PublicDefinitions.Add("CEF_WINDOWS=1"); //
-        PublicDefinitions.Add("WEBVIEW_CUSTOMIZED_CORE"); //
         foreach (string FileName in Directory.EnumerateFiles(LibraryPath, "*.lib", SearchOption.TopDirectoryOnly)) {
             PublicAdditionalLibraries.Add(FileName);
         }
@@ -146,7 +146,6 @@ public class cefForUe : ModuleRules
         PublicDefinitions.Add("CEF3_BRANCH=" + branch + ""); //
         PublicDefinitions.Add("PLATFORM_LINUXAARCH64=0"); //
         PublicDefinitions.Add("CEF_MAC=1"); //
-        PublicDefinitions.Add("WEBVIEW_CUSTOMIZED_CORE"); //
         PrivateRuntimeLibraryPaths.Add(LibraryPath);
         foreach (string FileName in Directory.EnumerateFiles(LibraryPath, "*", SearchOption.AllDirectories))
         {
@@ -175,7 +174,6 @@ public class cefForUe : ModuleRules
             PublicDefinitions.Add("WV_CROSS_BUILE=1"); //
         }
         PublicDefinitions.Add("CEF_LINUX=1"); //
-        PublicDefinitions.Add("WEBVIEW_CUSTOMIZED_CORE"); //
         PublicAdditionalLibraries.Add(Path.Combine(LibraryPath, "libcef_dll_wrapper.a"));
         PrivateRuntimeLibraryPaths.Add(LibraryPath);
         foreach (string FileName in Directory.EnumerateFiles(LibraryPath, "*.so", SearchOption.TopDirectoryOnly))

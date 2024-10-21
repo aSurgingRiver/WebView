@@ -4,21 +4,15 @@
 #include "CoreMinimal.h"
 #include "ImitateInput.h"
 #include "MatureJsonValue.h"
+#include "WebViewEnum.h"
+#include "WebViewEvent.h"
 #include "Widgets/SCompoundWidget.h"
 
 #define BASEBROWSER_PARAMS(CLASSNAME) \
 	DECLARE_DELEGATE_RetVal_OneParam(bool, FOnKeyUp, const FKeyEvent&); \
 	DECLARE_DELEGATE_RetVal_OneParam(bool, FOnKeyDown, const FKeyEvent&); \
 	DECLARE_DELEGATE_RetVal_OneParam(bool, FOnKeyChar, const FCharacterEvent&); \
-	DECLARE_DELEGATE_OneParam(FOnLoadState, const int); \
 	DECLARE_DELEGATE_RetVal_TwoParams(bool, FOnBeforePopup, FString, FString); \
-	DECLARE_DELEGATE_TwoParams(FOnPostResponse, const FString&, const FString&); \
-	DECLARE_DELEGATE_TwoParams(FOnDownloadComplete, FString, FString); \
-	/*DECLARE_DELEGATE_TwoParams(FOnTextureChanged, UTexture2D*, UTexture2D*);*/ \
-	DECLARE_DELEGATE_RetVal_ThreeParams(bool, FOnResourceLoad, FString, int, RequestHeaders&); \
-	DECLARE_DELEGATE_ThreeParams(FOnJsStr, const FString&, const FString&, const FString&); \
-	DECLARE_DELEGATE_ThreeParams(FOnJs, const FString&, const FMatureJsonValue&, const FString&); \
-	DECLARE_DELEGATE_FourParams(FOnWebError, const FString&, const FString&, const FString&, int); \
 	\
 	SLATE_BEGIN_ARGS(CLASSNAME) \
 		: _ViewportSize(FVector2D::ZeroVector)  \
@@ -37,25 +31,26 @@
 	 \
 		/* this party for event */  \
 		/** Called before a popup window happens */  \
-		SLATE_EVENT(FOnBeforePopup, OnBeforePopup) \
+		SLATE_EVENT(webview::FOnBeforePopup, OnBeforePopup) \
 		/** Called when post response */ \
-		SLATE_EVENT(FOnPostResponse, OnPostResponse) \
+		SLATE_EVENT(webview::FOnPostResponse, OnPostResponse) \
 		/** Called when document loading change. */ \
-		SLATE_EVENT(FOnLoadState, OnLoadState) \
+		SLATE_EVENT(webview::FOnWebState, OnLoadState) \
 		/** Called when the Url changes. */ \
-		SLATE_EVENT(FOnTextChanged, OnUrlChanged) \
+		SLATE_EVENT(webview::FOnUrlChanged, OnUrlChanged) \
+		SLATE_EVENT(webview::FOnTexture2D, OnTexture) \
 		/** Called when the Texture changes. */ \
 		/*SLATE_EVENT(FOnTextureChanged, OnTextureChanged) */ \
 		/** Called when file download finish. */ \
-		SLATE_EVENT(FOnDownloadComplete, OnDownloadComplete) \
+		SLATE_EVENT(webview::FOnDownloadComplete, OnDownloadComplete) \
 		/** Called when resource download finish before load. */ \
-		SLATE_EVENT(FOnResourceLoad, OnResourceLoad) \
+		SLATE_EVENT(webview::FOnResourceLoad, OnResourceLoad) \
 		/** Called when web has error . */ \
-		SLATE_EVENT(FOnWebError, OnWebError) \
+		SLATE_EVENT(webview::FOnWebError, OnWebError) \
 		/** Called when web has error . */ \
-		SLATE_EVENT(FOnJsStr, OnJsStr) \
+		SLATE_EVENT(webview::FOnJsStr, OnJsStr) \
 		/** Called when web has error . */ \
-		SLATE_EVENT(FOnJs, OnJs) \
+		SLATE_EVENT(webview::FOnJs, OnJs) \
 		 \
 		/* this party for params */ \
 		/** Control and Editor show text style  */ \
@@ -78,6 +73,7 @@
 		SLATE_ARGUMENT(bool, ShowAddressBar) \
 		SLATE_ARGUMENT(bool, Touch) \
 		SLATE_ARGUMENT(bool, Bridge) \
+		SLATE_ARGUMENT(bool, FreshTexture) \
 		/** The frames per second rate that the browser will attempt to use. */ \
 		SLATE_ARGUMENT(int, BrowserFrameRate) \
 		/** fixed pixel. */ \
@@ -183,4 +179,6 @@ public:
 	virtual void SetImitateInput(const FImitateInput& ImitateInput);
 	//
 	virtual void PenetrateThreshold(uint8_t value);
+	//
+	virtual void FreshTexture(bool yes);
 };

@@ -25,7 +25,7 @@ class BASEBROWSER_API UWebViewTexture
 	: public UTexture
 {
 	GENERATED_UCLASS_BODY()
-
+	
 public:
 	/** The addressing mode to use for the X axis. */
 	TEnumAsByte<TextureAddress> AddressX;
