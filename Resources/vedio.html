@@ -1,0 +1,38 @@
+<html>
+<head>
+
+</head>
+<body style="background-color: transparent; -webkit-user-select: none;">
+    <video id="video" pictureInPictureEnabled controls src="D:/project/UE5.1/WinWeb/plugins/WebView/Resources/Startup-WebView.mp4" width="960" height="540"></video>
+    <button id="togglePipButton" value="画中画" style="width:200px;height:120px"></button>
+
+</body>
+
+<script>
+  const video = document.getElementById("video");
+  const togglePipButton = document.getElementById("togglePipButton");
+  var isOpen = false;
+  // Hide button if Picture-in-Picture is not supported or disabled.
+  //togglePipButton.hidden =
+  //  !document.pictureInPictureEnabled || video.disablePictureInPicture;
+
+  togglePipButton.addEventListener("click", async () => {
+    // If there is no element in Picture-in-Picture yet, let’s request
+    // Picture-in-Picture for the video, otherwise leave it.
+    try {
+    	var temp = isOpen;
+    	isOpen = !isOpen;
+      if (temp) {
+      	console.log("oooooooooooooooooooooo");
+        await document.exitPictureInPicture();
+      } else {
+      	console.log("eeeeeeeeeeeeeeeeeeeeee");
+        await video.requestPictureInPicture();
+      }
+    } catch (err) {
+      // Video failed to enter/leave Picture-in-Picture mode.
+    }
+  });
+</script>
+    
+</html>

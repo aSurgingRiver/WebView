@@ -1,0 +1,67 @@
+{
+  "CanContainContent": true,
+  "Category": "Other",
+  "CreatedBy": "aSurgingRiver",
+  "CreatedByURL": "https://github.com/aSurgingRiver",
+  "Description": "Efficient UE browser uses CEF open source kernel; When the frame rate is 60 per second and the resolution is 4K, a single GPU is rendered, and the UE and browser will not lose frames. 8K frame rate does not decrease under multi GPU binding.",
+  "DocsURL": "https://www.zhihu.com/column/c_1490114276946223104",
+  "EnabledByDefault": false,
+  "EngineVersion": "5.5.0",
+  "FileVersion": 3,
+  "FriendlyName": "WebView",
+  "Installed": true,
+  "MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/e5ece84a234b4ee0b8aa524cd80c175d",
+  "Modules": [
+    {
+      "LoadingPhase": "PreDefault",
+      "Name": "CefBase",
+      "PlatformAllowList": [
+        "Win64",
+        "Linux"
+      ],
+      "Type": "Runtime"
+    },
+    {
+      "LoadingPhase": "PreDefault",
+      "Name": "MatureJson",
+      "PlatformAllowList": [
+        "Win64",
+        "Linux",
+        "LinuxArm64",
+        "Mac",
+        "IOS",
+        "Android"
+      ],
+      "Type": "Runtime"
+    },
+    {
+      "LoadingPhase": "PreDefault",
+      "Name": "WebView",
+      "PlatformAllowList": [
+        "Win64",
+        "Linux",
+        "LinuxArm64",
+        "Mac",
+        "IOS",
+        "Android"
+      ],
+      "Type": "Runtime"
+    },
+    {
+      "LoadingPhase": "Default",
+      "Name": "BaseBrowser",
+      "PlatformAllowList": [
+        "Win64",
+        "Linux",
+        "LinuxArm64",
+        "Mac",
+        "IOS",
+        "Android"
+      ],
+      "Type": "Runtime"
+    }
+  ],
+  "SupportURL": "https://github.com/aSurgingRiver",
+  "Version": 1,
+  "VersionName": "20240823"
+}

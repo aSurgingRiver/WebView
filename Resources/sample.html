@@ -1,0 +1,173 @@
+<html>
+<head>
+    <script src="jstoue.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 使整个页面使用 flexbox 布局，并让内容居中 */
+          /* 页面整体样式 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column; /* 纵向排列 */
+        }
+
+        /* 顶部部分样式 */
+        .top {
+            background: linear-gradient(to bottom, rgba(50, 100, 0, 1), rgba(50, 100, 0, 0.3));
+            text-align: center;
+            height: 12%; /* 高度占页面的 8% */
+        }
+
+        /* 底部左右部分的父容器，使用 flexbox */
+        .bottom {
+            display: flex;
+            flex: 1; /* 占据剩余空间 */
+        }
+
+        /* 左边部分样式 */
+        .left {
+            background-color: rgba(0, 0, 0, 0.0);
+            flex: 1;
+        }
+
+        /* 左边部分样式 */
+        .center {
+            background-color: rgba(0, 0, 0, 0.0);
+            flex: 3;
+        }
+        
+        /* 右边部分样式 */
+        .right {
+            flex: 1; /* 右边部分宽度是左边的两倍 */
+            justify-content: flex-end;
+            align-items: center;
+            background: linear-gradient(to left, rgba(50, 100, 0, 1), rgba(50, 100, 0, 0));
+        }
+        
+        /* 蓝色矩形 */
+        .blue-rectangle {
+            justify-content: left;
+            align-items: left;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 100, 0, 1.0), rgba(0, 100, 0, 0));
+        }
+        .translucent,.top-name-zh,.top-name-en {
+            justify-content: center;
+            align-items: center;
+            color: yellow;
+            font-size: 32px;
+        }
+        
+        /* 蓝色矩形 */
+        .dropdown,.dropdown-toggle,.dropdown-menu {
+            justify-content: right;
+            align-items: right;
+            /*width:80px */
+            /*background-color: blue;  背景颜色为蓝色 */
+            /*background-color: #00000000;  背景颜色，非必须 */
+            background: linear-gradient(to right, rgba(100, 100, 0, 1), rgba(100, 100, 0, 1));
+        }
+        
+    </style>
+</head>
+<body style="background-color: transparent; -webkit-user-select: none;">
+    <div class="top">
+        <p class="top-name-zh">四川数演科技有限公司</p>
+        <p class="top-name-en">Sichuan Shuyan Technology Co., Ltd.</p>
+    </div>
+    <div class="bottom">
+        <div class="left">
+            <div class="blue-rectangle">
+                <p class="translucent">translucent</p>
+            </div>
+        </div>
+        <div class="center">
+        
+        </div>
+        <div class="right">
+             <div>
+                 <button id="btn_json">json call </button>
+             </div>
+             <div>
+                 <button id="btn_obj">object call </button>
+             </div>
+             <div>
+                 <button id="btn_objp">object call param </button>
+             </div>
+             <div>
+                 <input id="volumeSlider" type="range" min="0.01" max="1" step="0.01" />
+             </div>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Java <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Swing</a></li>
+                    <li><a href="#">jMeter</a></li>
+                    <li><a href="#">EJB</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">分离的链接</a></li>
+                </ul>
+            </li>
+        </div>
+    </div>
+    
+</body>
+<script>
+    // response function from ue call
+    ue.interface.jsfunc = function(jsonObject){
+        console.log('jsonObject');
+        alert('popup window');
+        //console.log(JSON.stringify(jsonObject));
+    };
+    ue.interface.multiparams = function(paramStr0,paramStr1){
+    	console.log(paramStr0+'==='+paramStr1);
+    };
+    var total = 0;
+    var response=0;
+
+    var btn_json = document.getElementById('btn_json');
+    btn_json.setAttribute("onclick", "JsonCall()");
+    var btn_obj = document.getElementById('btn_obj');
+    btn_obj.setAttribute("onclick", "ObjCall()");
+    var btn_obj = document.getElementById('btn_objp');
+    btn_obj.setAttribute("onclick", "ObjCallP()");
+  
+  
+// ue.call(key,json,callback,timeout) <==> OnJsEventStr(type,json,callback)
+// usage:
+//      key : string
+//      json: {"a":1}  or [1,2,3,4]
+//      callback : when success in ue,and ue callback to js 
+//                 function(){} or ()=>{}
+//      timeout: The effective time of the callback function, in seconds
+// 
+    function JsonCall() {
+        //var url = 'rtsp://113.201.104.35:9090/dss/monitor/param?cameraid=1000054%247&substream=1' ;
+        //alert('qweqwe');
+
+        //for (var i=0; i<1000; i++){
+        total++;
+        ue.call("videoUrl", { "url": "www.baidu.com", "total": total },
+            function (jsonObject) {
+                //alert(rv);
+                response = response + 1;
+                console.log("succed " + JSON.stringify(jsonObject) + " " + response);
+            }
+        );
+        //}
+    }
+
+    function ObjCall(){
+        ue.GetBrowserWnd();
+    }
+    function ObjCallP() {
+        ue.bpbind.help5("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21")
+    }
+</script>
+
+</html>
