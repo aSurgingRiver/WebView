@@ -1,8 +1,6 @@
-// Copyright 2024 Tracer Interactive, LLC. All Rights Reserved.
+// Copyright aXiuShen. All Rights Reserved.
 #include "MatureJsonObject.h"
-//#include "MatureJsonConverter.h"
-#include "MatureJsonList.h"
-//#include "MatureJsonHelpers.h"
+#include "MatureJsonArray.h"
 #include "MatureJsonEnums.h"
 #include "Policies/CondensedJsonPrintPolicy.h"
 #include "Policies/PrettyJsonPrintPolicy.h"
@@ -370,18 +368,6 @@ FMatureJsonObject& FMatureJsonObject::AddValue(const TMap<FString, FMatureJsonVa
 	return *this;
 }
 
-FMatureJsonList FMatureJsonObject::AddList(const FString& Key) {
-	return AddKey(Key).ToList();
-}
-
-FMatureJsonObject FMatureJsonObject::AddObject(const FString& Key) {
-	return AddKey(Key).ToObject();
-}
-
-FMatureJsonValue FMatureJsonObject::AddValue(const FString& Key) {
-	return AddKey(Key);
-}
-
 TArray<FString> FMatureJsonObject::GetKeys() const
 {
 	TArray<FString> Keys;
@@ -502,135 +488,147 @@ bool FMatureJsonObject::GetValue(const FString& Key, FMatureJsonObject& Value) c
 	Value = GetKey(Key).ToObject(true);
 	return  true;
 }
-bool FMatureJsonObject::GetValue(const FString& Key, FMatureJsonList& Value) const
+bool FMatureJsonObject::GetValue(const FString& Key, FMatureJsonArray& Value) const
 {
 	if (!Object().HasMember(*Key))return false;
-	Value = GetKey(Key).ToList(true);
+	Value = GetKey(Key).ToArray(true);
 	return  true;
 }
 
 
-FMatureJsonValue  FMatureJsonObject::ToValue(const FString& Key) const {
+FMatureJsonValue  FMatureJsonObject::GetValue(const FString& Key) const {
 	FMatureJsonValue value;
 	GetValue(Key, value);
 	return value;
 }
 
-FMatureJsonObject FMatureJsonObject::ToObject(const FString& Key) const {
+FMatureJsonObject FMatureJsonObject::GetObject(const FString& Key) const {
 	FMatureJsonObject value;
 	GetValue(Key, value);
 	return value;
 }
 
-FMatureJsonList   FMatureJsonObject::ToList(const FString& Key) const {
-	FMatureJsonList value;
+FMatureJsonArray   FMatureJsonObject::GetArray(const FString& Key) const {
+	FMatureJsonArray value;
 	GetValue(Key, value);
 	return value;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, bool Value)
+FMatureJsonArray FMatureJsonObject::SetArray(const FString& Key) {
+	return AddKey(Key).ToArray();
+}
+
+FMatureJsonObject FMatureJsonObject::SetObject(const FString& Key) {
+	return AddKey(Key).ToObject();
+}
+
+FMatureJsonValue FMatureJsonObject::SetValue(const FString& Key) {
+	return AddKey(Key);
+}
+
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, bool Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, float Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, float Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, int32 Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, int32 Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, double Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, double Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, const TCHAR* Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, const TCHAR* Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, const FString& Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, const FString& Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, const FDateTime& Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, const FDateTime& Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, const FGuid& Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, const FGuid& Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, const FColor& Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, const FColor& Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, const FLinearColor& Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, const FLinearColor& Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, const FRotator& Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, const FRotator& Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, const FTransform& Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, const FTransform& Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, const FVector& Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, const FVector& Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, const FMatureJsonValue& Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, const FMatureJsonValue& Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, const FMatureJsonObject& Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, const FMatureJsonObject& Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, const FMatureJsonList& Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, const FMatureJsonArray& Value)
 {
 	AddKey(*Key).SetValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, const TArray<FMatureJsonValue>& Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, const TArray<FMatureJsonValue>& Value)
 {
-	AddKey(*Key).ToList().AddValue(Value);
+	AddKey(*Key).ToArray().AddValue(Value);
 	return *this;
 }
 
-FMatureJsonObject& FMatureJsonObject::AddValue(const FString& Key, const TMap<FString, FMatureJsonValue>& Value)
+FMatureJsonObject& FMatureJsonObject::SetValue(const FString& Key, const TMap<FString, FMatureJsonValue>& Value)
 {
 	AddKey(*Key).ToObject().AddValue(Value);
 	return *this;

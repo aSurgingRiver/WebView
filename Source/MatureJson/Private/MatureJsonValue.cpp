@@ -1,9 +1,9 @@
-// Copyright 2024 Tracer Interactive, LLC. All Rights Reserved.
+// Copyright aXiuShen. All Rights Reserved.
 #include "MatureJsonValue.h"
 #include "MatureJsonObject.h"
-#include "MatureJsonList.h"
+#include "MatureJsonArray.h"
 #include "MatureJsonLog.h"
-#include "json_cast.hpp"
+#include "json_cast.h"
 #include "Misc/FileHelper.h"
 #include "Policies/CondensedJsonPrintPolicy.h"
 #include "Policies/PrettyJsonPrintPolicy.h"
@@ -187,9 +187,9 @@ FMatureJsonValue& FMatureJsonValue::SetValue(const FMatureJsonObject& Value) {
 	return *this;
 }
 
-FMatureJsonValue& FMatureJsonValue::SetValue(const FMatureJsonList& Value) {
+FMatureJsonValue& FMatureJsonValue::SetValue(const FMatureJsonArray& Value) {
 	if (ValueRef().GetType()!=mature::Type::kArrayType)ValueRef().SetArray();
-	FMatureJsonList(Document(), ValueRef().GetArray()).AddValue(Value);
+	FMatureJsonArray(Document(), ValueRef().GetArray()).AddValue(Value);
 	return *this;
 }
 
@@ -275,51 +275,36 @@ FString FMatureJsonValue::ToString() const
 
 FDateTime FMatureJsonValue::ToDateTime() const
 {
-	if (mature::Type::kStringType != ValueRef().GetType())
-		return FDateTime();
-
 	FDateTime DateTime;
-	if (FDateTime::ParseIso8601(ValueRef().GetString(), DateTime))
-		return DateTime;
-
-	return FDateTime();
+	GetValue(DateTime);
+	return DateTime;
 }
 
 FGuid FMatureJsonValue::ToGuid() const
 {
-	if (mature::Type::kStringType != ValueRef().GetType())
-		return FGuid();
-
 	FGuid Guid;
-	if (FGuid::Parse(ValueRef().GetString(), Guid))
-		return Guid;
-
-	return FGuid();
+	GetValue(Guid);
+	return Guid;
 }
 
 FLinearColor FMatureJsonValue::ToLinearColor() const {
 	FLinearColor value;
-	if (ValueRef().GetType() != mature::Type::kObjectType)return value;
-	ToObject().GetValue(value);
+	GetValue(value);
 	return value;
 }
 
 FColor FMatureJsonValue::ToColor() const
 {
-	if (mature::Type::kStringType != ValueRef().GetType())
-		return FColor();
-
-	if (IsColor(ValueRef().GetString()))
-		return FColor::FromHex(ValueRef().GetString());
-
-	return FColor();
+	FColor value;
+	GetValue(value);
+	return value;
 }
 
 FMatureJsonObject FMatureJsonValue::ToObject(bool check) const
 {
 	if (ValueRef().GetType() != mature::Type::kObjectType)
 	{
-		if (!(check == false || ValueRef().GetType() == mature::Type::kNullType)) {
+		if (ValueRef().GetType() != mature::Type::kNullType && check == true ) {
 			return FMatureJsonObject();
 		}
 		ValueRef().SetObject();
@@ -327,16 +312,16 @@ FMatureJsonObject FMatureJsonValue::ToObject(bool check) const
 	return FMatureJsonObject(Document(), ValueRef().GetObject());
 }
 
-FMatureJsonList FMatureJsonValue::ToList(bool check) const
+FMatureJsonArray FMatureJsonValue::ToArray(bool check) const
 {
 	if (ValueRef().GetType() != mature::Type::kArrayType)
 	{
-		if (!(check == false || ValueRef().GetType() == mature::Type::kNullType)) {
-			return FMatureJsonList();
+		if (ValueRef().GetType() != mature::Type::kNullType && check == true) {
+			return FMatureJsonArray();
 		}
 		ValueRef().SetArray();
 	}
-	return FMatureJsonList(Document(), ValueRef().GetArray());
+	return FMatureJsonArray(Document(), ValueRef().GetArray());
 }
 
 int32 FMatureJsonValue::ToInt32() const
@@ -546,7 +531,7 @@ FMatureJsonValue& FMatureJsonValue::operator=(const FMatureJsonValue& rhs) {
 	return *this;
 }
 
-bool FMatureJsonValue::Parse(const FString& Text) {
+bool FMatureJsonValue::ParseString(const FString& Text) {
 	ValueCache = MakeShared<ValueWrap>();
 	Document()->Parse(*Text);
 	if (!Document()->HasParseError())return true;
@@ -569,7 +554,7 @@ bool FMatureJsonValue::ParseFile(const FString& FileName) {
 	if (!FFileHelper::LoadFileToString(FileContents, *FileName)) {
 		return false;
 	}
-	return Parse(FileContents);
+	return ParseString(FileContents);
 }
 
 FString FMatureJsonValue::SaveString() const{

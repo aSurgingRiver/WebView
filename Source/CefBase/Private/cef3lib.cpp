@@ -39,7 +39,7 @@
 #	include "include/wrapper/cef_library_loader.h"
 #endif
 // WEB_CORE_API
-#ifdef WEBVIEW_CUSTOMIZED_CORE
+#ifdef WEBVIEW_CEF
 class CEF3LIB: public ICEF3LIB {
 public:
 	void LoadCEF3Modules() ;

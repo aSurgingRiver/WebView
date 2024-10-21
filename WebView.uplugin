@@ -26,11 +26,11 @@
       "Name": "MatureJson",
       "PlatformAllowList": [
         "Win64",
+        "Linux",
+        "LinuxArm64",
         "Mac",
         "IOS",
-        "Android",
-        "Linux",
-        "LinuxArm64"
+        "Android"
       ],
       "Type": "Runtime"
     },
@@ -39,11 +39,11 @@
       "Name": "WebView",
       "PlatformAllowList": [
         "Win64",
+        "Linux",
+        "LinuxArm64",
         "Mac",
         "IOS",
-        "Android",
-        "Linux",
-        "LinuxArm64"
+        "Android"
       ],
       "Type": "Runtime"
     },
@@ -52,11 +52,11 @@
       "Name": "BaseBrowser",
       "PlatformAllowList": [
         "Win64",
+        "Linux",
+        "LinuxArm64",
         "Mac",
         "IOS",
-        "Android",
-        "Linux",
-        "LinuxArm64"
+        "Android"
       ],
       "Type": "Runtime"
     }
