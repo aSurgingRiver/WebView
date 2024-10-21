@@ -27,11 +27,11 @@
       "Type": "Runtime",
       "WhitelistPlatforms": [
         "Win64",
+        "Linux",
+        "LinuxArm64",
         "Mac",
         "IOS",
-        "Android",
-        "Linux",
-        "LinuxArm64"
+        "Android"
       ]
     },
     {
@@ -40,11 +40,11 @@
       "Type": "Runtime",
       "WhitelistPlatforms": [
         "Win64",
+        "Linux",
+        "LinuxArm64",
         "Mac",
         "IOS",
-        "Android",
-        "Linux",
-        "LinuxArm64"
+        "Android"
       ]
     },
     {
@@ -53,11 +53,11 @@
       "Type": "Runtime",
       "WhitelistPlatforms": [
         "Win64",
+        "Linux",
+        "LinuxArm64",
         "Mac",
         "IOS",
-        "Android",
-        "Linux",
-        "LinuxArm64"
+        "Android"
       ]
     }
   ],

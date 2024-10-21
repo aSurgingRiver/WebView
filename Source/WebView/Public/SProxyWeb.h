@@ -103,8 +103,6 @@ private:
 	EVisibility GetViewportVisibility() const;
 	bool ReadTexturePixel(FVector2D& LocalUV, FColor& MousePixel);
 
-	FString dns_to_local(FString url)const;
-	FString local_to_dns(FString url)const;
 private:
 	TSharedPtr<SWebBrowserView>   BrowserView;
 	TSharedPtr<IWebBrowserWindow> BrowserWindow;
@@ -115,8 +113,6 @@ private:
 	float        sumDelay;
 	int32        preMouseX;
 	int32        preMouseY;
-	FString      local_domain;
-	const FString local_dns;
 //#if UE_BUILD_DEVELOPMENT || UE_BUILD_DEBUG
 //	TMap<TWeakPtr<IWebBrowserWindow>, TWeakPtr<SWindow>> BrowserWindowWidgets;
 //#endif
