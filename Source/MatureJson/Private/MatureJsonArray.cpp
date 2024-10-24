@@ -183,7 +183,7 @@ FMatureJsonArray& FMatureJsonArray::AddValue( const TArray<FMatureJsonValue>& Va
 {
 	auto NewList = AddValue().ToArray();
 	for (auto& it : Value) {
-		NewList.List().PushBack(it.ValueRef(), GetAllocator());
+		NewList.AddValue().SetValue(it);
 	}
 	return *this;
 }
