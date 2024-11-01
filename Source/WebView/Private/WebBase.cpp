@@ -266,7 +266,7 @@ bool UWebBase::Asyn(const FString& Name, FString& Data, const FString& Callback)
 }
 
 bool UWebBase::Asyn(const FString& Name, FMatureJsonValue& json, const FString& Callback) {
-	if (!OnJsEventStr.IsBound())return false;
+	if (!OnJsEvent.IsBound())return false;
 	OnJsEvent.Broadcast(Name, json, Callback);
 	return true;
 }
