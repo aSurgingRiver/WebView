@@ -51,6 +51,7 @@ public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDownloadComplete, const FString&, Url, const FString&, File);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnWebError, const FString&, Desc, const FString&, Source ,const int,line);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnPostResponse, const FString&, Url, const FString&, Response);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTransparency, bool, yes);
 	/*  ResourceType
 	  0: Top level page.
 	  1: Frame or iframe.
@@ -106,6 +107,8 @@ public:
 	FOnPostResponse OnPostResponse;
 	UPROPERTY(BlueprintAssignable, Category = "Web View|Event")
 	FOnTexture OnTexture;
+	UPROPERTY(BlueprintAssignable, Category = "Web View|Event")
+	FOnTransparency OnTransparency;
 
 	/** this party is blueprint editor params */
 	/** URL that the browser will initially navigate to. The URL should include the protocol, eg http:// */
@@ -201,6 +204,10 @@ public:
 	/** Reload the current page. */
 	UFUNCTION(BlueprintCallable, Category = "Web View")
 	void Reload();
+
+	/** Reload the current page,and no cache. */
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+	void ReloadNoCache();
 
 	/**
 	 * check url is loaded succesed
@@ -352,6 +359,7 @@ protected:
 	void HandleOnLoadState(const EWebView_DocumentState state);
 	void HandleOnUrlChanged(const FString& Text);
 	void HandleOnTexture(UTexture* texture);
+	void HandleOnTransparency(bool yes);
 	bool HandleOnBeforePopup(FString URL, FString Frame);
 	void HandleOnDownloadTip(FString URL, FString File);
 	void HandleOnPostResponse(const FString& URL,const FString& File);

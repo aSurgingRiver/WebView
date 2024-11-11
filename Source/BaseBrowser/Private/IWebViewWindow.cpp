@@ -50,6 +50,9 @@ webview::FOnWebError& IWebViewWindow::OnWebError(){
 	return _OnWebError;
 }
 
+webview::FOnTransparency& IWebViewWindow::OnTransparency() {
+	return _OnTransparency;
+}
 
 FReply IWebViewWindow::OnTouchMoved(const FGeometry& , const FPointerEvent& ) {
 	return FReply::Unhandled();

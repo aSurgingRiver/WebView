@@ -27,5 +27,6 @@ namespace webview {
 	DECLARE_DELEGATE_ThreeParams(FOnJs, const FString&, const FMatureJsonValue&, const FString&);
 	DECLARE_DELEGATE_FourParams(FOnWebError, const FString&, const FString&, const FString&, int);
 	DECLARE_DELEGATE_RetVal_TwoParams(bool, FOnBeforePopup, FString, FString); 
+	DECLARE_DELEGATE_OneParam(FOnTransparency, bool);
 }
 
