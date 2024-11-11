@@ -559,7 +559,7 @@ bool FMatureJsonValue::ParseFile(const FString& FileName) {
 
 FString FMatureJsonValue::SaveString() const{
 	mature::StringBuffer buffer;
-	mature::Writer writer(buffer);
+	mature::PrettyWriter writer(buffer);
 	TSharedPtr<ValueWrap> DocRoot;
 	if (ValueCache->IsRoot()) {
 		DocRoot = ValueCache;

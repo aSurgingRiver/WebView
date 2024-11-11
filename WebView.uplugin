@@ -36,6 +36,19 @@
     },
     {
       "LoadingPhase": "PreDefault",
+      "Name": "MatureJsonK2Node",
+      "PlatformAllowList": [
+        "Win64",
+        "Linux",
+        "LinuxArm64",
+        "Mac",
+        "IOS",
+        "Android"
+      ],
+      "Type": "UncookedOnly"
+    },
+    {
+      "LoadingPhase": "PreDefault",
       "Name": "WebView",
       "PlatformAllowList": [
         "Win64",
