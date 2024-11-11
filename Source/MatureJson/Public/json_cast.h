@@ -49,6 +49,7 @@ namespace mature {
 	typedef rapidjson::GenericDocument<JsonChar<TCHAR> > Document;
 	typedef rapidjson::GenericStringBuffer<JsonChar<TCHAR> > StringBuffer;
 	typedef rapidjson::Writer<StringBuffer, JsonChar<TCHAR>, JsonChar<TCHAR>> Writer;
+	typedef rapidjson::PrettyWriter<StringBuffer, JsonChar<TCHAR>, JsonChar<TCHAR>> PrettyWriter;
 	typedef rapidjson::GenericValue<JsonChar<TCHAR> > Value;
 	typedef rapidjson::GenericArray<false, Value > Array;
 	typedef rapidjson::GenericArray<true, Value > ConstArray;
