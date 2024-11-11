@@ -36,6 +36,19 @@
     },
     {
       "LoadingPhase": "PreDefault",
+      "Name": "MatureJsonK2Node",
+      "Type": "UncookedOnly",
+      "WhitelistPlatforms": [
+        "Win64",
+        "Linux",
+        "LinuxArm64",
+        "Mac",
+        "IOS",
+        "Android"
+      ]
+    },
+    {
+      "LoadingPhase": "PreDefault",
       "Name": "WebView",
       "Type": "Runtime",
       "WhitelistPlatforms": [
@@ -63,5 +76,5 @@
   ],
   "SupportURL": "https://github.com/aSurgingRiver",
   "Version": 1,
-  "VersionName": "20240925"
+  "VersionName": "20240823"
 }
