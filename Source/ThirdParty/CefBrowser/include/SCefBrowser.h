@@ -44,6 +44,7 @@ public:
 	virtual void StopLoad() override;
 	/** Reload the current page. */
 	virtual void Reload() override;
+	virtual void ReloadNoCache() override;
 	/** Reload the current page. */
 	virtual bool Isloaded() override;
 	/** Whether the document is currently being loaded. */
@@ -107,6 +108,8 @@ public:
 	virtual void PenetrateThreshold(uint8_t value)override;
 	//
 	virtual void FreshTexture(bool yes) override;
+	// 
+	virtual webview::FOnTransparency& OnTransparency();
 public:
 	/** Default constructor. */
 	SCefBrowser();

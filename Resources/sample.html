@@ -150,15 +150,18 @@
         //var url = 'rtsp://113.201.104.35:9090/dss/monitor/param?cameraid=1000054%247&substream=1' ;
         //alert('qweqwe');
 
-        //for (var i=0; i<1000; i++){
-        total++;
-        ue.call("videoUrl", { "url": "www.baidu.com", "total": total },
-            function (jsonObject) {
-                //alert(rv);
-                response = response + 1;
-                console.log("succed " + JSON.stringify(jsonObject) + " " + response);
-            }
-        );
+        //for (var i = 0; i < 1000; i++) {
+            total++;
+            const timestamp = new Date().getTime();
+            //ue4("videoUrl",{"url":"www.baidu.com","total":total,"sendtime":timestamp},
+            ue4("videoUrl", { "sendtime": timestamp },
+                function (rv) {
+                    //alert(rv);
+                    response = response + 1;
+                    const timestamp = new Date().getTime();
+                    console.log("succed " + JSON.stringify(rv) + " endtime:" + timestamp);
+                }
+            );
         //}
     }
 

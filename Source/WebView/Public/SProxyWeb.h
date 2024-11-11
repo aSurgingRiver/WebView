@@ -113,6 +113,7 @@ private:
 	float        sumDelay;
 	int32        preMouseX;
 	int32        preMouseY;
+	webview::FOnTransparency _OnTransparency;
 //#if UE_BUILD_DEVELOPMENT || UE_BUILD_DEBUG
 //	TMap<TWeakPtr<IWebBrowserWindow>, TWeakPtr<SWindow>> BrowserWindowWidgets;
 //#endif
