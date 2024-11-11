@@ -226,6 +226,7 @@ public:
 	webview::FOnJsStr& OnJsStr();
 	webview::FOnJs& OnJs();
 	webview::FOnWebError& OnWebError();
+	webview::FOnTransparency& OnTransparency();
 protected:
 
 	/** Virtual Destructor. */
@@ -246,4 +247,5 @@ protected:
 	webview::FOnJsStr _OnJsStr;
 	webview::FOnJs _OnJs;
 	webview::FOnWebError _OnWebError;
+	webview::FOnTransparency _OnTransparency;
 };

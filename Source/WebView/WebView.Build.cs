@@ -57,7 +57,7 @@ namespace UnrealBuildTool.Rules
                 Console.WriteLine("WEBVIEW_ANDROID ... ");
                 PrivateIncludePathModuleNames.Add("AndroidBrowser");
             }
-            else if(project_bridge_status())
+            else if(false && project_bridge_status())
             {
                 PublicDefinitions.Add("USING_WEBBROWSER=1"); //
                 PrivateDependencyModuleNames.Add("WebBrowser");

@@ -1,6 +1,9 @@
 // Copyright aXiuShen. All Rights Reserved.
 #include "BaseBrowser.h"
 
+
+webview::FOnTransparency SBaseBrowser::OnTransparencyDefault;
+
 SBaseBrowser::SBaseBrowser() {
 
 }
@@ -32,6 +35,8 @@ void SBaseBrowser::StopLoad() {
 }
 /** Reload the current page. */
 void SBaseBrowser::Reload() {
+}
+void SBaseBrowser::ReloadNoCache() {
 }
 /** Reload the current page. */
 bool SBaseBrowser::Isloaded() {
@@ -126,4 +131,8 @@ void SBaseBrowser::SetImitateInput(const FImitateInput& ) {
 void SBaseBrowser::PenetrateThreshold(uint8_t value) {
 }
 void SBaseBrowser::FreshTexture(bool) {
+
+}
+webview::FOnTransparency& SBaseBrowser::OnTransparency() {
+	return OnTransparencyDefault;
 }
