@@ -164,6 +164,7 @@ public:
 	FMatureJsonValue  GetValue(const FString& Key) const;
 	FMatureJsonObject GetObject(const FString& Key) const;
 	FMatureJsonArray  GetArray(const FString& Key) const;
+	FMatureJsonValue AddKey(const FString& key);
 
 	FMatureJsonObject& operator=(const FMatureJsonObject& Value);
 	TSharedPtr<mature::Document> Document();
@@ -185,7 +186,6 @@ protected:
 		friend struct FMatureJsonObjectIterator;
 	};
 	TSharedPtr<ObjectWrap> ObjectPtr;
-	FMatureJsonValue AddKey(const FString& key) ;
 	inline mature::Object& Object();
 	inline mature::Object& Object() const;
 	inline mature::Allocator& GetAllocator();
