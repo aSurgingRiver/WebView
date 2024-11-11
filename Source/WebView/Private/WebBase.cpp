@@ -147,6 +147,9 @@ void UWebBase::Reload() {
 	if (WebWidget)WebWidget->Reload();
 }
 
+void UWebBase::ReloadNoCache() {
+	if (WebWidget)WebWidget->ReloadNoCache();
+}
 bool UWebBase::Isloaded() {
 	if (WebWidget)return WebWidget->Isloaded();
 	return true;
@@ -254,6 +257,9 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 		_ViewObject->SetUMG(this);
 		BindUObject("$receive", _ViewObject);
 	}
+	if (OnTransparency.IsBound()) {
+		WebWidgetImp->OnTransparency().BindUObject(this, &UWebBase::HandleOnTransparency);
+	}
 	WebWidget->FreshTexture(OnTexture.IsBound());
 	WebWidget->LoadURL(urlInitial);
 	return WebWidget.ToSharedRef();
@@ -283,8 +289,13 @@ void UWebBase::Penetrate(int Threshold) {
 void UWebBase::HandleOnUrlChanged(const FString& InText) {
 	if(OnUrlChanged.IsBound()) OnUrlChanged.Broadcast(FText::FromString(InText));
 }
+
 void UWebBase::HandleOnTexture(UTexture* texture) {
 	if (OnTexture.IsBound()) OnTexture.Broadcast(texture);
+}
+
+void UWebBase::HandleOnTransparency(bool yes){
+	if (OnTransparency.IsBound()) OnTransparency.Broadcast(yes);
 }
 
 void UWebBase::HandleOnLoadState(const EWebView_DocumentState state) {

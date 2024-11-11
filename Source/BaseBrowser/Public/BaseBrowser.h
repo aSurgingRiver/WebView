@@ -119,6 +119,8 @@ public:
 	/** Reload the current page. */
 	virtual void Reload();
 	/** Reload the current page. */
+	virtual void ReloadNoCache();
+	/** Reload the current page. */
 	virtual bool Isloaded();
 	/** Whether the document is currently being loaded. */
 	virtual bool IsLoading() const;
@@ -181,4 +183,8 @@ public:
 	virtual void PenetrateThreshold(uint8_t value);
 	//
 	virtual void FreshTexture(bool yes);
+	//
+	virtual webview::FOnTransparency& OnTransparency() ;
+protected:
+	static webview::FOnTransparency OnTransparencyDefault;
 };

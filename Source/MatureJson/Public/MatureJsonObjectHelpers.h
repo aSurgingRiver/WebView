@@ -7,6 +7,17 @@
 #include "MatureJsonArray.h"
 #include "MatureJsonObjectHelpers.generated.h"
 
+
+USTRUCT(BlueprintInternalUseOnly)
+struct FMatureStruct
+{
+	GENERATED_USTRUCT_BODY()
+
+	FMatureStruct();
+
+	virtual ~FMatureStruct();
+};
+
 UCLASS()
 class MATUREJSON_API UMatureJsonObjectHelpers : public UBlueprintFunctionLibrary
 {
@@ -176,6 +187,20 @@ public:
 		static FMatureJsonObject NewObject(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
 	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
 		static FMatureJsonArray NewArray(UPARAM(ref) FMatureJsonObject& JObject, const FString& Key);
+
+	// for all struct convert
+	// 
+	UFUNCTION(BlueprintCallable, CustomThunk, Category = "Mature Json|Object", meta = (CustomStructureParam = "StructAddr", BlueprintInternalUseOnly = "true"))
+	static bool ToStruct(const UScriptStruct* StructDesc, const FMatureJsonObject& JObject, FMatureStruct& StructAddr);
+	static bool Generic_ToStruct(const UScriptStruct* StructType, const FMatureJsonObject& JObject, void* OutStructPtr);
+	DECLARE_FUNCTION(execToStruct);
+
+	// 
+	UFUNCTION(BlueprintCallable, CustomThunk, Category = "Mature Json|Object", meta = (CustomStructureParam = "StructAddr", BlueprintInternalUseOnly = "true"))
+	static FMatureJsonObject ToJson(const UScriptStruct* StructDesc, const FMatureStruct& StructAddr);
+	static bool Generic_ToJson(const UScriptStruct* StructType, const void* OutStructPtr, FMatureJsonObject& JObject);
+	DECLARE_FUNCTION(execToJson);
+
 };
 
 UCLASS()

@@ -14,6 +14,7 @@ USTRUCT(BlueprintType)
 struct BASEBROWSER_API FWebCookie
 {
 	GENERATED_USTRUCT_BODY()
+
 	// The cookie name.
 	UPROPERTY(BlueprintReadWrite, Category = "Web View")
 	FString Name;
