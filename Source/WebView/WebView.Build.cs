@@ -49,6 +49,7 @@ namespace UnrealBuildTool.Rules
                     "MediaUtils",
                     "OpenSSL",
                     "MatureJson",
+                    "BaseBrowser",
                     "ImageWrapper"
                 }
             );
