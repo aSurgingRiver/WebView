@@ -136,3 +136,6 @@ void SBaseBrowser::FreshTexture(bool) {
 webview::FOnTransparency& SBaseBrowser::OnTransparency() {
 	return OnTransparencyDefault;
 }
+void SBaseBrowser::MouseTransparency(bool) {
+
+}

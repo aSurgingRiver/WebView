@@ -5,6 +5,7 @@
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
 #include "WebCookie.h"
+#include "WebBase.h"
 #ifdef WEBVIEW_CEF
 #include "CefWebViewFunLib.h"
 #include "ImitateInput.h"
@@ -180,5 +181,10 @@ FImitateInput& UWebViewFunLib::Clear(FImitateInput& _screen) {
 	//FImitateInput screen(_screen);
 	_screen.Event.Empty();
 	return _screen;
+}
+
+
+void UWebViewFunLib::MouseTransparency(UWebBase* WebWidget, bool yes) {
+	WebWidget->MouseTransparency(yes);
 }
 

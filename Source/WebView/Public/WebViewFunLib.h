@@ -9,6 +9,7 @@
 #include "ImitateInput.h"
 #include "WebViewFunLib.generated.h"
 
+class UWebBase;
 /**
  * 
  */
@@ -151,4 +152,9 @@ public:
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Web View")
 		static FImitateInput& Clear(UPARAM(ref) FImitateInput& screen);
+	/**
+	* clear all event info
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+		static void MouseTransparency(UPARAM(ref) UWebBase* WebWidget,bool yes);
 };
