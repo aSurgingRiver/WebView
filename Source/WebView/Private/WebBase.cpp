@@ -393,6 +393,10 @@ void UWebBase::FreshTexture(bool yes) {
 	if (WebWidget)WebWidget->FreshTexture(yes);
 }
 
+void UWebBase::MouseTransparency(bool yes) {
+	if (WebWidget)WebWidget->MouseTransparency(yes);
+}
+
 #undef LOCTEXT_NAMESPACE
 
 

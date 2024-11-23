@@ -185,6 +185,8 @@ public:
 	virtual void FreshTexture(bool yes);
 	//
 	virtual webview::FOnTransparency& OnTransparency() ;
+	//
+	virtual void MouseTransparency(bool yes);
 protected:
 	static webview::FOnTransparency OnTransparencyDefault;
 };

@@ -211,6 +211,7 @@ public:
 	virtual void ShowDevTools();
 	virtual void Silent(bool onoff);
 	virtual void Rate(int r);
+
 public:
 	webview::FOnWebState& OnWebState();
 	webview::FOnTitleChanged& OnTitleChanged();
@@ -227,6 +228,7 @@ public:
 	webview::FOnJs& OnJs();
 	webview::FOnWebError& OnWebError();
 	webview::FOnTransparency& OnTransparency();
+	webview::FOnToolTip& OnToolTip();
 protected:
 
 	/** Virtual Destructor. */
@@ -248,4 +250,5 @@ protected:
 	webview::FOnJs _OnJs;
 	webview::FOnWebError _OnWebError;
 	webview::FOnTransparency _OnTransparency;
+	webview::FOnToolTip _OnToolTip;
 };
