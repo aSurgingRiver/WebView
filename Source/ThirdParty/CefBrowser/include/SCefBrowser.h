@@ -110,6 +110,8 @@ public:
 	virtual void FreshTexture(bool yes) override;
 	// 
 	virtual webview::FOnTransparency& OnTransparency();
+	//
+	virtual void MouseTransparency(bool yes);
 public:
 	/** Default constructor. */
 	SCefBrowser();
