@@ -54,6 +54,10 @@ webview::FOnTransparency& IWebViewWindow::OnTransparency() {
 	return _OnTransparency;
 }
 
+webview::FOnToolTip& IWebViewWindow::OnToolTip() {
+	return _OnToolTip;
+}
+
 FReply IWebViewWindow::OnTouchMoved(const FGeometry& , const FPointerEvent& ) {
 	return FReply::Unhandled();
 }

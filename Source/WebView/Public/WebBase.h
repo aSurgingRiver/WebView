@@ -354,6 +354,8 @@ public:
 	virtual bool Asyn(const FString& Name, FMatureJsonValue& Data, const FString& Callback);
 
 	virtual void ReleaseSlateResources(bool bReleaseChildren);
+
+	void MouseTransparency(bool yes);
 protected:
 	virtual TSharedRef<SWidget> RebuildWidget() override;
 	void HandleOnLoadState(const EWebView_DocumentState state);
