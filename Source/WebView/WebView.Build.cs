@@ -53,6 +53,11 @@ namespace UnrealBuildTool.Rules
                     "ImageWrapper"
                 }
             );
+
+            if (Target.Platform == UnrealTargetPlatform.Android)
+            {
+                PublicDefinitions.Add("DISABLE_WARNINGS");
+            }
             if (false && Target.Platform == UnrealTargetPlatform.Android)
             {//
                 Console.WriteLine("WEBVIEW_ANDROID ... ");
