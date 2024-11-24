@@ -179,7 +179,7 @@ void UWebBase::BeginDestroy() {
 	if (WebWidget) {
 		WebWidget->Close();
 		WebWidget->SetCanTick(false);
-		WebWidget.Reset();
+		WebWidget = nullptr ;
 	}
 	Super::BeginDestroy();
 }
@@ -362,6 +362,7 @@ void UWebBase::ReleaseSlateResources(bool bReleaseChildren) {
 	if (WebWidget) {
 		WebWidget->StopRender(false);
 		WebWidget->Close();
+		WebWidget = nullptr;
 	}
 	if (_ViewObject)_ViewObject = nullptr;
 }
