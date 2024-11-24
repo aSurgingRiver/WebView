@@ -28,5 +28,6 @@ namespace webview {
 	DECLARE_DELEGATE_FourParams(FOnWebError, const FString&, const FString&, const FString&, int);
 	DECLARE_DELEGATE_RetVal_TwoParams(bool, FOnBeforePopup, FString, FString); 
 	DECLARE_DELEGATE_OneParam(FOnTransparency, bool);
+	DECLARE_DELEGATE_OneParam(FOnToolTip,const FString);
 }
 
