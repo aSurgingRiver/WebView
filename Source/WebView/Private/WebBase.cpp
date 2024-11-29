@@ -202,7 +202,7 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 #else
 	using SBrowserImp = SProxyWeb;
 #endif
-
+	if (OnJsEvent.IsBound())json_object = true;
 //#ifdef WEBVIEW_CEF
 	auto WebWidgetImp = SNew(SBrowserImp)
 		.ShowAddressBar(addressShow)
