@@ -10,6 +10,7 @@ public class BaseBrowser : ModuleRules
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
         if (Target.Version.MajorVersion < 5) CppStandard = CppStandardVersion.Cpp17;
+        else CppStandard = CppStandardVersion.Default;
         string CEFRoot = Path.Combine(ModuleDirectory, "Public");
         PublicSystemIncludePaths.Add(Path.Combine(CEFRoot));
 		PublicIncludePaths.AddRange(
