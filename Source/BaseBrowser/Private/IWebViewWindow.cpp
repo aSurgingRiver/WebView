@@ -58,6 +58,10 @@ webview::FOnToolTip& IWebViewWindow::OnToolTip() {
 	return _OnToolTip;
 }
 
+webview::FOnJsBegin& IWebViewWindow::OnJsBegin() {
+	return _OnJsBegin;
+}
+
 FReply IWebViewWindow::OnTouchMoved(const FGeometry& , const FPointerEvent& ) {
 	return FReply::Unhandled();
 }

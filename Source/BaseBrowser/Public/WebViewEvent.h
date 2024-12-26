@@ -7,6 +7,8 @@
 #include "WebViewEnum.h"
 #include "MatureJsonValue.h"
 #include "Engine/Texture.h"
+#include "Layout/Geometry.h"
+#include "Input/Events.h"
 #include "Delegates/DelegateCombinations.h"
 
 namespace webview {
@@ -18,6 +20,7 @@ namespace webview {
 	DECLARE_DELEGATE_RetVal_TwoParams(bool, FOnBeforePopupDelegate, FString, FString);
 	DECLARE_DELEGATE_TwoParams(FOnDownloadComplete, FString, FString);
 	DECLARE_DELEGATE_TwoParams(FOnPostResponse, const FString&, const FString&);
+	DECLARE_DELEGATE_TwoParams(FOnRestFul, const FString&, const FMatureJsonValue&);
 	DECLARE_DELEGATE_TwoParams(FOnDragEvent, bool , FString);
 	DECLARE_DELEGATE_OneParam(FOnRenderCrash, FString);
 	DECLARE_DELEGATE_OneParam(FOnTexture2D, UTexture*);
@@ -29,5 +32,6 @@ namespace webview {
 	DECLARE_DELEGATE_RetVal_TwoParams(bool, FOnBeforePopup, FString, FString); 
 	DECLARE_DELEGATE_OneParam(FOnTransparency, bool);
 	DECLARE_DELEGATE_OneParam(FOnToolTip,const FString);
+	DECLARE_DELEGATE(FOnJsBegin);
 }
 
