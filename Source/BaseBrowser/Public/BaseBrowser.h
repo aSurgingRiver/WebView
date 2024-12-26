@@ -51,6 +51,8 @@
 		SLATE_EVENT(webview::FOnJsStr, OnJsStr) \
 		/** Called when web has error . */ \
 		SLATE_EVENT(webview::FOnJs, OnJs) \
+		/** Called when web has error . */ \
+		SLATE_EVENT(webview::FOnJsBegin, OnJsBegin) \
 		 \
 		/* this party for params */ \
 		/** Control and Editor show text style  */ \
@@ -142,6 +144,7 @@ public:
 	 * @return The URL, or empty string if no document is loaded.
 	 */
 	virtual FString GetUrl() const;
+	virtual FString GetTitle() const;
 	/** Navigate forwards. */
 	virtual void GoForward();
 	/** Set Page Zoom level */
@@ -172,7 +175,9 @@ public:
 	//
 	virtual void ShowDevTools();
 	//
-	virtual void KeyboardMode(WebView_Keyboard_Mode);
+	virtual void KeyboardMode(WebView_Penetrate_Mode);
+	//
+	virtual void MouseMode(WebView_Penetrate_Mode);
 	//
 	virtual void Close();
 	//
