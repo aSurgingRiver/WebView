@@ -70,7 +70,7 @@ UWebBase::UWebBase(const FObjectInitializer& ObjectInitializer)
 	styleText.Font.Size = 20;
 	bIsVariable = true;
 	json_object = false;
-	eKeyboradModeTransparency = WebView_Keyboard_Mode::WebView_Keyboard_Mode_Blend;
+	eKeyboradModeTransparency = WebView_Penetrate_Mode::WebView_Penetrate_Mode_Blend;
 }
 
 void UWebBase::LoadURL(const FString& NewURL,FString PostData, bool need_response)
@@ -142,6 +142,10 @@ FString UWebBase::GetUrl() const {
 	return FString();
 }
 
+FString UWebBase::GetTitle() const {
+	if (WebWidget)WebWidget->GetTitle(); 
+	return FString();
+}
 /** Reload the current page. */
 void UWebBase::Reload() {
 	if (WebWidget)WebWidget->Reload();
@@ -227,6 +231,7 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 		.OnResourceLoad_UObject(this, &UWebBase::HandleOnResourceLoad)
 		.OnJsStr_UObject(this, &UWebBase::HandleAsyn)
 		.OnJs_UObject(this, &UWebBase::HandleAsynJson)
+		.OnJsBegin_UObject(this, &UWebBase::HandleOnCallBegin)
 		.OnLoadState_UObject(this, &UWebBase::HandleOnLoadState)
 		.OnTexture_UObject(this, &UWebBase::HandleOnTexture)
 		.OnDownloadComplete_UObject(this, &UWebBase::HandleOnDownloadTip);
@@ -292,6 +297,10 @@ void UWebBase::HandleOnUrlChanged(const FString& InText) {
 
 void UWebBase::HandleOnTexture(UTexture* texture) {
 	if (OnTexture.IsBound()) OnTexture.Broadcast(texture);
+}
+
+void UWebBase::HandleOnCallBegin() {
+	if (OnCallBegin.IsBound()) OnCallBegin.Broadcast();
 }
 
 void UWebBase::HandleOnTransparency(bool yes){
@@ -367,8 +376,11 @@ void UWebBase::ReleaseSlateResources(bool bReleaseChildren) {
 	if (_ViewObject)_ViewObject = nullptr;
 }
 
-void UWebBase::KeyboardMode(WebView_Keyboard_Mode KeyMode) {
+void UWebBase::KeyboardMode(WebView_Penetrate_Mode KeyMode) {
 	if (WebWidget)WebWidget->KeyboardMode(KeyMode);
+}
+void UWebBase::MouseMode(WebView_Penetrate_Mode KeyMode) {
+	if (WebWidget)WebWidget->MouseMode(KeyMode);
 }
 void UWebBase::GoBack() {
 	if (WebWidget)WebWidget->GoBack();

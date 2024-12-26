@@ -67,6 +67,7 @@ public:
 	 * @return The URL, or empty string if no document is loaded.
 	 */
 	virtual FString GetUrl() const override;
+	virtual FString GetTitle() const override;
 	/** Navigate forwards. */
 	virtual void GoForward()override;
 	/** Set Page Zoom level */
@@ -97,7 +98,9 @@ public:
 	//
 	virtual void ShowDevTools()override;
 	//
-	virtual void KeyboardMode(WebView_Keyboard_Mode)override;
+	virtual void KeyboardMode(WebView_Penetrate_Mode)override;
+	//
+	virtual void MouseMode(WebView_Penetrate_Mode)override;
 	//
 	virtual void Close()override;
 	//

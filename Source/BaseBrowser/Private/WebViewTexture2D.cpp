@@ -8,7 +8,7 @@
 #include "RenderUtils.h"
 #include "RenderingThread.h"
 #include "UObject/WeakObjectPtrTemplates.h"
-#include "WebViewTextureResource.h"
+//#include "WebViewTextureResource.h"
 //#include "IWebViewWindow.h"
 
 /* UWebViewTexture2D structors
@@ -27,7 +27,7 @@ class FTextureResource* UWebViewTexture2D::CreateResource() {
 
 EMaterialValueType UWebViewTexture2D::GetMaterialType() const
 {
-	return EMaterialValueType::MCT_TextureExternal;//
+	return EMaterialValueType::MCT_Texture2D ;//
 }
 
 void UWebViewTexture2D::Init(SYTextureRHIRef InRHITexture, int w, int h, EPixelFormat InFormat) {

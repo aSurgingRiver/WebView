@@ -19,4 +19,24 @@
         return ue.interface[funcid] = callback, setTimeout(function () { delete ue.interface[funcid] }, 1e3 * Math.max(2, parseInt(timeout) || 0)), funcid
     }
 ));
+
 "function" != typeof ue4 && (delete ue4, ue4=ue.call);
+
+// document.dispatchEvent(ue.on_call_begin)
+// document.addEventListener(ue.on_call_begin, function(e) {
+//     delete ue.on_call_begin ; // 
+//     console.warn('Begin Send msg to ue', e);
+// });
+// After receiving the event, the variable must be deleted
+"string" != ue.on_call_begin && (ue.on_call_begin = 'ue.call.begin.event')
+
+if ('function' != typeof ue.enter_tojs) ue.enter_tojs = function () {
+    ue.proxy_tojs(function (func_name, param) {
+        if (func_name in ue.interface) {
+            ue.interface[func_name](param);
+        }
+        else {
+            console.warn('function ' + func_name + ' do not exists!');
+        }
+    });
+}
