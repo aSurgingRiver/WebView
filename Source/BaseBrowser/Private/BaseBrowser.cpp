@@ -79,6 +79,9 @@ void SBaseBrowser::PopupURL(const FString& ) {
 FString SBaseBrowser::GetUrl() const {
 	return FString();
 }
+FString SBaseBrowser::GetTitle() const {
+	return FString();
+}
 /** Navigate forwards. */
 void SBaseBrowser::GoForward() {
 }
@@ -117,7 +120,10 @@ void SBaseBrowser::StopRender(bool ) {
 void SBaseBrowser::ShowDevTools() {
 }
 //
-void SBaseBrowser::KeyboardMode(WebView_Keyboard_Mode) {
+void SBaseBrowser::KeyboardMode(WebView_Penetrate_Mode) {
+}
+//
+void SBaseBrowser::MouseMode(WebView_Penetrate_Mode) {
 }
 //
 void SBaseBrowser::Close() {
