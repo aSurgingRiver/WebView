@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 #include "IBaseBrowserModule.h"
-#include "WebViewAssetManager.h"
+//#include "WebViewAssetManager.h"
 
 class FBaseBrowserModule : public IBaseBrowserModule
 {
@@ -16,7 +16,7 @@ public:
 
 	virtual UMaterialInterface* GetDefaultTranslucentMaterial() ;
 	virtual UMaterialInterface* GetDefaultMaterial() ;
-
-private:
-	UWebViewAssetManager* WebViewAssetMgr;
+//
+//private:
+//	UWebViewAssetManager* WebViewAssetMgr;
 };
