@@ -1,7 +1,7 @@
 // Copyright aXiuShen. All Rights Reserved.
 
 #include "BaseBrowserModule.h"
-#include "WebViewAssetManager.h"
+//#include "WebViewAssetManager.h"
 #include "CoreWebLog.h"
 
 #define LOCTEXT_NAMESPACE "FBaseBrowserModule"
@@ -16,11 +16,11 @@ IBaseBrowserModule* IBaseBrowserModule::Get()
 void FBaseBrowserModule::StartupModule()
 {
 
-	if (WebViewAssetMgr == nullptr)
-	{
-		WebViewAssetMgr = NewObject<UWebViewAssetManager>((UObject*)GetTransientPackage(), NAME_None, RF_Transient | RF_Public);
-		WebViewAssetMgr->LoadDefaultMaterials();
-	}
+	//if (WebViewAssetMgr == nullptr)
+	//{
+	//	WebViewAssetMgr = NewObject<UWebViewAssetManager>((UObject*)GetTransientPackage(), NAME_None, RF_Transient | RF_Public);
+	//	WebViewAssetMgr->LoadDefaultMaterials();
+	//}
 }
 
 void FBaseBrowserModule::ShutdownModule()
@@ -29,13 +29,11 @@ void FBaseBrowserModule::ShutdownModule()
 }
 
 UMaterialInterface* FBaseBrowserModule::GetDefaultTranslucentMaterial() {
-	if (WebViewAssetMgr == nullptr) return nullptr;
-	return WebViewAssetMgr->GetDefaultMaterial();
+	return nullptr;
 }
 
 UMaterialInterface* FBaseBrowserModule::GetDefaultMaterial() {
-	if (WebViewAssetMgr == nullptr) return nullptr;
-	return WebViewAssetMgr->GetDefaultTranslucentMaterial();
+	return nullptr;
 }
 
 #undef LOCTEXT_NAMESPACE
