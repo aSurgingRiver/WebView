@@ -197,7 +197,8 @@ public:
 	 */
 	virtual void UnbindUObject(const FString& Name, UObject* Object, bool bIsPermanent = true) = 0;
 
-	virtual void SetKeyboardMode(WebView_Keyboard_Mode mode) = 0;
+	virtual void SetKeyboardMode(WebView_Penetrate_Mode mode) = 0;
+	virtual void SetMouseMode(WebView_Penetrate_Mode mode) =0;
 
 	virtual FWebViewJSScripting* GetJsScripting()=0;
 	virtual void OnDragEnter(const FGeometry& MyGeometry, const FDragDropEvent& DragDropEvent) ;
@@ -229,6 +230,7 @@ public:
 	webview::FOnWebError& OnWebError();
 	webview::FOnTransparency& OnTransparency();
 	webview::FOnToolTip& OnToolTip();
+	webview::FOnJsBegin& OnJsBegin();
 protected:
 
 	/** Virtual Destructor. */
@@ -251,4 +253,5 @@ protected:
 	webview::FOnWebError _OnWebError;
 	webview::FOnTransparency _OnTransparency;
 	webview::FOnToolTip _OnToolTip;
+	webview::FOnJsBegin _OnJsBegin;
 };
