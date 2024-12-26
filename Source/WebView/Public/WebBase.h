@@ -42,6 +42,7 @@ class WEBVIEW_API UWebBase : public UWidget
 
 public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPreReBuild);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCallBegin);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnStateLoad, EWebView_DocumentState, state);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUrlChanged, const FText&, Url);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTexture, UTexture*,texture);
@@ -109,6 +110,8 @@ public:
 	FOnTexture OnTexture;
 	UPROPERTY(BlueprintAssignable, Category = "Web View|Event")
 	FOnTransparency OnTransparency;
+	UPROPERTY(BlueprintAssignable, Category = "Web View|Event")
+	FOnCallBegin OnCallBegin;
 
 	/** this party is blueprint editor params */
 	/** URL that the browser will initially navigate to. The URL should include the protocol, eg http:// */
@@ -119,7 +122,7 @@ public:
 		bool bEnableMouseTransparency = true;
 	/** Configure webpage  mouse is transparency */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Keyborad Mode"), Category = "Web View|Transparency")
-		WebView_Keyboard_Mode eKeyboradModeTransparency ;
+		WebView_Penetrate_Mode eKeyboradModeTransparency ;
 	/** Control and Editor show text style  */
 	UPROPERTY(EditAnywhere, meta = (DisplayName = "Text Style", UIMin = 0, UIMax = 1), Category = "Web View|Show Head")
 		FTextBlockStyle  styleText;
@@ -267,6 +270,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Web View")
 		FString GetUrl() const;
 
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+		FString GetTitle() const;
 	/**
 	* Set web page zoom level 
 	* @param zoom : between 0.25 and 5 default is 1
@@ -316,7 +321,10 @@ public:
 	* Show Dev Tools for debug web
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Web View")
-	void KeyboardMode(WebView_Keyboard_Mode KeyMode);
+	void KeyboardMode(WebView_Penetrate_Mode KeyMode);
+
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+	void MouseMode(WebView_Penetrate_Mode KeyMode= WebView_Penetrate_Mode::WebView_Penetrate_Mode_Blend);
 
 	UFUNCTION(BlueprintCallable, Category = "Web View")
 	void GoBack();
@@ -361,6 +369,7 @@ protected:
 	void HandleOnLoadState(const EWebView_DocumentState state);
 	void HandleOnUrlChanged(const FString& Text);
 	void HandleOnTexture(UTexture* texture);
+	void HandleOnCallBegin();
 	void HandleOnTransparency(bool yes);
 	bool HandleOnBeforePopup(FString URL, FString Frame);
 	void HandleOnDownloadTip(FString URL, FString File);

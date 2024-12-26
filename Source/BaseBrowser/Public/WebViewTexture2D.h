@@ -9,11 +9,23 @@
 #include "Math/Color.h"
 #include "Math/IntPoint.h"
 #include "Misc/Timespan.h"
+#include "RHIResources.h"
+#include "CoreGlobals.h"
+#include "Containers/Queue.h"
+#include "Math/IntPoint.h"
+#include "Math/Range.h"
+#include "MediaObjectPool.h"
+#include "RHI.h"
+#include "RHIUtilities.h"
+#include "Engine/Texture.h"
+#include "Misc/Timespan.h"
+
 #include "Templates/SharedPointer.h"
+#include "Templates/RefCounting.h"
 #include "UObject/ObjectMacros.h"
 #include "UObject/ScriptMacros.h"
-#include "WebViewTextureSample.h"
-
+//#include "WebViewTextureSample.h"
+#include "Rendering/SlateRenderer.h"
 #include "WebViewTexture2D.generated.h"
 
 class UTexture2DDynamic;
@@ -30,9 +42,9 @@ class BASEBROWSER_API UWebViewTexture2D
 	GENERATED_UCLASS_BODY()
 public:
 #if WEBVIEW_ENGINE_VERSION>=50500
-	using SYTextureRHIRef = FTextureRHIRef;
+	typedef FTextureRHIRef SYTextureRHIRef  ;
 #else
-	using SYTextureRHIRef = FTexture2DRHIRef;
+	typedef FTexture2DRHIRef SYTextureRHIRef ;
 #endif
 	void Init(SYTextureRHIRef InRHITexture, int w,int h, EPixelFormat InFormat);
 
