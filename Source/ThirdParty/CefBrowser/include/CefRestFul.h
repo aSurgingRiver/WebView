@@ -14,5 +14,6 @@ public:
 	void Request(const FString& URL, const FMatureJsonValue& Data) override;
 	virtual void BeginDestroy() override;
 private:
+	friend class CRestFulClient;
 	TSharedPtr<struct RestFulData> resetful_data;
 };
