@@ -138,12 +138,12 @@ void UWebBase::CallParams(const FString& Function, const TArray<FString>& Params
 }
 
 FString UWebBase::GetUrl() const {
-	if (WebWidget)WebWidget->GetUrl();
+	if (WebWidget)return WebWidget->GetUrl();
 	return FString();
 }
 
 FString UWebBase::GetTitle() const {
-	if (WebWidget)WebWidget->GetTitle(); 
+	if (WebWidget)return WebWidget->GetTitle(); 
 	return FString();
 }
 /** Reload the current page. */
