@@ -18,6 +18,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Mature Json")
 		static bool ParseString(UPARAM(ref) FMatureJsonValue& JValue,const FString& Text );
 
+	// Parse a JSON string.
+	UFUNCTION(BlueprintCallable, Category = "Mature Json")
+		static FMatureJsonValue Parse(const FString& Text);
 
 	UFUNCTION(BlueprintCallable, Category = "Mature Json")
 		static bool ParseFile(UPARAM(ref) FMatureJsonValue& JValue, const FString& FilePath);
