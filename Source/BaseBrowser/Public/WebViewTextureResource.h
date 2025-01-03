@@ -121,7 +121,7 @@ private:
 
 	/** Tracks the current clear color. */
 	FLinearColor CurrentClearColor;
-
+	// FTextureRHIRef ddr;
 	/** Input render target if the texture samples don't provide one (for conversions). */
 	TRefCountPtr<FRHITexture2D> InputTarget;
 
