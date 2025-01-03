@@ -1,5 +1,6 @@
 // Copyright aXiuShen. All Rights Reserved.
 #include "IWebViewWindow.h"
+#include "WebViewEvent.h"
 
 IWebViewWindow::~IWebViewWindow() {
 }
@@ -98,3 +99,7 @@ void IWebViewWindow::StopRender(bool ) {
 void IWebViewWindow::ShowDevTools() {}
 void IWebViewWindow::Silent(bool onoff) {}
 void IWebViewWindow::Rate(int r) {}
+void IWebViewWindow::SetKeyboardMode(WebView_Penetrate_Mode mode) {
+}
+void IWebViewWindow::SetMouseMode(WebView_Penetrate_Mode mode) {
+}
