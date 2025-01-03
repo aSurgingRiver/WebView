@@ -5,6 +5,11 @@ bool UMatureJsonValueHelpers::ParseString(FMatureJsonValue& JValue,const FString
 {
 	return JValue.ParseString(Text);
 }
+FMatureJsonValue UMatureJsonValueHelpers::Parse(const FString& Text) {
+	FMatureJsonValue JValue;
+	JValue.ParseString(Text);
+	return JValue;
+}
 
 bool UMatureJsonValueHelpers::ParseFile(FMatureJsonValue& JValue, const FString& filepath) {
 	return JValue.ParseFile(filepath);
