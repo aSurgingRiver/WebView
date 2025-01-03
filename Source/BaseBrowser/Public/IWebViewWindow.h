@@ -197,8 +197,8 @@ public:
 	 */
 	virtual void UnbindUObject(const FString& Name, UObject* Object, bool bIsPermanent = true) = 0;
 
-	virtual void SetKeyboardMode(WebView_Penetrate_Mode mode) = 0;
-	virtual void SetMouseMode(WebView_Penetrate_Mode mode) =0;
+	virtual void SetKeyboardMode(WebView_Penetrate_Mode mode);
+	virtual void SetMouseMode(WebView_Penetrate_Mode mode) ;
 
 	virtual FWebViewJSScripting* GetJsScripting()=0;
 	virtual void OnDragEnter(const FGeometry& MyGeometry, const FDragDropEvent& DragDropEvent) ;

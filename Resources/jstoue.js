@@ -24,10 +24,8 @@
 
 // document.dispatchEvent(ue.on_call_begin)
 // document.addEventListener(ue.on_call_begin, function(e) {
-//     delete ue.on_call_begin ; // 
-//     console.warn('Begin Send msg to ue', e);
+//     console.warn('Begin Send msg to ue');
 // });
-// After receiving the event, the variable must be deleted
 "string" != ue.on_call_begin && (ue.on_call_begin = 'ue.call.begin.event')
 
 if ('function' != typeof ue.enter_tojs) ue.enter_tojs = function () {
