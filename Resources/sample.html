@@ -119,8 +119,6 @@
 </body>
 <script>
     document.addEventListener(ue.on_call_begin, function(e) {
-        // After receiving the event, the variable must be deleted
-        delete ue.on_call_begin ;
         console.warn('Begin Send msg to ue', e);
     });
     // response function from ue call
