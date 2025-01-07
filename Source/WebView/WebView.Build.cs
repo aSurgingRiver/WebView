@@ -63,11 +63,13 @@ namespace UnrealBuildTool.Rules
                 Console.WriteLine("WEBVIEW_ANDROID ... ");
                 PrivateIncludePathModuleNames.Add("AndroidBrowser");
             }
-            else if(false && project_bridge_status())
+            else if(true && (project_bridge_status() 
+                || Target.Configuration == UnrealTargetConfiguration.DebugGame
+                || Target.Configuration == UnrealTargetConfiguration.Debug))
             {
                 PublicDefinitions.Add("USING_WEBBROWSER=1"); //
                 PrivateDependencyModuleNames.Add("WebBrowser");
-                Console.WriteLine("project_no_load_webview ...... ");
+                Console.WriteLine("UnrealTargetPlatform USING_WEBBROWSER ...... ");
             }
             else if(Target.Platform == UnrealTargetPlatform.Linux ||
                 Target.Platform == UnrealTargetPlatform.Win64)
