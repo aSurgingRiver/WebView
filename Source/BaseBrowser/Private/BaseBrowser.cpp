@@ -145,3 +145,5 @@ webview::FOnTransparency& SBaseBrowser::OnTransparency() {
 void SBaseBrowser::MouseTransparency(bool) {
 
 }
+void SBaseBrowser::Screen(bool touch){
+}
