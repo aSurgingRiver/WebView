@@ -661,37 +661,37 @@ FVector UMatureJsonObjectHelpers::ToVector(FMatureJsonObject& JObject) {
 }
 
 bool UMatureJsonObjectHelpers::GetBoolean(FMatureJsonObject& JObject, const FString& Key) {
-	bool value;
+	bool value=false;
 	JObject.GetValue(Key, value);
 	return value;
 }
 float UMatureJsonObjectHelpers::GetFloat(FMatureJsonObject& JObject, const FString& Key) {
-	bool value;
+	float value=0.0f;
 	JObject.GetValue(Key, value);
 	return value;
 }
 uint32 UMatureJsonObjectHelpers::GetUint(FMatureJsonObject& JObject, const FString& Key) {
-	uint32 value;
+	uint32 value=0;
 	JObject.GetValue(Key, value);
 	return value;
 }
 int32 UMatureJsonObjectHelpers::GetInt(FMatureJsonObject& JObject, const FString& Key) {
-	int32 value;
+	int32 value=0;
 	JObject.GetValue(Key, value);
 	return value;
 }
 uint64 UMatureJsonObjectHelpers::GetUint64(FMatureJsonObject& JObject, const FString& Key) {
-	uint64 value;
+	uint64 value=0;
 	JObject.GetValue(Key, value);
 	return value;
 }
 int64 UMatureJsonObjectHelpers::GetInt64(FMatureJsonObject& JObject, const FString& Key) {
-	int64 value;
+	int64 value = 0;
 	JObject.GetValue(Key, value);
 	return value;
 }
 double UMatureJsonObjectHelpers::GetDouble(FMatureJsonObject& JObject, const FString& Key) {
-	double value;
+	double value=0.0f;
 	JObject.GetValue(Key, value);
 	return value;
 }
