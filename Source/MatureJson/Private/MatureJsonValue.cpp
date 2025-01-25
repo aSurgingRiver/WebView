@@ -346,14 +346,20 @@ uint64 FMatureJsonValue::ToUInt64() const
 
 
 bool FMatureJsonValue::GetValue(bool& value)const {
-	if (mature::Type::kNumberType != ValueRef().GetType())return false;
-	if (ValueRef().IsDouble())value = 0.05f <= ValueRef().GetDouble() || (ValueRef().GetDouble()) <= -0.05f;
-	else if (ValueRef().IsInt64())value = bool (ValueRef().GetInt64());
-	else if (ValueRef().IsUint64())value = bool(ValueRef().GetUint64());
-	else if (ValueRef().IsInt())value = bool(ValueRef().GetInt());
-	else if (ValueRef().IsUint())value = bool(ValueRef().GetUint());
+	if (mature::Type::kTrueType == ValueRef().GetType())value = true;
+	else if (mature::Type::kFalseType == ValueRef().GetType())value = false;
+	else if (mature::Type::kNumberType == ValueRef().GetType()) {
+		if (ValueRef().IsDouble())value = 0.05f <= ValueRef().GetDouble() || (ValueRef().GetDouble()) <= -0.05f;
+		else if (ValueRef().IsInt64())value = bool(ValueRef().GetInt64());
+		else if (ValueRef().IsUint64())value = bool(ValueRef().GetUint64());
+		else if (ValueRef().IsInt())value = bool(ValueRef().GetInt());
+		else if (ValueRef().IsUint())value = bool(ValueRef().GetUint());
+	}
+	else if (mature::Type::kStringType == ValueRef().GetType()) { 
+		if (FString(ValueRef().GetString()).ToLower() == TEXT("true")) value = true;
+	}
 	else return false;
-	return false;
+	return true;
 	//return GetNumberBool<bool>(ValueRef(), value);
 }
 bool FMatureJsonValue::GetValue(float& value)const {
