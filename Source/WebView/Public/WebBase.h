@@ -354,6 +354,9 @@ public:
 	void FreshTexture(bool yes);
 
 
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+	void Screen(bool touch=false);
+
 public:
 	virtual void BeginDestroy() override;
 	// 

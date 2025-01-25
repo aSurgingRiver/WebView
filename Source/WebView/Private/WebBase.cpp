@@ -406,6 +406,10 @@ void UWebBase::FreshTexture(bool yes) {
 	if (WebWidget)WebWidget->FreshTexture(yes);
 }
 
+void UWebBase::Screen(bool touch) {
+	if (WebWidget)WebWidget->Screen(touch);
+}
+
 void UWebBase::MouseTransparency(bool yes) {
 	if (WebWidget)WebWidget->MouseTransparency(yes);
 }

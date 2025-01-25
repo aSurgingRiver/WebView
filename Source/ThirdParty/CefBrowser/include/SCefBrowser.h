@@ -115,6 +115,8 @@ public:
 	virtual webview::FOnTransparency& OnTransparency();
 	//
 	virtual void MouseTransparency(bool yes);
+	// 
+	virtual void Screen(bool touch);
 public:
 	/** Default constructor. */
 	SCefBrowser();
@@ -127,6 +129,7 @@ public:
 private:
 	//
 	virtual void Tick(const FGeometry& AllottedGeometry, const double InCurrentTime, const float InDeltaTime) override;
+	virtual FReply OnDragDetected(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent) override;
 	virtual void OnDragEnter(const FGeometry& MyGeometry, const FDragDropEvent& DragDropEvent) override;
 	virtual void OnDragLeave(const FDragDropEvent& DragDropEvent) override;
 	virtual FReply OnDragOver(const FGeometry& MyGeometry, const FDragDropEvent& DragDropEvent) override;
