@@ -86,6 +86,9 @@ bool IWebViewWindow::IsLoading() const {
 bool IWebViewWindow::Isloaded()  {
 	return false;
 }
+FReply IWebViewWindow::OnDragDetected(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent) {
+	return FReply::Unhandled();
+}
 void IWebViewWindow::OnDragEnter(const FGeometry& , const FDragDropEvent& ) {}
 void IWebViewWindow::OnDragLeave(const FDragDropEvent& ) {}
 FReply IWebViewWindow::OnDragOver(const FGeometry& , const FDragDropEvent& ) {
