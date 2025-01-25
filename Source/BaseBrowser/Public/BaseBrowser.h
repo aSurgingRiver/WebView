@@ -192,6 +192,8 @@ public:
 	virtual webview::FOnTransparency& OnTransparency() ;
 	//
 	virtual void MouseTransparency(bool yes);
+	//
+	virtual void Screen(bool touch);
 protected:
 	static webview::FOnTransparency OnTransparencyDefault;
 };

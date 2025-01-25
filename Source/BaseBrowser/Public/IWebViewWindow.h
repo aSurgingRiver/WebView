@@ -201,6 +201,7 @@ public:
 	virtual void SetMouseMode(WebView_Penetrate_Mode mode) ;
 
 	virtual FWebViewJSScripting* GetJsScripting()=0;
+	virtual FReply OnDragDetected(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent);
 	virtual void OnDragEnter(const FGeometry& MyGeometry, const FDragDropEvent& DragDropEvent) ;
 	virtual void OnDragLeave(const FDragDropEvent& DragDropEvent) ;
 	virtual FReply OnDragOver(const FGeometry& MyGeometry, const FDragDropEvent& DragDropEvent) ;

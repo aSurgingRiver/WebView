@@ -191,19 +191,19 @@ FMatureJsonArray& UMatureJsonArrayHelpers::MergeArray(FMatureJsonArray& List, co
 
 // Convert a JSON value valueto a boolean.
 bool UMatureJsonArrayHelpers::GetBoolean(FMatureJsonArray& Value, int index) {
-	bool V;
+	bool V=false;
 	Value.GetValue(index, V);
 	return V;
 }
 // Convert a JSON value valueto a float.
 float UMatureJsonArrayHelpers::GetFloat(FMatureJsonArray& Value, int index) {
-	float V;
+	float V=0.0f;
 	Value.GetValue(index).GetValue(V);
 	return V;
 }
 // Convert a JSON value valueto an integer.
 int32 UMatureJsonArrayHelpers::GetInteger(FMatureJsonArray& Value, int index) {
-	int32 V;
+	int32 V=0;
 	Value.GetValue(index).GetValue(V);
 	return V;
 }
