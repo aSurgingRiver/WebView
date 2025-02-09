@@ -683,7 +683,6 @@ struct CefPdfPrintSettingsTraits {
                    &target->footer_template, copy);
 
     target->generate_tagged_pdf = src->generate_tagged_pdf;
-    target->generate_document_outline = src->generate_document_outline;
   }
 };
 
