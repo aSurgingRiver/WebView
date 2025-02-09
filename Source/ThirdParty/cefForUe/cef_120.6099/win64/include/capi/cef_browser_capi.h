@@ -33,7 +33,7 @@
 // by hand. See the translator.README.txt file in the tools directory for
 // more information.
 //
-// $hash=e7f9480661f77931890085d6c5bf23d9842212e2$
+// $hash=d23df6f606a96b432905c5c80f29ab72915b8e01$
 //
 
 #ifndef CEF_INCLUDE_CAPI_CEF_BROWSER_CAPI_H_
@@ -165,16 +165,15 @@ typedef struct _cef_browser_t {
   ///
   /// Returns the frame with the specified identifier, or NULL if not found.
   ///
-  struct _cef_frame_t*(CEF_CALLBACK* get_frame_by_identifier)(
+  struct _cef_frame_t*(CEF_CALLBACK* get_frame_byident)(
       struct _cef_browser_t* self,
-      const cef_string_t* identifier);
+      int64_t identifier);
 
   ///
   /// Returns the frame with the specified name, or NULL if not found.
   ///
-  struct _cef_frame_t*(CEF_CALLBACK* get_frame_by_name)(
-      struct _cef_browser_t* self,
-      const cef_string_t* name);
+  struct _cef_frame_t*(CEF_CALLBACK* get_frame)(struct _cef_browser_t* self,
+                                                const cef_string_t* name);
 
   ///
   /// Returns the number of frames that currently exist.
@@ -185,7 +184,8 @@ typedef struct _cef_browser_t {
   /// Returns the identifiers of all existing frames.
   ///
   void(CEF_CALLBACK* get_frame_identifiers)(struct _cef_browser_t* self,
-                                            cef_string_list_t identifiers);
+                                            size_t* identifiersCount,
+                                            int64_t* identifiers);
 
   ///
   /// Returns the names of all existing frames.
