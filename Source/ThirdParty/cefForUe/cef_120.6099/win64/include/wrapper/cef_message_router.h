@@ -347,7 +347,7 @@ class CefMessageRouterBrowserSide
                                  CefRefPtr<CefFrame> frame,
                                  int64_t query_id) {}
 
-    virtual ~Handler() = default;
+    virtual ~Handler() {}
   };
 
   ///
@@ -435,7 +435,7 @@ class CefMessageRouterBrowserSide
  protected:
   // Protect against accidental deletion of this object.
   friend class base::RefCountedThreadSafe<CefMessageRouterBrowserSide>;
-  virtual ~CefMessageRouterBrowserSide() = default;
+  virtual ~CefMessageRouterBrowserSide() {}
 };
 
 ///
@@ -491,7 +491,7 @@ class CefMessageRouterRendererSide
  protected:
   // Protect against accidental deletion of this object.
   friend class base::RefCountedThreadSafe<CefMessageRouterRendererSide>;
-  virtual ~CefMessageRouterRendererSide() = default;
+  virtual ~CefMessageRouterRendererSide() {}
 };
 
 #endif  // CEF_INCLUDE_WRAPPER_CEF_MESSAGE_ROUTER_H_

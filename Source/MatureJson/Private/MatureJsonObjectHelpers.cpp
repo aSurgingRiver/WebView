@@ -403,6 +403,18 @@ namespace maturejson
 			FProperty* Property = *It;
 			if (Property->HasAnyPropertyFlags(CPF_Deprecated | CPF_Transient))continue;
 			FString VariableName = Property->GetName();
+			if (!(Property->PropertyFlags & CPF_NativeAccessSpecifiers)) {// for blueprint struction
+				TArray<FString> S;
+				VariableName.ParseIntoArray(S, TEXT("_"),false);
+				const int Num = S.Num();
+				if (3 <= Num && FCString::IsNumeric(*S[Num - 2]) && S[Num - 1].Len() == 32) {
+					VariableName = S[0];
+					for (int loop = 1; loop < Num - 2; loop++) {
+						VariableName.Append(TEXT("_"));
+						VariableName.Append(S[loop]);
+					}
+				}
+			}
 			const void* Value = Property->ContainerPtrToValuePtr<uint8>(StructPtr);
 			auto ValueOut = JObject.AddKey(VariableName);
 			if (Property->ArrayDim == 1) {
@@ -661,37 +673,37 @@ FVector UMatureJsonObjectHelpers::ToVector(FMatureJsonObject& JObject) {
 }
 
 bool UMatureJsonObjectHelpers::GetBoolean(FMatureJsonObject& JObject, const FString& Key) {
-	bool value;
+	bool value=false;
 	JObject.GetValue(Key, value);
 	return value;
 }
 float UMatureJsonObjectHelpers::GetFloat(FMatureJsonObject& JObject, const FString& Key) {
-	bool value;
+	float value=0.0f;
 	JObject.GetValue(Key, value);
 	return value;
 }
 uint32 UMatureJsonObjectHelpers::GetUint(FMatureJsonObject& JObject, const FString& Key) {
-	uint32 value;
+	uint32 value=0;
 	JObject.GetValue(Key, value);
 	return value;
 }
 int32 UMatureJsonObjectHelpers::GetInt(FMatureJsonObject& JObject, const FString& Key) {
-	int32 value;
+	int32 value=0;
 	JObject.GetValue(Key, value);
 	return value;
 }
 uint64 UMatureJsonObjectHelpers::GetUint64(FMatureJsonObject& JObject, const FString& Key) {
-	uint64 value;
+	uint64 value=0;
 	JObject.GetValue(Key, value);
 	return value;
 }
 int64 UMatureJsonObjectHelpers::GetInt64(FMatureJsonObject& JObject, const FString& Key) {
-	int64 value;
+	int64 value = 0;
 	JObject.GetValue(Key, value);
 	return value;
 }
 double UMatureJsonObjectHelpers::GetDouble(FMatureJsonObject& JObject, const FString& Key) {
-	double value;
+	double value=0.0f;
 	JObject.GetValue(Key, value);
 	return value;
 }
