@@ -190,7 +190,8 @@ class CefTextfield : public CefView {
   /// where:
   /// - FONT_FAMILY_LIST is a comma-separated list of font family names,
   /// - STYLES is an optional space-separated list of style names
-  ///   (case-sensitive "Bold" and "Italic" are supported), and
+  /// (case-sensitive
+  ///   "Bold" and "Italic" are supported), and
   /// - SIZE is an integer font size in pixels with the suffix "px".
   ///
   /// Here are examples of valid font description strings:
