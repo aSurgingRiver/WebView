@@ -403,6 +403,18 @@ namespace maturejson
 			FProperty* Property = *It;
 			if (Property->HasAnyPropertyFlags(CPF_Deprecated | CPF_Transient))continue;
 			FString VariableName = Property->GetName();
+			if (!(Property->PropertyFlags & CPF_NativeAccessSpecifiers)) {// for blueprint struction
+				TArray<FString> S;
+				VariableName.ParseIntoArray(S, TEXT("_"),false);
+				const int Num = S.Num();
+				if (3 <= Num && FCString::IsNumeric(*S[Num - 2]) && S[Num - 1].Len() == 32) {
+					VariableName = S[0];
+					for (int loop = 1; loop < Num - 2; loop++) {
+						VariableName.Append(TEXT("_"));
+						VariableName.Append(S[loop]);
+					}
+				}
+			}
 			const void* Value = Property->ContainerPtrToValuePtr<uint8>(StructPtr);
 			auto ValueOut = JObject.AddKey(VariableName);
 			if (Property->ArrayDim == 1) {
