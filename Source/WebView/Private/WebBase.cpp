@@ -69,7 +69,7 @@ UWebBase::UWebBase(const FObjectInitializer& ObjectInitializer)
 	styleText.ColorAndOpacity = FSlateColor(FLinearColor(0.0f, 0.0f, 0.0f));
 	styleText.Font.Size = 20;
 	bIsVariable = true;
-	json_object = false;
+	json_object = true;
 	eKeyboradModeTransparency = WebView_Penetrate_Mode::WebView_Penetrate_Mode_Blend;
 }
 
