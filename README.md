@@ -26,9 +26,6 @@ WebView is an enterprise browser plug-in designed for virtual engine. It uses ma
 17. Scale page
 18. 120 frame rate does not drop frames
 
-# CefBase Dependent:
-1. https://github.com/aSurgingRiver/CefBase
-
 # Using tutorials
 https://github.com/aSurgingRiver/WebView/wiki 
 https://www.youtube.com/channel/UCUUFUwaMi5-naF0PZMU9mxg 
