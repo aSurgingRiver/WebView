@@ -270,7 +270,7 @@ FString FMatureJsonValue::ToString() const
 	case mature::Type::kNumberType: return FString::SanitizeFloat(mature::GetNumber<float>(ValueRef()), 0);
 	case mature::Type::kStringType: return FString(ValueRef().GetString());
 	}
-	return FString();
+	return SaveString();
 }
 
 FDateTime FMatureJsonValue::ToDateTime() const

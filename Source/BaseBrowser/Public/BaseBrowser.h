@@ -6,6 +6,7 @@
 #include "MatureJsonValue.h"
 #include "WebViewEnum.h"
 #include "WebViewEvent.h"
+#include "WebViewSoundActor.h"
 #include "Widgets/SCompoundWidget.h"
 
 #define BASEBROWSER_PARAMS(CLASSNAME) \
@@ -194,6 +195,8 @@ public:
 	virtual void MouseTransparency(bool yes);
 	//
 	virtual void Screen(bool touch);
+	//
+	virtual void SetSound(UWebViewSoundComponent* Sound);
 protected:
 	static webview::FOnTransparency OnTransparencyDefault;
 };
