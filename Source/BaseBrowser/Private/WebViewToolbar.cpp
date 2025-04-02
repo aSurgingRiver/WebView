@@ -23,6 +23,7 @@
 
 SWebViewToolbar::SWebViewToolbar()
 { 
+	ChangeText.FromString(FString());
 }
 
 SWebViewToolbar::~SWebViewToolbar()
@@ -106,12 +107,27 @@ void SWebViewToolbar::Construct(const FArguments& InArgs, TSharedPtr<IWebViewWin
 				SNew(SEditableTextBox)
 				.Visibility(this, &SWebViewToolbar::AddressShow)
 				.OnTextCommitted(this, &SWebViewToolbar::OnUrlTextCommitted)
+				.OnTextChanged(this, &SWebViewToolbar::OnTextChanged)
 				.Text_Lambda([this]() {return WebViewWindow.IsValid()?FText::FromString(WebViewWindow->GetUrl()): LOCTEXT("", ""); })
 				.Font(InArgs._TextStyle.Font)
 				.SelectAllTextWhenFocused(true)
 				.ClearKeyboardFocusOnCommit(true)
 				.RevertTextOnEscape(true)
 			]
+				// PLATFORM_WINDOWS
+#if  PLATFORM_ANDROID
+			+ SHorizontalBox::Slot()
+			.VAlign(VAlign_Center)
+			.HAlign(HAlign_Right)
+			.AutoWidth() 
+			.Padding(5.f, 5.f)
+			[
+				SNew(SButton)
+				.Text(LOCTEXT("Go", "Go"))
+				.TextStyle(&InArgs._TextStyle)
+				.OnClicked(this, &SWebViewToolbar::OnGo)
+			]
+#endif
 		]
 	];
 }
@@ -223,11 +239,25 @@ FReply SWebViewToolbar::OnReloadClicked()
 	return FReply::Handled();
 }
 
+FReply SWebViewToolbar::OnGo()
+{
+	if (ChangeText.IsEmpty()) return FReply::Handled();
+	if (WebViewWindow.IsValid()) {
+		WebViewWindow->LoadURL(ChangeText.ToString(), FString(), false);
+	}
+	ChangeText.FromString(FString());
+	return FReply::Handled();
+}
+
 void SWebViewToolbar::OnUrlTextCommitted(const FText& NewText, ETextCommit::Type CommitType)
 {
 	if (CommitType == ETextCommit::OnEnter && WebViewWindow.IsValid()) {
 		WebViewWindow->LoadURL(NewText.ToString(),FString(),false);
 	}
+	ChangeText.FromString(FString());
+}
+void  SWebViewToolbar::OnTextChanged(const FText& InText) {
+	ChangeText = InText;
 }
 
 FReply SWebViewToolbar::OnForwardClicked()

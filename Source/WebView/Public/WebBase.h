@@ -12,6 +12,7 @@
 #include "BaseBrowser.h"
 #include "WebViewEnum.h"
 #include "Engine/Texture.h"
+#include "WebViewSoundActor.h"
 #include "WebBase.generated.h"
 class UWebViewObject;
 
@@ -357,6 +358,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Web View")
 	void Screen(bool touch=false);
 
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+	void AudioOnUE(bool yes=true);
 public:
 	virtual void BeginDestroy() override;
 	// 
@@ -382,4 +385,10 @@ protected:
 	void HandleAsynJson(const FString& Name, const FMatureJsonValue& Data, const FString& Callback);
 	//typedef class SCefBrowser::TMap<FString, FString> RequestHeaders;
 	bool HandleOnResourceLoad(FString URL, int ResourceType, TMap<FString, FString>& HtmlHeaders);
+
+
+private:
+	UPROPERTY()
+	AWebViewSoundActor* SoundActor;
+
 };

@@ -6,7 +6,7 @@
 #include "Misc/Guid.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "WebViewJSFunction.h"
-#include "CoreWebLog.h"
+#include "WebViewLog.h"
 #include "UObject/GCObject.h"
 
 

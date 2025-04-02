@@ -2,11 +2,24 @@
 
 #include "BaseBrowserModule.h"
 //#include "WebViewAssetManager.h"
-#include "CoreWebLog.h"
+#include "WebViewLog.h"
+#include "Engine/Engine.h"
 
 #define LOCTEXT_NAMESPACE "FBaseBrowserModule"
 
 DEFINE_LOG_CATEGORY(WebViewLog);
+
+namespace webview {
+	void PrintScreen(FString Content, FColor color, float time) {
+		if (!GEngine)return;
+		GEngine->AddOnScreenDebugMessage(
+			-1,               // Key (使用 -1 表示不需要唯一标识)
+			time,              // 显示时间（秒）
+			color,   // 颜色
+			Content           // 要显示的字符串
+		);
+	}
+}
 
 IBaseBrowserModule* IBaseBrowserModule::Get()
 {

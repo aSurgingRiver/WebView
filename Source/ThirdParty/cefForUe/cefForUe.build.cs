@@ -20,7 +20,8 @@ public class cefForUe : ModuleRules
         if (Target.Platform == UnrealTargetPlatform.Win64) {
             //InitCEF3_Win("cef_103.5060");
             InitCEF3_Win("cef_120.6099");
-            // InitCEF3_Win("cef_129.6668");
+            //InitCEF3_Win("cef_122.6261");
+            //InitCEF3_Win("cef_129.6668");
             //InitCEF3_Win("cef_115.5790");
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)

@@ -50,18 +50,17 @@ namespace UnrealBuildTool.Rules
                     "OpenSSL",
                     "MatureJson",
                     "BaseBrowser",
-                    "ImageWrapper"
+                    "ImageWrapper",
+                    "AudioMixer",
+                    "AudioExtensions"
                 }
             );
-
             if (Target.Platform == UnrealTargetPlatform.Android)
-            {
-                PublicDefinitions.Add("DISABLE_WARNINGS");
-            }
-            if (false && Target.Platform == UnrealTargetPlatform.Android)
             {//
                 Console.WriteLine("WEBVIEW_ANDROID ... ");
-                PrivateIncludePathModuleNames.Add("AndroidBrowser");
+                PublicDefinitions.Add("WEBVIEW_ANDROID=1"); //
+                PublicDefinitions.Add("DISABLE_WARNINGS");
+                PrivateDependencyModuleNames.Add("AndroidBrowser");
             }
             else if(true && (project_bridge_status() 
                 || Target.Configuration == UnrealTargetConfiguration.DebugGame
@@ -100,8 +99,8 @@ namespace UnrealBuildTool.Rules
                 PrivateIncludePathModuleNames.Add("UnrealEd");
                 PrivateDependencyModuleNames.Add("UnrealEd");
             }
-            PrivateDependencyModuleNames.Add("MatureJson");
-            PrivateDependencyModuleNames.Add("BaseBrowser");
+            PublicDependencyModuleNames.Add("MatureJson");
+            PublicDependencyModuleNames.Add("BaseBrowser");
         }
         bool project_bridge_status()
         {
