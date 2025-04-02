@@ -8,6 +8,7 @@
 #include "Async/TaskGraphInterfaces.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Misc/ConfigCacheIni.h"
+#include "Runtime/Engine/Classes/Engine/World.h"
 #if WITH_EDITOR
 #include "Materials/MaterialInterface.h"
 #include "Materials/MaterialExpressionMaterialFunctionCall.h"
@@ -19,7 +20,6 @@
 #include "PackageHelperFunctions.h"
 #endif
 #include "cefcorelib.h"
-
 #if defined WEBVIEW_CEF
 #include "SCefBrowser.h"
 #elif defined WEBVIEW_ANDROID
@@ -55,6 +55,7 @@ UWebBase::UWebBase(const FObjectInitializer& ObjectInitializer)
 	, _Pixel(8, 4)
 	, _Zoom(1.0f)
 {
+	SoundActor = nullptr;
 	stop_render = false;
 	WebWidget = nullptr;
 	WebWidget = nullptr;
@@ -184,6 +185,9 @@ void UWebBase::BeginDestroy() {
 		WebWidget->Close();
 		WebWidget->SetCanTick(false);
 		WebWidget = nullptr ;
+	}
+	if (SoundActor) {
+		SoundActor = nullptr;
 	}
 	Super::BeginDestroy();
 }
@@ -408,6 +412,16 @@ void UWebBase::FreshTexture(bool yes) {
 
 void UWebBase::Screen(bool touch) {
 	if (WebWidget)WebWidget->Screen(touch);
+}
+
+void UWebBase::AudioOnUE(bool yes) {
+	if (IsDesignTime() || IsDefaultSubobject()) {
+		return;
+	}
+	if (!SoundActor) {
+		SoundActor = GetWorld()->SpawnActor<AWebViewSoundActor>(AWebViewSoundActor::StaticClass());
+	}
+	if (WebWidget)WebWidget->SetSound(yes?SoundActor->GetSoundComponent():nullptr);
 }
 
 void UWebBase::MouseTransparency(bool yes) {
