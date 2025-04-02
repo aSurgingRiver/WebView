@@ -11,10 +11,10 @@
 #include "WebViewEnum.h"
 #include "MatureJsonValue.h"
 #include "WebViewEvent.h"
+#include "WebViewSoundActor.h"
 #include <memory>
 
 class FWebViewJSScripting;
-
 //using EWebCoreDocumentState = EWebView_DocumentState;
 typedef TMap<FString, FString> HtmlHeaders;
 /**
@@ -213,7 +213,7 @@ public:
 	virtual void ShowDevTools();
 	virtual void Silent(bool onoff);
 	virtual void Rate(int r);
-
+	virtual void SetSound(UWebViewSoundComponent* Sound);
 public:
 	webview::FOnWebState& OnWebState();
 	webview::FOnTitleChanged& OnTitleChanged();

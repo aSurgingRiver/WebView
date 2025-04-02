@@ -15,7 +15,7 @@
 #endif
 #include "HAL/FileManager.h"
 #include "Misc/Paths.h"
-#include "CoreWebLog.h"
+#include "WebViewLog.h"
 #include <string>
 #include <stdlib.h>
 // WEB_CORE_API
