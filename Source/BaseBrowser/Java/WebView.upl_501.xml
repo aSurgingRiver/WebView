@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+	<init>
+		<log text="WebView Plugin Init"/>
+		<setBoolFromPropertyContains result="bPackageForOculusQuest" ini="Engine" section="/Script/AndroidRuntimeSettings.AndroidRuntimeSettings" property="PackageForOculusMobile" contains="Quest"/>
+		<setBoolFromPropertyContains result="bPackageForOculusQuest2" ini="Engine" section="/Script/AndroidRuntimeSettings.AndroidRuntimeSettings" property="PackageForOculusMobile" contains="Quest2"/>
+		<setBoolFromPropertyContains result="bPackageForOculusQuestPro" ini="Engine" section="/Script/AndroidRuntimeSettings.AndroidRuntimeSettings" property="PackageForOculusMobile" contains="QuestPro"/>
+
+		<setBoolOr result="bPackageForOculusMobile" 
+			arg1="$B(bPackageForOculusQuest)" arg2="$B(bPackageForOculusQuest2)"/>
+		<setBoolOr result="bPackageForOculusMobile" 
+			arg1="$B(bPackageForOculusMobile)" arg2="$B(bPackageForOculusQuestPro)"/>
+
+		<if condition="bPackageForOculusMobile">
+			<true>
+				<log text="Adding com.oculus.always_draw_view_root for Oculus devices to manifest for hardware acceleration."/>
+			</true>
+		</if>
+	</init>
+
+	<prebuildCopies>
+		<copyDir src="$S(PluginDir)/5.1" dst="$S(BuildDir)/src/com/epicgames/unreal"/>
+	</prebuildCopies>
+	
+	<androidManifestUpdates>
+		<if condition="bPackageForOculusMobile">
+			<true>
+				<addElements tag="application">
+					<meta-data android:name="com.oculus.always_draw_view_root" android:value="true"/>
+				</addElements>
+			</true>
+		</if>
+		<addElements tag="application">
+			<meta-data android:name="usesCleartextTraffic" android:value="true"/>
+		</addElements>
+	</androidManifestUpdates>
+
+</root>

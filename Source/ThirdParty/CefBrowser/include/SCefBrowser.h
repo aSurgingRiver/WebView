@@ -117,6 +117,8 @@ public:
 	virtual void MouseTransparency(bool yes);
 	// 
 	virtual void Screen(bool touch);
+	//
+	virtual void SetSound(UWebViewSoundComponent* Sound);
 public:
 	/** Default constructor. */
 	SCefBrowser();

@@ -26,9 +26,29 @@ public class BaseBrowser : ModuleRules
 				// ... add other private include paths required here ...
 			}
 			);
-			
-		
-		PublicDependencyModuleNames.AddRange(
+
+
+        if (Target.Platform == UnrealTargetPlatform.Android)
+        {//
+            if(50400<=ue_version){
+                AdditionalPropertiesForReceipt.Add("AndroidPlugin", Path.Combine(ModuleDirectory, "Java","WebView.upl_505.xml"));
+            }
+            else if(50100<=ue_version){
+                AdditionalPropertiesForReceipt.Add("AndroidPlugin", Path.Combine(ModuleDirectory, "Java","WebView.upl_501.xml"));
+            }
+            
+            PublicDependencyModuleNames.AddRange(
+                new string[]
+                {
+                "OpenSSL",
+                "OpenGLDrv",
+                "Vulkan",
+                "VulkanRHI",
+                    // ... add other public dependencies that you statically link with here ...
+                }
+                );
+        }
+        PublicDependencyModuleNames.AddRange(
 			new string[]
             {
                 "Slate",
@@ -42,6 +62,8 @@ public class BaseBrowser : ModuleRules
                 "Serialization",
                 "MediaUtils",
                 "MatureJson",
+                "AudioMixer",
+                "AudioExtensions"
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
