@@ -75,10 +75,14 @@ private:
 	void    GoForward();
 	FText   GetReloadButtonText()const;
 	FReply  OnReloadClicked();
+	FReply  OnGo();
+	void    OnTextChanged(const FText& NewText, ETextCommit::Type CommitType);
 	void    OnUrlTextCommitted(const FText& NewText, ETextCommit::Type CommitType);
+	void    OnTextChanged(const FText& InText);
 
 
 private:
+	FText        ChangeText;
 	bool         isShow;
 	bool         isAddress;
 	bool         isControl;
