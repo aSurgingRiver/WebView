@@ -106,3 +106,5 @@ void IWebViewWindow::SetKeyboardMode(WebView_Penetrate_Mode mode) {
 }
 void IWebViewWindow::SetMouseMode(WebView_Penetrate_Mode mode) {
 }
+void IWebViewWindow::SetSound(UWebViewSoundComponent* Sound) {
+}

@@ -146,4 +146,8 @@ void SBaseBrowser::MouseTransparency(bool) {
 
 }
 void SBaseBrowser::Screen(bool touch){
+
+}
+void SBaseBrowser::SetSound(UWebViewSoundComponent* Sound) {
+
 }
