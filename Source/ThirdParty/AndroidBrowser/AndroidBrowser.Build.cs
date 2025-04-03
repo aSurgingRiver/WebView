@@ -29,17 +29,28 @@ public class AndroidBrowser : ModuleRules
         {
             return;
         }
-        String arch = "";
-        if (Target.Architecture == UnrealArch.X64)
-        {
-            arch = "x";
-        }
-        else {
-            arch = "a";
-        }
+        
         MergeFile(ModuleDirectory);
         // AndroidBrowser\Binaries\Android\Development\a
-        platform_bin = Path.Combine(ModuleDirectory, "Binaries", "Android", LibType,arch);
+        Int32 ue_version = Target.Version.MajorVersion * 10000 + Target.Version.MinorVersion * 100 + Target.Version.PatchVersion;
+        if (ue_version <= 50300)
+        {
+            platform_bin = Path.Combine(ModuleDirectory, "Binaries", "Android", LibType);
+        }
+        else
+        {
+            String _Architecture = Target.Architecture.ToString().ToLower();
+            String arch = "";
+            if (_Architecture.StartsWith("arm"))
+            {
+                arch = "a";
+            }
+            else
+            {
+                arch = "x";
+            }
+            platform_bin = Path.Combine(ModuleDirectory, "Binaries", "Android", LibType, arch);
+        }
         if (!Directory.Exists(platform_bin)) Directory.CreateDirectory(platform_bin);
         foreach (string FileName in Directory.EnumerateFiles(platform_bin, "*.a", SearchOption.AllDirectories))
         {
