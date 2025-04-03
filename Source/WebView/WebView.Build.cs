@@ -55,7 +55,8 @@ namespace UnrealBuildTool.Rules
                     "AudioExtensions"
                 }
             );
-            if (Target.Platform == UnrealTargetPlatform.Android)
+            Int32 ue_version = Target.Version.MajorVersion * 10000 + Target.Version.MinorVersion * 100 + Target.Version.PatchVersion;
+            if (50100 <= ue_version && Target.Platform == UnrealTargetPlatform.Android)
             {//
                 Console.WriteLine("WEBVIEW_ANDROID ... ");
                 PublicDefinitions.Add("WEBVIEW_ANDROID=1"); //
