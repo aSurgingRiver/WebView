@@ -19,25 +19,10 @@
 #include <string>
 #include <stdlib.h>
 // WEB_CORE_API
-
-//
-//#if defined CEF_WINDOWS
-//#define CEFLIB_EXPORT __declspec(dllimport)
-//#elif defined CEF_LINUX
-//#define CEFLIB_EXPORT 
-//#endif
-//#ifdef __cplusplus
-//extern "C" {
-//#endif
-//	CEFLIB_EXPORT const char* cef_api_hash(int entry);
-//#ifdef __cplusplus
-//}
-//#endif
-//
-//void CefEnableHighDPISupport();
-#if defined CEF_MAC
-#	include "include/wrapper/cef_library_loader.h"
+#if defined CEF_LINUX
+#include "include/cef_version.h"
 #endif
+
 // WEB_CORE_API
 #ifdef WEBVIEW_CEF
 class CEF3LIB: public ICEF3LIB {
@@ -52,9 +37,6 @@ private:
 private:
 	std::vector<void*> dllHand;
 
-#if defined CEF_MAC
-	CefScopedLibraryLoader CEFLibraryLoader;
-#endif
 };
 
 ICEF3LIB* ICEF3LIB::get() {
@@ -98,8 +80,6 @@ FString CEF3LIB::LibPath() {
 	FString LibPath;
 #if defined CEF_WINDOWS
 	LibPath = FPaths::Combine(*BaseDir, TEXT("Source/ThirdParty/cefForUe"), TEXT(CEF3_VERSION), TEXT("win64/lib"));
-#elif defined CEF_MAC
-	LibPath = FPaths::Combine(*BaseDir, TEXT("Source/ThirdParty/cefForUe"), TEXT(CEF3_VERSION), TEXT("mac/lib"));
 #elif defined CEF_LINUX
 	LibPath = FPaths::Combine(*BaseDir, TEXT("Source/ThirdParty/cefForUe"), TEXT(CEF3_VERSION), TEXT("linux/lib"));
 #endif
@@ -119,22 +99,20 @@ void CEF3LIB::LoadCEF3Modules()
 		LoadDllCEF(FPaths::Combine(*libPath, TEXT("libcef.dll")));
 	}
 	FPlatformProcess::PopDllDirectory(*libPath);
-#elif defined CEF_MAC
-	FString envPath = FPlatformMisc::GetEnvironmentVariable(TEXT("LD_LIBRARY_PATH")) + TEXT(":") + libPath;
-	FPlatformMisc::SetEnvironmentVar(TEXT("LD_LIBRARY_PATH"), *envPath);
-	FString frameWorks = FPaths::Combine(*libPath, TEXT("Chromium Embedded Framework.framework"), TEXT("Chromium Embedded Framework"));
-	if (!cef_load_library(TCHAR_TO_ANSI(*frameWorks))) {
-		UE_LOG(LogTemp, Error, TEXT("Chromium loader initialization failed"));
-	}
 #elif defined CEF_LINUX
-	FString envPath = FPlatformMisc::GetEnvironmentVariable(TEXT("LD_LIBRARY_PATH")) + TEXT(":") + libPath;
-	FString cmd = FString::Printf(TEXT("chmod 775 \"%s/*\""), *libPath);
-	system(TCHAR_TO_UTF8(*cmd));
-	FPlatformMisc::SetEnvironmentVar(TEXT("LD_LIBRARY_PATH"), *envPath);
+	 int cef_version_major	   = cef_version_info(0);
+	 int cef_version_minor	   = cef_version_info(1);
+	 int cef_version_patch	   = cef_version_info(2);
+	 int cef_commit_number	   = cef_version_info(3);
+	 int chrome_version_major	   = cef_version_info(4);
+	 int chrome_version_minor	   = cef_version_info(5);
+	 int chrome_version_build	   = cef_version_info(6);
+	 int chrome_version_patch    = cef_version_info(7);
 
-	FPlatformProcess::PushDllDirectory(*libPath);
-	LoadDllCEF(FPaths::Combine(*libPath, TEXT("libcef.so")));
-	FPlatformProcess::PopDllDirectory(*libPath);
+	UE_LOG(WebViewLog, Log, 
+		TEXT("cef_version_major:%d cef_version_minor:%d cef_version_patch:%d cef_commit_number:%d chrome_version_major:%d chrome_version_minor:%d chrome_version_build:%d chrome_version_patch:%d ")
+		, cef_version_major, cef_version_minor, cef_version_patch, cef_commit_number, chrome_version_major, chrome_version_minor, chrome_version_build, chrome_version_patch);
+
 #endif
 }
 
