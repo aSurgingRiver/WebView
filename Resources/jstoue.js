@@ -1,6 +1,7 @@
 
-"object"!=typeof ue &&(delete ue ,ue={});
-"object" != typeof ue.interface && (delete ue.interface , ue.interface={});
+"object" != typeof ue && (delete ue, ue = {});
+"string" != typeof ue.interface_name && (delete ue.interface_name, ue.interface_name = 'interface');
+"object" != typeof ue[ue.interface_name] && (delete ue[ue.interface_name], ue[ue.interface_name] ={});
 "function" != typeof ue.call && (ue.call = function (functoid) {
     return function (key, json, cback, timeout) {
         if ("object" != typeof ue["$receive"] || "function" != typeof ue["$receive"]["asyn"]) {
@@ -16,7 +17,7 @@
         if ("function" != typeof callback)
             return "";
         var funcid = function () { return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, function (t) { return (t ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> t / 4).toString(16) }) }();
-        return ue.interface[funcid] = callback, setTimeout(function () { delete ue.interface[funcid] }, 1e3 * Math.max(2, parseInt(timeout) || 0)), funcid
+        return ue[ue.interface_name][funcid] = callback, setTimeout(function () { delete ue[ue.interface_name][funcid] }, 1e3 * Math.max(2, parseInt(timeout) || 0)), funcid
     }
 ));
 
@@ -30,8 +31,8 @@
 
 if ('function' != typeof ue.enter_tojs) ue.enter_tojs = function () {
     ue.proxy_tojs(function (func_name, param) {
-        if (func_name in ue.interface) {
-            ue.interface[func_name](param);
+        if (func_name in ue[ue.interface_name]) {
+            ue[ue.interface_name][func_name](param);
         }
         else {
             console.warn('function ' + func_name + ' do not exists!');

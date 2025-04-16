@@ -13,6 +13,9 @@
 		<addPermission
 			android:name="android.permission.WRITE_EXTERNAL_STORAGE"
 			android:maxSdkVersion="32" />
+		
+		<addPermission android:name="android.permission.INTERNET" />
+		<addAttribute name="android:hardwareAccelerated" value="true" />
 	</androidManifestUpdates>
 
 </root>
