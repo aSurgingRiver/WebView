@@ -63,10 +63,10 @@ UWebBase::UWebBase(const FObjectInitializer& ObjectInitializer)
 	bIsVariable = true;
 	SetVisibility(ESlateVisibility::SelfHitTestInvisible);
 	FString category(TEXT("ue"));
-	FString object(TEXT("interface"));
+	FString interface_name(TEXT("interface"));
 	GConfig->GetString(TEXT("WebView"), TEXT("category"), category, GGameIni);
-	GConfig->GetString(TEXT("WebView"), TEXT("object"), object, GGameIni);
-	jsWindow = FString::Printf(TEXT("%s.%s"),*category,*object);
+	GConfig->GetString(TEXT("WebView"), TEXT("interface_name"), interface_name, GGameIni);
+	jsWindow = FString::Printf(TEXT("%s.%s"),*category,*interface_name);
 	styleText.ColorAndOpacity = FSlateColor(FLinearColor(0.0f, 0.0f, 0.0f));
 	styleText.Font.Size = 20;
 	bIsVariable = true;
