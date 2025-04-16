@@ -122,12 +122,12 @@
         console.warn('Begin Send msg to ue', e);
     });
     // response function from ue call
-    ue.interface.jsfunc = function(jsonObject){
+    ue[ue.interface_name].jsfunc = function(jsonObject){
         console.log('jsonObject');
         alert('popup window');
         //console.log(JSON.stringify(jsonObject));
     };
-    ue.interface.multiparams = function(paramStr0,paramStr1){
+    ue[ue.interface_name].multiparams = function(paramStr0,paramStr1){
     	console.log(paramStr0+'==='+paramStr1);
     };
     var total = 0;
