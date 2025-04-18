@@ -334,6 +334,7 @@ class WebViewPlugin
 				WebViewEnv.GetGameActivity().addContentView(layoutScrollVert, params);
 				layoutScrollVert.Update(0,0,width,height);
 //				webView.requestFocus();
+				webView.BindInterface();
 
 				NextURL = null;
 			}
@@ -357,7 +358,7 @@ class WebViewPlugin
 		}
 		);
 	}
-
+	public native void Asyn(String type,String Json,String funcid,int timeout);
 	public native void OnPaint(int width,int height);
 
 	public native void OnAcceleratePaint(int width,int height);
@@ -792,6 +793,18 @@ class WebViewPlugin
 
 	// ======================================================================================
 
+	class JSMessage{
+		Context mContext;
+		JSMessage(Context c) {
+			mContext = c;
+		}
+
+		@android.webkit.JavascriptInterface
+		public void asyn(String type,String Json,String funcid,int timeout) {
+			Asyn(type,Json,funcid,timeout);
+		}
+	}
+
 	class WebViewSurfaceTexture extends SurfaceTexture implements SurfaceTexture.OnFrameAvailableListener {
 
 		private Surface mSurface;
@@ -1028,6 +1041,9 @@ class WebViewPlugin
 				_canvas.restore();
 				webViewDraw.endDraw();
 			}
+		}
+		public void BindInterface(){
+			addJavascriptInterface(new JSMessage(getContext()),"webview_android");
 		}
 	}
 
