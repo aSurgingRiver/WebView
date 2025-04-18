@@ -28,7 +28,6 @@
       "WhitelistPlatforms": [
         "Win64",
         "Linux",
-        "LinuxArm64",
         "Mac",
         "IOS",
         "Android"
@@ -41,7 +40,6 @@
       "WhitelistPlatforms": [
         "Win64",
         "Linux",
-        "LinuxArm64",
         "Mac",
         "IOS",
         "Android"
@@ -54,7 +52,6 @@
       "WhitelistPlatforms": [
         "Win64",
         "Linux",
-        "LinuxArm64",
         "Mac",
         "IOS",
         "Android"
@@ -67,7 +64,6 @@
       "WhitelistPlatforms": [
         "Win64",
         "Linux",
-        "LinuxArm64",
         "Mac",
         "IOS",
         "Android"
