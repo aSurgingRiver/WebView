@@ -15,20 +15,20 @@ class MATUREJSON_API UMatureJsonValueHelpers : public UBlueprintFunctionLibrary
 public:
 
 	// Parse a JSON string.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Value")
 		static bool ParseString(UPARAM(ref) FMatureJsonValue& JValue,const FString& Text );
 
 	// Parse a JSON string.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Value")
 		static FMatureJsonValue Parse(const FString& Text);
 
-	UFUNCTION(BlueprintCallable, Category = "Mature Json")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Value")
 		static bool ParseFile(UPARAM(ref) FMatureJsonValue& JValue, const FString& FilePath);
 
-	UFUNCTION(BlueprintCallable, Category = "Mature Json")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Value")
 		static FString SaveString(UPARAM(ref) FMatureJsonValue& JValue);
 
-	UFUNCTION(BlueprintCallable, Category = "Mature Json")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Value")
 		static bool SaveFile(UPARAM(ref) FMatureJsonValue& JValue, const FString& FilePath);
 
 	UFUNCTION(BlueprintPure, Category = "Mature Json")
