@@ -20,6 +20,7 @@
 #include "PackageHelperFunctions.h"
 #endif
 #include "cefcorelib.h"
+#include "WebViewLog.h"
 #if defined WEBVIEW_CEF
 #include "SCefBrowser.h"
 #elif defined WEBVIEW_ANDROID
@@ -281,6 +282,10 @@ bool UWebBase::Asyn(const FString& Name, FString& Data, const FString& Callback)
 }
 
 bool UWebBase::Asyn(const FString& Name, FMatureJsonValue& json, const FString& Callback) {
+	if (auto JsEventPtr = MapJsEventOne.Find(Name)) {
+		(*JsEventPtr).ExecuteIfBound(json, Callback);
+		return true;
+	}
 	if (!OnJsEvent.IsBound())return false;
 	OnJsEvent.Broadcast(Name, json, Callback);
 	return true;
@@ -422,6 +427,21 @@ void UWebBase::AudioOnUE(bool yes) {
 		SoundActor = GetWorld()->SpawnActor<AWebViewSoundActor>(AWebViewSoundActor::StaticClass());
 	}
 	if (WebWidget)WebWidget->SetSound(yes?SoundActor->GetSoundComponent():nullptr);
+}
+
+void UWebBase::BindJsEventOne(const FString type,const FOnJsEventOne& Once) {
+	if (type.Len() == 0)return;
+	auto JsEventPtr = MapJsEventOne.Find(type);
+	if (nullptr != JsEventPtr) {
+		*JsEventPtr = Once;
+		UE_LOG(WebViewLog,Warning,TEXT("[%s] Event are covered"),*type);
+		return;
+	}
+	MapJsEventOne.Add(type, Once);
+}
+
+void UWebBase::UnbindJsEventOne(const FString type) {
+	if (MapJsEventOne.Contains(type)) MapJsEventOne.Remove(type);
 }
 
 void UWebBase::MouseTransparency(bool yes) {
