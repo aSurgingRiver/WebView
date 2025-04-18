@@ -28,6 +28,20 @@ void UMatureJsonArrayHelpers::Clear(FMatureJsonArray& Value) {
 	Value.Clear();
 }
 
+FMatureJsonArray UMatureJsonArrayHelpers::Parse(const FString& Text) {
+	FMatureJsonValue JValue;
+	JValue.ParseString(Text);
+	return JValue.ToArray();
+}
+
+FString UMatureJsonArrayHelpers::ToString(const FMatureJsonArray& JArray) {
+	return FMatureJsonValue().SetValue(JArray).ToString();
+}
+
+FMatureJsonValue UMatureJsonArrayHelpers::ToValue(const FMatureJsonArray& JArray) {
+	return FMatureJsonValue().SetValue(JArray);
+}
+
 FMatureJsonArray UMatureJsonArrayHelpers::FromBooleanArray(const TArray<bool>& Value) {
 	FMatureJsonArray List;
 	for (auto& it : Value)

@@ -335,6 +335,7 @@ class WebViewPlugin
 				WebViewEnv.GetGameActivity().addContentView(layoutScrollVert, params);
 				layoutScrollVert.Update(0,0,width,height);
 //				webView.requestFocus();
+				webView.BindInterface();
 
 				NextURL = null;
 			}
@@ -358,7 +359,7 @@ class WebViewPlugin
 		}
 		);
 	}
-
+	public native void Asyn(String type,String Json,String funcid,int timeout);
 	public native void OnPaint(int width,int height);
 
 	public native void OnAcceleratePaint(int width,int height);
@@ -413,7 +414,7 @@ class WebViewPlugin
 			public void run()
 			{
 				NextURL = url;
-				NextURL = "https://m.bilibili.com";
+				//NextURL = "https://m.bilibili.com";
 				int colPos = NextURL.indexOf(':');
 
 				boolean bNeedsPrefix = colPos < 0;
@@ -793,6 +794,18 @@ class WebViewPlugin
 
 	// ======================================================================================
 
+	class JSMessage{
+		Context mContext;
+		JSMessage(Context c) {
+			mContext = c;
+		}
+
+		@android.webkit.JavascriptInterface
+		public void asyn(String type,String Json,String funcid,int timeout) {
+			Asyn(type,Json,funcid,timeout);
+		}
+	}
+
 	class WebViewSurfaceTexture extends SurfaceTexture implements SurfaceTexture.OnFrameAvailableListener {
 
 		private Surface mSurface;
@@ -898,12 +911,10 @@ class WebViewPlugin
 			if(0==width||0==height) return null;
 			if(surfaceTexture==null || !surfaceTexture.EqualSize(width,height)) {
 				WebViewEnv.Get().RenderEnv();
-				WebViewSurfaceTexture _Recycle_texture = surfaceTexture;
+				Release();
 				textureid = Register(width,height) ;
 				if(textureid<=0)
 					return null;
-				if(_Recycle_texture!=null)
-					_Recycle_texture.release();
 				surfaceTexture = new WebViewSurfaceTexture(textureid,width, height);
 				WebViewEnv.Get().RestoreEnv();
 			}
@@ -945,11 +956,11 @@ class WebViewPlugin
 			if(canvas==null || preWidth!=width || preHeight!=height) {
 				Release();
 				WebViewEnv.Get().RestoreEnv();
+				Unregister(preWidth,preHeight);
 				shared_memory = RegisterMemory(width,height);
 				if(shared_memory==null){
 					return null;
 				}
-				Unregister(preWidth,preHeight);
 				WebViewEnv.Get().RestoreEnv();
 				preWidth = width;
 				preHeight = height;
@@ -1031,6 +1042,9 @@ class WebViewPlugin
 				_canvas.restore();
 				webViewDraw.endDraw();
 			}
+		}
+		public void BindInterface(){
+			addJavascriptInterface(new JSMessage(getContext()),"webview_android");
 		}
 	}
 

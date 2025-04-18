@@ -42,6 +42,16 @@ public:
 		static TArray<FString> GetKeys(UPARAM(ref) FMatureJsonObject& JObject) ;
 
 
+	// Parse a JSON string.
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object")
+		static FMatureJsonObject Parse(const FString& Text);
+
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
+		static FString ToString(const FMatureJsonObject& JObject);
+
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
+		static FMatureJsonValue ToValue(const FMatureJsonObject& JObject);
+
 	// convert a map of booleans to object.
 	UFUNCTION(BlueprintPure, Category = "Mature Json|Object")
 		static FMatureJsonObject FromBooleanMap(const TMap<FString, bool>& Map);
