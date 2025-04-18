@@ -522,6 +522,20 @@ TArray<FString> UMatureJsonObjectHelpers::GetKeys(FMatureJsonObject& Object)  {
 	return Object.GetKeys();
 }
 
+FMatureJsonObject UMatureJsonObjectHelpers::Parse(const FString& Text) {
+	FMatureJsonValue JValue;
+	JValue.ParseString(Text);
+	return JValue.ToObject();
+}
+
+FString UMatureJsonObjectHelpers::ToString(const FMatureJsonObject& Object) {
+	return FMatureJsonValue().SetValue(Object).ToString();
+}
+
+FMatureJsonValue UMatureJsonObjectHelpers::ToValue(const FMatureJsonObject& Object) {
+	return FMatureJsonValue().SetValue(Object);
+}
+
 // Add a map of booleans to this object.
 FMatureJsonObject UMatureJsonObjectHelpers::FromBooleanMap(const TMap<FString, bool>& Map) {
 	return FMatureJsonObject().AddValue(Map);

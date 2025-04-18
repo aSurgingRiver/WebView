@@ -32,6 +32,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Mature Json")
 		static void Clear(UPARAM(ref) FMatureJsonArray& JArray);
 
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
+		static FMatureJsonArray Parse(const FString& Text);
+
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+		static FString ToString(const FMatureJsonArray& JArray);
+
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+		static FMatureJsonValue ToValue(const FMatureJsonArray& JArray);
+
 	// Clear Before Copy an array of booleans to a JSON array.
 	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
 		static FMatureJsonArray FromBooleanArray(const TArray<bool>& Value);
