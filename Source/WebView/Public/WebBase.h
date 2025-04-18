@@ -49,6 +49,7 @@ public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTexture, UTexture*,texture);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnJsStr, const FString&, Type,const FString&, JSON, const FString&, FuncName);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnJs, const FString&, Type,const FMatureJsonValue, JSON, const FString&, FuncName);
+	DECLARE_DYNAMIC_DELEGATE_TwoParams(FOnJsEventOne, const FMatureJsonValue, JSON, const FString&, FuncName);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnBeforePopup, const FString&, Url, const FString&, Frame);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDownloadComplete, const FString&, Url, const FString&, File);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnWebError, const FString&, Desc, const FString&, Source ,const int,line);
@@ -360,6 +361,12 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Web View")
 	void AudioOnUE(bool yes=true);
+
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+	void BindJsEventOne(const FString type, const FOnJsEventOne& entry);
+
+	UFUNCTION(BlueprintCallable, Category = "Web View")
+	void UnbindJsEventOne(const FString type);
 public:
 	virtual void BeginDestroy() override;
 	// 
@@ -391,4 +398,6 @@ private:
 	UPROPERTY()
 	AWebViewSoundActor* SoundActor;
 
+	UPROPERTY()
+	TMap<FString, FOnJsEventOne> MapJsEventOne;
 };
