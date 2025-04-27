@@ -17,68 +17,68 @@ class MATUREJSON_API UMatureJsonArrayHelpers : public UBlueprintFunctionLibrary
 
 public:
 
-	UFUNCTION(BlueprintCallable, Category = "Mature Json")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static void Remove(UPARAM(ref) FMatureJsonArray& JArray, const int index,const int num = 1);
 
-	UFUNCTION(BlueprintPure, Category = "Mature Json")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static int Size(const FMatureJsonArray& JArray);
 
-	UFUNCTION(BlueprintPure, Category = "Mature Json")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static bool IsEmpty(const FMatureJsonArray& JArray);
 
-	UFUNCTION(BlueprintPure, Category = "Mature Json")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static bool HasIndex(const FMatureJsonArray& JArray, const int index);
 
-	UFUNCTION(BlueprintCallable, Category = "Mature Json")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static void Clear(UPARAM(ref) FMatureJsonArray& JArray);
 
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray Parse(const FString& Text);
 
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FString ToString(const FMatureJsonArray& JArray);
 
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonValue ToValue(const FMatureJsonArray& JArray);
 
 	// Clear Before Copy an array of booleans to a JSON array.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray FromBooleanArray(const TArray<bool>& Value);
 	// Clear Before Copy an array of floats to a JSON array.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray FromFloatArray(const TArray<float>& Value);
 	// Clear Before Copy an array of integers to a JSON array.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray FromIntegerArray(const TArray<int32>& Value);
 	// Clear Before Copy an array of strings to a JSON array.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray FromStringArray(const TArray<FString>& Value);
 	// Clear Before Copy an array of date/times to a JSON array.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray FromDateTimeArray(const TArray<FDateTime>& Value);
 	// Clear Before Copy an array of GUIDs to a JSON array.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray FromGuidArray(const TArray<FGuid>& Value);
 	// Clear Before Copy an array of colors to a JSON array.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray FromColorArray(const TArray<FColor>& Value);
 	// Clear Before Copy an array of linear colors to a JSON array.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray FromLinearColorArray(const TArray<FLinearColor>& Value);
 	// Clear Before Copy an array of rotators to a JSON array.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray FromRotatorArray(const TArray<FRotator>& Value);
 	// Clear Before Copy an array of transforms to a JSON array.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray FromTransformArray(const TArray<FTransform>& Value);
 	// Clear Before Copy an array of vectors to a JSON array.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray FromVectorArray(const TArray<FVector>& Value);
 	// Clear Before Copy an array of JSON objects to a JSON array.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray FromObjectArray(const TArray<FMatureJsonObject>& Value);
 	// Clear Before Copy an array of JSON value to a JSON array.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray FromValueArray(const TArray<FMatureJsonValue>& Value);
 
 	// Add an booleans to a JSON array.
@@ -94,25 +94,25 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static int AddString(UPARAM(ref) FMatureJsonArray& JArray, const FString& Value);
 	// Add an date/times to a JSON array.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static int AddDateTime(UPARAM(ref) FMatureJsonArray& JArray, const FDateTime& Value);
 	// Add an GUIDs to a JSON array.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static int AddGuid(UPARAM(ref) FMatureJsonArray& JArray, const FGuid& Value);
 	// Add an colors to a JSON array.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static int AddColor(UPARAM(ref) FMatureJsonArray& JArray, const FColor& Value);
 	// Add an linear colors to a JSON array.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static int AddLinearColor(UPARAM(ref) FMatureJsonArray& JArray, const FLinearColor& Value);
 	// Add an rotators to a JSON array.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static int AddRotator(UPARAM(ref) FMatureJsonArray& JArray, const FRotator& Value);
 	// Add an transforms to a JSON array.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static int AddTransform(UPARAM(ref) FMatureJsonArray& JArray, const FTransform& Value);
 	// Add an vectors to a JSON array.
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static int AddVector(UPARAM(ref) FMatureJsonArray& JArray, const FVector& Value);
 	// Add an JSON objects to a JSON array.
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
@@ -133,45 +133,45 @@ public:
 
 
 	// Convert a JSON value valueto a boolean.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static bool GetBoolean(UPARAM(ref) FMatureJsonArray& JArray, int index);
 	// Convert a JSON value valueto a float.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static float GetFloat(UPARAM(ref) FMatureJsonArray& JArray, int index);
 	// Convert a JSON value valueto an integer.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static int32 GetInteger(UPARAM(ref) FMatureJsonArray& JArray, int index);
 	// Convert a JSON value valueto a string.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FString GetString(UPARAM(ref) FMatureJsonArray& JArray, int index);
 	// Convert a JSON value valueto a date/time.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FDateTime GetDateTime(UPARAM(ref) FMatureJsonArray& JArray, int index);
 	// Convert a JSON value valueto a GUID.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FGuid GetGuid(UPARAM(ref) FMatureJsonArray& JArray, int index);
 	// Convert a JSON value valueto a color.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FColor GetColor(UPARAM(ref) FMatureJsonArray& JArray, int index);
 	// Convert a JSON value valueto a linear color.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FLinearColor GetLinearColor(UPARAM(ref) FMatureJsonArray& JArray, int index);
 	// Convert a JSON value valueto a linear color.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FRotator GetRotator(UPARAM(ref) FMatureJsonArray& JArray, int index);
 	// Convert a JSON value valueto a linear color.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FVector GetVector(UPARAM(ref) FMatureJsonArray& JArray, int index);
 	// Convert a JSON value valueto a linear color.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FTransform GetTransform(UPARAM(ref) FMatureJsonArray& JArray, int index);
 	// Convert a JSON value valueto a JSON object.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonObject GetObject(UPARAM(ref) FMatureJsonArray& JArray, int index);
 	// Convert a JSON value valueto a JSON array.
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Array")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray GetArray(UPARAM(ref) FMatureJsonArray& JArray, int index);
-	UFUNCTION(BlueprintPure, Category = "Mature Json")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonValue GetValue(const FMatureJsonArray& JArray, const int index);
 
 
@@ -188,25 +188,25 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray& SetString(UPARAM(ref) FMatureJsonArray& JArray, const int index, const FString& Value);
 	// Set an date/times to a JSON array by index .
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray& SetDateTime(UPARAM(ref) FMatureJsonArray& JArray, const int index, const FDateTime& Value);
 	// Set an GUIDs to a JSON array by index .
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray& SetGuid(UPARAM(ref) FMatureJsonArray& JArray, const int index, const FGuid& Value);
 	// Set an colors to a JSON array by index .
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray& SetColor(UPARAM(ref) FMatureJsonArray& JArray, const int index, const FColor& Value);
 	// Set an linear colors to a JSON array by index .
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray& SetLinearColor(UPARAM(ref) FMatureJsonArray& JArray, const int index, const FLinearColor& Value);
 	// Set an rotators to a JSON array by index .
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray& SetRotator(UPARAM(ref) FMatureJsonArray& JArray, const int index, const FRotator& Value);
 	// Set an transforms to a JSON array by index .
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray& SetTransform(UPARAM(ref) FMatureJsonArray& JArray, const int index, const FTransform& Value);
 	// Set an vectors to a JSON array by index .
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array|Engine")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
 		static FMatureJsonArray& SetVector(UPARAM(ref) FMatureJsonArray& JArray, const int index, const FVector& Value);
 	// Set an JSON objects to a JSON array by index .
 	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array")
@@ -232,22 +232,22 @@ class MATUREJSON_API UMatureJsonArrayIteratorHelpers : public UBlueprintFunction
 	GENERATED_BODY()
 public:
 
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object Iterator")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array Iterator")
 		static FMatureJsonArrayIterator Begin(UPARAM(ref) FMatureJsonArray& JArray);
 
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object Iterator")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array Iterator")
 		static FMatureJsonArrayIterator End(UPARAM(ref) FMatureJsonArray& JArray);
 
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object Iterator")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array Iterator")
 		static void Next(UPARAM(ref) FMatureJsonArrayIterator& Iterator, int step = 1);
 
-	UFUNCTION(BlueprintPure, Category = "Mature Json|Object Iterator")
+	UFUNCTION(BlueprintPure, Category = "Mature Json|Array Iterator")
 		static bool IsValid(UPARAM(ref) FMatureJsonArrayIterator& Iterator);
 
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object Iterator")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array Iterator")
 		static int Index(UPARAM(ref) FMatureJsonArrayIterator& Iterator);
 
-	UFUNCTION(BlueprintCallable, Category = "Mature Json|Object Iterator")
+	UFUNCTION(BlueprintCallable, Category = "Mature Json|Array Iterator")
 		static FMatureJsonValue Value(UPARAM(ref) FMatureJsonArrayIterator& Iterator);
 
 };

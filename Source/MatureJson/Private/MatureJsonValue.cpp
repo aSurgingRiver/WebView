@@ -496,6 +496,25 @@ bool FMatureJsonValue::IsGuid() const
 	return false;
 }
 
+bool FMatureJsonValue::IsNull() const
+{
+	if (mature::Type::kNullType != ValueRef().GetType())
+		return false;
+	return true;
+}
+
+bool FMatureJsonValue::IsBaseValue() const
+{
+	switch (ValueRef().GetType()) {
+	case mature::Type::kNullType: return true;
+	case mature::Type::kFalseType: return true;
+	case mature::Type::kTrueType: return true;
+	case mature::Type::kStringType: return true;
+	case mature::Type::kNumberType: return true;
+	}
+	return false;
+}
+
 bool FMatureJsonValue::IsColor(FString hex_string) const
 {
 	if (hex_string.IsEmpty() )
