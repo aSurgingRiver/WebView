@@ -1,31 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root xmlns:android="http://schemas.android.com/apk/res/android">
-	<proguardAdditions>
-		<insert>
-			-keep class com.epicgames.unreal.WebViewEnv {
-			public *;
-			}
-
-			-keep class com.epicgames.unreal.WebViewPlugin {
-			public *;
-			}
-
-			-keep class com.epicgames.unreal.WebViewPlugin$ViewClient {
-			public *;
-			}
-
-			-keep class com.epicgames.unreal.WebViewPlugin$ChromeClient {
-			public *;
-			}
-		</insert>
-	</proguardAdditions>
-	
 	<prebuildCopies>
 		<copyDir src="$S(PluginDir)/5.1" dst="$S(BuildDir)/src/com/epicgames/unreal"/>
 	</prebuildCopies>
 
 	<androidManifestUpdates>
-		<!-- 
 		<removePermission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 		<removePermission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 		<addPermission
@@ -34,8 +13,10 @@
 		<addPermission
 			android:name="android.permission.WRITE_EXTERNAL_STORAGE"
 			android:maxSdkVersion="32" />
-			-->
+		
 		<addPermission android:name="android.permission.INTERNET" />
+		<addPermission android:name="android.permission.CAMERA" />
+		<addPermission android:name="android.permission.RECORD_AUDIO" />
 		<addAttribute name="android:hardwareAccelerated" value="true" />
 	</androidManifestUpdates>
 
