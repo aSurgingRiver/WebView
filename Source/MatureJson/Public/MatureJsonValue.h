@@ -131,6 +131,10 @@ public:
 	// Check if this value is a guid.
 	bool IsGuid() const;
 
+	bool IsNull() const;
+
+	bool IsBaseValue() const;
+
 	// Check if this value is a COLOR.
 	bool IsColor(FString hex_string) const;
 

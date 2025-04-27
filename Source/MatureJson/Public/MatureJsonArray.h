@@ -240,7 +240,7 @@ private:
 	friend struct FMatureJsonArrayIterator;
 };
 
-USTRUCT(BlueprintType, meta = (DisplayName = "Mature JSON|Object Iterator"))
+USTRUCT(BlueprintType, meta = (DisplayName = "Mature JSON|Array Iterator"))
 struct MATUREJSON_API FMatureJsonArrayIterator {
 	GENERATED_USTRUCT_BODY()
 public:
