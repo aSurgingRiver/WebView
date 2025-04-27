@@ -24,6 +24,7 @@ import android.os.Message;
 import android.view.InputDevice;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.widget.FrameLayout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ClientCertRequest;
@@ -31,6 +32,7 @@ import android.webkit.ConsoleMessage;
 import android.webkit.HttpAuthHandler;
 import android.webkit.JsResult;
 import android.webkit.JsPromptResult;
+import android.webkit.PermissionRequest;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
@@ -53,33 +55,36 @@ import java.text.MessageFormat;
 import android.view.InputDevice;
 
 // Simple layout to apply absolute positioning for the WebView
-class WebViewPluginVertScroll extends ViewGroup
-{
-	public WebViewPluginVertScroll(Context context, WebView inWebViewPlugin)
-	{
-		super(context);
-		webView = inWebViewPlugin;
-	}
-
-	@Override
-	protected void onLayout(boolean changed, int left, int top, int right, int bottom){
-//		webView.layout(left+curX,top+curY,right+curX,bottom+curY);
-		webView.layout(left,top,right,bottom);
-	}
-
-	public boolean Update(final int x, final int y, final int width, final int height){
-		curX = x;
-		curY = y;
-		ViewGroup.LayoutParams params = getLayoutParams();
-		params.width = width;
-		params.height = height;
-		setLayoutParams(params);
-		return true;
-	}
-	private WebView webView;
-	int curX;
-	int curY;
-}
+//class WebViewPluginVertScroll extends ViewGroup
+//{
+//	public WebViewPluginVertScroll(Context context, WebView inWebViewPlugin)
+//	{
+//		super(context);
+//		webView = inWebViewPlugin;
+//	}
+//
+//	@Override
+//	protected void onLayout(boolean changed, int left, int top, int right, int bottom){
+////		webView.layout(left+curX,top+curY,right+curX,bottom+curY);
+//		webView.layout(left,top,right,bottom);
+//	}
+//
+//	public boolean Update(final int x, final int y, final int width, final int height){
+//		curX = x;
+//		curY = y;
+//		ViewGroup.LayoutParams params = getLayoutParams();
+//		if(params==null){
+//			params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT);
+//		}
+//		params.width = width;
+//		params.height = height;
+//		setLayoutParams(params);
+//		return true;
+//	}
+//	private WebView webView;
+//	int curX;
+//	int curY;
+//}
 
 class WebViewEnv {
 	private static final WebViewEnv instance = new WebViewEnv();
@@ -299,6 +304,7 @@ class WebViewPlugin
 				//webView.getSettings().setSupportMultipleWindows(true);
 				webView.getSettings().setDomStorageEnabled(bEnableDomStorage);//bEnableDomStorage
 				webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+				webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
 
 				webView.getSettings().setCacheMode( WebSettings.LOAD_DEFAULT );
 				webView.getSettings().setLoadWithOverviewMode(true);
@@ -319,6 +325,8 @@ class WebViewPlugin
 				else{
 					webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
 				}
+				webView.setVerticalScrollBarEnabled(true);
+				webView.setHorizontalScrollBarEnabled(true);
 				webView.setFocusable(true);
 				webView.setFocusableInTouchMode(true);
 //				webView.addJavascriptInterface();
@@ -327,14 +335,25 @@ class WebViewPlugin
 					webView.setBackgroundColor(Color.TRANSPARENT);
 				}
 
+//				webView.setVisibility(View.INVISIBLE);
+
 				// Wrap the webview in a layout that will do absolute positioning for us
+				ViewGroup decorView = (ViewGroup) WebViewEnv.GetGameActivity().getWindow().getDecorView();
 				ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT);
-				layoutScrollVert = new WebViewPluginVertScroll(WebViewEnv.GetGameActivity(), webView);
-				layoutScrollVert.addView(webView, params );
-				WebViewEnv.GetGameActivity().addContentView(layoutScrollVert, params);
-				layoutScrollVert.Update(0,0,width,height);
+//				layoutScrollVert = new WebViewPluginVertScroll(WebViewEnv.GetGameActivity(), webView);
+//				layoutScrollVert.addView(webView, params );
+//				WebViewEnv.GetGameActivity().addContentView(layoutScrollVert, params);
+//				WebViewEnv.Get().AddView(layoutScrollVert);
+				decorView.addView(webView, 0, params);
+				Update(0,0,width,height);
 //				webView.requestFocus();
+////				webView.setSurface(surface);
+//				WebViewEnv.GetGameActivity().addContentView(webView, params);
+
+
+//				webView.Update(0,0,width,height);
 				webView.BindInterface();
+
 
 				NextURL = null;
 			}
@@ -353,12 +372,13 @@ class WebViewPlugin
 			 public void run(){
 				 if(webView==null)
 					 return ;
+//				 webView.draw(null);
 //				 webView.invalidate();
 			 }
 		}
 		);
 	}
-	public native void Asyn(String type,String Json,String funcid,int timeout);
+	public native void Asyn(String type,String Json,String funcid);
 	public native void OnPaint(int width,int height);
 
 	public native void OnAcceleratePaint(int width,int height);
@@ -514,25 +534,39 @@ class WebViewPlugin
 	{
 		final int index = idx;
 		final int actionType = event;
-		final long actionTime = SystemClock.uptimeMillis();
 		final float actionX = x;//webView.getLeft() + (x * webView.getWidth());
 		final float actionY = y;//webView.getTop() + (y * webView.getHeight());
-		//GameActivity.Log.debug("SendTouchEvent(event=" + event + ", x=" + x + ", y=" + y + ") = " + actionX + ", " + actionY);
 		WebViewEnv.GetGameActivity().runOnUiThread(new Runnable()
 		{
 			@Override
 			public void run()
 			{
 				long eventTime = SystemClock.uptimeMillis();
+//				String strAction="unkown" ;
+				if(MotionEvent.ACTION_DOWN==event){
+//					strAction = "Begin";
+					downTime = eventTime;
+					ScrollX =webView.getScrollX();
+					ScrollY =webView.getScrollY();
+				}
+//				else if(MotionEvent.ACTION_UP==event){
+////					ScrollX =webView.getScrollX();
+////					ScrollY =webView.getScrollY();
+//					strAction = "UP";
+//				}
+//				else if(MotionEvent.ACTION_MOVE==event){
+//					strAction = "Move";
+//				}
+				webView.computeScroll();
 				MotionEvent.PointerProperties Properties = new MotionEvent.PointerProperties();
 				Properties.id = index;
 				Properties.toolType = MotionEvent.TOOL_TYPE_FINGER;
-
 				MotionEvent.PointerCoords Coords = new MotionEvent.PointerCoords();
-				Coords.x = actionX;
-				Coords.y = actionY + webView.getScrollY();
-
-				MotionEvent event = MotionEvent.obtain(actionTime, eventTime, actionType,
+				Coords.x = actionX + ScrollX;
+				Coords.y = actionY + ScrollY;
+//				Log.i(LogTag,String.format("time{%d %d} in{%.0f %.0f} s{%d %d} o{%.0f %.0f} idx=%d action=%s "
+//						,downTime,eventTime,actionX,actionY,ScrollX,ScrollY ,Coords.x,Coords.y,idx,strAction));
+				MotionEvent event = MotionEvent.obtain(downTime, eventTime, actionType,
 						1, new MotionEvent.PointerProperties[]{Properties},
 						new MotionEvent.PointerCoords[]{Coords}, 0, 0, 1.0f, 1.0f, 0, 0, InputDevice.SOURCE_TOUCHSCREEN, 0);
 				webView.onTouchEvent(event);
@@ -545,7 +579,6 @@ class WebViewPlugin
 	{
 		final int index = idx;
 		final int actionType = event;
-		final long actionTime = SystemClock.uptimeMillis();
 		final float actionX = x;
 		final float actionY = y;
 		WebViewEnv.GetGameActivity().runOnUiThread(new Runnable()
@@ -553,6 +586,11 @@ class WebViewPlugin
 			@Override
 			public void run()
 			{
+				if(MotionEvent.ACTION_DOWN==event){
+					downTime = SystemClock.uptimeMillis();
+					ScrollX =webView.getScrollX();
+					ScrollY =webView.getScrollY();
+				}
 				int buttonState =0;
 				if((index&MotionEvent.BUTTON_PRIMARY) == MotionEvent.BUTTON_PRIMARY)buttonState = (buttonState|MotionEvent.BUTTON_PRIMARY);
 				if((index&MotionEvent.BUTTON_SECONDARY) == MotionEvent.BUTTON_SECONDARY)buttonState = (buttonState|MotionEvent.BUTTON_SECONDARY);
@@ -564,10 +602,10 @@ class WebViewPlugin
 				Properties.toolType = MotionEvent.TOOL_TYPE_MOUSE;
 
 				MotionEvent.PointerCoords Coords = new MotionEvent.PointerCoords();
-				Coords.x = actionX;
-				Coords.y = actionY;
+				Coords.x = actionX + ScrollX;
+				Coords.y = actionY + ScrollY;
 
-				MotionEvent event = MotionEvent.obtain(actionTime, eventTime, actionType,
+				MotionEvent event = MotionEvent.obtain(downTime, eventTime, actionType,
 						1, new MotionEvent.PointerProperties[]{Properties},
 						new MotionEvent.PointerCoords[]{Coords}, 0, buttonState, 1.0f, 1.0f, 0, 0, InputDevice.SOURCE_MOUSE, 0);
 
@@ -752,10 +790,24 @@ class WebViewPlugin
 			@Override
 			public void run()
 			{
-				if (bClosed || layoutScrollVert==null) {
+				if (bClosed || webView==null) {
 					return;
 				}
-				layoutScrollVert.Update(x,y,width,height);
+				webView.Update(x,y,width,height);
+			}
+		});
+	}
+
+	public void Scale(int zoom){
+		WebViewEnv.GetGameActivity().runOnUiThread(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				if (bClosed || webView==null) {
+					return;
+				}
+				webView.setInitialScale(zoom);
 			}
 		});
 	}
@@ -775,6 +827,13 @@ class WebViewPlugin
 						parent.removeView(webView);
 					}
 				}
+//				if(layoutScrollVert!=null){
+//					ViewGroup parent = (ViewGroup)layoutScrollVert.getParent();
+//					if (parent != null)
+//					{
+//						parent.removeView(layoutScrollVert);
+//					}
+//				}
 				WebViewEnv.Get().RenderEnv();
 				webViewDraw.Release();
 				WebViewEnv.Get().RestoreEnv();
@@ -794,14 +853,14 @@ class WebViewPlugin
 	// ======================================================================================
 
 	class JSMessage{
-		Context mContext;
-		JSMessage(Context c) {
-			mContext = c;
-		}
+//		Context mContext;
+//		JSMessage(Context c) {
+//			mContext = c;
+//		}
 
 		@android.webkit.JavascriptInterface
-		public void asyn(String type,String Json,String funcid,int timeout) {
-			Asyn(type,Json,funcid,timeout);
+		public void asyn(String type,String Json,String funcid) {
+			Asyn(type,Json,funcid);
 		}
 	}
 
@@ -1010,13 +1069,42 @@ class WebViewPlugin
 			});
 		}
 
+		private boolean Update_Game(final int x, final int y,final int width, final int height){
+
+			ViewGroup parent = (ViewGroup)webView.getParent();
+			if (parent != null)
+			{
+				parent.removeView(webView);
+			}
+
+			FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+					width,
+					height 
+			);
+//			params.leftMargin = x;
+//			params.topMargin = y;
+			ViewGroup decorView = (ViewGroup) WebViewEnv.GetGameActivity().getWindow().getDecorView();
+			decorView.addView(webView, 0, params);
+			return true;
+		}
+
 		public boolean Update(final int x, final int y, final int width, final int height){
 			ViewGroup.LayoutParams params = getLayoutParams();
+			if(params==null){
+				params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT);
+			}
 			params.width = width;
 			params.height = height;
 			setLayoutParams(params);
+//			measure(
+//					View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),
+//					View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY)
+//			);
+//			layout(0,0,width,height);
 			return true;
 		}
+
+
 //		@Override
 //		protected void onLayout(boolean changed, int left, int top, int right, int bottom){
 //			Super.onLayout(left,top,right,bottom);
@@ -1042,8 +1130,12 @@ class WebViewPlugin
 				webViewDraw.endDraw();
 			}
 		}
+		@Override
+		protected boolean awakenScrollBars() {
+			return super.awakenScrollBars(View.SCROLLBARS_OUTSIDE_OVERLAY, true);
+		}
 		public void BindInterface(){
-			addJavascriptInterface(new JSMessage(getContext()),"webview_android");
+			addJavascriptInterface(new JSMessage(),"webview_android");
 		}
 	}
 
@@ -1086,8 +1178,11 @@ class WebViewPlugin
 		@Override
 		public void onPageFinished(WebView View, String Url)
 		{
+			webView.evaluateJavascript("\"object\" != typeof ue && (delete ue, ue = {});", null);
+			webView.evaluateJavascript("\"object\" == typeof webview_android && (ue[\"$receive\"] != webview_android) &&(ue[\"$receive\"] = webview_android);", null);
 			WebBackForwardList History = View.copyBackForwardList();
 			onPageLoad(Url, false, History.getSize(), History.getCurrentIndex());
+			super.onPageFinished(View,Url);
 		}
 
 		@Override
@@ -1126,6 +1221,17 @@ class WebViewPlugin
             resultMsg.sendToTarget();
             return true;
 		}
+		@Override
+		public void onPermissionRequest(PermissionRequest request) {
+			WebViewEnv.GetGameActivity().runOnUiThread(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+					request.grant(request.getResources());
+				}
+			});
+		}
 
 		@Override
 		public boolean onConsoleMessage(ConsoleMessage cm) {
@@ -1142,10 +1248,14 @@ class WebViewPlugin
 
 	private WebViewDraw webViewDraw;
 	public GLWebView webView;
-	private WebViewPluginVertScroll layoutScrollVert;
-
+//	private WebViewPluginVertScroll layoutScrollVert;
 	private volatile boolean bClosed;
 	private String NextURL;
+
+	final private String LogTag="WebVP";
+	private long downTime;
+	private int ScrollX = 0;
+	private int ScrollY = 0;
 //	private String NextContent;
 	
 	// Address of the native SAndroidWebBrowserWidget object
