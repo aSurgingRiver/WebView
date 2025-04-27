@@ -69,7 +69,11 @@ UWebBase::UWebBase(const FObjectInitializer& ObjectInitializer)
 	GConfig->GetString(TEXT("WebView"), TEXT("interface_name"), interface_name, GGameIni);
 	jsWindow = FString::Printf(TEXT("%s.%s"),*category,*interface_name);
 	styleText.ColorAndOpacity = FSlateColor(FLinearColor(0.0f, 0.0f, 0.0f));
+#if PLATFORM_ANDROID
+	styleText.Font.Size = 34;
+#else 
 	styleText.Font.Size = 20;
+#endif
 	bIsVariable = true;
 	json_object = true;
 	eKeyboradModeTransparency = WebView_Penetrate_Mode::WebView_Penetrate_Mode_Blend;
