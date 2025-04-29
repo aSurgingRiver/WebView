@@ -97,13 +97,13 @@ void decode_example(FMatureJsonValue Root) {
 void FMatureJsonModule::StartupModule()
 {
 #if WITH_EDITOR
-	FMatureJsonValue Value = object_encode_example();
+	//FMatureJsonValue Value = object_encode_example();
 
-	value_to_string(Value);
+	//value_to_string(Value);
 
-	decode_example(Value);
+	//decode_example(Value);
 
-	value_object_loop(Value);
+	//value_object_loop(Value);
 #endif
 }
 
