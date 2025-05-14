@@ -12,6 +12,7 @@
 #include "CefZipReader.h"
 #endif
 #include "cefcorelib.h"
+#include "WebViewLog.h"
 
 bool UWebViewFunLib::SetCookie(const FString& URL, const FWebCookie& Cookie) {
 #ifdef WEBVIEW_CEF
