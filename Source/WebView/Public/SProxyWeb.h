@@ -83,7 +83,7 @@ public:
 	 * @param bIsPermanent Must match the bIsPermanent argument passed to BindUObject.
 	 */
 	virtual void UnbindUObject(const FString& Name, UObject* Object, bool bIsPermanent = true) override;
-	//virtual bool SupportsKeyboardFocus() const override { return true; }
+
 public:
 	/** Default constructor. */
 	SProxyWeb();

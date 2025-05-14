@@ -8,6 +8,7 @@
 #include "WebViewEvent.h"
 #include "WebViewSoundActor.h"
 #include "Widgets/SCompoundWidget.h"
+#include "Widgets/Layout/SConstraintCanvas.h"
 
 #define BASEBROWSER_PARAMS(CLASSNAME) \
 	DECLARE_DELEGATE_RetVal_OneParam(bool, FOnKeyUp, const FKeyEvent&); \
@@ -91,7 +92,7 @@
 
 
 class BASEBROWSER_API SBaseBrowser
-	: public SCompoundWidget
+	: public SCompoundWidget //SWidget
 {
 public:
 
@@ -197,6 +198,11 @@ public:
 	virtual void Screen(bool touch);
 	//
 	virtual void SetSound(UWebViewSoundComponent* Sound);
+	//
+	virtual void CallParams(const FString& Function, const TArray<FString>& Params);
+	virtual bool IsInteractable() const override;
 protected:
 	static webview::FOnTransparency OnTransparencyDefault;
+	FString jsWindow;// for javescrit
+
 };
