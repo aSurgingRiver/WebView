@@ -1,5 +1,5 @@
 
-"object" != typeof ue && (delete ue, ue = {});
+"object" != typeof ue && (delete window.ue, ue = {});
 "object" != typeof ue.webview && (delete ue.webview, ue.webview = {});
 "number" != typeof ue.webview.functionid && (delete ue.webview.functionid, ue.webview.functionid = 0);
 "string" != typeof ue.webview.name && (delete ue.webview.name, ue.webview.name = 'interface');
@@ -12,7 +12,7 @@
     var funcid = `${nowInSeconds}_${ue.webview.functionid}`
     ue[ue.webview.name][funcid] = callback;
     if ("number" != timeout) {
-        delete timeout;
+        //delete timeout;
         timeout = 3;
     }
     timeout = Math.max(3, parseInt(timeout));
@@ -26,7 +26,7 @@
     return funcid;
 });
 
-"function" != typeof ue.webview.asyn && (delete typeof ue.webview.asyn,ue.webview.asyn=function(type,json,cback){
+"function" != typeof ue.webview.asyn && (delete ue.webview.asyn,ue.webview.asyn=function(type,json,cback){
     if ("object" != typeof ue["$receive"] || "function" != typeof ue["$receive"]["asyn"]) {
         console.error("[ue.$receive.asyn] drop message .... key" + key + " json" + JSON.stringify(json));
         return;
@@ -55,7 +55,7 @@ if ("function" != typeof typeof ue.call) {
     };
 }
 
-"function" != typeof ue4 && (delete ue4, ue4 = ue.call);
+"function" != typeof ue4 && (delete window.ue4, ue4 = ue.call);
 
 // document.dispatchEvent(ue.on_call_begin)
 // document.addEventListener(ue.on_call_begin, function(e) {
