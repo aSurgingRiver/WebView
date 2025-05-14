@@ -63,7 +63,7 @@ void SProxyWeb::Construct(const FArguments& InArgs){
 		Singleton->SetDevToolsShortcutEnabled(Settings.bShowErrorMessage);
 		BrowserWindow = Singleton->CreateBrowserWindow(Settings);
 	}
-#ifdef WEBVIEW_CEF
+//#ifdef PLATFROM_WINDOWS
 	FString show_tips = TEXT("If you see this prompt, it is caused by the following reasons: \n\n"
 		"1. The plug - in is installed in the engine directory, such as : Engine\\Plugins\\Marketplace. \n"
 		"   Solution: Please move the plug - in to the project local plug - in directory \n\n"
@@ -74,7 +74,7 @@ void SProxyWeb::Construct(const FArguments& InArgs){
 	TSharedRef<STextBlock> TextRef = SNew(STextBlock);
 	TextRef->SetText(text_tip);
 	TextRef->SetTextStyle(&InArgs._TextStyle);
-#endif
+//#endif
 	bMouseTransparency = InArgs._EnableMouseTransparency;
 	TransparencyThreadshold = 255 - InArgs._BackgroundColor.A;
 	LastMousePixel = FColor::Transparent;
@@ -98,13 +98,13 @@ void SProxyWeb::Construct(const FArguments& InArgs){
 			)
 			.OnBeforePopup(InArgs._OnBeforePopup)
 		]
-#ifdef WEBVIEW_CEF
+//#ifdef PLATFROM_WINDOWS
 		+ SOverlay::Slot()
 			.HAlign(HAlign_Center).VAlign(VAlign_Center)
 			[
 				TextRef
 			]
-#endif
+//#endif
 	];
 }
 
@@ -237,7 +237,7 @@ void SProxyWeb::Tick(const FGeometry& AllottedGeometry, const double InCurrentTi
 	}
 	preMouseX = X;
 	preMouseY = Y;
-	FVector2D LocalUV;
+	FVector2D LocalUV(0,0);
 	if (LocalSize.X > 0.0f && LocalSize.Y > 0.0f)
 		LocalUV = FVector2D(LocalMouse.X / LocalSize.X, LocalMouse.Y / LocalSize.Y);
 
@@ -335,7 +335,6 @@ FReply SProxyWeb::OnDrop(const FGeometry& MyGeometry, const FDragDropEvent& Drag
 void SProxyWeb::ShowAddress(bool isShow) {
 	// do not implment
 }
-
 #undef LOCTEXT_NAMESPACE
 
 #endif

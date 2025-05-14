@@ -241,7 +241,8 @@ namespace UnrealBuildTool.Rules
         }
 		bool InDev(){
             // for development env
-            if (Directory.Exists(Path.Combine(ModuleDirectory, "..", "AndroidBrowser")))
+            if (Directory.Exists(Path.Combine(ModuleDirectory, "..", "AndroidBrowser"))
+                || Directory.Exists(Path.Combine(ModuleDirectory, "..", "CefBrowser")))
                 return true;
             return false;
 		}

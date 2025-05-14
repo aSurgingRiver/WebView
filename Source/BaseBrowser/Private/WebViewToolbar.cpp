@@ -251,7 +251,7 @@ FReply SWebViewToolbar::OnGo()
 
 void SWebViewToolbar::OnUrlTextCommitted(const FText& NewText, ETextCommit::Type CommitType)
 {
-	if (CommitType == ETextCommit::OnEnter && WebViewWindow.IsValid()) {
+	if ((CommitType == ETextCommit::OnEnter || CommitType == ETextCommit::OnUserMovedFocus) && WebViewWindow.IsValid()) {
 		WebViewWindow->LoadURL(NewText.ToString(),FString(),false);
 	}
 	ChangeText.FromString(FString());
