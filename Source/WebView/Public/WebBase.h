@@ -167,7 +167,7 @@ public:
 
 
 protected:
-	FString jsWindow;// for javescrit 
+	//FString jsWindow;// for javescrit 
 	//TSharedPtr<class SCefBrowser> CefWidget; // for slate core widget
 	//TSharedPtr<class SProxyWeb> ProxyWidget; // for slate core widget
 	//SBaseBrowser* IBrowser;

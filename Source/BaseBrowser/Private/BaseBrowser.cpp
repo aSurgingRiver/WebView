@@ -1,12 +1,18 @@
 // Copyright aXiuShen. All Rights Reserved.
 #include "BaseBrowser.h"
+#include "Misc/ConfigCacheIni.h"
 
 
 webview::FOnTransparency SBaseBrowser::OnTransparencyDefault;
 
 SBaseBrowser::SBaseBrowser() {
-
+	FString category(TEXT("ue"));
+	FString interface_name(TEXT("interface"));
+	GConfig->GetString(TEXT("WebView"), TEXT("category"), category, GGameIni);
+	GConfig->GetString(TEXT("WebView"), TEXT("interface_name"), interface_name, GGameIni);
+	jsWindow = FString::Printf(TEXT("%s.%s"), *category, *interface_name);
 }
+
 SBaseBrowser::~SBaseBrowser() {
 
 }
@@ -62,12 +68,36 @@ bool SBaseBrowser::CanGoForward() const {
 void SBaseBrowser::GoBack() {
 }
 
-bool SBaseBrowser::CallJsonStr(const FString& , const FString& ) {
-	return false;
+bool SBaseBrowser::CallJsonStr(const FString& Function, const FString& Data) {
+	if (Function.IsEmpty())
+		return false;
+	FString TextScript;
+	if (Data.Len() >= 2) {
+		TextScript = FString::Printf(TEXT("%s['%s'](%s)"),
+			*jsWindow, *Function, *Data);
+	}
+	else {
+		TextScript = FString::Printf(TEXT("%s['%s']()"),
+			*jsWindow, *Function);
+	}
+	ExecuteJavascript(TextScript);
+	return true;
 }
 
-bool SBaseBrowser::CallJson(const FString&, const FMatureJsonValue&  ) {
-	return false;
+bool SBaseBrowser::CallJson(const FString& Function, const FMatureJsonValue& Data) {
+	if (Function.IsEmpty())
+		return false;
+	FString TextScript;
+	if (!Data.IsEmpty()) {
+		TextScript = FString::Printf(TEXT("%s['%s'](%s)"),
+			*jsWindow, *Function, *Data.SaveString());
+	}
+	else {
+		TextScript = FString::Printf(TEXT("%s['%s']()"),
+			*jsWindow, *Function);
+	}
+	ExecuteJavascript(TextScript);
+	return true;
 }
 
 void SBaseBrowser::PopupURL(const FString& ) {
@@ -150,4 +180,20 @@ void SBaseBrowser::Screen(bool touch){
 }
 void SBaseBrowser::SetSound(UWebViewSoundComponent* Sound) {
 
+}
+void SBaseBrowser::CallParams(const FString& Function, const TArray<FString>& Params) {
+	if (Function.IsEmpty())
+		return;
+	FString strParam;
+	for (auto& parm : Params) {
+		if (!strParam.IsEmpty())strParam.Append(TEXT(","));
+		strParam.Append(TEXT("\'")).Append(parm).Append(TEXT("\'"));
+	}
+	FString TextScript;
+	TextScript = FString::Printf(TEXT("%s['%s'](%s)"),
+		*jsWindow, *Function, *strParam);
+	ExecuteJavascript(TextScript);
+}
+bool SBaseBrowser::IsInteractable() const {
+	return false;
 }
