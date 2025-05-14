@@ -67,7 +67,7 @@ UWebBase::UWebBase(const FObjectInitializer& ObjectInitializer)
 	FString interface_name(TEXT("interface"));
 	GConfig->GetString(TEXT("WebView"), TEXT("category"), category, GGameIni);
 	GConfig->GetString(TEXT("WebView"), TEXT("interface_name"), interface_name, GGameIni);
-	jsWindow = FString::Printf(TEXT("%s.%s"),*category,*interface_name);
+	//jsWindow = FString::Printf(TEXT("%s.%s"),*category,*interface_name);
 	styleText.ColorAndOpacity = FSlateColor(FLinearColor(0.0f, 0.0f, 0.0f));
 #if PLATFORM_ANDROID
 	styleText.Font.Size = 34;
@@ -96,51 +96,17 @@ void UWebBase::ExecuteJavascript(const FString& ScriptText)
 
 void UWebBase::CallJsonStr(const FString& Function, const FString& Data)
 {
-	if (Function.IsEmpty())
-		return;
-	FString TextScript;
-	if (!WebWidget || WebWidget->CallJsonStr(Function, Data))return;
-	if (Data.Len() >= 2) {
-		TextScript = FString::Printf(TEXT("%s['%s'](%s)"),
-			*jsWindow, *Function, *Data);
-	}
-	else {
-		TextScript = FString::Printf(TEXT("%s['%s']()"),
-			*jsWindow, *Function);
-	}
-	if(WebWidget)WebWidget->ExecuteJavascript(TextScript);
+	if (WebWidget) WebWidget->CallJsonStr(Function, Data);
 }
 
 
 void UWebBase::CallJson(const FString& Function, FMatureJsonValue Data)
 {
-	if (Function.IsEmpty())
-		return;
-	FString TextScript;
-	if (!WebWidget || WebWidget->CallJson(Function, Data))return;
-	if (!Data.IsEmpty()) {
-		TextScript = FString::Printf(TEXT("%s['%s'](%s)"),
-			*jsWindow, *Function, *Data.SaveString());
-	}
-	else {
-		TextScript = FString::Printf(TEXT("%s['%s']()"),
-			*jsWindow, *Function);
-	}
-	if (WebWidget)WebWidget->ExecuteJavascript(TextScript);
+	if (WebWidget) WebWidget->CallJson(Function, Data);
 }
 
 void UWebBase::CallParams(const FString& Function, const TArray<FString>& Params) {
-	if (Function.IsEmpty())
-		return;
-	FString strParam;
-	for (auto& parm: Params) {
-		if (!strParam.IsEmpty())strParam.Append(TEXT(","));
-		strParam.Append(TEXT("\'")).Append(parm).Append(TEXT("\'"));
-	}
-	FString TextScript;
-	TextScript = FString::Printf(TEXT("%s['%s'](%s)"),
-		*jsWindow, *Function, *strParam);
-	if (WebWidget)WebWidget->ExecuteJavascript(TextScript);
+	if (WebWidget)WebWidget->CallParams(Function, Params);
 }
 
 FString UWebBase::GetUrl() const {
@@ -208,7 +174,9 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 			];
 	}
 	if (OnPreReBuild.IsBound())OnPreReBuild.Broadcast();
-#if defined WEBVIEW_CEF
+#if defined USING_WEBBROWSER
+	using SBrowserImp = SProxyWeb;
+#elif defined WEBVIEW_CEF
 	using SBrowserImp = SCefBrowser;
 #elif defined WEBVIEW_ANDROID
 	using SBrowserImp = SAndroidWeb;
@@ -232,7 +200,8 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 		.Touch(_Touch)
 		.downloadTip(downloadTip)
 		.using_json_object(json_object)
-		.Visibility(EVisibility::SelfHitTestInvisible)
+		//.Visibility_Lambda([]() {return EVisibility::HitTestInvisible; })
+		.Visibility(EVisibility::SelfHitTestInvisible) // SelfHitTestInvisible  Visible
 		.OnUrlChanged_UObject(this, &UWebBase::HandleOnUrlChanged)
 		.OnBeforePopup_UObject(this, &UWebBase::HandleOnBeforePopup)
 		.OnPostResponse_UObject(this, &UWebBase::HandleOnPostResponse)

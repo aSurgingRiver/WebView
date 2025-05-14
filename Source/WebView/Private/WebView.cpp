@@ -28,26 +28,26 @@ void FWebViewModule::ShutdownModule()
 	// This function may be called during shutdown to clean up your module.  
 	// For modules that support dynamic reloading,
 	// we call this function before unloading the module.
-#ifdef WEBVIEW_CEF
+#if defined WEBVIEW_CEF && !defined USING_WEBBROWSER
 	webview::IBrowserInstance::Get().UnLoad();
 #endif
 }
 
 void FWebViewModule::StartupModule()
 {
-#ifdef WEBVIEW_CEF
+#if defined WEBVIEW_CEF && !defined USING_WEBBROWSER
 	ICEF3LIB::get()->LoadCEF3Modules();
-#if WITH_EDITOR 
+#   if WITH_EDITOR 
 	ICefCoreLIB::get()->Load();
-#endif
+#   endif
 	webview::IBrowserInstance::Get().check_brand(ICEF3LIB::get()->Branch());
 	webview::IBrowserInstance::Get().Load();
-#if WITH_EDITOR 
+#   if WITH_EDITOR 
 	FEditorDelegates::PausePIE.AddLambda([](bool) {webview::IBrowserInstance::Get().OnEndPIE(); });
 	FEditorDelegates::BeginPIE.AddLambda([](bool) {webview::IBrowserInstance::Get().OnBeginPIE(); });
 	FEditorDelegates::EndPIE.AddLambda([](bool) {webview::IBrowserInstance::Get().OnEndPIE(); });
 	FEditorDelegates::ResumePIE.AddLambda([](bool) {webview::IBrowserInstance::Get().OnBeginPIE(); });
-#endif
+#   endif
 #endif
 }
 
