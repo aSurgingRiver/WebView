@@ -89,6 +89,11 @@ public class cefForUe : ModuleRules
         PublicDefinitions.Add("CEF3_RENDER=\"" + renderName + "\""); //
         PublicDefinitions.Add("CEF3_VERSION=\"" + CEFVersion + "\""); //
         PublicDefinitions.Add("CEF3_BRANCH=" + branch + ""); //
+        if (branch == "5060")
+        {
+            PublicDefinitions.Add("USING_WIN7=1"); //
+        }
+            //USING_WIN7
         //List<string> Dlls = new List<string>();
         Dlls.Add("icudtl.dat");
         Dlls.Add("snapshot_blob.bin");
