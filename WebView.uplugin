@@ -17,6 +17,7 @@
       "Name": "CefBase",
       "PlatformAllowList": [
         "Win64",
+        "LinuxArm64",
         "Linux"
       ],
       "Type": "Runtime"
@@ -26,10 +27,11 @@
       "Name": "MatureJson",
       "PlatformAllowList": [
         "Win64",
+        "LinuxArm64",
         "Linux",
+        "Android",
         "Mac",
-        "IOS",
-        "Android"
+        "IOS"
       ],
       "Type": "Runtime"
     },
@@ -38,10 +40,9 @@
       "Name": "MatureJsonK2Node",
       "PlatformAllowList": [
         "Win64",
+        "LinuxArm64",
         "Linux",
-        "Mac",
-        "IOS",
-        "Android"
+        "Mac"
       ],
       "Type": "UncookedOnly"
     },
@@ -50,10 +51,11 @@
       "Name": "WebView",
       "PlatformAllowList": [
         "Win64",
+        "LinuxArm64",
         "Linux",
+        "Android",
         "Mac",
-        "IOS",
-        "Android"
+        "IOS"
       ],
       "Type": "Runtime"
     },
@@ -62,10 +64,11 @@
       "Name": "BaseBrowser",
       "PlatformAllowList": [
         "Win64",
+        "LinuxArm64",
         "Linux",
+        "Android",
         "Mac",
-        "IOS",
-        "Android"
+        "IOS"
       ],
       "Type": "Runtime"
     }

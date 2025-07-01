@@ -10,11 +10,11 @@
 #		define ANDROIDBROWSER_LIB DLLIMPORT
 #	endif
 #else
-#   ifdef ANDROIDBROWSER_EXPORT
-//#      define ANDROIDBROWSER_LIB __attribute__((visibility("default")))
-#      define ANDROIDBROWSER_LIB DLLEXPORT
-#   else
+//#   ifdef ANDROIDBROWSER_EXPORT
+////#      define ANDROIDBROWSER_LIB __attribute__((visibility("default")))
+//#      define ANDROIDBROWSER_LIB DLLEXPORT
+//#   else
 #      define ANDROIDBROWSER_LIB DLLIMPORT
-#   endif
+//#   endif
 #endif
 //#endif

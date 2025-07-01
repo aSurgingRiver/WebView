@@ -150,14 +150,11 @@
 //      timeout: The effective time of the callback function, in seconds
 // 
     function JsonCall() {
-        //var url = 'rtsp://113.201.104.35:9090/dss/monitor/param?cameraid=1000054%247&substream=1' ;
-        //alert('qweqwe');
-
         //for (var i = 0; i < 1000; i++) {
             total++;
             const timestamp = new Date().getTime();
             //ue4("videoUrl",{"url":"www.baidu.com","total":total,"sendtime":timestamp},
-            ue4("videoUrl", { "sendtime": timestamp },
+            ue.call("videoUrl", { "sendtime": timestamp },
                 function (rv) {
                     //alert(rv);
                     response = response + 1;

@@ -1,7 +1,7 @@
 // Copyright aXiuShen. All Rights Reserved.
 #include "BaseBrowser.h"
 #include "Misc/ConfigCacheIni.h"
-
+#include "WebViewLog.h"
 
 webview::FOnTransparency SBaseBrowser::OnTransparencyDefault;
 
@@ -133,6 +133,7 @@ void SBaseBrowser::ShowAddress(bool ) {
  * @param bIsPermanent If true, the object will be visible to all pages loaded through this browser widget, otherwise, it will be deleted when navigating away from the current page. Non-permanent bindings should be registered from inside an OnLoadStarted event handler in order to be available before JS code starts loading.
  */
 void SBaseBrowser::BindUObject(const FString& , UObject* , bool ) {
+	UE_LOG(WebViewLog,Error,TEXT("BindUObject,The current platform does not support"));
 }
 
 /**
@@ -142,6 +143,7 @@ void SBaseBrowser::BindUObject(const FString& , UObject* , bool ) {
  * @param bIsPermanent Must match the bIsPermanent argument passed to BindUObject.
  */
 void SBaseBrowser::UnbindUObject(const FString& , UObject* , bool ) {
+	UE_LOG(WebViewLog, Error, TEXT("UnbindUObject,The current platform does not support"));
 }
 //
 void SBaseBrowser::StopRender(bool ) {
@@ -163,6 +165,7 @@ void SBaseBrowser::Silent(bool  ) {
 }
 //
 void SBaseBrowser::SetImitateInput(const FImitateInput& ) {
+	UE_LOG(WebViewLog, Error, TEXT("SBaseBrowser::SetImitateInput,The current platform does not support"));
 }
 void SBaseBrowser::PenetrateThreshold(uint8_t value) {
 }
@@ -179,7 +182,7 @@ void SBaseBrowser::Screen(bool touch){
 
 }
 void SBaseBrowser::SetSound(UWebViewSoundComponent* Sound) {
-
+	UE_LOG(WebViewLog, Error, TEXT("SBaseBrowser::SetSound,The current platform does not support"));
 }
 void SBaseBrowser::CallParams(const FString& Function, const TArray<FString>& Params) {
 	if (Function.IsEmpty())
