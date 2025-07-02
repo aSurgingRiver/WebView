@@ -19,8 +19,9 @@
 #include <string>
 #include <stdlib.h>
 // WEB_CORE_API
-#if defined CEF_LINUX
 #include "include/cef_version.h"
+#if 7103<=CEF3_BRANCH
+#include "include/cef_version_info.h"
 #endif
 
 // WEB_CORE_API
@@ -78,11 +79,7 @@ FString CEF3LIB::LibPath() {
 	}
 	const FString BaseDir = FPaths::ConvertRelativePathToFull(Plugin->GetBaseDir());
 	FString LibPath;
-#if defined CEF_WINDOWS
-	LibPath = FPaths::Combine(*BaseDir, TEXT("Source/ThirdParty/cefForUe"), TEXT(CEF3_VERSION), TEXT("win64/lib"));
-#elif defined CEF_LINUX
-	LibPath = FPaths::Combine(*BaseDir, TEXT("Source/ThirdParty/cefForUe"), TEXT(CEF3_VERSION), TEXT("linux/lib"));
-#endif
+	LibPath = FPaths::Combine(*BaseDir, TEXT("Source/ThirdParty/cefForUe"), TEXT(CEF3_VERSION), TEXT(CEF3_ARCH), TEXT("lib"));
 	return LibPath;
 }
 
@@ -91,7 +88,7 @@ void CEF3LIB::LoadCEF3Modules()
 	if (dllHand.size())return;// has load
 	//UE_LOG(WebViewLog, Error, TEXT("CEF3DLL::LoadCEF3Modules"));
 	FString libPath = LibPath();
-#if defined CEF_WINDOWS
+#if PLATFORM_WINDOWS
 	FString envPath = FPlatformMisc::GetEnvironmentVariable(TEXT("Path")) + TEXT(";") + libPath;
 	FPlatformMisc::SetEnvironmentVar(TEXT("Path"), *envPath);
 	FPlatformProcess::PushDllDirectory(*libPath);
@@ -99,21 +96,22 @@ void CEF3LIB::LoadCEF3Modules()
 		LoadDllCEF(FPaths::Combine(*libPath, TEXT("libcef.dll")));
 	}
 	FPlatformProcess::PopDllDirectory(*libPath);
-#elif defined CEF_LINUX
-	 int cef_version_major	   = cef_version_info(0);
-	 int cef_version_minor	   = cef_version_info(1);
-	 int cef_version_patch	   = cef_version_info(2);
-	 int cef_commit_number	   = cef_version_info(3);
-	 int chrome_version_major	   = cef_version_info(4);
-	 int chrome_version_minor	   = cef_version_info(5);
-	 int chrome_version_build	   = cef_version_info(6);
-	 int chrome_version_patch    = cef_version_info(7);
+#endif
 
-	UE_LOG(WebViewLog, Log, 
+#if !PLATFORM_MAC
+	int cef_version_major = cef_version_info(0);
+	int cef_version_minor = cef_version_info(1);
+	int cef_version_patch = cef_version_info(2);
+	int cef_commit_number = cef_version_info(3);
+	int chrome_version_major = cef_version_info(4);
+	int chrome_version_minor = cef_version_info(5);
+	int chrome_version_build = cef_version_info(6);
+	int chrome_version_patch = cef_version_info(7);
+	UE_LOG(WebViewLog, Log,
 		TEXT("cef_version_major:%d cef_version_minor:%d cef_version_patch:%d cef_commit_number:%d chrome_version_major:%d chrome_version_minor:%d chrome_version_build:%d chrome_version_patch:%d ")
 		, cef_version_major, cef_version_minor, cef_version_patch, cef_commit_number, chrome_version_major, chrome_version_minor, chrome_version_build, chrome_version_patch);
-
 #endif
+//#endif
 }
 
 void CEF3LIB::UnloadCEF3Modules()
