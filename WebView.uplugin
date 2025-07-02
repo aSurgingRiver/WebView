@@ -18,6 +18,7 @@
       "Type": "Runtime",
       "WhitelistPlatforms": [
         "Win64",
+        "LinuxAArch64",
         "Linux"
       ]
     },
@@ -27,10 +28,11 @@
       "Type": "Runtime",
       "WhitelistPlatforms": [
         "Win64",
+        "LinuxAArch64",
         "Linux",
+        "Android",
         "Mac",
-        "IOS",
-        "Android"
+        "IOS"
       ]
     },
     {
@@ -39,10 +41,9 @@
       "Type": "UncookedOnly",
       "WhitelistPlatforms": [
         "Win64",
+        "LinuxAArch64",
         "Linux",
-        "Mac",
-        "IOS",
-        "Android"
+        "Mac"
       ]
     },
     {
@@ -51,10 +52,11 @@
       "Type": "Runtime",
       "WhitelistPlatforms": [
         "Win64",
+        "LinuxAArch64",
         "Linux",
+        "Android",
         "Mac",
-        "IOS",
-        "Android"
+        "IOS"
       ]
     },
     {
@@ -63,10 +65,11 @@
       "Type": "Runtime",
       "WhitelistPlatforms": [
         "Win64",
+        "LinuxAArch64",
         "Linux",
+        "Android",
         "Mac",
-        "IOS",
-        "Android"
+        "IOS"
       ]
     }
   ],

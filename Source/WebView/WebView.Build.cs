@@ -86,10 +86,21 @@ namespace UnrealBuildTool.Rules
             {
                 PublicDefinitions.Add("USING_WEBBROWSER=1"); //
                 PrivateDependencyModuleNames.Add("WebBrowser");
-                Console.WriteLine("UnrealTargetPlatform USING_WEBBROWSER ...... ");
+                Console.WriteLine("UnrealTargetPlatform USING_WEBBROWSER ...... bridge or debug ");
             }
+            //else if (Target.Platform == UnrealTargetPlatform.Mac ||
+            //    Target.Platform == UnrealTargetPlatform.TVOS ||
+            //    Target.Platform == UnrealTargetPlatform.IOS)
+            //{//
+            //    Console.WriteLine("WEBVIEW_APPLE");
+            //    PublicDefinitions.Add("WEBVIEW_APPLE=1"); //
+            //    PublicDependencyModuleNames.Add("AppleBrowser");
+            //}
             else if(Target.Platform == UnrealTargetPlatform.Linux ||
-                Target.Platform == UnrealTargetPlatform.Win64)
+                Target.Platform == UnrealTargetPlatform.Win64 ||
+                //Target.Platform == UnrealTargetPlatform.Mac ||
+                Target.Platform.ToString() == "LinuxArm64" ||
+                Target.Platform.ToString() == "LinuxAArch64")
             {//
                 Console.WriteLine("WEBVIEW_CEF  ");
                 if (Target.Type != TargetType.Server && Target.Platform == UnrealTargetPlatform.Win64)

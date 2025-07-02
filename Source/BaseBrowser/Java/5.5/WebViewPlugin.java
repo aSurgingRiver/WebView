@@ -1235,9 +1235,12 @@ class WebViewPlugin
 
 		@Override
 		public boolean onConsoleMessage(ConsoleMessage cm) {
-			GameActivity.Log.warn(cm.message() + " -- From line "
-				+ cm.lineNumber() + " of "
-				+ cm.sourceId() );
+			//GameActivity.Log.warn(cm.message() + " -- From line "
+			//	+ cm.lineNumber() + " of "
+			//	+ cm.sourceId() );
+			Log.d(LogTag,cm.message() + " at "
+				+ cm.sourceId() + ":"
+				+ cm.lineNumber() );
 			return true;
 		}
 	}

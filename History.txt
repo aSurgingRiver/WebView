@@ -1,3 +1,8 @@
+20250629
+1. 优化国产Arm架构支持
+2. windows平台下将CEF版本升级为138.0.7204
+
+
 2025/5/10
 1. 解决Linux下键盘按键失效问题。
 2. 增加international_keyboards=true 参数，用于国际键盘启用Ctr+ALT 功能
