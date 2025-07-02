@@ -23,7 +23,7 @@
 
 SWebViewToolbar::SWebViewToolbar()
 { 
-	ChangeText.FromString(FString());
+	ChangeText = FText();
 }
 
 SWebViewToolbar::~SWebViewToolbar()
@@ -245,16 +245,16 @@ FReply SWebViewToolbar::OnGo()
 	if (WebViewWindow.IsValid()) {
 		WebViewWindow->LoadURL(ChangeText.ToString(), FString(), false);
 	}
-	ChangeText.FromString(FString());
+	ChangeText = FText();
 	return FReply::Handled();
 }
 
 void SWebViewToolbar::OnUrlTextCommitted(const FText& NewText, ETextCommit::Type CommitType)
 {
 	if ((CommitType == ETextCommit::OnEnter || CommitType == ETextCommit::OnUserMovedFocus) && WebViewWindow.IsValid()) {
-		WebViewWindow->LoadURL(NewText.ToString(),FString(),false);
+		WebViewWindow->LoadURL(NewText.ToString(), FString(), false);
 	}
-	ChangeText.FromString(FString());
+	ChangeText = FText();
 }
 void  SWebViewToolbar::OnTextChanged(const FText& InText) {
 	ChangeText = InText;
