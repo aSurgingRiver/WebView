@@ -19,13 +19,22 @@ public class cefForUe : ModuleRules
         //string versionCEF="cef_88.4324";
         if (Target.Platform == UnrealTargetPlatform.Win64) {
             //sInitCEF3_Win("cef_103.5060");
-            InitCEF3_Win("cef_120.6099");
+            //InitCEF3_Win("cef_120.6099","win64");
+            InitCEF3_Win("cef_138.7204", "win64");
             //InitCEF3_Win("cef_134.6998");
             //InitCEF3_Win("cef_115.5790");
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)
         {
-            InitCEF3_Linux("cef_120.6099");
+            InitCEF3_Linux("cef_120.6099","linux");
+            //InitCEF3_Linux("cef_103.5060", "linux");
+        }
+        else if (Target.Platform.ToString() == "LinuxArm64"
+            || Target.Platform.ToString() == "LinuxAArch64")
+        {
+            InitCEF3_Linux("cef_116.5845", "linux_arm64");
+            //InitCEF3_Linux("cef_111.5563", "linux_arm64");
+            //InitCEF3_Linux("cef_110.5841", "linux_arm64");
             //InitCEF3_Linux("cef_103.5060");
         }
         //else if (Target.Platform == UnrealTargetPlatform.Mac)
@@ -89,7 +98,7 @@ public class cefForUe : ModuleRules
         PublicDefinitions.Add("CEF3_RENDER=\"" + renderName + "\""); //
         PublicDefinitions.Add("CEF3_VERSION=\"" + CEFVersion + "\""); //
         PublicDefinitions.Add("CEF3_BRANCH=" + branch + ""); //
-        if (branch == "5060")
+        if (branch == "5060" && Target.Platform == UnrealTargetPlatform.Win64)
         {
             PublicDefinitions.Add("USING_WIN7=1"); //
         }
@@ -112,14 +121,14 @@ public class cefForUe : ModuleRules
         }
         RuntimeDependencies.Add(Path.Combine(LibraryPath, renderName));
     }
-    void InitCEF3_Win(string CEFVersion)
+    void InitCEF3_Win(string CEFVersion, string arch)
     {
-        string CEFRoot = Path.Combine(ModuleDirectory, CEFVersion, "win64");
+        string CEFRoot = Path.Combine(ModuleDirectory, CEFVersion, arch);
         string LibraryPath = Path.Combine(CEFRoot, "lib");
         List<string> Dlls = new List<string>();
         Dlls.Add("killnoparent.exe");
         InitCEF3_PUB(CEFRoot, CEFVersion, "cefhelper.exe", Dlls);
-
+        PublicDefinitions.Add("CEF3_ARCH=\"" + arch + "\""); //
         PublicDefinitions.Add("USING_CEF_SHARED=1"); //
         PublicDefinitions.Add("CEF_WINDOWS=1"); //
         foreach (string FileName in Directory.EnumerateFiles(LibraryPath, "*.lib", SearchOption.TopDirectoryOnly)) {
@@ -151,7 +160,7 @@ public class cefForUe : ModuleRules
         PublicDefinitions.Add("CEF3_RENDER=\"cefhelper\""); //
         PublicDefinitions.Add("CEF3_VERSION=\"" + CEFVersion + "\""); //
         PublicDefinitions.Add("CEF3_BRANCH=" + branch + ""); //
-        PublicDefinitions.Add("PLATFORM_LINUXAARCH64=0"); //
+        PublicDefinitions.Add("CEF3_ARCH=\"" + arch + "\""); //
         PublicDefinitions.Add("CEF_MAC=1"); //
         PrivateRuntimeLibraryPaths.Add(LibraryPath);
         foreach (string FileName in Directory.EnumerateFiles(LibraryPath, "*", SearchOption.AllDirectories))
@@ -162,10 +171,10 @@ public class cefForUe : ModuleRules
             RuntimeDependencies.Add(FileName);
         }
     }
-    void InitCEF3_Linux(string CEFVersion)
+    void InitCEF3_Linux(string CEFVersion,string arch)
     {
         string LINUX_MULTIARCH_ROOT = Environment.GetEnvironmentVariable("LINUX_MULTIARCH_ROOT");
-        string CEFRoot =Path.Combine(ModuleDirectory, CEFVersion,"linux");// LINUX_MULTIARCH_ROOT
+        string CEFRoot =Path.Combine(ModuleDirectory, CEFVersion, arch);// LINUX_MULTIARCH_ROOT
         //PathList.FullPathName()
         string LibraryPath = Path.Combine(CEFRoot, "lib");
         List<string> Dlls = new List<string>();
@@ -175,11 +184,12 @@ public class cefForUe : ModuleRules
         InitCEF3_PUB(CEFRoot, CEFVersion, "cefhelper", Dlls);
         //MergeFile(CEFRoot);
         string libcef_path = "" ;
-        String ProjectBin = Path.Combine(Path.GetDirectoryName(Target.ProjectFile.ToString()), "Binaries", "Linux");
+        //String ProjectBin = Path.Combine(Path.GetDirectoryName(Target.ProjectFile.ToString()), "Binaries", "Linux");
         if (LINUX_MULTIARCH_ROOT != "")
         {
             PublicDefinitions.Add("WV_CROSS_BUILE=1"); //
         }
+        PublicDefinitions.Add("CEF3_ARCH=\"" + arch + "\""); //
         PublicDefinitions.Add("CEF_LINUX=1"); //
         PublicAdditionalLibraries.Add(Path.Combine(LibraryPath, "libcef_dll_wrapper.a"));
         PrivateRuntimeLibraryPaths.Add(LibraryPath);

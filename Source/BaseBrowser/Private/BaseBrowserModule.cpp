@@ -1,4 +1,4 @@
-// Copyright aXiuShen. All Rights Reserved.
+ï»¿// Copyright aXiuShen. All Rights Reserved.
 
 #include "BaseBrowserModule.h"
 //#include "WebViewAssetManager.h"
@@ -13,10 +13,10 @@ namespace webview {
 	void PrintScreen(FString Content, FColor color, float time) {
 		if (!GEngine)return;
 		GEngine->AddOnScreenDebugMessage(
-			-1,               // Key (Ê¹ÓÃ -1 ±íÊ¾²»ĞèÒªÎ¨Ò»±êÊ¶)
-			time,              // ÏÔÊ¾Ê±¼ä£¨Ãë£©
-			color,   // ÑÕÉ«
-			Content           // ÒªÏÔÊ¾µÄ×Ö·û´®
+			-1,               // Key (ä½¿ç”¨ -1 è¡¨ç¤ºä¸éœ€è¦å”¯ä¸€æ ‡è¯†)
+			time,              // æ˜¾ç¤ºæ—¶é—´ï¼ˆç§’ï¼‰
+			color,   // é¢œè‰²
+			Content           // è¦æ˜¾ç¤ºçš„å­—ç¬¦ä¸²
 		);
 	}
 }
