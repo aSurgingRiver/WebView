@@ -33,7 +33,6 @@ https://www.youtube.com/channel/UCUUFUwaMi5-naF0PZMU9mxg
 # Important/Additional Notes:
 We are committed to providing the most efficient browser plug-in. If you have any questions in the process of using, you can contact us through the following ways.
 
-WathsApp Group: https://chat.whatsapp.com/G6MQqzNB3wSJk4bdxFO5gs
 FaceBook: https://www.facebook.com/ue.webview/   
 Email: aSurgingRiver@163.com    aSurgingRiver@gmail.com                                  
 QQ Group: 866972317   
