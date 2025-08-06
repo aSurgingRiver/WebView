@@ -259,6 +259,8 @@ namespace UnrealBuildTool.Rules
 		}
         bool CanSupportAndroid()
         {
+            if (Directory.Exists(Path.Combine(ModuleDirectory, "..", "ThirdParty", "AndroidBrowser", "Binaries")))
+                return true;
             // download from FAB
             string env_support = Environment.GetEnvironmentVariable("WebView_Android_Support");
             if (!string.IsNullOrEmpty(env_support)&& env_support=="1")

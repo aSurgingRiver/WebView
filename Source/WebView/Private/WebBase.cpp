@@ -264,9 +264,9 @@ bool UWebBase::Asyn(const FString& Name, FMatureJsonValue& json, const FString& 
 	return true;
 }
 
-void UWebBase::StopRender(bool hidden) {
-	stop_render = hidden;
-	if(WebWidget)WebWidget->StopRender(hidden);
+void UWebBase::StopRender(bool stop) {
+	stop_render = stop;
+	if(WebWidget)WebWidget->StopRender(stop);
 }
 
 void UWebBase::Penetrate(int Threshold) {
