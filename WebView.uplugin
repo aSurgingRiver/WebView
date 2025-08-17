@@ -17,6 +17,7 @@
       "Name": "CefBase",
       "PlatformAllowList": [
         "Win64",
+        "Mac",
         "LinuxArm64",
         "Linux"
       ],
