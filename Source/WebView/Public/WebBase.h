@@ -342,7 +342,7 @@ public:
 	void SetImitateInput(const FImitateInput&  ImitateInput);
 
 	UFUNCTION(BlueprintCallable, Category = "Web View")
-	void StopRender(bool hidden);
+	void StopRender(bool stop);
 
 	/**
 	* Set the penetration threshold
