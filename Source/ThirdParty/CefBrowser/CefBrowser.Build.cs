@@ -44,6 +44,10 @@ public class CefBrowser : ModuleRules
         {
             PublicAdditionalLibraries.Add(FileName);
         }
+        foreach (string FileName in Directory.EnumerateFiles(platform_bin, "*.dylib", SearchOption.AllDirectories))
+        {
+            PublicAdditionalLibraries.Add(FileName);
+        }
         foreach (string FileName in Directory.EnumerateFiles(platform_bin, "*.a", SearchOption.AllDirectories))
         {
             PublicAdditionalLibraries.Add(FileName);
