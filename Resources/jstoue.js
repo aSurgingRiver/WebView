@@ -3,53 +3,65 @@
 "object" != typeof ue.webview && (delete ue.webview, ue.webview = {});
 "number" != typeof ue.webview.functionid && (delete ue.webview.functionid, ue.webview.functionid = 0);
 "string" != typeof ue.webview.name && (delete ue.webview.name, ue.webview.name = 'interface');
+"object" != typeof ue.webview.cbarray && (delete ue.webview.cbarray, ue.webview.cbarray = []);
 "object" != typeof ue[ue.webview.name] && (delete ue[ue.webview.name], ue[ue.webview.name] = {});
+"function" != typeof ue.webview.cbclear && (delete ue.webview.cbclear, ue.webview.cbclear = function () {
+    const nowInSeconds = Math.floor(Date.now() / 1000) * 1000000;
+    var first = 0;
+    var funcid = '';
+    while (ue.webview.cbarray.length) {
+        first = ue.webview.cbarray[0];
+        if (nowInSeconds <= first) {
+            break;
+        }
+        ue.webview.cbarray.shift();
+        funcid = `${first}`;
+        delete ue[ue.webview.name][funcid];
+    }
+},setInterval(ue.webview.cbclear,2000));
 "function" != typeof ue.webview.register && (delete ue.webview.register, ue.webview.register = function (callback, timeout) {
     if ("function" != typeof callback)
         return "";
-    const nowInSeconds = Math.floor(Date.now() / 1000);
-    ue.webview.functionid = ue.webview.functionid + 1;
-    var funcid = `${nowInSeconds}_${ue.webview.functionid}`
-    ue[ue.webview.name][funcid] = callback;
     if ("number" != timeout) {
-        //delete timeout;
-        timeout = 3;
+        timeout = 6;
     }
-    timeout = Math.max(3, parseInt(timeout));
-    if (0 < timeout) {
-        setTimeout(function () { 
-                delete ue[ue.webview.name][funcid] 
-            }, 
-            1e3 * timeout);
+    ue.webview.functionid = ue.webview.functionid + 1;
+    var composeid = ue.webview.functionid % 1000000;
+    var nowInSeconds = Math.floor(Date.now() / 1000);
+    nowInSeconds = (nowInSeconds + timeout) * 1000000 + composeid;
+    var funcid = `${nowInSeconds}`
+    ue[ue.webview.name][funcid] = callback;
+    if (timeout <= 0) {
+        return funcid;
     }
-    //var funcid = function () { return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, function (t) { return (t ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> t / 4).toString(16) }) }();
+    ue.webview.cbarray.push(nowInSeconds);
     return funcid;
 });
 
-"function" != typeof ue.webview.asyn && (delete ue.webview.asyn,ue.webview.asyn=function(type,json,cback){
+"function" != typeof ue.webview.asyn && (delete ue.webview.asyn, ue.webview.asyn = function (type, json, cback) {
     if ("object" != typeof ue["$receive"] || "function" != typeof ue["$receive"]["asyn"]) {
         console.error("[ue.$receive.asyn] drop message .... key" + key + " json" + JSON.stringify(json));
         return;
     }
-    ue["$receive"].asyn(type,json,cback);
+    ue["$receive"].asyn(type, json, cback);
 });
 // for android platform
-"object" == typeof webview_android && (delete ue.webview.asyn,ue.webview.asyn = webview_android.asyn)
+"object" == typeof webview_android && (delete ue.webview.asyn, ue.webview.asyn = webview_android.asyn)
 
 
 // using default call
 if ("function" != typeof typeof ue.call) {
     delete ue.call;
     ue.call = function (type, json, cback, timeout) {
-        if("string" != typeof type){
+        if ("string" !== typeof type) {
             console.error("type of ue.call must be string");
-            return ;
+            return;
         }
         var backid = ue.webview.register(cback, timeout);
-        if("string" !== typeof json){
+        if ("string" !== typeof json) {
             ue.webview.asyn(type, JSON.stringify(json), backid);
         }
-        else{
+        else {
             ue.webview.asyn(type, json, backid);
         }
     };
