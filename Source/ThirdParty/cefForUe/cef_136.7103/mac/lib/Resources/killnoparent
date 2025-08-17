@@ -1,0 +1,2 @@
+ps   -Ao 'pid,ppid,comm' | grep cefhelper | awk '$2==1{cmd="kill -9 " $1 ;  print cmd ;system(cmd) }'
+

@@ -1,3 +1,9 @@
+2025/8/13
+1. 增加对MacOS支持
+2. 优化cefhelper.exe
+3. 优化jstoue.js 脚本，减少setTimeout使用。
+4. 优化CallJson,CallJsonStr接口,增加函数名检查
+
 20250629
 1. 优化国产Arm架构支持
 2. windows平台下将CEF版本升级为138.0.7204

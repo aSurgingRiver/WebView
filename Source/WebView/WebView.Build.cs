@@ -98,11 +98,12 @@ namespace UnrealBuildTool.Rules
             //}
             else if(Target.Platform == UnrealTargetPlatform.Linux ||
                 Target.Platform == UnrealTargetPlatform.Win64 ||
-                //Target.Platform == UnrealTargetPlatform.Mac ||
+                (Target.Platform == UnrealTargetPlatform.Mac && 50400<=ue_version) ||
                 Target.Platform.ToString() == "LinuxArm64" ||
                 Target.Platform.ToString() == "LinuxAArch64")
             {//
                 Console.WriteLine("WEBVIEW_CEF  ");
+                //Console.WriteLine("WEBVIEW Architectures " + Target.Architectures.ToString());
                 if (Target.Type != TargetType.Server && Target.Platform == UnrealTargetPlatform.Win64)
                 {
                     AddEngineThirdPartyPrivateStaticDependencies(Target, "DX12");
@@ -259,6 +260,8 @@ namespace UnrealBuildTool.Rules
 		}
         bool CanSupportAndroid()
         {
+            if (Directory.Exists(Path.Combine(ModuleDirectory, "..", "ThirdParty", "AndroidBrowser", "Binaries")))
+                return true;
             // download from FAB
             string env_support = Environment.GetEnvironmentVariable("WebView_Android_Support");
             if (!string.IsNullOrEmpty(env_support)&& env_support=="1")

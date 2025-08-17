@@ -18,7 +18,7 @@
       "Type": "Runtime",
       "WhitelistPlatforms": [
         "Win64",
-        "LinuxAArch64",
+        "Mac",
         "Linux"
       ]
     },
