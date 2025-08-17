@@ -69,7 +69,7 @@ void SProxyWeb::Construct(const FArguments& InArgs){
 		"   Solution: Please move the plug - in to the project local plug - in directory \n\n"
 		"2. Other plug - ins that depend on WebBrowser are enabled, such as : Bridge, WebBrowser, etc. \n"
 		"   Solution : Disable them in the plug - in manager. \n\n"
-		"Finally, close the project and then open it again.\n");
+		"Finally, close the project and then open it again.\n"); 
 	TAttribute<FText> text_tip = FText::FromString(show_tips);
 	TSharedRef<STextBlock> TextRef = SNew(STextBlock);
 	TextRef->SetText(text_tip);

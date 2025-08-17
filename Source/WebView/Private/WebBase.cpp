@@ -21,10 +21,12 @@
 #endif
 #include "cefcorelib.h"
 #include "WebViewLog.h"
-#if defined WEBVIEW_CEF
+#if defined WEBVIEW_CEF 
 #include "SCefBrowser.h"
 #elif defined WEBVIEW_ANDROID
 #include "SAndroidWeb.h"
+#elif defined WEBVIEW_APPLE
+#include "AppleBrowser.h"
 #else
 #include "SProxyWeb.h"
 #endif
@@ -96,17 +98,16 @@ void UWebBase::ExecuteJavascript(const FString& ScriptText)
 
 void UWebBase::CallJsonStr(const FString& Function, const FString& Data)
 {
-	if (WebWidget) WebWidget->CallJsonStr(Function, Data);
+	if (Function.IsEmpty()==false && WebWidget) WebWidget->CallJsonStr(Function, Data);
 }
-
 
 void UWebBase::CallJson(const FString& Function, FMatureJsonValue Data)
 {
-	if (WebWidget) WebWidget->CallJson(Function, Data);
+	if (Function.IsEmpty() == false && WebWidget) WebWidget->CallJson(Function, Data);
 }
 
 void UWebBase::CallParams(const FString& Function, const TArray<FString>& Params) {
-	if (WebWidget)WebWidget->CallParams(Function, Params);
+	if (Function.IsEmpty() == false && WebWidget)WebWidget->CallParams(Function, Params);
 }
 
 FString UWebBase::GetUrl() const {
@@ -180,6 +181,8 @@ TSharedRef<SWidget> UWebBase::RebuildWidget() {
 	using SBrowserImp = SCefBrowser;
 #elif defined WEBVIEW_ANDROID
 	using SBrowserImp = SAndroidWeb;
+#elif defined WEBVIEW_APPLE
+	typedef SAppleBrowser SBrowserImp;
 #else
 	using SBrowserImp = SProxyWeb;
 #endif
@@ -264,9 +267,9 @@ bool UWebBase::Asyn(const FString& Name, FMatureJsonValue& json, const FString& 
 	return true;
 }
 
-void UWebBase::StopRender(bool hidden) {
-	stop_render = hidden;
-	if(WebWidget)WebWidget->StopRender(hidden);
+void UWebBase::StopRender(bool stop) {
+	stop_render = stop;
+	if(WebWidget)WebWidget->StopRender(stop);
 }
 
 void UWebBase::Penetrate(int Threshold) {
