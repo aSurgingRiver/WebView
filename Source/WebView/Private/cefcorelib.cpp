@@ -11,6 +11,9 @@
 #elif defined CEF_LINUX
 #include "Linux/LinuxPlatformProcess.h"
 #include "Linux/LinuxPlatformMisc.h"
+#elif defined CEF_MAC
+#include "Mac/MacPlatformProcess.h"
+#include "Mac/MacPlatformMisc.h"
 #endif
 #include "HAL/FileManager.h"
 #include "Misc/Paths.h"
