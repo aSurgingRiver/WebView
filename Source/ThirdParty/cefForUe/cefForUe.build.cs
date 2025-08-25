@@ -124,7 +124,8 @@ public class cefForUe : ModuleRules
         string LibraryPath = Path.Combine(CEFRoot, "lib");
         List<string> Dlls = new List<string>();
         Dlls.Add("killnoparent.exe");
-        InitCEF3_PUB(CEFRoot, CEFVersion, "cefhelper.exe", Dlls);
+        //InitCEF3_PUB(CEFRoot, CEFVersion, "cefhelper.exe", Dlls);
+        InitCEF3_PUB(CEFRoot, CEFVersion, "cefhelper.dll", Dlls);
         PublicDefinitions.Add("CEF3_ARCH=\"" + arch + "\""); //
         PublicDefinitions.Add("USING_CEF_SHARED=1"); //
         PublicDefinitions.Add("CEF_WINDOWS=1"); //
@@ -146,6 +147,10 @@ public class cefForUe : ModuleRules
     {
         string CEFRoot = Path.Combine(ModuleDirectory, CEFVersion, arch);
         string LibraryPath = Path.Combine(CEFRoot, "lib");
+        string cefhelperdir = Path.Combine(LibraryPath, "cefhelper");
+        while (Directory.Exists(cefhelperdir)) {
+            Directory.Move(cefhelperdir, Path.Combine(LibraryPath, "cefhelper.app"));
+        }
         MergeFile(LibraryPath);
         PublicSystemIncludePaths.Add(Path.Combine(CEFRoot));
         PublicAdditionalLibraries.Add(Path.Combine(LibraryPath, "libcef_dll_wrapper.a"));
