@@ -29,7 +29,6 @@ namespace UnrealBuildTool.Rules
         }
         public WebView(ReadOnlyTargetRules Target) : base(Target)
         {
-
             CheckLicense(Path.GetDirectoryName(Target.ProjectFile.ToString()));
             gen_template();
             PublicDependencyModuleNames.AddRange(
@@ -96,13 +95,10 @@ namespace UnrealBuildTool.Rules
             //    PublicDefinitions.Add("WEBVIEW_APPLE=1"); //
             //    PublicDependencyModuleNames.Add("AppleBrowser");
             //}
-            else if(Target.Platform == UnrealTargetPlatform.Linux ||
-                Target.Platform == UnrealTargetPlatform.Win64 ||
-                //Target.Platform == UnrealTargetPlatform.Mac ||
-                Target.Platform.ToString() == "LinuxArm64" ||
-                Target.Platform.ToString() == "LinuxAArch64")
+            else if(can_cef_browser(ue_version))
             {//
                 Console.WriteLine("WEBVIEW_CEF  ");
+                //Console.WriteLine("WEBVIEW Architectures " + Target.Architectures.ToString());
                 if (Target.Type != TargetType.Server && Target.Platform == UnrealTargetPlatform.Win64)
                 {
                     AddEngineThirdPartyPrivateStaticDependencies(Target, "DX12");
@@ -156,6 +152,21 @@ namespace UnrealBuildTool.Rules
                 }
             }
             return false;
+        }
+
+        bool can_cef_browser(int ue_version)
+        {//
+            string platform = Target.Platform.ToString();
+            if (Directory.Exists(Path.Combine(PluginDirectory, "Source", "CefBrowser"))) {
+                // Compile the source code
+                return (Target.Platform == UnrealTargetPlatform.Linux ||
+                Target.Platform == UnrealTargetPlatform.Win64 ||
+                (Target.Platform == UnrealTargetPlatform.Mac && 50400 <= ue_version) ||
+                platform == "LinuxArm64" ||
+                platform == "LinuxAArch64") ;
+            }
+
+            return  Directory.Exists(Path.Combine(PluginDirectory, "Source", "ThirdParty", "CefBrowser", "Binaries", platform));
         }
 
         bool isDependPlugin(string plugin)
@@ -259,6 +270,8 @@ namespace UnrealBuildTool.Rules
 		}
         bool CanSupportAndroid()
         {
+            if (Directory.Exists(Path.Combine(ModuleDirectory, "..", "ThirdParty", "AndroidBrowser", "Binaries")))
+                return true;
             // download from FAB
             string env_support = Environment.GetEnvironmentVariable("WebView_Android_Support");
             if (!string.IsNullOrEmpty(env_support)&& env_support=="1")
