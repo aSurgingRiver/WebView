@@ -148,9 +148,12 @@ namespace maturejson
 		UObject* createdObj = StaticAllocateObject(PropertyClass, Owner, NAME_None, EObjectFlags::RF_NoFlags, EInternalObjectFlags::None, false);
 #if MATUREJSON_VERSION<500
 		(*PropertyClass->ClassConstructor)(FObjectInitializer(createdObj, PropertyClass->ClassDefaultObject, false, false));
-#else
+#elif MATUREJSON_VERSION<=505
 		EObjectInitializerOptions options = EObjectInitializerOptions::InitializeProperties;
 		(*PropertyClass->ClassConstructor)(FObjectInitializer(createdObj, PropertyClass->ClassDefaultObject, options));
+#else 
+		EObjectInitializerOptions options = EObjectInitializerOptions::InitializeProperties;
+		(*PropertyClass->ClassConstructor)(FObjectInitializer(createdObj, PropertyClass->GetDefaultObject(), options));
 #endif
 		ObjectProperty->SetObjectPropertyValue(ValuePtr, createdObj);
 		return ConvertToStruct(ObjectValue, ObjectProperty->PropertyClass, createdObj, createdObj, CheckFlags);

@@ -33,14 +33,11 @@ public class cefForUe : ModuleRules
             || Target.Platform.ToString() == "LinuxAArch64")
         {
             InitCEF3_Linux("cef_116.5845", "linux_arm64");
-            //InitCEF3_Linux("cef_111.5563", "linux_arm64");
-            //InitCEF3_Linux("cef_110.5841", "linux_arm64");
-            //InitCEF3_Linux("cef_103.5060");
         }
-        //else if (Target.Platform == UnrealTargetPlatform.Mac)
-        //{
-        //    InitCEF3_Mac("cef_103.5060","mac");
-        //}
+        else if (Target.Platform == UnrealTargetPlatform.Mac)
+        {
+            InitCEF3_Mac("cef_136.7103", "mac");
+        }
         else {
             return;
         }
@@ -127,7 +124,8 @@ public class cefForUe : ModuleRules
         string LibraryPath = Path.Combine(CEFRoot, "lib");
         List<string> Dlls = new List<string>();
         Dlls.Add("killnoparent.exe");
-        InitCEF3_PUB(CEFRoot, CEFVersion, "cefhelper.exe", Dlls);
+        //InitCEF3_PUB(CEFRoot, CEFVersion, "cefhelper.exe", Dlls);
+        InitCEF3_PUB(CEFRoot, CEFVersion, "cefhelper.dll", Dlls);
         PublicDefinitions.Add("CEF3_ARCH=\"" + arch + "\""); //
         PublicDefinitions.Add("USING_CEF_SHARED=1"); //
         PublicDefinitions.Add("CEF_WINDOWS=1"); //
@@ -149,6 +147,10 @@ public class cefForUe : ModuleRules
     {
         string CEFRoot = Path.Combine(ModuleDirectory, CEFVersion, arch);
         string LibraryPath = Path.Combine(CEFRoot, "lib");
+        string cefhelperdir = Path.Combine(LibraryPath, "cefhelper");
+        while (Directory.Exists(cefhelperdir)) {
+            Directory.Move(cefhelperdir, Path.Combine(LibraryPath, "cefhelper.app"));
+        }
         MergeFile(LibraryPath);
         PublicSystemIncludePaths.Add(Path.Combine(CEFRoot));
         PublicAdditionalLibraries.Add(Path.Combine(LibraryPath, "libcef_dll_wrapper.a"));
@@ -165,10 +167,9 @@ public class cefForUe : ModuleRules
         PrivateRuntimeLibraryPaths.Add(LibraryPath);
         foreach (string FileName in Directory.EnumerateFiles(LibraryPath, "*", SearchOption.AllDirectories))
         {
+            if (FileName.EndsWith(".a")) continue;
             if (FileName.EndsWith(".split")) continue;//
-            // if (FileName.EndsWith(".dylib"))PublicAdditionalLibraries.Add(FileName);
-            if (FileName.EndsWith(".lproj")) AdditionalBundleResources.Add(new BundleResource(FileName,bShouldLog: false));
-            RuntimeDependencies.Add(FileName);
+            RuntimeDependencies.Add(Path.Combine(FileName));
         }
     }
     void InitCEF3_Linux(string CEFVersion,string arch)

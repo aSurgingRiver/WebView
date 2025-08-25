@@ -20,7 +20,7 @@
 #include <stdlib.h>
 // WEB_CORE_API
 #include "include/cef_version.h"
-#if 7103<=CEF3_BRANCH
+#if 6943<=CEF3_BRANCH
 #include "include/cef_version_info.h"
 #endif
 
