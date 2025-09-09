@@ -37,6 +37,13 @@
 
 #define LOCTEXT_NAMESPACE "ProxyWeb"
 
+#pragma message("================================== WebView Warning Begin =====================================")
+#pragma message("    The WebView version is outdated.")
+#pragma message("    Please download the latest WebView from the following address.")
+#pragma message("    https://github.com/aSurgingRiver/WebView")
+#pragma message("================================== WebView Warning End   =====================================")
+
+
 SProxyWeb::SProxyWeb()
 {
 	SetCanTick(true);
@@ -65,9 +72,11 @@ void SProxyWeb::Construct(const FArguments& InArgs){
 	}
 //#ifdef PLATFROM_WINDOWS
 	FString show_tips = TEXT("If you see this prompt, it is caused by the following reasons: \n\n"
-		"1. The plug - in is installed in the engine directory, such as : Engine\\Plugins\\Marketplace. \n"
+		"1. The plugin version is outdated. Please download the latest plugin from the following address.\n\n"
+		"   https://github.com/aSurgingRiver/WebView \n\n"
+		"2. The plug - in is installed in the engine directory, such as : Engine\\Plugins\\Marketplace. \n"
 		"   Solution: Please move the plug - in to the project local plug - in directory \n\n"
-		"2. Other plug - ins that depend on WebBrowser are enabled, such as : Bridge, WebBrowser, etc. \n"
+		"3. Other plug - ins that depend on WebBrowser are enabled, such as : Bridge, WebBrowser, etc. \n"
 		"   Solution : Disable them in the plug - in manager. \n\n"
 		"Finally, close the project and then open it again.\n"); 
 	TAttribute<FText> text_tip = FText::FromString(show_tips);
