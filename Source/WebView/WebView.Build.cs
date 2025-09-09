@@ -57,22 +57,8 @@ namespace UnrealBuildTool.Rules
             // 
             Int32 ue_version = Target.Version.MajorVersion * 10000 + Target.Version.MinorVersion * 100 + Target.Version.PatchVersion;
             // After version 5.4, the official mall plugin can only have one platform architecture. 
-            // If you need to manually modify this support_more_54 to true
-            bool support_more_54 =false;
-            //support_more_54 = true;// here force support
-            support_more_54 = (ue_version <= 50300) || CanSupportAndroid() || support_more_54;
-            if (support_more_54 == false)
-            {
-                Console.WriteLine("************************** Warning Begin **************************");
-                Console.WriteLine("Eliminate the warning in two ways:");
-                Console.WriteLine("1. Configuring environment variables");
-                Console.WriteLine("WebView_Android_Support = 1");
-                Console.WriteLine("2. Please set the variable support_more_54 to true in the WebView.build.cs file!");
-                Console.WriteLine("support_more_54 = true;");
-                Console.WriteLine("************************** Warning End **************************");
-            }
             //
-            if (support_more_54 && 50100 <= ue_version && Target.Platform == UnrealTargetPlatform.Android)
+            if (50100 <= ue_version && Target.Platform == UnrealTargetPlatform.Android && CanSupportAndroid())
             {//
                 Console.WriteLine("WEBVIEW_ANDROID ... ");
                 PublicDefinitions.Add("WEBVIEW_ANDROID=1"); //
@@ -270,24 +256,10 @@ namespace UnrealBuildTool.Rules
 		}
         bool CanSupportAndroid()
         {
-            if (Directory.Exists(Path.Combine(ModuleDirectory, "..", "ThirdParty", "AndroidBrowser", "Binaries")))
+            if (InDev())
                 return true;
-            // download from FAB
-            string env_support = Environment.GetEnvironmentVariable("WebView_Android_Support");
-            if (!string.IsNullOrEmpty(env_support)&& env_support=="1")
-            {// fab downlad must config WebView_Android_Support=1 in Environment variables
-                return true;
-            }
-            // download from github
-            List<string> FileS = new List<string>();
-            FileS.AddRange(new string[] { ".gitattributes", "README.md" });
-            foreach (string one in FileS)
-            {
-                if (File.Exists(Path.Combine(ModuleDirectory,"..", one)))
-                    return true;
-            }
-            // for development env
-            return InDev();
+            // in plugin pkg
+            return Directory.Exists(Path.Combine(ModuleDirectory, "..", "ThirdParty", "AndroidBrowser", "Binaries"));
         }
 
     }
