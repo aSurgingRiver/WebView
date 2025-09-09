@@ -3,13 +3,13 @@
 #include "cef3lib.h"
 #include "GenericPlatform/GenericPlatformProcess.h"
 #include "GenericPlatform/GenericPlatformMisc.h"
-#if defined CEF_WINDOWS
+#if PLATFORM_WINDOWS
 #include "Windows/WindowsPlatformProcess.h"
 #include "Windows/WindowsPlatformMisc.h"
-#elif defined CEF_LINUX
+#elif PLATFORM_LINUX
 #include "Linux/LinuxPlatformProcess.h"
 #include "Linux/LinuxPlatformMisc.h"
-#elif defined CEF_MAC
+#elif PLATFORM_MAC
 #include "Mac/MacPlatformProcess.h"
 #include "Mac/MacPlatformMisc.h"
 #endif
@@ -18,14 +18,15 @@
 #include "WebViewLog.h"
 #include <string>
 #include <stdlib.h>
+#ifdef WEBVIEW_CEF
 // WEB_CORE_API
 #include "include/cef_version.h"
 #if 6943<=CEF3_BRANCH
 #include "include/cef_version_info.h"
 #endif
+#endif
 
 // WEB_CORE_API
-#ifdef WEBVIEW_CEF
 class CEF3LIB: public ICEF3LIB {
 public:
 	void LoadCEF3Modules() ;
@@ -49,7 +50,11 @@ ICEF3LIB* ICEF3LIB::get() {
 	return install;
 }
 int CEF3LIB::Branch() {
+#ifdef WEBVIEW_CEF
 	return CEF3_BRANCH;
+#else
+	return 0;
+#endif
 }
 
 void* CEF3LIB::LoadDllCEF(const FString& Path)
@@ -79,13 +84,16 @@ FString CEF3LIB::LibPath() {
 	}
 	const FString BaseDir = FPaths::ConvertRelativePathToFull(Plugin->GetBaseDir());
 	FString LibPath;
+#ifdef WEBVIEW_CEF
 	LibPath = FPaths::Combine(*BaseDir, TEXT("Source/ThirdParty/cefForUe"), TEXT(CEF3_VERSION), TEXT(CEF3_ARCH), TEXT("lib"));
+#endif
 	return LibPath;
 }
 
 void CEF3LIB::LoadCEF3Modules()
 {
 	if (dllHand.size())return;// has load
+#ifdef WEBVIEW_CEF
 	//UE_LOG(WebViewLog, Error, TEXT("CEF3DLL::LoadCEF3Modules"));
 	FString libPath = LibPath();
 #if PLATFORM_WINDOWS
@@ -111,7 +119,7 @@ void CEF3LIB::LoadCEF3Modules()
 		TEXT("cef_version_major:%d cef_version_minor:%d cef_version_patch:%d cef_commit_number:%d chrome_version_major:%d chrome_version_minor:%d chrome_version_build:%d chrome_version_patch:%d ")
 		, cef_version_major, cef_version_minor, cef_version_patch, cef_commit_number, chrome_version_major, chrome_version_minor, chrome_version_build, chrome_version_patch);
 #endif
-//#endif
+#endif
 }
 
 void CEF3LIB::UnloadCEF3Modules()
@@ -121,5 +129,4 @@ void CEF3LIB::UnloadCEF3Modules()
 	}
 	dllHand.clear();
 }
-#endif
 
