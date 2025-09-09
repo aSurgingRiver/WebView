@@ -20,23 +20,23 @@ public class cefForUe : ModuleRules
         if (Target.Platform == UnrealTargetPlatform.Win64) {
             //sInitCEF3_Win("cef_103.5060");
             //InitCEF3_Win("cef_120.6099","win64");
-            InitCEF3_Win("cef_138.7204", "win64");
+            if (InitCEF3_Win("cef_138.7204", "win64") == false) return  ;
             //InitCEF3_Win("cef_134.6998");
             //InitCEF3_Win("cef_115.5790");
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)
         {
-            InitCEF3_Linux("cef_120.6099","linux");
+            if (InitCEF3_Linux("cef_120.6099","linux") == false) return;
             //InitCEF3_Linux("cef_103.5060", "linux");
         }
         else if (Target.Platform.ToString() == "LinuxArm64"
             || Target.Platform.ToString() == "LinuxAArch64")
         {
-            InitCEF3_Linux("cef_116.5845", "linux_arm64");
+            if (InitCEF3_Linux("cef_116.5845", "linux_arm64") == false) return;
         }
         else if (Target.Platform == UnrealTargetPlatform.Mac)
         {
-            InitCEF3_Mac("cef_136.7103", "mac");
+            if (InitCEF3_Mac("cef_136.7103", "mac") == false) return;
         }
         else {
             return;
@@ -118,14 +118,16 @@ public class cefForUe : ModuleRules
         }
         RuntimeDependencies.Add(Path.Combine(LibraryPath, renderName));
     }
-    void InitCEF3_Win(string CEFVersion, string arch)
+    bool InitCEF3_Win(string CEFVersion, string arch)
     {
         string CEFRoot = Path.Combine(ModuleDirectory, CEFVersion, arch);
         string LibraryPath = Path.Combine(CEFRoot, "lib");
+        if (!Directory.Exists(LibraryPath))
+            return false;
         List<string> Dlls = new List<string>();
         Dlls.Add("killnoparent.exe");
-        //InitCEF3_PUB(CEFRoot, CEFVersion, "cefhelper.exe", Dlls);
-        InitCEF3_PUB(CEFRoot, CEFVersion, "cefhelper.dll", Dlls);
+        InitCEF3_PUB(CEFRoot, CEFVersion, "cefhelper.exe", Dlls);
+        //InitCEF3_PUB(CEFRoot, CEFVersion, "cefhelper.dll", Dlls);
         PublicDefinitions.Add("CEF3_ARCH=\"" + arch + "\""); //
         PublicDefinitions.Add("USING_CEF_SHARED=1"); //
         PublicDefinitions.Add("CEF_WINDOWS=1"); //
@@ -142,11 +144,14 @@ public class cefForUe : ModuleRules
         {
             RuntimeDependencies.Add(FileName);
         }
+        return true;
     }
-    void InitCEF3_Mac(string CEFVersion,string arch)
+    bool InitCEF3_Mac(string CEFVersion,string arch)
     {
         string CEFRoot = Path.Combine(ModuleDirectory, CEFVersion, arch);
         string LibraryPath = Path.Combine(CEFRoot, "lib");
+        if (!Directory.Exists(LibraryPath))
+            return false;
         string cefhelperdir = Path.Combine(LibraryPath, "cefhelper");
         while (Directory.Exists(cefhelperdir)) {
             Directory.Move(cefhelperdir, Path.Combine(LibraryPath, "cefhelper.app"));
@@ -171,13 +176,17 @@ public class cefForUe : ModuleRules
             if (FileName.EndsWith(".split")) continue;//
             RuntimeDependencies.Add(Path.Combine(FileName));
         }
+        return true;
     }
-    void InitCEF3_Linux(string CEFVersion,string arch)
+    bool InitCEF3_Linux(string CEFVersion,string arch)
     {
         string LINUX_MULTIARCH_ROOT = Environment.GetEnvironmentVariable("LINUX_MULTIARCH_ROOT");
         string CEFRoot =Path.Combine(ModuleDirectory, CEFVersion, arch);// LINUX_MULTIARCH_ROOT
         //PathList.FullPathName()
         string LibraryPath = Path.Combine(CEFRoot, "lib");
+
+        if (!Directory.Exists(LibraryPath))
+            return false;
         List<string> Dlls = new List<string>();
         Dlls.Add("chrome-sandbox");
         Dlls.Add("libvulkan.so.1");
@@ -210,7 +219,8 @@ public class cefForUe : ModuleRules
         {
             RuntimeDependencies.Add(FileName);
         }
-        MakeStartScript(libcef_path);
+        //MakeStartScript(libcef_path);
+        return true;
     }
     void MakeStartScript(string libcef_path)
     {
