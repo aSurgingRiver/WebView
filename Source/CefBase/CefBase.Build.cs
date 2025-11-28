@@ -9,7 +9,7 @@ public class CefBase : ModuleRules
 	{
 
         PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
-        if (Target.Version.MajorVersion < 5) CppStandard = CppStandardVersion.Cpp17;
+        if (Target.Version.MajorVersion < 5) CppStandard = CppStandardVersion.Latest;
         string CEFRoot = Path.Combine(ModuleDirectory, "Public");
         PublicSystemIncludePaths.Add(Path.Combine(CEFRoot));
         //ZipFile.ExtractToDirectory("aa.zip", CEFRoot);
@@ -31,13 +31,21 @@ public class CefBase : ModuleRules
 			new string[]
 			{
 				"Core",
-				"cefForUe"
+                "Projects",
+                "BaseBrowser",
+                "cefForUe"
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
-			
-		
-		PrivateDependencyModuleNames.AddRange(
+
+        int v = Target.Version.MajorVersion * 10000 + Target.Version.MinorVersion * 100 + Target.Version.PatchVersion;
+        if (50700 <= v && (Target.Platform == UnrealTargetPlatform.Win64 || Target.Platform == UnrealTargetPlatform.Linux))
+        {
+			PrivateDependencyModuleNames.Add("CEF3");
+            return;
+        }
+
+        PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
 				"CoreUObject",

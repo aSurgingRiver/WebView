@@ -1,6 +1,6 @@
 // Copyright aXiuShen. All Rights Reserved.
 #pragma once
-#include "Interfaces/IPluginManager.h"
+#include "CoreMinimal.h"
 #include <vector>
 
 // WEB_CORE_API

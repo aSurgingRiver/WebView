@@ -65,9 +65,9 @@ namespace UnrealBuildTool.Rules
                 PublicDefinitions.Add("DISABLE_WARNINGS");
                 PrivateDependencyModuleNames.Add("AndroidBrowser");
             }
-            else if(false==InDev() && (project_bridge_status() 
-                || Target.Configuration == UnrealTargetConfiguration.DebugGame
-                || Target.Configuration == UnrealTargetConfiguration.Debug))
+            else if(false==InDev() && (Target.Configuration == UnrealTargetConfiguration.DebugGame
+                || Target.Configuration == UnrealTargetConfiguration.Debug
+                || (ue_version < 50700 && project_bridge_status()) ))
             {
                 PublicDefinitions.Add("USING_WEBBROWSER=1"); //
                 PrivateDependencyModuleNames.Add("WebBrowser");

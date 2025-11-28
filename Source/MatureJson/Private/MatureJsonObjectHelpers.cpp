@@ -262,7 +262,7 @@ namespace maturejson
 		}
 		}
 
-		return true;
+		//return true;
 	}
 	bool ConvertToStruct(const FMatureJsonObject& JObject, const UStruct* StructDef, void* ValuePtr, UObject* Container, int64 CheckFlags)
 	{

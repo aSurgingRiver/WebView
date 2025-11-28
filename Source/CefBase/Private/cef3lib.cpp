@@ -15,6 +15,7 @@
 #endif
 #include "HAL/FileManager.h"
 #include "Misc/Paths.h"
+#include "Interfaces/IPluginManager.h"
 #include "WebViewLog.h"
 #include <string>
 #include <stdlib.h>
@@ -93,6 +94,10 @@ FString CEF3LIB::LibPath() {
 void CEF3LIB::LoadCEF3Modules()
 {
 	if (dllHand.size())return;// has load
+#if 50700<=WEBVIEW_ENGINE_VERSION
+	return;
+#endif
+
 #ifdef WEBVIEW_CEF
 	//UE_LOG(WebViewLog, Error, TEXT("CEF3DLL::LoadCEF3Modules"));
 	FString libPath = LibPath();

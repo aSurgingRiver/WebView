@@ -15,9 +15,8 @@ public class MatureJsonK2Node : ModuleRules
 			}
 			);
 		int EngineVersion = Target.Version.MajorVersion * 100 + Target.Version.MinorVersion;
-		if(EngineVersion<=426) CppStandard = CppStandardVersion.Cpp17;
-		else if(EngineVersion <= 501) CppStandard = CppStandardVersion.Cpp17;
-		else CppStandard = CppStandardVersion.Default;
+		if(EngineVersion <= 501) CppStandard = CppStandardVersion.Latest;
+		
 
         PrivateIncludePaths.AddRange(
 			new string[] {
