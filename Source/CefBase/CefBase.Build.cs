@@ -39,7 +39,7 @@ public class CefBase : ModuleRules
 			);
 
         int v = Target.Version.MajorVersion * 10000 + Target.Version.MinorVersion * 100 + Target.Version.PatchVersion;
-        if (50700 <= v && (Target.Platform == UnrealTargetPlatform.Win64 || Target.Platform == UnrealTargetPlatform.Linux))
+        if (50700 <= v && Target.bBuildEditor && (Target.Platform == UnrealTargetPlatform.Win64 || Target.Platform == UnrealTargetPlatform.Linux))
         {
 			PrivateDependencyModuleNames.Add("CEF3");
             return;

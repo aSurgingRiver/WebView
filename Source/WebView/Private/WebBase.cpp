@@ -74,7 +74,7 @@ UWebBase::UWebBase(const FObjectInitializer& ObjectInitializer)
 #if PLATFORM_ANDROID
 	styleText.Font.Size = 34;
 #else 
-	styleText.Font.Size = 20;
+	styleText.Font.Size = 16;
 #endif
 	bIsVariable = true;
 	json_object = true;

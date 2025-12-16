@@ -18,7 +18,7 @@ public class cefForUe : ModuleRules
         //string versionCEF = "cef_103.5060";
         //string versionCEF="cef_88.4324";
         int v = Target.Version.MajorVersion * 10000 + Target.Version.MinorVersion * 100 + Target.Version.PatchVersion;
-        if (50700 <= v)
+        if (50700 <= v && Target.bBuildEditor)
         {
             if (Target.Platform == UnrealTargetPlatform.Win64)
             {
@@ -76,6 +76,7 @@ public class cefForUe : ModuleRules
         string[] branchs = version.Split('.');
         string branch = "";
         if (2 <= branchs.Length) branch = branchs[1];
+        Console.WriteLine("MergeFile ===================" + CEFRoot + " Begin ===========================");
         MergeFile(CEFRoot);// 合并分割文件
         PublicDefinitions.Add("WEBVIEW_CEF"); //
         PublicDefinitions.Add("CEF3_VERSION=\""+ version + "\""); //
@@ -233,6 +234,8 @@ public class cefForUe : ModuleRules
             return false;
         List<string> Dlls = new List<string>();
         Dlls.Add("chrome-sandbox");
+        Dlls.Add("cefhelper_18");
+        Dlls.Add("cefhelper_20");
         Dlls.Add("libvulkan.so.1");
         Dlls.Add("libvulkan.so.1.cef");
         InitCEF3_PUB(CEFRoot, CEFVersion, "cefhelper", Dlls);

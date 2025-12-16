@@ -22,6 +22,7 @@ namespace webview {
 	DECLARE_DELEGATE_TwoParams(FOnPostResponse, const FString&, const FString&);
 	DECLARE_DELEGATE_TwoParams(FOnRestFul, const FString&, const FMatureJsonValue&);
 	DECLARE_DELEGATE_TwoParams(FOnDragEvent, bool , FString);
+	DECLARE_DELEGATE_FourParams(FOnEditEvent, int,int,int,int);
 	DECLARE_DELEGATE_OneParam(FOnRenderCrash, FString);
 	DECLARE_DELEGATE_OneParam(FOnTexture2D, UTexture*);
 	DECLARE_DELEGATE_RetVal_ThreeParams(bool, FOnResourceLoad, FString, int, HtmlHeaders&);
