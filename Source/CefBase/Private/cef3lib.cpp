@@ -1,4 +1,4 @@
-// Copyright aXiuShen. All Rights Reserved.
+ï»¿// Copyright aXiuShen. All Rights Reserved.
 
 #include "cef3lib.h"
 #include "GenericPlatform/GenericPlatformProcess.h"
@@ -46,12 +46,12 @@ private:
 };
 CEF3LIB::CEF3LIB() {
 #if 50700<=WEBVIEW_ENGINE_VERSION && WITH_EDITOR
-	// Ê¹ÓÃUEä¯ÀÀÆ÷ÄÚºË
+	// ä½¿ç”¨UEæµè§ˆå™¨å†…æ ¸
 	bWebBrowser = true;
 #else
-	// Ä¬ÈÏÊ¹ÓÃÍâÖÃCEFÄÚºË
+	// é»˜è®¤ä½¿ç”¨å¤–ç½®CEFå†…æ ¸
 	bWebBrowser = false;
-	// ¶¯Ì¬¿ÉÅäÖÃÄÚºË·½Ê½
+	// åŠ¨æ€å¯é…ç½®å†…æ ¸æ–¹å¼
 	GConfig->GetBool(TEXT("WebView"), TEXT("webbrowser"), bWebBrowser, GGameIni);
 #endif
 }

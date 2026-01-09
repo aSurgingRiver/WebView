@@ -107,8 +107,8 @@ void SWebViewToolbar::Construct(const FArguments& InArgs, TSharedPtr<IWebViewWin
 				SNew(SEditableTextBox)
 				.Visibility(this, &SWebViewToolbar::AddressShow)
 				.OnTextCommitted(this, &SWebViewToolbar::OnUrlTextCommitted)
-				.OnTextChanged(this, &SWebViewToolbar::OnTextChanged)
-				.Text_Lambda([this]() {return WebViewWindow.IsValid()?FText::FromString(WebViewWindow->GetUrl()): LOCTEXT("", ""); })
+				//.OnTextChanged(this, &SWebViewToolbar::OnTextChanged)
+				.Text_Lambda([this]() {return WebViewWindow.IsValid() ? FText::FromString(WebViewWindow->GetUrl()) : LOCTEXT("", ""); })
 				.Font(InArgs._TextStyle.Font)
 				.SelectAllTextWhenFocused(true)
 				.ClearKeyboardFocusOnCommit(true)
@@ -252,12 +252,13 @@ FReply SWebViewToolbar::OnGo()
 void SWebViewToolbar::OnUrlTextCommitted(const FText& NewText, ETextCommit::Type CommitType)
 {
 	if ((CommitType == ETextCommit::OnEnter || CommitType == ETextCommit::OnUserMovedFocus) && WebViewWindow.IsValid()) {
+		if(ChangeText.ToString()!= NewText.ToString())
 		WebViewWindow->LoadURL(NewText.ToString(), FString(), false);
 	}
-	ChangeText = FText();
+	ChangeText = NewText;
 }
 void  SWebViewToolbar::OnTextChanged(const FText& InText) {
-	ChangeText = InText;
+	//ChangeText = InText;
 }
 
 FReply SWebViewToolbar::OnForwardClicked()
