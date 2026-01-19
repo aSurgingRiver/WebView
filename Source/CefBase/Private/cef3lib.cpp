@@ -1,4 +1,4 @@
-// Copyright aXiuShen. All Rights Reserved.
+﻿// Copyright aXiuShen. All Rights Reserved.
 
 #include "cef3lib.h"
 #include "GenericPlatform/GenericPlatformProcess.h"
@@ -15,9 +15,11 @@
 #endif
 #include "HAL/FileManager.h"
 #include "Misc/Paths.h"
+#include "Interfaces/IPluginManager.h"
 #include "WebViewLog.h"
 #include <string>
 #include <stdlib.h>
+#include "Misc/ConfigCacheIni.h"
 #ifdef WEBVIEW_CEF
 // WEB_CORE_API
 #include "include/cef_version.h"
@@ -33,13 +35,30 @@ public:
 	void UnloadCEF3Modules() ;
 	int Branch();
 	FString LibPath() ;
+	CEF3LIB();
 	virtual ~CEF3LIB() = default;
+	virtual bool WebBrowser();
 private:
 	void* LoadDllCEF(const FString& Path);
 private:
 	std::vector<void*> dllHand;
-
+	bool bWebBrowser;
 };
+CEF3LIB::CEF3LIB() {
+#if 50700<=WEBVIEW_ENGINE_VERSION && WITH_EDITOR
+	// 使用UE浏览器内核
+	bWebBrowser = true;
+#else
+	// 默认使用外置CEF内核
+	bWebBrowser = false;
+	// 动态可配置内核方式
+	GConfig->GetBool(TEXT("WebView"), TEXT("webbrowser"), bWebBrowser, GGameIni);
+#endif
+}
+
+bool CEF3LIB::WebBrowser() {
+	return bWebBrowser;
+}
 
 ICEF3LIB* ICEF3LIB::get() {
 	static ICEF3LIB* install= nullptr;
@@ -93,6 +112,10 @@ FString CEF3LIB::LibPath() {
 void CEF3LIB::LoadCEF3Modules()
 {
 	if (dllHand.size())return;// has load
+	if (WebBrowser()) {
+		return;
+	}
+
 #ifdef WEBVIEW_CEF
 	//UE_LOG(WebViewLog, Error, TEXT("CEF3DLL::LoadCEF3Modules"));
 	FString libPath = LibPath();

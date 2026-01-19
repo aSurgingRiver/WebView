@@ -13,21 +13,46 @@ public class cefForUe : ModuleRules
     {
         Type = ModuleType.External;
         //PrintConfig("cefForUe");
-		//Console.WriteLine(Target.bBuildEditor ? "editor":"runtime");
+        //Console.WriteLine(Target.bBuildEditor ? "editor":"runtime");
         //string versionCEF="cef_95.4638";
         //string versionCEF = "cef_103.5060";
         //string versionCEF="cef_88.4324";
+        int v = Target.Version.MajorVersion * 10000 + Target.Version.MinorVersion * 100 + Target.Version.PatchVersion;
+        if (50700 <= v && Target.bBuildEditor)
+        {
+            if (Target.Platform == UnrealTargetPlatform.Win64)
+            {
+                PublicDefinitions.Add("USING_CEF_SHARED=1"); //
+                //PublicDefinitions.Add("CEF_WINDOWS=1"); //
+                PublicDefinitions.Add("CEF3_RENDER=\"EpicWebHelper.exe\""); //
+                List<string> delayfile = new List<string>();
+                delayfile.Add("*.exe");
+                delayfile.Add("*.dll");
+                AddDepends(delayfile, "cef_128.6613", "win64");
+                return;
+            }
+            else if (Target.Platform == UnrealTargetPlatform.Linux)
+            {
+                PublicDefinitions.Add("CEF3_RENDER=\"EpicWebHelper\""); //
+                List<string> delayfile = new List<string>();
+                delayfile.Add("EpicWebHelper");
+                delayfile.Add("*.so");
+                AddDepends(delayfile, "cef_128.6613", "linux");
+                return;
+            }
+        }
         if (Target.Platform == UnrealTargetPlatform.Win64) {
             //sInitCEF3_Win("cef_103.5060");
-            //InitCEF3_Win("cef_120.6099","win64");
+            // 后期增加对系统EpicWebHelper.exe 和 libcef.dll 的检查，如果不是插件提供的就不让编译。
+            // return;
+            //if (InitCEF3_Win("cef_120.6099", "win64") == false) return;
             if (InitCEF3_Win("cef_138.7204", "win64") == false) return  ;
-            //InitCEF3_Win("cef_134.6998");
-            //InitCEF3_Win("cef_115.5790");
+            //if (InitCEF3_Win("cef_103.5060", "win64") == false) return  ;
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)
         {
             if (InitCEF3_Linux("cef_120.6099","linux") == false) return;
-            //InitCEF3_Linux("cef_103.5060", "linux");
+            //if (InitCEF3_Linux("cef_103.5060", "linux") == false) return;
         }
         else if (Target.Platform.ToString() == "LinuxArm64"
             || Target.Platform.ToString() == "LinuxAArch64")
@@ -42,6 +67,24 @@ public class cefForUe : ModuleRules
             return;
         }
         PublicDefinitions.Add("WEBVIEW_CEF"); //
+    }
+    void AddDepends(List<string> depends,string version,string arch )
+    {
+        string CEFRoot = Path.Combine(ModuleDirectory, version, arch);
+        string[] branchs = version.Split('.');
+        string branch = "";
+        if (2 <= branchs.Length) branch = branchs[1];
+        Console.WriteLine("MergeFile ===================" + CEFRoot + " Begin ===========================");
+        MergeFile(CEFRoot);// 合并分割文件
+        PublicDefinitions.Add("WEBVIEW_CEF"); //
+        PublicDefinitions.Add("CEF3_VERSION=\""+ version + "\""); //
+        PublicDefinitions.Add("CEF3_BRANCH=" + branch); //
+        PublicDefinitions.Add("CEF3_ARCH=\""+ arch + " \""); //
+        foreach (string one in depends) {// 添加运行时依赖
+            foreach (string FileName in Directory.EnumerateFiles(CEFRoot, one, SearchOption.AllDirectories)) {
+                RuntimeDependencies.Add(FileName);
+            }
+        }
     }
     void MergeFile(string PathRoot)
     {
@@ -189,6 +232,8 @@ public class cefForUe : ModuleRules
             return false;
         List<string> Dlls = new List<string>();
         Dlls.Add("chrome-sandbox");
+        Dlls.Add("cefhelper_18");
+        Dlls.Add("cefhelper_20");
         Dlls.Add("libvulkan.so.1");
         Dlls.Add("libvulkan.so.1.cef");
         InitCEF3_PUB(CEFRoot, CEFVersion, "cefhelper", Dlls);

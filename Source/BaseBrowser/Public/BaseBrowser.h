@@ -55,6 +55,8 @@
 		SLATE_EVENT(webview::FOnJs, OnJs) \
 		/** Called when web has error . */ \
 		SLATE_EVENT(webview::FOnJsBegin, OnJsBegin) \
+		/* Called when title change */ \
+		SLATE_EVENT(webview::FOnTitleChanged, OnTitleChanged) \
 		 \
 		/* this party for params */ \
 		/** Control and Editor show text style  */ \
