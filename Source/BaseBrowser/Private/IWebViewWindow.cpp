@@ -63,6 +63,10 @@ webview::FOnJsBegin& IWebViewWindow::OnJsBegin() {
 	return _OnJsBegin;
 }
 
+webview::FOnEditEvent& IWebViewWindow::OnEditEvent() {
+	return _OnEditEvent;
+}
+
 FReply IWebViewWindow::OnTouchMoved(const FGeometry& , const FPointerEvent& ) {
 	return FReply::Unhandled();
 }

@@ -16,6 +16,7 @@ enum class EMatureJsonType : uint8
 	Array		    UMETA(DisplayName = "Array"),
 };
 
+UENUM()
 enum class EMatureJsonTypeNumber : uint8
 {
 	Unkown		    UMETA(DisplayName = "Unkown"),
