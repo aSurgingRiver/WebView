@@ -9,7 +9,7 @@ public class BaseBrowser : ModuleRules
 	public BaseBrowser(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
-        if (Target.Version.MajorVersion < 5) CppStandard = CppStandardVersion.Cpp17;
+        if (Target.Version.MajorVersion < 5) CppStandard = CppStandardVersion.Latest;
         string CEFRoot = Path.Combine(ModuleDirectory, "Public");
         PublicSystemIncludePaths.Add(Path.Combine(CEFRoot));
 		PublicIncludePaths.AddRange(

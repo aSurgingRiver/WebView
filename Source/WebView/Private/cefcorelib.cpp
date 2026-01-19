@@ -5,13 +5,13 @@
 #include "Modules/ModuleManager.h"
 #include "GenericPlatform/GenericPlatformProcess.h"
 #include "GenericPlatform/GenericPlatformMisc.h"
-#if defined CEF_WINDOWS
+#if PLATFORM_WINDOWS
 #include "Windows/WindowsPlatformProcess.h"
 #include "Windows/WindowsPlatformMisc.h"
-#elif defined CEF_LINUX
+#elif PLATFORM_LINUX
 #include "Linux/LinuxPlatformProcess.h"
 #include "Linux/LinuxPlatformMisc.h"
-#elif defined CEF_MAC
+#elif PLATFORM_MAC
 #include "Mac/MacPlatformProcess.h"
 #include "Mac/MacPlatformMisc.h"
 #endif
@@ -85,9 +85,9 @@ FString CefCoreLIB::LibPath() {
 	FString BaseDir = FPaths::ConvertRelativePathToFull(Plugin->GetBaseDir());
 	BaseDir = FPaths::Combine(*BaseDir, TEXT("Source"), TEXT("ThirdParty"), TEXT("CefBrowser"), TEXT("Binaries"));
 	FString LibPath;
-#if defined CEF_WINDOWS
+#if PLATFORM_WINDOWS
 	LibPath = FPaths::Combine(*BaseDir, TEXT("Win64"), TEXT("Editor"));
-#elif defined CEF_LINUX
+#elif PLATFORM_LINUX
 	LibPath = FPaths::Combine(*BaseDir, TEXT("Linux"), TEXT("Editor"));
 #endif
 	return LibPath;

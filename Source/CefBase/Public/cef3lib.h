@@ -1,6 +1,6 @@
 // Copyright aXiuShen. All Rights Reserved.
 #pragma once
-#include "Interfaces/IPluginManager.h"
+#include "CoreMinimal.h"
 #include <vector>
 
 // WEB_CORE_API
@@ -11,6 +11,7 @@ public:
 	virtual void UnloadCEF3Modules() = 0;
 	virtual FString LibPath() = 0;
 	virtual int Branch() = 0;
+	virtual bool WebBrowser()=0;
 };
 
 
