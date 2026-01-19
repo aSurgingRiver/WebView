@@ -51,32 +51,36 @@ void SWebViewToolbar::Construct(const FArguments& InArgs, TSharedPtr<IWebViewWin
 		[
 			SNew(SHorizontalBox)
 			.Visibility((isShow) ? EVisibility::SelfHitTestInvisible : EVisibility::Collapsed)
+			//+ SHorizontalBox::Slot()
+			//.AutoWidth()
+			//[
+			//	//SNew(SHorizontalBox)
+			//	//.Visibility((isShow) ? EVisibility::Visible : EVisibility::Collapsed)
+			//	//+ SHorizontalBox::Slot()
+			//	//.AutoWidth()
+			//	//[
+			//		SNew(SButton)
+			//		.Text(this, &SWebViewToolbar::GetControlText)
+			//		.VAlign(EVerticalAlignment::VAlign_Center)
+			//		.Visibility((isShow) ? EVisibility::Visible : EVisibility::Collapsed)
+			//		//.TextStyle(&InArgs._TextStyle)
+			//		.OnClicked(this, &SWebViewToolbar::OnShowClicked)
+			//	//]
+			//]
 			+ SHorizontalBox::Slot()
 			.AutoWidth()
 			[
-				SNew(SHorizontalBox)
-				.Visibility((isShow) ? EVisibility::Visible : EVisibility::Collapsed)
-				+ SHorizontalBox::Slot()
-				.AutoWidth()
-				[
+				//SNew(SHorizontalBox)
+				//.Visibility(this, &SWebViewToolbar::ControlShow)
+				////.Visibility(InArgs._ShowControls ? EVisibility::Visible : EVisibility::Collapsed)
+				//+ SHorizontalBox::Slot()
+				//.AutoWidth()
+				//[
 					SNew(SButton)
-					.Text(this, &SWebViewToolbar::GetControlText)
-					.TextStyle(&InArgs._TextStyle)
-					.OnClicked(this, &SWebViewToolbar::OnShowClicked)
-				]
-			]
-			+ SHorizontalBox::Slot()
-			.AutoWidth()
-			[
-				SNew(SHorizontalBox)
-				.Visibility(this, &SWebViewToolbar::ControlShow)
-				//.Visibility(InArgs._ShowControls ? EVisibility::Visible : EVisibility::Collapsed)
-				+ SHorizontalBox::Slot()
-				.AutoWidth()
-				[
-					SNew(SButton)
-					.Text(LOCTEXT("Back", "Back"))
-					.TextStyle(&InArgs._TextStyle)
+						.Text(LOCTEXT("<-", "<-"))
+					.Visibility(this, &SWebViewToolbar::ControlShow)
+					.VAlign(EVerticalAlignment::VAlign_Center)
+					//.TextStyle(&InArgs._TextStyle)
 					.IsEnabled(this, &SWebViewToolbar::CanGoBack)
 					.OnClicked_Raw(this, &SWebViewToolbar::OnBackClicked)
 				]
@@ -84,8 +88,10 @@ void SWebViewToolbar::Construct(const FArguments& InArgs, TSharedPtr<IWebViewWin
 				.AutoWidth()
 				[
 					SNew(SButton)
-					.Text(LOCTEXT("Forward", "Forward"))
-					.TextStyle(&InArgs._TextStyle)
+					.Text(LOCTEXT("->", "->"))
+					.Visibility(this, &SWebViewToolbar::ControlShow)
+						.VAlign(EVerticalAlignment::VAlign_Center)
+					//.TextStyle(&InArgs._TextStyle)
 					.IsEnabled(this, &SWebViewToolbar::CanGoForward)
 					.OnClicked(this, &SWebViewToolbar::OnForwardClicked)
 				]
@@ -93,11 +99,13 @@ void SWebViewToolbar::Construct(const FArguments& InArgs, TSharedPtr<IWebViewWin
 				.AutoWidth()
 				[
 					SNew(SButton)
+					.Visibility(this, &SWebViewToolbar::ControlShow)
+					.VAlign(EVerticalAlignment::VAlign_Center)
 					.Text(this, &SWebViewToolbar::GetReloadButtonText)
-					.TextStyle(&InArgs._TextStyle)
+					//.TextStyle(&InArgs._TextStyle)
 					.OnClicked(this, &SWebViewToolbar::OnReloadClicked)
 				]
-			]
+			//]
 			+ SHorizontalBox::Slot()
 			.VAlign(VAlign_Center)
 			.HAlign(HAlign_Fill)
@@ -109,7 +117,8 @@ void SWebViewToolbar::Construct(const FArguments& InArgs, TSharedPtr<IWebViewWin
 				.OnTextCommitted(this, &SWebViewToolbar::OnUrlTextCommitted)
 				//.OnTextChanged(this, &SWebViewToolbar::OnTextChanged)
 				.Text_Lambda([this]() {return WebViewWindow.IsValid() ? FText::FromString(WebViewWindow->GetUrl()) : LOCTEXT("", ""); })
-				.Font(InArgs._TextStyle.Font)
+				//.Font(InArgs._TextStyle.Font)
+				//.Style(InArgs._TextStyle)
 				.SelectAllTextWhenFocused(true)
 				.ClearKeyboardFocusOnCommit(true)
 				.RevertTextOnEscape(true)

@@ -48,13 +48,11 @@ public class cefForUe : ModuleRules
             //if (InitCEF3_Win("cef_120.6099", "win64") == false) return;
             if (InitCEF3_Win("cef_138.7204", "win64") == false) return  ;
             //if (InitCEF3_Win("cef_130.6723", "win64") == false) return  ;
-            //InitCEF3_Win("cef_134.6998");
-            //InitCEF3_Win("cef_115.5790");
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)
         {
             if (InitCEF3_Linux("cef_120.6099","linux") == false) return;
-            //InitCEF3_Linux("cef_103.5060", "linux");
+            //if (InitCEF3_Linux("cef_103.5060","linux") == false) return;
         }
         else if (Target.Platform.ToString() == "LinuxArm64"
             || Target.Platform.ToString() == "LinuxAArch64")

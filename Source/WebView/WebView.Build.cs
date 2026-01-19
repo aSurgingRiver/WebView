@@ -54,6 +54,14 @@ namespace UnrealBuildTool.Rules
                     "AudioExtensions"
                 }
             );
+            if (Target.bBuildEditor) { 
+                PublicDependencyModuleNames.AddRange(
+                    new string[]{
+                        "WorkspaceMenuStructure",
+                        "ToolMenus"
+                    }
+                );
+            }
             // 
             Int32 ue_version = Target.Version.MajorVersion * 10000 + Target.Version.MinorVersion * 100 + Target.Version.PatchVersion;
             // After version 5.4, the official mall plugin can only have one platform architecture. 
