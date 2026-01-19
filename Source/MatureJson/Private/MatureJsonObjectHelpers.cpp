@@ -230,6 +230,7 @@ namespace maturejson
 			if (FStructProperty* StructProperty = CastField<FStructProperty>(Property)) {
 				return ConvertToStruct(JsonValue.ToObject(), StructProperty->Struct, ValuePtr, Owner, CheckFlags & (~CPF_ParmFlags));
 			}
+			return true;
 			//UE_LOG(MatureJsonLog, Error, TEXT("ConvertProperty - Attempted to import unkown from object JSON key"));
 		}
 		// for number int float double string
@@ -261,8 +262,6 @@ namespace maturejson
 			return false;
 		}
 		}
-
-		return true;
 	}
 	bool ConvertToStruct(const FMatureJsonObject& JObject, const UStruct* StructDef, void* ValuePtr, UObject* Container, int64 CheckFlags)
 	{

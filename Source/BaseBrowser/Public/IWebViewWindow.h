@@ -232,6 +232,7 @@ public:
 	webview::FOnTransparency& OnTransparency();
 	webview::FOnToolTip& OnToolTip();
 	webview::FOnJsBegin& OnJsBegin();
+	webview::FOnEditEvent& OnEditEvent();
 protected:
 
 	/** Virtual Destructor. */
@@ -255,4 +256,5 @@ protected:
 	webview::FOnTransparency _OnTransparency;
 	webview::FOnToolTip _OnToolTip;
 	webview::FOnJsBegin _OnJsBegin;
+	webview::FOnEditEvent _OnEditEvent;
 };

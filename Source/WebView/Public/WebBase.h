@@ -136,7 +136,7 @@ public:
 		bool  SwitchInputMethod = false;
 	/** Configure webpage flush frame rate */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Frame Rate", ClampMin = 1, ClampMax = 60), Category = "Web View")
-		int  RateFrame = 20;
+		int  RateFrame = 26;
 	/** Configure webpage is transparency */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Background Color", ToolTip="transparent: A+js.A<255,  "), Category = "Web View")
 		FColor  ColorBackground;
