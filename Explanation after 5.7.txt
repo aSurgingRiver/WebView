@@ -1,0 +1,7 @@
+如果需要播放视频以及JS和UE通信。
+将Source\ThirdParty\cefForUe\cef_128.6613(win64、mac、linux)目录中的lib/Engine合并到引擎对应目录下。
+
+
+If video playback and JS/UE communication are required, 
+merge the lib/Engine directory from the Source\ThirdParty\cefForUe\cef_128.6613 (win64, mac, linux) directory 
+into the corresponding engine directory.
