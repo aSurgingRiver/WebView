@@ -1,5 +1,7 @@
 2026/1/18
-1. 增加编辑器中使用WebView
+1. 增加编辑器中使用WebView,
+   窗口->Open Web View打开. 
+   default game.ini文件[WebView] 段配置editor_url=https:\/\/www.bilibili.com 默认打开网页
 2. 优化浏览器工具栏和地址栏显示
 
 2025/12/15
