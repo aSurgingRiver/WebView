@@ -10,13 +10,13 @@
 #include "WebModule.h"
 #include "cef3lib.h"
 #include "cefcorelib.h"
+#endif
 #if WITH_EDITOR
 #include "Editor.h"
 #include "WorkspaceMenuStructureModule.h"
 #include "WorkspaceMenuStructure.h"
 #include "Framework/Commands/Commands.h"
 #include "LevelEditor.h"
-#endif
 #endif
 
 #define LOCTEXT_NAMESPACE "FWebViewModule"
