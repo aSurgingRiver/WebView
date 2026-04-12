@@ -27,6 +27,15 @@ public class BaseBrowser : ModuleRules
 			}
 			);
 
+		if(ue_version < 50000){
+		    if(Target.Platform.ToString() == "LinuxAArch64" ){
+		        PublicDefinitions.Add("PLATFORM_LINUXARM64=1"); 
+			}
+			else{
+		        PublicDefinitions.Add("PLATFORM_LINUXARM64=0"); 
+			}
+		}
+
 
         if (Target.Platform == UnrealTargetPlatform.Android)
         {//

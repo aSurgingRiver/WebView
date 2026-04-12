@@ -19,6 +19,11 @@
 #include "LevelEditor.h"
 #endif
 
+#if WITH_EDITOR && 50700<=WEBVIEW_ENGINE_VERSION
+//#include "IWebBrowserCookieManager.h"
+#include "WebBrowserModule.h"
+#endif
+
 #define LOCTEXT_NAMESPACE "FWebViewModule"
 
 static const FName WebViewTabName("WebView");
@@ -77,6 +82,9 @@ void FWebViewModule::ShutdownModule()
 
 void FWebViewModule::StartupModule()
 {
+#if WITH_EDITOR && 50700<=WEBVIEW_ENGINE_VERSION
+	IWebBrowserModule::Get().GetSingleton();
+#endif
 #if defined WEBVIEW_CEF && !defined USING_WEBBROWSER
 	ICEF3LIB::get()->LoadCEF3Modules();
 #   if WITH_EDITOR 

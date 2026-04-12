@@ -1,7 +1,9 @@
 // Copyright aXiuShen. All Rights Reserved.
 
 #include "SWebViewWidget.h"
+#if 50100<=WEBVIEW_ENGINE_VERSION 
 #include "Styling/AppStyle.h"
+#endif
 #include "Misc/ConfigCacheIni.h"
 #if defined WEBVIEW_CEF 
 #include "SCefBrowser.h"
@@ -42,7 +44,11 @@ void SWebViewWidget::Construct(const FArguments& InArgs)
 		.ShowControls(true)
 		.RightKeyPopup(false)
 		.BrowserFrameRate(30)
+#if WEBVIEW_ENGINE_VERSION<50000
+		.TextStyle(FCoreStyle::Get().GetWidgetStyle< FTextBlockStyle >("NormalText"))
+#else
 		.TextStyle(FAppStyle::Get().GetWidgetStyle<FTextBlockStyle>("NormalText"))
+#endif
 		.EnableMouseTransparency(InArgs._EnableMouseTransparency)
 		.SwitchInputMethod(true)
 		.ViewportSize(GetDesiredSize())

@@ -47,12 +47,12 @@ public class cefForUe : ModuleRules
             // return;
             //if (InitCEF3_Win("cef_120.6099", "win64") == false) return;
             if (InitCEF3_Win("cef_138.7204", "win64") == false) return  ;
-            //if (InitCEF3_Win("cef_130.6723", "win64") == false) return  ;
+            //if (InitCEF3_Win("cef_103.5060", "win64") == false) return  ;
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)
         {
             if (InitCEF3_Linux("cef_120.6099","linux") == false) return;
-            //if (InitCEF3_Linux("cef_103.5060","linux") == false) return;
+            //if (InitCEF3_Linux("cef_103.5060", "linux") == false) return;
         }
         else if (Target.Platform.ToString() == "LinuxArm64"
             || Target.Platform.ToString() == "LinuxAArch64")
@@ -80,14 +80,22 @@ public class cefForUe : ModuleRules
         PublicDefinitions.Add("CEF3_VERSION=\""+ version + "\""); //
         PublicDefinitions.Add("CEF3_BRANCH=" + branch); //
         PublicDefinitions.Add("CEF3_ARCH=\""+ arch + " \""); //
-        foreach (string one in depends) {// 添加运行时依赖
-            foreach (string FileName in Directory.EnumerateFiles(CEFRoot, one, SearchOption.AllDirectories)) {
-                RuntimeDependencies.Add(FileName);
+        if (Directory.Exists(CEFRoot))
+        {
+            foreach (string one in depends)
+            {// 添加运行时依赖
+                foreach (string FileName in Directory.EnumerateFiles(CEFRoot, one, SearchOption.AllDirectories))
+                {
+                    RuntimeDependencies.Add(FileName);
+                }
             }
         }
     }
     void MergeFile(string PathRoot)
     {
+        if (!Directory.Exists(PathRoot)) {
+            return;
+        }
         string split = ".split";
         // merge file
         Dictionary<string, Dictionary<int, string>> mapFile = new Dictionary<string, Dictionary<int, string>>();

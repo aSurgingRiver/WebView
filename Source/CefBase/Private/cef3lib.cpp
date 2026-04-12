@@ -97,15 +97,10 @@ void* CEF3LIB::LoadDllCEF(const FString& Path)
 }
 
 FString CEF3LIB::LibPath() {
-	TSharedPtr<IPlugin> Plugin = IPluginManager::Get().FindPlugin(TEXT("CefBase"));
-	if (!Plugin.IsValid()) {
-		Plugin = IPluginManager::Get().FindPlugin(TEXT("WebView"));
-	}
+	TSharedPtr<IPlugin> Plugin = IPluginManager::Get().FindPlugin(TEXT("WebView"));
 	const FString BaseDir = FPaths::ConvertRelativePathToFull(Plugin->GetBaseDir());
 	FString LibPath;
-#ifdef WEBVIEW_CEF
 	LibPath = FPaths::Combine(*BaseDir, TEXT("Source/ThirdParty/cefForUe"), TEXT(CEF3_VERSION), TEXT(CEF3_ARCH), TEXT("lib"));
-#endif
 	return LibPath;
 }
 
@@ -115,8 +110,6 @@ void CEF3LIB::LoadCEF3Modules()
 	if (WebBrowser()) {
 		return;
 	}
-
-#ifdef WEBVIEW_CEF
 	//UE_LOG(WebViewLog, Error, TEXT("CEF3DLL::LoadCEF3Modules"));
 	FString libPath = LibPath();
 #if PLATFORM_WINDOWS
@@ -141,7 +134,6 @@ void CEF3LIB::LoadCEF3Modules()
 	UE_LOG(WebViewLog, Log,
 		TEXT("cef_version_major:%d cef_version_minor:%d cef_version_patch:%d cef_commit_number:%d chrome_version_major:%d chrome_version_minor:%d chrome_version_build:%d chrome_version_patch:%d ")
 		, cef_version_major, cef_version_minor, cef_version_patch, cef_commit_number, chrome_version_major, chrome_version_minor, chrome_version_build, chrome_version_patch);
-#endif
 #endif
 }
 

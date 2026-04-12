@@ -91,7 +91,7 @@ namespace UnrealBuildTool.Rules
             //}
             else if(can_cef_browser(ue_version))
             {//
-                Console.WriteLine("WEBVIEW_CEF  ");
+                Console.WriteLine("WEBVIEW_CEF");
                 //Console.WriteLine("WEBVIEW Architectures " + Target.Architectures.ToString());
                 if (Target.Type != TargetType.Server && Target.Platform == UnrealTargetPlatform.Win64)
                 {
@@ -106,6 +106,10 @@ namespace UnrealBuildTool.Rules
                 PublicDependencyModuleNames.Add("cefForUe");
                 PublicDependencyModuleNames.Add("CefBase");
                 PublicDependencyModuleNames.Add("CefBrowser");
+                if (50700<=ue_version && Target.bBuildEditor==true)
+                {// 用于编辑器中运行
+                    PrivateDependencyModuleNames.Add("WebBrowser");
+                }
             }
             else 
             {
